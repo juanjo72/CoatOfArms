@@ -14,6 +14,9 @@
 		8134F91F2C68CB610052D0DF /* CoatOfArmsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F91E2C68CB610052D0DF /* CoatOfArmsTests.swift */; };
 		8134F9292C68CB610052D0DF /* CoatOfArmsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9282C68CB610052D0DF /* CoatOfArmsUITests.swift */; };
 		8134F92B2C68CB610052D0DF /* CoatOfArmsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F92A2C68CB610052D0DF /* CoatOfArmsUITestsLaunchTests.swift */; };
+		8134F9392C68CD4D0052D0DF /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 8134F9382C68CD4D0052D0DF /* Network */; };
+		8134F93C2C68CD910052D0DF /* ReactiveStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8134F93B2C68CD910052D0DF /* ReactiveStorage */; };
+		8134F93F2C68CDF60052D0DF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8134F93E2C68CDF60052D0DF /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8134F93F2C68CDF60052D0DF /* Kingfisher in Frameworks */,
+				8134F9392C68CD4D0052D0DF /* Network in Frameworks */,
+				8134F93C2C68CD910052D0DF /* ReactiveStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +149,11 @@
 			dependencies = (
 			);
 			name = CoatOfArms;
+			packageProductDependencies = (
+				8134F9382C68CD4D0052D0DF /* Network */,
+				8134F93B2C68CD910052D0DF /* ReactiveStorage */,
+				8134F93E2C68CDF60052D0DF /* Kingfisher */,
+			);
 			productName = CoatOfArms;
 			productReference = 8134F90A2C68CB600052D0DF /* CoatOfArms.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +226,11 @@
 				Base,
 			);
 			mainGroup = 8134F9012C68CB600052D0DF;
+			packageReferences = (
+				8134F9372C68CD4D0052D0DF /* XCRemoteSwiftPackageReference "Network" */,
+				8134F93A2C68CD910052D0DF /* XCRemoteSwiftPackageReference "ReactiveStorage" */,
+				8134F93D2C68CDF60052D0DF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 8134F90B2C68CB600052D0DF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -429,6 +445,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,6 +474,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -582,6 +600,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8134F9372C68CD4D0052D0DF /* XCRemoteSwiftPackageReference "Network" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/juanjo72/Network.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		8134F93A2C68CD910052D0DF /* XCRemoteSwiftPackageReference "ReactiveStorage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/juanjo72/ReactiveStorage.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		8134F93D2C68CDF60052D0DF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8134F9382C68CD4D0052D0DF /* Network */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8134F9372C68CD4D0052D0DF /* XCRemoteSwiftPackageReference "Network" */;
+			productName = Network;
+		};
+		8134F93B2C68CD910052D0DF /* ReactiveStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8134F93A2C68CD910052D0DF /* XCRemoteSwiftPackageReference "ReactiveStorage" */;
+			productName = ReactiveStorage;
+		};
+		8134F93E2C68CDF60052D0DF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8134F93D2C68CDF60052D0DF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8134F9022C68CB600052D0DF /* Project object */;
 }

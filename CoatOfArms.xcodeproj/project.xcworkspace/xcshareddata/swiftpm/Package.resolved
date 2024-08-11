@@ -1,0 +1,33 @@
+{
+  "originHash" : "02fe89725232709c580000ee22ce495d8144b7765a36ac3bc5b195376744067f",
+  "pins" : [
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "2ef543ee21d63734e1c004ad6c870255e8716c50",
+        "version" : "7.12.0"
+      }
+    },
+    {
+      "identity" : "network",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/juanjo72/Network.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "0d76a37489a7d8a6871c6cac0c3f42fb55473cc5"
+      }
+    },
+    {
+      "identity" : "reactivestorage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/juanjo72/ReactiveStorage.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b20b46904cde28b686cc8927bb6c8435829ed5c5"
+      }
+    }
+  ],
+  "version" : 3
+}
