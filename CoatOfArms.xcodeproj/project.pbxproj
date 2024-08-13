@@ -11,12 +11,18 @@
 		8134F9102C68CB600052D0DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F90F2C68CB600052D0DF /* ContentView.swift */; };
 		8134F9122C68CB610052D0DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8134F9112C68CB610052D0DF /* Assets.xcassets */; };
 		8134F9152C68CB610052D0DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8134F9142C68CB610052D0DF /* Preview Assets.xcassets */; };
-		8134F91F2C68CB610052D0DF /* CoatOfArmsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F91E2C68CB610052D0DF /* CoatOfArmsTests.swift */; };
 		8134F9292C68CB610052D0DF /* CoatOfArmsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9282C68CB610052D0DF /* CoatOfArmsUITests.swift */; };
 		8134F92B2C68CB610052D0DF /* CoatOfArmsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F92A2C68CB610052D0DF /* CoatOfArmsUITestsLaunchTests.swift */; };
 		8134F9392C68CD4D0052D0DF /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 8134F9382C68CD4D0052D0DF /* Network */; };
 		8134F93C2C68CD910052D0DF /* ReactiveStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8134F93B2C68CD910052D0DF /* ReactiveStorage */; };
 		8134F93F2C68CDF60052D0DF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8134F93E2C68CDF60052D0DF /* Kingfisher */; };
+		8134F9432C68CEDE0052D0DF /* WhichCountryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9422C68CEDE0052D0DF /* WhichCountryRepository.swift */; };
+		8134F9452C68CFED0052D0DF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9442C68CFED0052D0DF /* Country.swift */; };
+		8134F9492C68D3900052D0DF /* Country+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9482C68D3900052D0DF /* Country+Decoder.swift */; };
+		8134F94B2C68D4EE0052D0DF /* RemoteResource+Make.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F94A2C68D4EE0052D0DF /* RemoteResource+Make.swift */; };
+		8134F94F2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */; };
+		8134F9522C69F2540052D0DF /* RequestSenderProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */; };
+		8134F9542C69F3520052D0DF /* ReactiveStorageProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,10 +49,16 @@
 		8134F9112C68CB610052D0DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8134F9142C68CB610052D0DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8134F91A2C68CB610052D0DF /* CoatOfArmsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoatOfArmsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8134F91E2C68CB610052D0DF /* CoatOfArmsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatOfArmsTests.swift; sourceTree = "<group>"; };
 		8134F9242C68CB610052D0DF /* CoatOfArmsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoatOfArmsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8134F9282C68CB610052D0DF /* CoatOfArmsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatOfArmsUITests.swift; sourceTree = "<group>"; };
 		8134F92A2C68CB610052D0DF /* CoatOfArmsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatOfArmsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8134F9422C68CEDE0052D0DF /* WhichCountryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryRepository.swift; sourceTree = "<group>"; };
+		8134F9442C68CFED0052D0DF /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		8134F9482C68D3900052D0DF /* Country+Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+Decoder.swift"; sourceTree = "<group>"; };
+		8134F94A2C68D4EE0052D0DF /* RemoteResource+Make.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteResource+Make.swift"; sourceTree = "<group>"; };
+		8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryRepositoryTests.swift; sourceTree = "<group>"; };
+		8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSenderProtocolMock.swift; sourceTree = "<group>"; };
+		8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveStorageProtocolMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +96,7 @@
 				8134F91D2C68CB610052D0DF /* CoatOfArmsTests */,
 				8134F9272C68CB610052D0DF /* CoatOfArmsUITests */,
 				8134F90B2C68CB600052D0DF /* Products */,
+				81E44F352C6B4CD500029516 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +113,7 @@
 		8134F90C2C68CB600052D0DF /* CoatOfArms */ = {
 			isa = PBXGroup;
 			children = (
+				8134F9402C68CE9F0052D0DF /* WichCountryIsThis */,
 				8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */,
 				8134F90F2C68CB600052D0DF /* ContentView.swift */,
 				8134F9112C68CB610052D0DF /* Assets.xcassets */,
@@ -119,7 +133,8 @@
 		8134F91D2C68CB610052D0DF /* CoatOfArmsTests */ = {
 			isa = PBXGroup;
 			children = (
-				8134F91E2C68CB610052D0DF /* CoatOfArmsTests.swift */,
+				8134F9502C69F1FC0052D0DF /* _mocks */,
+				8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */,
 			);
 			path = CoatOfArmsTests;
 			sourceTree = "<group>";
@@ -131,6 +146,41 @@
 				8134F92A2C68CB610052D0DF /* CoatOfArmsUITestsLaunchTests.swift */,
 			);
 			path = CoatOfArmsUITests;
+			sourceTree = "<group>";
+		};
+		8134F9402C68CE9F0052D0DF /* WichCountryIsThis */ = {
+			isa = PBXGroup;
+			children = (
+				8134F9412C68CEAD0052D0DF /* Data */,
+			);
+			path = WichCountryIsThis;
+			sourceTree = "<group>";
+		};
+		8134F9412C68CEAD0052D0DF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8134F9442C68CFED0052D0DF /* Country.swift */,
+				8134F9482C68D3900052D0DF /* Country+Decoder.swift */,
+				8134F94A2C68D4EE0052D0DF /* RemoteResource+Make.swift */,
+				8134F9422C68CEDE0052D0DF /* WhichCountryRepository.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		8134F9502C69F1FC0052D0DF /* _mocks */ = {
+			isa = PBXGroup;
+			children = (
+				8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */,
+				8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */,
+			);
+			path = _mocks;
+			sourceTree = "<group>";
+		};
+		81E44F352C6B4CD500029516 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,8 +323,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8134F9452C68CFED0052D0DF /* Country.swift in Sources */,
+				8134F9492C68D3900052D0DF /* Country+Decoder.swift in Sources */,
 				8134F9102C68CB600052D0DF /* ContentView.swift in Sources */,
+				8134F9432C68CEDE0052D0DF /* WhichCountryRepository.swift in Sources */,
 				8134F90E2C68CB600052D0DF /* CoatOfArmsApp.swift in Sources */,
+				8134F94B2C68D4EE0052D0DF /* RemoteResource+Make.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +336,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8134F91F2C68CB610052D0DF /* CoatOfArmsTests.swift in Sources */,
+				8134F94F2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift in Sources */,
+				8134F9542C69F3520052D0DF /* ReactiveStorageProtocolMock.swift in Sources */,
+				8134F9522C69F2540052D0DF /* RequestSenderProtocolMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -420,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -445,7 +501,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -474,7 +530,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,7 +552,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = es.juanjo.CoatOfArmsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -515,7 +571,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = es.juanjo.CoatOfArmsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

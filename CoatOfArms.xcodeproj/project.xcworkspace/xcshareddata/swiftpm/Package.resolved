@@ -1,5 +1,5 @@
 {
-  "originHash" : "02fe89725232709c580000ee22ce495d8144b7765a36ac3bc5b195376744067f",
+  "originHash" : "999162ff69eea4c3e8a42522719da978d460d299df1d84255676e4b54e3bff4b",
   "pins" : [
     {
       "identity" : "kingfisher",
@@ -16,7 +16,7 @@
       "location" : "https://github.com/juanjo72/Network.git",
       "state" : {
         "branch" : "main",
-        "revision" : "0d76a37489a7d8a6871c6cac0c3f42fb55473cc5"
+        "revision" : "58867be945e548088bdd2e6e3494e0874c7cfb5b"
       }
     },
     {
@@ -25,7 +25,7 @@
       "location" : "https://github.com/juanjo72/ReactiveStorage.git",
       "state" : {
         "branch" : "main",
-        "revision" : "b20b46904cde28b686cc8927bb6c8435829ed5c5"
+        "revision" : "b0f409f2def3c12fbdbed14c27ed9b4a4cf042a9"
       }
     }
   ],
