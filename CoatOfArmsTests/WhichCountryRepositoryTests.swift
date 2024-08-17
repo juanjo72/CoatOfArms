@@ -16,10 +16,12 @@ final class WhichCountryRepositoryTests: XCTestCase {
     // MARK: SUT
     
     func makeMock(
+        countryCode: String = "es",
         requestSender: Network.RequestSenderProtocol = RequestSenderProtocolMock<Country>(),
         storage: ReactiveStorage.ReactiveStorageProtocol = ReactiveStorageProtocolMock<Country>()
     ) -> WhichCountryRepository {
         WhichCountryRepository(
+            countryCode: countryCode,
             requestSender: requestSender,
             storage: storage
         )
@@ -31,12 +33,12 @@ final class WhichCountryRepositoryTests: XCTestCase {
         // Given
         let sender = RequestSenderProtocolMock<Country>()
         let store = ReactiveStorageProtocolMock<Country>()
-        let returnCountry = Country(id: "id", coatOfArmsURL: URL(string: "http://www.google.com")!)
+        let returnCountry = Country(id: "es", coatOfArmsURL: URL(string: "http://www.google.com")!)
         sender.requestResourceReturnValue = returnCountry
         let sut = self.makeMock(requestSender: sender, storage: store)
         
         // When
-        try await sut.fetchCountry(code: "es")
+        try await sut.fetchCountry()
         
         // Then
         XCTAssertEqual(sender.requestResourceCallsCount, 1)
@@ -49,13 +51,13 @@ final class WhichCountryRepositoryTests: XCTestCase {
     func testThat_WhenSubscribedToCountryID_ThenCountryIsObserved() {
         // Given
         let store = ReactiveStorageProtocolMock<Country>()
-        let returnCountry = Country(id: "id", coatOfArmsURL: URL(string: "http://www.google.com")!)
+        let returnCountry = Country(id: "es", coatOfArmsURL: URL(string: "http://www.google.com")!)
         store.getSingleElementObservableOfIdReturnValue = Just(returnCountry).eraseToAnyPublisher()
         let sut = self.makeMock(storage: store)
         
         // When
         var observed: Country?
-        let _ = sut.countryObservable(code: "es")
+        let _ = sut.countryObservable()
             .sink { observed = $0 }
         
         // Then

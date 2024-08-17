@@ -18,9 +18,9 @@ extension Country: Decodable {
     }
     
     init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try values.decode(String.self, forKey: .id)
-        let coatOfArms = try values.nestedContainer(keyedBy: CoatOfArms.self, forKey: .coatOfArms)
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(String.self, forKey: .id)
+        let coatOfArms = try container.nestedContainer(keyedBy: CoatOfArms.self, forKey: .coatOfArms)
         let urlString = try coatOfArms.decode(String.self, forKey: .png)
         self.coatOfArmsURL = URL(string: urlString)!
     }

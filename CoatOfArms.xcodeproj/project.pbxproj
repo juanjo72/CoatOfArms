@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81097A562C6C783A00554C1E /* MultipleChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A552C6C783A00554C1E /* MultipleChoice.swift */; };
+		81097A582C6C7B2200554C1E /* CountryCodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A572C6C7B2200554C1E /* CountryCodeProvider.swift */; };
+		81097A5A2C6C800B00554C1E /* MultipleChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A592C6C800B00554C1E /* MultipleChoiceViewModel.swift */; };
+		81097A5C2C6C814500554C1E /* MultipleChoiceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A5B2C6C814500554C1E /* MultipleChoiceRepository.swift */; };
+		81097A5E2C6CAF0A00554C1E /* AnswerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A5D2C6CAF0A00554C1E /* AnswerRow.swift */; };
+		81097A602C6CAFDE00554C1E /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A5F2C6CAFDE00554C1E /* CountryCode.swift */; };
+		811B38512C70786D003856C3 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38502C70786D003856C3 /* GameSettings.swift */; };
+		811B38532C70EE6D003856C3 /* UserChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38522C70EE6D003856C3 /* UserChoice.swift */; };
+		811B38552C70F5EB003856C3 /* MultipleChoiceRepositoryProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38542C70F5EB003856C3 /* MultipleChoiceRepositoryProtocolMock.swift */; };
+		811B38572C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38562C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift */; };
+		811B38592C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38582C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift */; };
 		8134F90E2C68CB600052D0DF /* CoatOfArmsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */; };
 		8134F9102C68CB600052D0DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F90F2C68CB600052D0DF /* ContentView.swift */; };
 		8134F9122C68CB610052D0DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8134F9112C68CB610052D0DF /* Assets.xcassets */; };
@@ -23,6 +34,7 @@
 		8134F94F2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */; };
 		8134F9522C69F2540052D0DF /* RequestSenderProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */; };
 		8134F9542C69F3520052D0DF /* ReactiveStorageProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */; };
+		81E44F3A2C6B5B6F00029516 /* WhichCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E44F392C6B5B6F00029516 /* WhichCountryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +55,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		81097A552C6C783A00554C1E /* MultipleChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoice.swift; sourceTree = "<group>"; };
+		81097A572C6C7B2200554C1E /* CountryCodeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeProvider.swift; sourceTree = "<group>"; };
+		81097A592C6C800B00554C1E /* MultipleChoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModel.swift; sourceTree = "<group>"; };
+		81097A5B2C6C814500554C1E /* MultipleChoiceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceRepository.swift; sourceTree = "<group>"; };
+		81097A5D2C6CAF0A00554C1E /* AnswerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerRow.swift; sourceTree = "<group>"; };
+		81097A5F2C6CAFDE00554C1E /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
+		811B38502C70786D003856C3 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
+		811B38522C70EE6D003856C3 /* UserChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChoice.swift; sourceTree = "<group>"; };
+		811B38542C70F5EB003856C3 /* MultipleChoiceRepositoryProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceRepositoryProtocolMock.swift; sourceTree = "<group>"; };
+		811B38562C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceRepositoryTests.swift; sourceTree = "<group>"; };
+		811B38582C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeProviderProtocolMock.swift; sourceTree = "<group>"; };
 		8134F90A2C68CB600052D0DF /* CoatOfArms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoatOfArms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatOfArmsApp.swift; sourceTree = "<group>"; };
 		8134F90F2C68CB600052D0DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +82,7 @@
 		8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryRepositoryTests.swift; sourceTree = "<group>"; };
 		8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSenderProtocolMock.swift; sourceTree = "<group>"; };
 		8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveStorageProtocolMock.swift; sourceTree = "<group>"; };
+		81E44F392C6B5B6F00029516 /* WhichCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +159,7 @@
 			children = (
 				8134F9502C69F1FC0052D0DF /* _mocks */,
 				8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */,
+				811B38562C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift */,
 			);
 			path = CoatOfArmsTests;
 			sourceTree = "<group>";
@@ -152,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				8134F9412C68CEAD0052D0DF /* Data */,
+				81E44F382C6B5B5400029516 /* ViewModel */,
 			);
 			path = WichCountryIsThis;
 			sourceTree = "<group>";
@@ -161,7 +187,13 @@
 			children = (
 				8134F9442C68CFED0052D0DF /* Country.swift */,
 				8134F9482C68D3900052D0DF /* Country+Decoder.swift */,
+				81097A5F2C6CAFDE00554C1E /* CountryCode.swift */,
+				81097A572C6C7B2200554C1E /* CountryCodeProvider.swift */,
+				811B38502C70786D003856C3 /* GameSettings.swift */,
+				81097A552C6C783A00554C1E /* MultipleChoice.swift */,
+				81097A5B2C6C814500554C1E /* MultipleChoiceRepository.swift */,
 				8134F94A2C68D4EE0052D0DF /* RemoteResource+Make.swift */,
+				811B38522C70EE6D003856C3 /* UserChoice.swift */,
 				8134F9422C68CEDE0052D0DF /* WhichCountryRepository.swift */,
 			);
 			path = Data;
@@ -172,6 +204,8 @@
 			children = (
 				8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */,
 				8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */,
+				811B38542C70F5EB003856C3 /* MultipleChoiceRepositoryProtocolMock.swift */,
+				811B38582C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift */,
 			);
 			path = _mocks;
 			sourceTree = "<group>";
@@ -181,6 +215,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		81E44F382C6B5B5400029516 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				81E44F392C6B5B6F00029516 /* WhichCountryViewModel.swift */,
+				81097A592C6C800B00554C1E /* MultipleChoiceViewModel.swift */,
+				81097A5D2C6CAF0A00554C1E /* AnswerRow.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,11 +367,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81097A602C6CAFDE00554C1E /* CountryCode.swift in Sources */,
 				8134F9452C68CFED0052D0DF /* Country.swift in Sources */,
 				8134F9492C68D3900052D0DF /* Country+Decoder.swift in Sources */,
+				81E44F3A2C6B5B6F00029516 /* WhichCountryViewModel.swift in Sources */,
 				8134F9102C68CB600052D0DF /* ContentView.swift in Sources */,
 				8134F9432C68CEDE0052D0DF /* WhichCountryRepository.swift in Sources */,
+				811B38512C70786D003856C3 /* GameSettings.swift in Sources */,
+				81097A582C6C7B2200554C1E /* CountryCodeProvider.swift in Sources */,
+				811B38532C70EE6D003856C3 /* UserChoice.swift in Sources */,
+				81097A562C6C783A00554C1E /* MultipleChoice.swift in Sources */,
+				81097A5A2C6C800B00554C1E /* MultipleChoiceViewModel.swift in Sources */,
+				81097A5C2C6C814500554C1E /* MultipleChoiceRepository.swift in Sources */,
 				8134F90E2C68CB600052D0DF /* CoatOfArmsApp.swift in Sources */,
+				81097A5E2C6CAF0A00554C1E /* AnswerRow.swift in Sources */,
 				8134F94B2C68D4EE0052D0DF /* RemoteResource+Make.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,7 +389,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				811B38572C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift in Sources */,
+				811B38592C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift in Sources */,
 				8134F94F2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift in Sources */,
+				811B38552C70F5EB003856C3 /* MultipleChoiceRepositoryProtocolMock.swift in Sources */,
 				8134F9542C69F3520052D0DF /* ReactiveStorageProtocolMock.swift in Sources */,
 				8134F9522C69F2540052D0DF /* RequestSenderProtocolMock.swift in Sources */,
 			);
