@@ -16,13 +16,15 @@ protocol WhichCountryViewModelProtocol: ObservableObject {
 }
 
 final class WhichCountryViewModel<
-    MultipleChoice: MultipleChoiceViewModelProtocol
+    MultipleChoice: MultipleChoiceViewModelProtocol,
+    Downstream: Combine.Scheduler
 >: WhichCountryViewModelProtocol {
     
     // MARK: Injected
     
     private let multipleChoiceProvider: () -> MultipleChoice
     private let repository: WhichCountryRepostoryProtocol
+    private let scheduler: Downstream
     
     // MARK: WhichCountryViewModelProtocol
     
@@ -40,12 +42,15 @@ final class WhichCountryViewModel<
     
     init(
         multipleChoiceProvider: @escaping () -> MultipleChoice,
-        repository: WhichCountryRepostoryProtocol
+        repository: WhichCountryRepostoryProtocol,
+        scheduler: Downstream = DispatchQueue.main
     ) {
         self.multipleChoiceProvider = multipleChoiceProvider
         self.repository = repository
+        self.scheduler = scheduler
         
         self.imageURLObservable
+            .receive(on: self.scheduler)
             .assign(to: &self.$imageURL)
     }
     
@@ -57,6 +62,8 @@ final class WhichCountryViewModel<
         } catch {
             print(String(describing: error))
         }
-        self.multipleChoice = self.multipleChoiceProvider()
+        await MainActor.run {
+            self.multipleChoice = self.multipleChoiceProvider()
+        }
     }
 }

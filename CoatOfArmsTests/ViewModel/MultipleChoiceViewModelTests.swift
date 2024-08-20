@@ -17,9 +17,10 @@ final class MultipleChoiceViewModelTests: XCTestCase {
     
     func makeSUT(
         repository: MultipleChoiceRepositoryProtocol = MultipleChoiceRepositoryProtocolMock()
-    ) -> MultipleChoiceViewModel {
+    ) -> some MultipleChoiceViewModelProtocol {
         MultipleChoiceViewModel(
-            repository: repository
+            repository: repository,
+            downstream: ImmediateScheduler.shared
         )
     }
     

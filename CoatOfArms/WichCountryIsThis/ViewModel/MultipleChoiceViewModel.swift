@@ -10,22 +10,23 @@ import Foundation
 
 protocol MultipleChoiceViewModelProtocol: ObservableObject {
     var isEnabled: Bool { get }
-    var prompt: String { get }
     var choiceButtons: [ChoiceButtonViewData] { get }
     func viewWillAppear() async
     func userDidHit(code: CountryCode) async
 }
 
-final class MultipleChoiceViewModel: MultipleChoiceViewModelProtocol {
+final class MultipleChoiceViewModel<
+    Downstream: Scheduler
+>: MultipleChoiceViewModelProtocol {
     
     // MARK: Injected
     
     private let repository: MultipleChoiceRepositoryProtocol
+    private let downstream: Downstream
     
     // MARK: PossibleAnswersRepositoryProtocol
     
     @Published var isEnabled: Bool = false
-    let prompt: String = "Pick one:"
     @Published var choiceButtons: [ChoiceButtonViewData] = []
     
     // MARK: Observables
@@ -50,11 +51,14 @@ final class MultipleChoiceViewModel: MultipleChoiceViewModelProtocol {
     // MARK: Lifecycle
     
     init(
-        repository: MultipleChoiceRepositoryProtocol
+        repository: MultipleChoiceRepositoryProtocol,
+        downstream: Downstream = DispatchQueue.main
     ) {
         self.repository = repository
+        self.downstream = downstream
         
         self.answersObservable
+            .receive(on: downstream)
             .assign(to: &self.$choiceButtons)
     }
     
@@ -62,11 +66,15 @@ final class MultipleChoiceViewModel: MultipleChoiceViewModelProtocol {
     
     func viewWillAppear() async {
         await self.repository.fetchAnswers()
-        self.isEnabled = true
+        self.downstream.schedule {
+            self.isEnabled = true
+        }
     }
     
     func userDidHit(code: CountryCode) async {
-        self.isEnabled = false
+        self.downstream.schedule {
+            self.isEnabled = false
+        }
         await self.repository.set(answer: code)
     }
 }

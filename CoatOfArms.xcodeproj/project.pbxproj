@@ -33,6 +33,11 @@
 		8134F94F2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */; };
 		8134F9522C69F2540052D0DF /* RequestSenderProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */; };
 		8134F9542C69F3520052D0DF /* ReactiveStorageProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */; };
+		81D415C92C7461630061A1B6 /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D415C82C7461630061A1B6 /* MultipleChoiceView.swift */; };
+		81D416022C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416012C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift */; };
+		81D416042C74803B0061A1B6 /* WhichCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416032C74803B0061A1B6 /* WhichCountryView.swift */; };
+		81D416062C7481D20061A1B6 /* WhichCountryViewModelDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416052C7481D20061A1B6 /* WhichCountryViewModelDouble.swift */; };
+		81D416082C7488930061A1B6 /* WhichCountryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416072C7488930061A1B6 /* WhichCountryFactory.swift */; };
 		81E36CE72C734CB500F71DB5 /* MultipleChoice+makeDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CE62C734CB500F71DB5 /* MultipleChoice+makeDouble.swift */; };
 		81E36CE92C739C9600F71DB5 /* WhichCountryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CE82C739C9600F71DB5 /* WhichCountryViewModelTests.swift */; };
 		81E36CEB2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CEA2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift */; };
@@ -77,6 +82,12 @@
 		8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryRepositoryTests.swift; sourceTree = "<group>"; };
 		8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSenderProtocolMock.swift; sourceTree = "<group>"; };
 		8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveStorageProtocolMock.swift; sourceTree = "<group>"; };
+		81D415C82C7461630061A1B6 /* MultipleChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceView.swift; sourceTree = "<group>"; };
+		81D416002C7471600061A1B6 /* CoatOfArms.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoatOfArms.xctestplan; sourceTree = "<group>"; };
+		81D416012C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModelDouble.swift; sourceTree = "<group>"; };
+		81D416032C74803B0061A1B6 /* WhichCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryView.swift; sourceTree = "<group>"; };
+		81D416052C7481D20061A1B6 /* WhichCountryViewModelDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryViewModelDouble.swift; sourceTree = "<group>"; };
+		81D416072C7488930061A1B6 /* WhichCountryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryFactory.swift; sourceTree = "<group>"; };
 		81E36CE62C734CB500F71DB5 /* MultipleChoice+makeDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultipleChoice+makeDouble.swift"; sourceTree = "<group>"; };
 		81E36CE82C739C9600F71DB5 /* WhichCountryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryViewModelTests.swift; sourceTree = "<group>"; };
 		81E36CEA2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModelProtocolMock.swift; sourceTree = "<group>"; };
@@ -127,6 +138,7 @@
 		8134F9012C68CB600052D0DF = {
 			isa = PBXGroup;
 			children = (
+				81D416002C7471600061A1B6 /* CoatOfArms.xctestplan */,
 				8134F90C2C68CB600052D0DF /* CoatOfArms */,
 				8134F91D2C68CB610052D0DF /* CoatOfArmsTests */,
 				8134F90B2C68CB600052D0DF /* Products */,
@@ -159,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				8134F9142C68CB610052D0DF /* Preview Assets.xcassets */,
+				81D416012C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift */,
+				81D416052C7481D20061A1B6 /* WhichCountryViewModelDouble.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -179,6 +193,8 @@
 			children = (
 				8134F9412C68CEAD0052D0DF /* Data */,
 				81E44F382C6B5B5400029516 /* ViewModel */,
+				81D415C72C7461460061A1B6 /* View */,
+				81D416072C7488930061A1B6 /* WhichCountryFactory.swift */,
 			);
 			path = WichCountryIsThis;
 			sourceTree = "<group>";
@@ -211,6 +227,15 @@
 				81E36CEC2C74541E00F71DB5 /* WhichCountryRepostoryProtocolMock.swift */,
 			);
 			path = _mocks;
+			sourceTree = "<group>";
+		};
+		81D415C72C7461460061A1B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				81D415C82C7461630061A1B6 /* MultipleChoiceView.swift */,
+				81D416032C74803B0061A1B6 /* WhichCountryView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		81E36CE52C734C5D00F71DB5 /* _doubles */ = {
@@ -354,13 +379,18 @@
 				8134F9492C68D3900052D0DF /* Country+Decoder.swift in Sources */,
 				81E44F3A2C6B5B6F00029516 /* WhichCountryViewModel.swift in Sources */,
 				8134F9102C68CB600052D0DF /* ContentView.swift in Sources */,
+				81D415C92C7461630061A1B6 /* MultipleChoiceView.swift in Sources */,
 				8134F9432C68CEDE0052D0DF /* WhichCountryRepository.swift in Sources */,
+				81D416022C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift in Sources */,
 				811B38512C70786D003856C3 /* GameSettings.swift in Sources */,
 				81097A582C6C7B2200554C1E /* CountryCodeProvider.swift in Sources */,
 				811B38532C70EE6D003856C3 /* UserChoice.swift in Sources */,
+				81D416082C7488930061A1B6 /* WhichCountryFactory.swift in Sources */,
 				81097A562C6C783A00554C1E /* MultipleChoice.swift in Sources */,
 				81097A5A2C6C800B00554C1E /* MultipleChoiceViewModel.swift in Sources */,
+				81D416042C74803B0061A1B6 /* WhichCountryView.swift in Sources */,
 				81097A5C2C6C814500554C1E /* MultipleChoiceRepository.swift in Sources */,
+				81D416062C7481D20061A1B6 /* WhichCountryViewModelDouble.swift in Sources */,
 				8134F90E2C68CB600052D0DF /* CoatOfArmsApp.swift in Sources */,
 				81097A5E2C6CAF0A00554C1E /* ChoiceButtonViewData.swift in Sources */,
 				8134F94B2C68D4EE0052D0DF /* RemoteResource+Make.swift in Sources */,

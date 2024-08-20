@@ -9,20 +9,10 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>CoatOfArmsTests.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>8134F9092C68CB600052D0DF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8134F9192C68CB610052D0DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
