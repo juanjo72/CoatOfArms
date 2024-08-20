@@ -9,25 +9,25 @@ import Foundation
 import Combine
 
 protocol WhichCountryViewModelProtocol: ObservableObject {
-    associatedtype Answers: MultipleChoiceViewModelProtocol
+    associatedtype MultipleChoice: MultipleChoiceViewModelProtocol
     var imageURL: URL? { get }
-    var answers: Answers? { get }
+    var multipleChoice: MultipleChoice? { get }
     func viewWillAppear() async
 }
 
 final class WhichCountryViewModel<
-    Answers: MultipleChoiceViewModelProtocol
+    MultipleChoice: MultipleChoiceViewModelProtocol
 >: WhichCountryViewModelProtocol {
     
     // MARK: Injected
     
-    private let answersProvider: () async -> Answers
+    private let multipleChoiceProvider: () -> MultipleChoice
     private let repository: WhichCountryRepostoryProtocol
     
     // MARK: WhichCountryViewModelProtocol
     
     @Published var imageURL: URL?
-    @Published var answers: Answers?
+    @Published var multipleChoice: MultipleChoice?
     
     // MARK: Observables
     
@@ -39,10 +39,10 @@ final class WhichCountryViewModel<
     // MARK: Lifecycle
     
     init(
-        answersProvider: @escaping () async -> Answers,
+        multipleChoiceProvider: @escaping () -> MultipleChoice,
         repository: WhichCountryRepostoryProtocol
     ) {
-        self.answersProvider = answersProvider
+        self.multipleChoiceProvider = multipleChoiceProvider
         self.repository = repository
         
         self.imageURLObservable
@@ -57,6 +57,6 @@ final class WhichCountryViewModel<
         } catch {
             print(String(describing: error))
         }
-        self.answers = await answersProvider()
+        self.multipleChoice = self.multipleChoiceProvider()
     }
 }

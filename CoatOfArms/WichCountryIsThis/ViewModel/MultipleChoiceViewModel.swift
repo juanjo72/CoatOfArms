@@ -11,7 +11,7 @@ import Foundation
 protocol MultipleChoiceViewModelProtocol: ObservableObject {
     var isEnabled: Bool { get }
     var prompt: String { get }
-    var rows: [AnswerRow] { get }
+    var choiceButtons: [ChoiceButtonViewData] { get }
     func viewWillAppear() async
     func userDidHit(code: CountryCode) async
 }
@@ -26,28 +26,22 @@ final class MultipleChoiceViewModel: MultipleChoiceViewModelProtocol {
     
     @Published var isEnabled: Bool = false
     let prompt: String = "Pick one:"
-    @Published var rows: [AnswerRow] = []
+    @Published var choiceButtons: [ChoiceButtonViewData] = []
     
     // MARK: Observables
     
-    private var answersObservable: some Publisher<[AnswerRow], Never> {
+    private var answersObservable: some Publisher<[ChoiceButtonViewData], Never> {
         Publishers.CombineLatest(
             self.repository.multipleChoiceObservable(),
             self.repository.storedAnswerObservable()
         )
-            .map { answers, userAnswer in
-                guard let answers else { return [] }
-                let isAnsweredCorrectly: Bool? = {
-                    guard let userAnswer else {
-                        return nil
-                    }
-                    return userAnswer.pickedCountryCode == answers.id
-                }()
-                return answers.allChoices.map { each in
-                    AnswerRow(
+            .map { choices, userAnswer in
+                guard let choices else { return [] }
+                return choices.allChoices.map { each in
+                    ChoiceButtonViewData(
                         id: each,
                         label: each.countryName,
-                        isAnsweredCorrectly: isAnsweredCorrectly
+                        effect: ChoiceButtonViewData.Effect(id: each, userChoice: userAnswer)
                     )
                 }
             }
@@ -61,7 +55,7 @@ final class MultipleChoiceViewModel: MultipleChoiceViewModelProtocol {
         self.repository = repository
         
         self.answersObservable
-            .assign(to: &self.$rows)
+            .assign(to: &self.$choiceButtons)
     }
     
     // MARK: PossibleAnswersViewModelProtocol
