@@ -29,30 +29,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8134F9192C68CB610052D0DF"
-               BuildableName = "CoatOfArmsTests.xctest"
-               BlueprintName = "CoatOfArmsTests"
-               ReferencedContainer = "container:CoatOfArms.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "YES"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8134F9232C68CB610052D0DF"
-               BuildableName = "CoatOfArmsUITests.xctest"
-               BlueprintName = "CoatOfArmsUITests"
-               ReferencedContainer = "container:CoatOfArms.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
