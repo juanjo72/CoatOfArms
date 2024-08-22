@@ -11,8 +11,8 @@ typealias CountryCode = String
 
 extension CountryCode {
     var countryName: String {
-        NSLocale().localizedString(forCountryCode: self)
-        ?? NSLocale(localeIdentifier: "en").localizedString(forCountryCode: self)
+        Locale.autoupdatingCurrent.localizedString(forRegionCode: self)
+        ?? Locale(identifier: "en_EN").localizedString(forRegionCode: self)
         ?? self
      }
 }

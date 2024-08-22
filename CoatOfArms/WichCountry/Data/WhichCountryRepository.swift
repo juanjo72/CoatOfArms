@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Foundation
 import Network
 import ReactiveStorage
 
@@ -44,8 +43,8 @@ final class WhichCountryRepository: WhichCountryRepostoryProtocol {
     }
 
     func fetchCountry() async throws {
-        let resource = Network.RemoteResource<Country>.make(code: self.countryCode)
-        let country = try await self.requestSender.request(resource: resource)
+        let remoteResource = Network.RemoteResource<Country>.make(code: self.countryCode)
+        let country = try await self.requestSender.request(resource: remoteResource)
         await self.storage.add(country)
     }
 }

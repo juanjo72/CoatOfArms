@@ -17,7 +17,8 @@ protocol WhichCountryViewModelProtocol: ObservableObject {
 
 final class WhichCountryViewModel<
     MultipleChoice: MultipleChoiceViewModelProtocol,
-    Downstream: Combine.Scheduler
+    Downstream: Combine.Scheduler,
+    Router: RouterProtocol
 >: WhichCountryViewModelProtocol {
     
     // MARK: Injected
@@ -25,6 +26,7 @@ final class WhichCountryViewModel<
     private let multipleChoiceProvider: () -> MultipleChoice
     private let repository: WhichCountryRepostoryProtocol
     private let scheduler: Downstream
+    private let router: Router
     
     // MARK: WhichCountryViewModelProtocol
     
@@ -43,10 +45,12 @@ final class WhichCountryViewModel<
     init(
         multipleChoiceProvider: @escaping () -> MultipleChoice,
         repository: WhichCountryRepostoryProtocol,
-        scheduler: Downstream = DispatchQueue.main
+        router: Router,
+        scheduler: Downstream = DispatchQueue.main // for testing purposes
     ) {
         self.multipleChoiceProvider = multipleChoiceProvider
         self.repository = repository
+        self.router = router
         self.scheduler = scheduler
         
         self.imageURLObservable
@@ -60,9 +64,12 @@ final class WhichCountryViewModel<
         do {
             try await self.repository.fetchCountry()
         } catch {
-            print(String(describing: error))
+            if error is DecodingError {
+                // tries with a new country; possibly coat of arms unavailable
+                await self.router.next()
+            }
         }
-        await MainActor.run {
+        self.scheduler.schedule {
             self.multipleChoice = self.multipleChoiceProvider()
         }
     }

@@ -16,11 +16,13 @@ final class MultipleChoiceViewModelTests: XCTestCase {
     // MARK: SUT
     
     func makeSUT(
-        repository: MultipleChoiceRepositoryProtocol = MultipleChoiceRepositoryProtocolMock()
+        repository: MultipleChoiceRepositoryProtocolMock = .init(),
+        router: RouterProtocolMock = .init()
     ) -> some MultipleChoiceViewModelProtocol {
         MultipleChoiceViewModel(
             repository: repository,
-            downstream: ImmediateScheduler.shared
+            downstream: ImmediateScheduler.shared,
+            router: router
         )
     }
     

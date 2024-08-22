@@ -17,11 +17,13 @@ final class WhichCountryViewModelTests: XCTestCase {
     
     private func makeSUT(
         multipleChoiceProvider: @escaping () -> some MultipleChoiceViewModelProtocolMock = { MultipleChoiceViewModelProtocolMock() },
-        repository: WhichCountryRepostoryProtocol
+        repository: WhichCountryRepostoryProtocolMock = .init(),
+        router: RouterProtocolMock = .init()
     ) -> some WhichCountryViewModelProtocol {
         WhichCountryViewModel(
             multipleChoiceProvider: multipleChoiceProvider,
             repository: repository,
+            router: router,
             scheduler: ImmediateScheduler.shared
         )
     }

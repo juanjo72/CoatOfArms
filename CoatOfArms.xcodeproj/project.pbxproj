@@ -13,6 +13,10 @@
 		81097A5C2C6C814500554C1E /* MultipleChoiceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A5B2C6C814500554C1E /* MultipleChoiceRepository.swift */; };
 		81097A5E2C6CAF0A00554C1E /* ChoiceButtonViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A5D2C6CAF0A00554C1E /* ChoiceButtonViewData.swift */; };
 		81097A602C6CAFDE00554C1E /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A5F2C6CAFDE00554C1E /* CountryCode.swift */; };
+		81184FDF2C75BD86005B49E3 /* RouterProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81184FDE2C75BD86005B49E3 /* RouterProtocolMock.swift */; };
+		81184FE22C75CF02005B49E3 /* DynamicStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81184FE12C75CF02005B49E3 /* DynamicStack.swift */; };
+		81184FE42C75CFB9005B49E3 /* View+detectOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81184FE32C75CFB9005B49E3 /* View+detectOrientation.swift */; };
+		81184FE72C7639E4005B49E3 /* WhichCountryViewStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81184FE62C7639E4005B49E3 /* WhichCountryViewStyle+default.swift */; };
 		811B38512C70786D003856C3 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38502C70786D003856C3 /* GameSettings.swift */; };
 		811B38532C70EE6D003856C3 /* UserChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38522C70EE6D003856C3 /* UserChoice.swift */; };
 		811B38552C70F5EB003856C3 /* MultipleChoiceRepositoryProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38542C70F5EB003856C3 /* MultipleChoiceRepositoryProtocolMock.swift */; };
@@ -20,7 +24,7 @@
 		811B38592C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38582C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift */; };
 		811B385D2C71014F003856C3 /* MultipleChoiceViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B385C2C71014F003856C3 /* MultipleChoiceViewModelTests.swift */; };
 		8134F90E2C68CB600052D0DF /* CoatOfArmsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */; };
-		8134F9102C68CB600052D0DF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F90F2C68CB600052D0DF /* ContentView.swift */; };
+		8134F9102C68CB600052D0DF /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F90F2C68CB600052D0DF /* GameView.swift */; };
 		8134F9122C68CB610052D0DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8134F9112C68CB610052D0DF /* Assets.xcassets */; };
 		8134F9152C68CB610052D0DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8134F9142C68CB610052D0DF /* Preview Assets.xcassets */; };
 		8134F9392C68CD4D0052D0DF /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 8134F9382C68CD4D0052D0DF /* Network */; };
@@ -38,6 +42,7 @@
 		81D416042C74803B0061A1B6 /* WhichCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416032C74803B0061A1B6 /* WhichCountryView.swift */; };
 		81D416062C7481D20061A1B6 /* WhichCountryViewModelDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416052C7481D20061A1B6 /* WhichCountryViewModelDouble.swift */; };
 		81D416082C7488930061A1B6 /* WhichCountryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416072C7488930061A1B6 /* WhichCountryFactory.swift */; };
+		81D4160C2C7493C30061A1B6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4160B2C7493C30061A1B6 /* Router.swift */; };
 		81E36CE72C734CB500F71DB5 /* MultipleChoice+makeDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CE62C734CB500F71DB5 /* MultipleChoice+makeDouble.swift */; };
 		81E36CE92C739C9600F71DB5 /* WhichCountryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CE82C739C9600F71DB5 /* WhichCountryViewModelTests.swift */; };
 		81E36CEB2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CEA2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift */; };
@@ -63,6 +68,10 @@
 		81097A5B2C6C814500554C1E /* MultipleChoiceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceRepository.swift; sourceTree = "<group>"; };
 		81097A5D2C6CAF0A00554C1E /* ChoiceButtonViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonViewData.swift; sourceTree = "<group>"; };
 		81097A5F2C6CAFDE00554C1E /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
+		81184FDE2C75BD86005B49E3 /* RouterProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterProtocolMock.swift; sourceTree = "<group>"; };
+		81184FE12C75CF02005B49E3 /* DynamicStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicStack.swift; sourceTree = "<group>"; };
+		81184FE32C75CFB9005B49E3 /* View+detectOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+detectOrientation.swift"; sourceTree = "<group>"; };
+		81184FE62C7639E4005B49E3 /* WhichCountryViewStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WhichCountryViewStyle+default.swift"; sourceTree = "<group>"; };
 		811B38502C70786D003856C3 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		811B38522C70EE6D003856C3 /* UserChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChoice.swift; sourceTree = "<group>"; };
 		811B38542C70F5EB003856C3 /* MultipleChoiceRepositoryProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceRepositoryProtocolMock.swift; sourceTree = "<group>"; };
@@ -71,7 +80,7 @@
 		811B385C2C71014F003856C3 /* MultipleChoiceViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModelTests.swift; sourceTree = "<group>"; };
 		8134F90A2C68CB600052D0DF /* CoatOfArms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoatOfArms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatOfArmsApp.swift; sourceTree = "<group>"; };
-		8134F90F2C68CB600052D0DF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8134F90F2C68CB600052D0DF /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		8134F9112C68CB610052D0DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8134F9142C68CB610052D0DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8134F91A2C68CB610052D0DF /* CoatOfArmsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoatOfArmsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +97,7 @@
 		81D416032C74803B0061A1B6 /* WhichCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryView.swift; sourceTree = "<group>"; };
 		81D416052C7481D20061A1B6 /* WhichCountryViewModelDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryViewModelDouble.swift; sourceTree = "<group>"; };
 		81D416072C7488930061A1B6 /* WhichCountryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryFactory.swift; sourceTree = "<group>"; };
+		81D4160B2C7493C30061A1B6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		81E36CE62C734CB500F71DB5 /* MultipleChoice+makeDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultipleChoice+makeDouble.swift"; sourceTree = "<group>"; };
 		81E36CE82C739C9600F71DB5 /* WhichCountryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryViewModelTests.swift; sourceTree = "<group>"; };
 		81E36CEA2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModelProtocolMock.swift; sourceTree = "<group>"; };
@@ -117,11 +127,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		81184FE02C75CEF0005B49E3 /* _shared */ = {
+			isa = PBXGroup;
+			children = (
+				81097A572C6C7B2200554C1E /* CountryCodeProvider.swift */,
+				81184FE12C75CF02005B49E3 /* DynamicStack.swift */,
+				81184FE32C75CFB9005B49E3 /* View+detectOrientation.swift */,
+			);
+			path = _shared;
+			sourceTree = "<group>";
+		};
+		81184FE52C7639B1005B49E3 /* _styles */ = {
+			isa = PBXGroup;
+			children = (
+				81184FE62C7639E4005B49E3 /* WhichCountryViewStyle+default.swift */,
+			);
+			path = _styles;
+			sourceTree = "<group>";
+		};
 		811B385A2C710135003856C3 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */,
 				811B38562C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift */,
+				8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -158,11 +186,13 @@
 		8134F90C2C68CB600052D0DF /* CoatOfArms */ = {
 			isa = PBXGroup;
 			children = (
-				8134F9402C68CE9F0052D0DF /* WichCountryIsThis */,
+				81184FE02C75CEF0005B49E3 /* _shared */,
+				81184FE52C7639B1005B49E3 /* _styles */,
+				8134F9402C68CE9F0052D0DF /* WichCountry */,
 				8134F9132C68CB610052D0DF /* Preview Content */,
 				8134F9112C68CB610052D0DF /* Assets.xcassets */,
 				8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */,
-				8134F90F2C68CB600052D0DF /* ContentView.swift */,
+				8134F90F2C68CB600052D0DF /* GameView.swift */,
 			);
 			path = CoatOfArms;
 			sourceTree = "<group>";
@@ -188,29 +218,24 @@
 			path = CoatOfArmsTests;
 			sourceTree = "<group>";
 		};
-		8134F9402C68CE9F0052D0DF /* WichCountryIsThis */ = {
+		8134F9402C68CE9F0052D0DF /* WichCountry */ = {
 			isa = PBXGroup;
 			children = (
 				8134F9412C68CEAD0052D0DF /* Data */,
 				81E44F382C6B5B5400029516 /* ViewModel */,
 				81D415C72C7461460061A1B6 /* View */,
 				81D416072C7488930061A1B6 /* WhichCountryFactory.swift */,
+				81D4160B2C7493C30061A1B6 /* Router.swift */,
 			);
-			path = WichCountryIsThis;
+			path = WichCountry;
 			sourceTree = "<group>";
 		};
 		8134F9412C68CEAD0052D0DF /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				8134F9442C68CFED0052D0DF /* Country.swift */,
-				8134F9482C68D3900052D0DF /* Country+Decoder.swift */,
-				81097A5F2C6CAFDE00554C1E /* CountryCode.swift */,
-				81097A572C6C7B2200554C1E /* CountryCodeProvider.swift */,
-				811B38502C70786D003856C3 /* GameSettings.swift */,
-				81097A552C6C783A00554C1E /* MultipleChoice.swift */,
+				81D4160A2C74927F0061A1B6 /* DomainEntities */,
+				81D416092C74926E0061A1B6 /* Network */,
 				81097A5B2C6C814500554C1E /* MultipleChoiceRepository.swift */,
-				8134F94A2C68D4EE0052D0DF /* RemoteResource+Make.swift */,
-				811B38522C70EE6D003856C3 /* UserChoice.swift */,
 				8134F9422C68CEDE0052D0DF /* WhichCountryRepository.swift */,
 			);
 			path = Data;
@@ -224,6 +249,7 @@
 				81E36CEA2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift */,
 				8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */,
 				8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */,
+				81184FDE2C75BD86005B49E3 /* RouterProtocolMock.swift */,
 				81E36CEC2C74541E00F71DB5 /* WhichCountryRepostoryProtocolMock.swift */,
 			);
 			path = _mocks;
@@ -238,11 +264,32 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		81D416092C74926E0061A1B6 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8134F94A2C68D4EE0052D0DF /* RemoteResource+Make.swift */,
+				8134F9482C68D3900052D0DF /* Country+Decoder.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		81D4160A2C74927F0061A1B6 /* DomainEntities */ = {
+			isa = PBXGroup;
+			children = (
+				8134F9442C68CFED0052D0DF /* Country.swift */,
+				81097A5F2C6CAFDE00554C1E /* CountryCode.swift */,
+				811B38502C70786D003856C3 /* GameSettings.swift */,
+				81097A552C6C783A00554C1E /* MultipleChoice.swift */,
+				811B38522C70EE6D003856C3 /* UserChoice.swift */,
+			);
+			path = DomainEntities;
+			sourceTree = "<group>";
+		};
 		81E36CE52C734C5D00F71DB5 /* _doubles */ = {
 			isa = PBXGroup;
 			children = (
-				81E36CE62C734CB500F71DB5 /* MultipleChoice+makeDouble.swift */,
 				81E36CEE2C7458BA00F71DB5 /* Country+makeDouble.swift */,
+				81E36CE62C734CB500F71DB5 /* MultipleChoice+makeDouble.swift */,
 			);
 			path = _doubles;
 			sourceTree = "<group>";
@@ -378,15 +425,19 @@
 				8134F9452C68CFED0052D0DF /* Country.swift in Sources */,
 				8134F9492C68D3900052D0DF /* Country+Decoder.swift in Sources */,
 				81E44F3A2C6B5B6F00029516 /* WhichCountryViewModel.swift in Sources */,
-				8134F9102C68CB600052D0DF /* ContentView.swift in Sources */,
+				8134F9102C68CB600052D0DF /* GameView.swift in Sources */,
 				81D415C92C7461630061A1B6 /* MultipleChoiceView.swift in Sources */,
 				8134F9432C68CEDE0052D0DF /* WhichCountryRepository.swift in Sources */,
 				81D416022C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift in Sources */,
 				811B38512C70786D003856C3 /* GameSettings.swift in Sources */,
+				81184FE72C7639E4005B49E3 /* WhichCountryViewStyle+default.swift in Sources */,
 				81097A582C6C7B2200554C1E /* CountryCodeProvider.swift in Sources */,
+				81184FE42C75CFB9005B49E3 /* View+detectOrientation.swift in Sources */,
+				81D4160C2C7493C30061A1B6 /* Router.swift in Sources */,
 				811B38532C70EE6D003856C3 /* UserChoice.swift in Sources */,
 				81D416082C7488930061A1B6 /* WhichCountryFactory.swift in Sources */,
 				81097A562C6C783A00554C1E /* MultipleChoice.swift in Sources */,
+				81184FE22C75CF02005B49E3 /* DynamicStack.swift in Sources */,
 				81097A5A2C6C800B00554C1E /* MultipleChoiceViewModel.swift in Sources */,
 				81D416042C74803B0061A1B6 /* WhichCountryView.swift in Sources */,
 				81097A5C2C6C814500554C1E /* MultipleChoiceRepository.swift in Sources */,
@@ -411,6 +462,7 @@
 				81E36CEF2C7458BA00F71DB5 /* Country+makeDouble.swift in Sources */,
 				81E36CE72C734CB500F71DB5 /* MultipleChoice+makeDouble.swift in Sources */,
 				8134F9542C69F3520052D0DF /* ReactiveStorageProtocolMock.swift in Sources */,
+				81184FDF2C75BD86005B49E3 /* RouterProtocolMock.swift in Sources */,
 				81E36CED2C74541E00F71DB5 /* WhichCountryRepostoryProtocolMock.swift in Sources */,
 				8134F9522C69F2540052D0DF /* RequestSenderProtocolMock.swift in Sources */,
 			);
@@ -554,6 +606,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoatOfArms/Preview Content\"";
+				DEVELOPMENT_TEAM = J6RP56W6H5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -583,6 +636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CoatOfArms/Preview Content\"";
+				DEVELOPMENT_TEAM = J6RP56W6H5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

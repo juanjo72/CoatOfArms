@@ -34,7 +34,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
     func testThat_WhenMultipleChoiceIsFetched_ThenIsCreatedAndStored() async throws {
         // Given
         let countryProvider = CountryCodeProviderProtocolMock()
-        countryProvider.generateNExcludingReturnValue = ["uk", "ar"]
+        countryProvider.generateCodesNExcludingReturnValue = ["uk", "ar"]
         let store = ReactiveStorageProtocolMock<MultipleChoice>()
         let sut = self.makeSUT(
             countryCode: "es",
@@ -57,7 +57,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
     func testThat_WhenAnswerIsSet_ThenUserChoiceIsStored() async {
         // Given
         let countryProvider = CountryCodeProviderProtocolMock()
-        countryProvider.generateNExcludingReturnValue = ["uk", "ar"]
+        countryProvider.generateCodesNExcludingReturnValue = ["uk", "ar"]
         let store = ReactiveStorageProtocolMock<UserChoice>()
         let sut = self.makeSUT(
             countryCode: "es",

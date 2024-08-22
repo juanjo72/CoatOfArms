@@ -8,18 +8,16 @@
 import Foundation
 
 protocol CountryCodeProviderProtocol {
-    func generate(excluding: [CountryCode]) -> CountryCode
-    func generate(n: Int, excluding: [CountryCode]) -> [CountryCode]
+    func generateCode(excluding: [CountryCode]) -> CountryCode
+    func generateCodes(n: Int, excluding: [CountryCode]) -> [CountryCode]
 }
 
 struct CountryCodeProvider: CountryCodeProviderProtocol {
-    func generate(excluding: [CountryCode]) -> CountryCode {
-        let allCodes = Set(NSLocale.isoCountryCodes)
-        let allButExcluding = allCodes.subtracting(excluding)
-        return allButExcluding.first!
+    func generateCode(excluding: [CountryCode]) -> CountryCode {
+        self.generateCodes(n: 1, excluding: excluding).first!
     }
     
-    func generate(n: Int, excluding: [CountryCode]) -> [CountryCode] {
+    func generateCodes(n: Int, excluding: [CountryCode]) -> [CountryCode] {
         let allCodes = Set(NSLocale.isoCountryCodes)
         let allButExcluding = allCodes.subtracting(excluding)
         let slice = Array(allButExcluding)[0..<n]

@@ -9,39 +9,39 @@
 
 final class CountryCodeProviderProtocolMock: CountryCodeProviderProtocol {
     
-   // MARK: - generate
+   // MARK: - generateCode
 
-    var generateExcludingCallsCount = 0
-    var generateExcludingCalled: Bool {
-        generateExcludingCallsCount > 0
+    var generateCodeExcludingCallsCount = 0
+    var generateCodeExcludingCalled: Bool {
+        generateCodeExcludingCallsCount > 0
     }
-    var generateExcludingReceivedExcluding: [CountryCode]?
-    var generateExcludingReceivedInvocations: [[CountryCode]] = []
-    var generateExcludingReturnValue: CountryCode!
-    var generateExcludingClosure: (([CountryCode]) -> CountryCode)?
+    var generateCodeExcludingReceivedExcluding: [CountryCode]?
+    var generateCodeExcludingReceivedInvocations: [[CountryCode]] = []
+    var generateCodeExcludingReturnValue: CountryCode!
+    var generateCodeExcludingClosure: (([CountryCode]) -> CountryCode)?
 
-    func generate(excluding: [CountryCode]) -> CountryCode {
-        generateExcludingCallsCount += 1
-        generateExcludingReceivedExcluding = excluding
-        generateExcludingReceivedInvocations.append(excluding)
-        return generateExcludingClosure.map({ $0(excluding) }) ?? generateExcludingReturnValue
+    func generateCode(excluding: [CountryCode]) -> CountryCode {
+        generateCodeExcludingCallsCount += 1
+        generateCodeExcludingReceivedExcluding = excluding
+        generateCodeExcludingReceivedInvocations.append(excluding)
+        return generateCodeExcludingClosure.map({ $0(excluding) }) ?? generateCodeExcludingReturnValue
     }
     
-   // MARK: - generate
+   // MARK: - generateCodes
 
-    var generateNExcludingCallsCount = 0
-    var generateNExcludingCalled: Bool {
-        generateNExcludingCallsCount > 0
+    var generateCodesNExcludingCallsCount = 0
+    var generateCodesNExcludingCalled: Bool {
+        generateCodesNExcludingCallsCount > 0
     }
-    var generateNExcludingReceivedArguments: (n: Int, excluding: [CountryCode])?
-    var generateNExcludingReceivedInvocations: [(n: Int, excluding: [CountryCode])] = []
-    var generateNExcludingReturnValue: [CountryCode]!
-    var generateNExcludingClosure: ((Int, [CountryCode]) -> [CountryCode])?
+    var generateCodesNExcludingReceivedArguments: (n: Int, excluding: [CountryCode])?
+    var generateCodesNExcludingReceivedInvocations: [(n: Int, excluding: [CountryCode])] = []
+    var generateCodesNExcludingReturnValue: [CountryCode]!
+    var generateCodesNExcludingClosure: ((Int, [CountryCode]) -> [CountryCode])?
 
-    func generate(n: Int, excluding: [CountryCode]) -> [CountryCode] {
-        generateNExcludingCallsCount += 1
-        generateNExcludingReceivedArguments = (n: n, excluding: excluding)
-        generateNExcludingReceivedInvocations.append((n: n, excluding: excluding))
-        return generateNExcludingClosure.map({ $0(n, excluding) }) ?? generateNExcludingReturnValue
+    func generateCodes(n: Int, excluding: [CountryCode]) -> [CountryCode] {
+        generateCodesNExcludingCallsCount += 1
+        generateCodesNExcludingReceivedArguments = (n: n, excluding: excluding)
+        generateCodesNExcludingReceivedInvocations.append((n: n, excluding: excluding))
+        return generateCodesNExcludingClosure.map({ $0(n, excluding) }) ?? generateCodesNExcludingReturnValue
     }
 }

@@ -13,6 +13,8 @@ struct MultipleChoiceView<
     
     @ObservedObject var viewModel: ViewModel
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack {
             ForEach(
@@ -39,10 +41,10 @@ struct MultipleChoiceView<
                     }
                 )
                 .buttonStyle(.borderedProminent)
-                .tint(color)
+                //.tint(color)
                 .disabled(!self.viewModel.isEnabled)
                 .overlay(
-                    (button.effect != .none) ? color.blendMode(.plusDarker) : nil
+                    (button.effect != .none) ? color.blendMode((self.colorScheme == .light) ? .plusDarker : .plusLighter) : nil
                 )
                 .clipShape(Capsule())
                 .padding(.horizontal)

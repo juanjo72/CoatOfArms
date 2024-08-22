@@ -12,16 +12,23 @@ struct WhichCountryView<
     ViewModel: WhichCountryViewModelProtocol
 >: View {
     
+    // MARK: Injected
+    
     @ObservedObject var viewModel: ViewModel
     private let style: WhichCountryViewStyle
 
+    // MARK: View
+    
     var body: some View {
-        VStack(
+        DynamicStack(
             spacing: self.style.spacing
         ) {
             KFImage(self.viewModel.imageURL)
                 .resizable()
+                .placeholder { ProgressView() }
+                .fade(duration: 0.25)
                 .aspectRatio(contentMode: .fit)
+                .frame(width: self.style.imageSide, height: self.style.imageSide)
 
             if let multipleChoice = self.viewModel.multipleChoice {
                 MultipleChoiceView(
@@ -45,9 +52,14 @@ struct WhichCountryView<
 }
 
 struct WhichCountryViewStyle {
+    let imageSide: CGFloat
     let spacing: CGFloat
-    
-    init(spacing: CGFloat) {
+
+    init(
+        imageSide: CGFloat,
+        spacing: CGFloat
+    ) {
+        self.imageSide = imageSide
         self.spacing = spacing
     }
 }
@@ -55,20 +67,20 @@ struct WhichCountryViewStyle {
 #Preview {
     WhichCountryView(
         viewModel: WhichCountryViewModelDouble_Interactive(),
-        style: WhichCountryViewStyle(spacing: 30)
+        style: .default()
     )
 }
 
 #Preview {
     WhichCountryView(
         viewModel: WhichCountryViewModelDouble_RightChoice(),
-        style: WhichCountryViewStyle(spacing: 30)
+        style: .default()
     )
 }
 
 #Preview {
     WhichCountryView(
         viewModel: WhichCountryViewModelDouble_WrongChoice(),
-        style: WhichCountryViewStyle(spacing: 30)
+        style: .default()
     )
 }

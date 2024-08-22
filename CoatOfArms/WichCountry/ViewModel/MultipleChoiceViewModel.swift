@@ -16,13 +16,15 @@ protocol MultipleChoiceViewModelProtocol: ObservableObject {
 }
 
 final class MultipleChoiceViewModel<
-    Downstream: Scheduler
+    Downstream: Scheduler,
+    Router: RouterProtocol
 >: MultipleChoiceViewModelProtocol {
     
     // MARK: Injected
     
     private let repository: MultipleChoiceRepositoryProtocol
     private let downstream: Downstream
+    private let router: Router
     
     // MARK: PossibleAnswersRepositoryProtocol
     
@@ -52,10 +54,12 @@ final class MultipleChoiceViewModel<
     
     init(
         repository: MultipleChoiceRepositoryProtocol,
-        downstream: Downstream = DispatchQueue.main
+        downstream: Downstream = DispatchQueue.main, // for testing purposes
+        router: Router
     ) {
         self.repository = repository
         self.downstream = downstream
+        self.router = router
         
         self.answersObservable
             .receive(on: downstream)
@@ -76,5 +80,7 @@ final class MultipleChoiceViewModel<
             self.isEnabled = false
         }
         await self.repository.set(answer: code)
+        try? await Task.sleep(for: .seconds(1))
+        await self.router.next()
     }
 }

@@ -51,7 +51,7 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     }
     
     func fetchAnswers() async {
-        let otherChoices = self.countryCodeProvider.generate(
+        let otherChoices = self.countryCodeProvider.generateCodes(
             n: self.gameSettings.numPossibleChoices - 1,
             excluding: [self.countryCode]
         )
@@ -61,6 +61,7 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
             otherChoices: otherChoices,
             rightChoicePosition: rightChoicePosition
         )
+        // reset previous answer, if any
         await self.storage.removeSingleElement(
             of: UserChoice.self,
             id: self.countryCode

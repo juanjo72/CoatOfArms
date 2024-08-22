@@ -11,7 +11,7 @@ import SwiftUI
 struct CoatOfArmsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GameView()
         }
     }
 }
