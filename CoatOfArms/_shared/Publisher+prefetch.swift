@@ -5,9 +5,9 @@
 //  Created by Juanjo García Villaescusa on 31/8/24.
 //
 
+import Combine
 import Foundation
 import Kingfisher
-import Combine
 
 extension Publisher where Output == URL, Failure == Never {
     func prefetch() -> Publishers.FlatMap<Future<Bool, Never>, Self> {

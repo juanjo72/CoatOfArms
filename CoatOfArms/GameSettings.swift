@@ -9,13 +9,15 @@
 struct GameSettings {
     let numPossibleChoices: Int
     let resultTime: Duration
+    let maxWrongAnswers: Int
 }
 
 extension GameSettings {
     static var `default`: Self {
         GameSettings(
             numPossibleChoices: 4,
-            resultTime: .seconds(1)
+            resultTime: .seconds(1),
+            maxWrongAnswers: 2
         )
     }
 }

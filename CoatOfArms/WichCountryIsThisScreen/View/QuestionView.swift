@@ -35,9 +35,9 @@ struct QuestionView<
                             .aspectRatio(contentMode: .fit)
                             .frame(
                                 width: self.style.imageSide,
+                                height: self.style.imageSide,
                                 alignment: .bottom
                             )
-                            .frame(maxHeight: self.style.imageSide)
                         
                         MultipleChoiceView(
                             viewModel: question.multipleChoice

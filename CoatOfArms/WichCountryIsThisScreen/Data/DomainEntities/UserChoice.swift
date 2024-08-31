@@ -12,3 +12,9 @@ struct UserChoice: Identifiable, Equatable {
     let id: CountryCode
     let pickedCountryCode: CountryCode
 }
+
+extension UserChoice {
+    var isCorrect: Bool {
+        self.id == self.pickedCountryCode
+    }
+}

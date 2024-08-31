@@ -5,13 +5,23 @@
 //  Created by Juanjo García Villaescusa on 11/8/24.
 //
 
+import ReactiveStorage
 import SwiftUI
 
 @main
 struct CoatOfArmsApp: App {
     var body: some Scene {
+        let storage = ReactiveInMemoryStorage()
+        let router = GameRouter(
+            countryCodeProvider: CountryCodeProvider(),
+            gameSettings: .default,
+            storage: storage
+        )
         WindowGroup {
-            GameView()
+            GameView(
+                storage: storage,
+                router: router
+            )
         }
     }
 }
