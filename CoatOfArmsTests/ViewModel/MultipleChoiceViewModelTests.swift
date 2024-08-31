@@ -17,11 +17,12 @@ final class MultipleChoiceViewModelTests: XCTestCase {
     
     func makeSUT(
         repository: MultipleChoiceRepositoryProtocolMock = .init(),
-        router: RouterProtocolMock = .init()
+        router: GameRouterProtocolMock = .init()
     ) -> some MultipleChoiceViewModelProtocol {
         MultipleChoiceViewModel(
+            gameSettings: .default,
+            outputScheduler: ImmediateScheduler.shared,
             repository: repository,
-            downstream: ImmediateScheduler.shared,
             router: router
         )
     }

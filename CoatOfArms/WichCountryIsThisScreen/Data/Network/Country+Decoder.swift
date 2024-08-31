@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Country's implementation for Decodable protocol
 extension Country: Decodable {
     enum CodingKeys: String, CodingKey {
         case id = "cca2"

@@ -11,9 +11,9 @@ final class MultipleChoiceViewModelDouble_Interative: MultipleChoiceViewModelPro
     var isEnabled: Bool = true
     var prompt: String = "Pick one:"
     var choiceButtons: [ChoiceButtonViewData] = [
-        ChoiceButtonViewData(id: "es", label: "Spain", effect: .none),
-        ChoiceButtonViewData(id: "ar", label: "Argentina", effect: .none),
-        ChoiceButtonViewData(id: "uk", label: "United Kingdom", effect: .none),
+        ChoiceButtonViewData(id: "ES", label: "Spain", effect: .none),
+        ChoiceButtonViewData(id: "AR", label: "Argentina", effect: .none),
+        ChoiceButtonViewData(id: "UK", label: "United Kingdom", effect: .none),
     ]
     
     func viewWillAppear() async {}
@@ -24,9 +24,9 @@ final class MultipleChoiceViewModelDouble_RightChoice: MultipleChoiceViewModelPr
     var isEnabled: Bool = false
     var prompt: String = "Pick one:"
     var choiceButtons: [ChoiceButtonViewData] = [
-        ChoiceButtonViewData(id: "es", label: "Spain", effect: .none),
-        ChoiceButtonViewData(id: "ar", label: "Argentina", effect: .rightChoice),
-        ChoiceButtonViewData(id: "uk", label: "United Kingdom", effect: .none),
+        ChoiceButtonViewData(id: "ES", label: "Spain", effect: .none),
+        ChoiceButtonViewData(id: "AR", label: "Argentina", effect: .rightChoice),
+        ChoiceButtonViewData(id: "UK", label: "United Kingdom", effect: .none),
     ]
     
     func viewWillAppear() async {}
@@ -37,9 +37,9 @@ final class MultipleChoiceViewModelDouble_WrongChoice: MultipleChoiceViewModelPr
     var isEnabled: Bool = false
     var prompt: String = "Pick one:"
     var choiceButtons: [ChoiceButtonViewData] = [
-        ChoiceButtonViewData(id: "es", label: "Spain", effect: .wrongChoice),
-        ChoiceButtonViewData(id: "ar", label: "Argentina", effect: .none),
-        ChoiceButtonViewData(id: "uk", label: "United Kingdom", effect: .none),
+        ChoiceButtonViewData(id: "ES", label: "Spain", effect: .wrongChoice),
+        ChoiceButtonViewData(id: "AR", label: "Argentina", effect: .none),
+        ChoiceButtonViewData(id: "UK", label: "United Kingdom", effect: .none),
     ]
     
     func viewWillAppear() async {}

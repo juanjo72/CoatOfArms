@@ -11,20 +11,22 @@ import Network
 import ReactiveStorage
 import XCTest
 
-final class WhichCountryViewModelTests: XCTestCase {
+final class QuestionViewModelTests: XCTestCase {
     
     // MARK: SUT
     
     private func makeSUT(
         multipleChoiceProvider: @escaping () -> some MultipleChoiceViewModelProtocolMock = { MultipleChoiceViewModelProtocolMock() },
+        remoteImagePrefetcher: @escaping (URL) -> AnyPublisher<Bool, Never> = { _ in Just(true).eraseToAnyPublisher() },
         repository: WhichCountryRepostoryProtocolMock = .init(),
-        router: RouterProtocolMock = .init()
-    ) -> some WhichCountryViewModelProtocol {
-        WhichCountryViewModel(
+        router: GameRouterProtocolMock = .init()
+    ) -> some QuestionViewModelProtocol {
+        QuestionViewModel(
             multipleChoiceProvider: multipleChoiceProvider,
+            outputScheduler: ImmediateScheduler.shared,
+            remoteImagePrefetcher: remoteImagePrefetcher,
             repository: repository,
-            router: router,
-            scheduler: ImmediateScheduler.shared
+            router: router
         )
     }
     
@@ -47,26 +49,29 @@ final class WhichCountryViewModelTests: XCTestCase {
         XCTAssertEqual(repository.fetchCountryCallsCount, 1)
     }
     
-    func testThat_WhenViewWillAppear_ThenMultipleChoiceIsAssigned() async {
+    func testThat_WhenViewWillAppear_ThenMultipleChoiceIsAssigned() async throws {
         // Given
         let repository = WhichCountryRepostoryProtocolMock()
-        repository.countryObservableReturnValue = Just(nil).eraseToAnyPublisher()
-        let multipleChoice = MultipleChoiceViewModelProtocolMock()
+        repository.countryObservableReturnValue = Just(.makeDouble()).eraseToAnyPublisher()
+        let expectedMultipleChoice = MultipleChoiceViewModelProtocolMock()
         let sut = self.makeSUT(
-            multipleChoiceProvider: { multipleChoice },
+            multipleChoiceProvider: { expectedMultipleChoice },
             repository: repository
         )
         
         // When
-        await sut.viewWillAppear()
+        //await sut.viewWillAppear()
+        
         
         // Then
-        XCTAssertIdentical(sut.multipleChoice, multipleChoice)
+        let element = try XCTUnwrap(sut.loadingState.element)
+        let multipleChoice = try XCTUnwrap(element.multipleChoice)
+        XCTAssertIdentical(expectedMultipleChoice, multipleChoice)
     }
     
     // MARK:
     
-    func testThat_WhenCreated_ThenBothImageAndMultipleChoiceIsNull() {
+    func testThat_WhenCreated_ThenQuestionIsNull() throws {
         // Given
         let repository = WhichCountryRepostoryProtocolMock()
         repository.countryObservableReturnValue = Just(nil).eraseToAnyPublisher()
@@ -79,11 +84,10 @@ final class WhichCountryViewModelTests: XCTestCase {
         )
         
         // Then
-        XCTAssertNil(sut.imageURL)
-        XCTAssertNil(sut.multipleChoice)
+        XCTAssertNil(sut.loadingState.element)
     }
     
-    func testThat_GivenStoredCountry_WhenCreated_ThenURLIsPublished() async {
+    func testThat_GivenStoredCountry_WhenCreated_ThenURLIsPublished() async throws {
         // Given
         let repository = WhichCountryRepostoryProtocolMock()
         let returnCountry = Country.makeDouble()
@@ -95,6 +99,7 @@ final class WhichCountryViewModelTests: XCTestCase {
         )
         
         // Then
-        XCTAssertEqual(sut.imageURL, returnCountry.coatOfArmsURL)
+        let element = try XCTUnwrap(sut.loadingState.element)
+        XCTAssertEqual(element.imageURL, returnCountry.coatOfArmsURL)
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// User's pick
 struct UserChoice: Identifiable, Equatable {
     let id: CountryCode
     let pickedCountryCode: CountryCode

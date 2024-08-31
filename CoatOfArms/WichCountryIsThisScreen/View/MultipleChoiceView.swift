@@ -11,9 +11,15 @@ struct MultipleChoiceView<
     ViewModel: MultipleChoiceViewModelProtocol
 >: View {
     
-    @ObservedObject var viewModel: ViewModel
+    // MARK: Injected
     
-    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject private var viewModel: ViewModel
+    
+    // MARK: Environment
+    
+    @Environment(\.colorScheme) private var colorScheme
+    
+    // MARK: View
     
     var body: some View {
         VStack {
@@ -41,7 +47,6 @@ struct MultipleChoiceView<
                     }
                 )
                 .buttonStyle(.borderedProminent)
-                //.tint(color)
                 .disabled(!self.viewModel.isEnabled)
                 .overlay(
                     (button.effect != .none) ? color.blendMode((self.colorScheme == .light) ? .plusDarker : .plusLighter) : nil
@@ -54,6 +59,8 @@ struct MultipleChoiceView<
             await self.viewModel.viewWillAppear()
         }
     }
+    
+    // MARK: Lifecycle
     
     init(
         viewModel: ViewModel

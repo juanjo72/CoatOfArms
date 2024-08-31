@@ -8,7 +8,7 @@
 @testable import CoatOfArms
 import Combine
 
-final class WhichCountryRepostoryProtocolMock: WhichCountryRepostoryProtocol {
+final class WhichCountryRepostoryProtocolMock: CountryRepositoryProtocol {
     
    // MARK: - countryObservable
 

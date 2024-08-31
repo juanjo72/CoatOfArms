@@ -6,19 +6,24 @@
 //
 
 import Combine
+import Foundation
 import ReactiveStorage
 import SwiftUI
 
-protocol RouterProtocol: ObservableObject {
+protocol GameRouterProtocol: ObservableObject {
     var code: CountryCode { get }
     func next() async
 }
 
-final class Router: RouterProtocol {
+/// General game's router
+final class GameRouter<
+    OutputScheduler: Scheduler
+>: GameRouterProtocol {
     
     // MARK: Injected
 
     private let countryCodeProvider: CountryCodeProviderProtocol
+    private let output: OutputScheduler
     private let storage: ReactiveStorageProtocol
     
     // MARK: RouterProtocol
@@ -29,9 +34,11 @@ final class Router: RouterProtocol {
     
     init(
         countryCodeProvider: CountryCodeProviderProtocol,
+        output: OutputScheduler = DispatchQueue.main,
         storage: ReactiveStorageProtocol
     ) {
         self.countryCodeProvider = countryCodeProvider
+        self.output = output
         self.storage = storage
         
         let code = countryCodeProvider.generateCode(excluding: [])
@@ -42,7 +49,7 @@ final class Router: RouterProtocol {
     
     func next() async {
         let alreadyAnswered = await self.storage.getAllElements(of: UserChoice.self).map(\.id)
-        await MainActor.run {
+        self.output.schedule {
             self.code = self.countryCodeProvider.generateCode(excluding: alreadyAnswered)
         }
     }

@@ -18,7 +18,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
     private func makeSUT(
         countryCode: CountryCode = "es",
         countryProvider: CountryCodeProviderProtocol = CountryCodeProviderProtocolMock(),
-        gameSettings: GameSettings = .init(numPossibleChoices: 3),
+        gameSettings: GameSettings = .default,
         storage: ReactiveStorage.ReactiveStorageProtocol = ReactiveStorageProtocolMock<Country>()
     ) -> MultipleChoiceRepository {
         MultipleChoiceRepository(
@@ -39,7 +39,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
         let sut = self.makeSUT(
             countryCode: "es",
             countryProvider: countryProvider,
-            gameSettings: .init(numPossibleChoices: 3),
+            gameSettings: .default,
             storage: store
         )
         
@@ -62,7 +62,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
         let sut = self.makeSUT(
             countryCode: "es",
             countryProvider: countryProvider,
-            gameSettings: .init(numPossibleChoices: 3),
+            gameSettings: .default,
             storage: store
         )
         

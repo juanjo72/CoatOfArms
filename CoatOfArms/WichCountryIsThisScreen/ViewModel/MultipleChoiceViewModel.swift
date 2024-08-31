@@ -15,15 +15,17 @@ protocol MultipleChoiceViewModelProtocol: ObservableObject {
     func userDidHit(code: CountryCode) async
 }
 
+/// Represents view containing set of answer buttons
 final class MultipleChoiceViewModel<
-    Downstream: Scheduler,
-    Router: RouterProtocol
+    OutputScheduler: Scheduler,
+    Router: GameRouterProtocol
 >: MultipleChoiceViewModelProtocol {
     
     // MARK: Injected
     
+    private let gameSettings: GameSettings
     private let repository: MultipleChoiceRepositoryProtocol
-    private let downstream: Downstream
+    private let outputScheduler: OutputScheduler
     private let router: Router
     
     // MARK: PossibleAnswersRepositoryProtocol
@@ -53,16 +55,18 @@ final class MultipleChoiceViewModel<
     // MARK: Lifecycle
     
     init(
+        gameSettings: GameSettings,
+        outputScheduler: OutputScheduler = DispatchQueue.main,
         repository: MultipleChoiceRepositoryProtocol,
-        downstream: Downstream = DispatchQueue.main, // for testing purposes
         router: Router
     ) {
+        self.gameSettings = gameSettings
+        self.outputScheduler = outputScheduler
         self.repository = repository
-        self.downstream = downstream
         self.router = router
         
         self.answersObservable
-            .receive(on: downstream)
+            .receive(on: outputScheduler)
             .assign(to: &self.$choiceButtons)
     }
     
@@ -70,17 +74,25 @@ final class MultipleChoiceViewModel<
     
     func viewWillAppear() async {
         await self.repository.fetchAnswers()
-        self.downstream.schedule {
+        self.outputScheduler.schedule {
             self.isEnabled = true
         }
     }
     
     func userDidHit(code: CountryCode) async {
-        self.downstream.schedule {
+        self.outputScheduler.schedule {
             self.isEnabled = false
         }
         await self.repository.set(answer: code)
-        try? await Task.sleep(for: .seconds(1))
+        try? await Task.sleep(for: self.gameSettings.resultTime)
         await self.router.next()
     }
 }
+
+#if DEBUG
+extension MultipleChoiceViewModel: CustomDebugStringConvertible  {
+    var debugDescription: String {
+        "MultipleChoiceViewModel"
+    }
+}
+#endif

@@ -36,3 +36,11 @@ extension ChoiceButtonViewData.Effect {
         }
     }
 }
+
+#if DEBUG
+extension ChoiceButtonViewData: CustomDebugStringConvertible {
+    var debugDescription: String {
+        self.label
+    }
+}
+#endif

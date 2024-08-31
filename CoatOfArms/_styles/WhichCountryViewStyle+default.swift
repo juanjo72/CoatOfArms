@@ -7,9 +7,9 @@
 
 import Foundation
 
-extension WhichCountryViewStyle {
+extension QuestionViewStyle {
     static func `default`() -> Self {
-        WhichCountryViewStyle(
+        QuestionViewStyle(
             imageSide: 250,
             spacing: 40
         )

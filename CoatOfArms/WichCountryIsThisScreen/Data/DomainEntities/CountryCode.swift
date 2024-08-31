@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Country code, e. g. ES, PT
 typealias CountryCode = String
 
 extension CountryCode {

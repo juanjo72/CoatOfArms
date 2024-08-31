@@ -23,6 +23,8 @@
 		811B38572C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38562C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift */; };
 		811B38592C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38582C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift */; };
 		811B385D2C71014F003856C3 /* MultipleChoiceViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B385C2C71014F003856C3 /* MultipleChoiceViewModelTests.swift */; };
+		811D3A632C82E1210057FE8E /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D3A622C82E1210057FE8E /* LoadingState.swift */; };
+		811D3A652C82E1BB0057FE8E /* ImagePrefetcher+prefetchImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D3A642C82E1BB0057FE8E /* ImagePrefetcher+prefetchImage.swift */; };
 		8134F90E2C68CB600052D0DF /* CoatOfArmsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */; };
 		8134F9102C68CB600052D0DF /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F90F2C68CB600052D0DF /* GameView.swift */; };
 		8134F9122C68CB610052D0DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8134F9112C68CB610052D0DF /* Assets.xcassets */; };
@@ -30,25 +32,27 @@
 		8134F9392C68CD4D0052D0DF /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 8134F9382C68CD4D0052D0DF /* Network */; };
 		8134F93C2C68CD910052D0DF /* ReactiveStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8134F93B2C68CD910052D0DF /* ReactiveStorage */; };
 		8134F93F2C68CDF60052D0DF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8134F93E2C68CDF60052D0DF /* Kingfisher */; };
-		8134F9432C68CEDE0052D0DF /* WhichCountryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9422C68CEDE0052D0DF /* WhichCountryRepository.swift */; };
+		8134F9432C68CEDE0052D0DF /* CountryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9422C68CEDE0052D0DF /* CountryRepository.swift */; };
 		8134F9452C68CFED0052D0DF /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9442C68CFED0052D0DF /* Country.swift */; };
 		8134F9492C68D3900052D0DF /* Country+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9482C68D3900052D0DF /* Country+Decoder.swift */; };
 		8134F94B2C68D4EE0052D0DF /* RemoteResource+Make.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F94A2C68D4EE0052D0DF /* RemoteResource+Make.swift */; };
-		8134F94F2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */; };
+		8134F94F2C69F1CB0052D0DF /* CountryRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F94E2C69F1CB0052D0DF /* CountryRepositoryTests.swift */; };
 		8134F9522C69F2540052D0DF /* RequestSenderProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */; };
 		8134F9542C69F3520052D0DF /* ReactiveStorageProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */; };
+		8190ADF22C825ADD0031F1E3 /* Publisher+asyncMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8190ADF12C825ADD0031F1E3 /* Publisher+asyncMap.swift */; };
+		8190ADF42C8260D40031F1E3 /* QuestionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8190ADF32C8260D40031F1E3 /* QuestionViewData.swift */; };
 		81D415C92C7461630061A1B6 /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D415C82C7461630061A1B6 /* MultipleChoiceView.swift */; };
 		81D416022C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416012C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift */; };
-		81D416042C74803B0061A1B6 /* WhichCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416032C74803B0061A1B6 /* WhichCountryView.swift */; };
+		81D416042C74803B0061A1B6 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416032C74803B0061A1B6 /* QuestionView.swift */; };
 		81D416062C7481D20061A1B6 /* WhichCountryViewModelDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416052C7481D20061A1B6 /* WhichCountryViewModelDouble.swift */; };
-		81D416082C7488930061A1B6 /* WhichCountryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416072C7488930061A1B6 /* WhichCountryFactory.swift */; };
-		81D4160C2C7493C30061A1B6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4160B2C7493C30061A1B6 /* Router.swift */; };
+		81D416082C7488930061A1B6 /* QuestionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416072C7488930061A1B6 /* QuestionFactory.swift */; };
+		81D4160C2C7493C30061A1B6 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4160B2C7493C30061A1B6 /* GameRouter.swift */; };
 		81E36CE72C734CB500F71DB5 /* MultipleChoice+makeDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CE62C734CB500F71DB5 /* MultipleChoice+makeDouble.swift */; };
-		81E36CE92C739C9600F71DB5 /* WhichCountryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CE82C739C9600F71DB5 /* WhichCountryViewModelTests.swift */; };
+		81E36CE92C739C9600F71DB5 /* QuestionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CE82C739C9600F71DB5 /* QuestionViewModelTests.swift */; };
 		81E36CEB2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CEA2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift */; };
 		81E36CED2C74541E00F71DB5 /* WhichCountryRepostoryProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CEC2C74541E00F71DB5 /* WhichCountryRepostoryProtocolMock.swift */; };
 		81E36CEF2C7458BA00F71DB5 /* Country+makeDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CEE2C7458BA00F71DB5 /* Country+makeDouble.swift */; };
-		81E44F3A2C6B5B6F00029516 /* WhichCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E44F392C6B5B6F00029516 /* WhichCountryViewModel.swift */; };
+		81E44F3A2C6B5B6F00029516 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E44F392C6B5B6F00029516 /* QuestionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,32 +82,36 @@
 		811B38562C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceRepositoryTests.swift; sourceTree = "<group>"; };
 		811B38582C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeProviderProtocolMock.swift; sourceTree = "<group>"; };
 		811B385C2C71014F003856C3 /* MultipleChoiceViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModelTests.swift; sourceTree = "<group>"; };
+		811D3A622C82E1210057FE8E /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		811D3A642C82E1BB0057FE8E /* ImagePrefetcher+prefetchImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagePrefetcher+prefetchImage.swift"; sourceTree = "<group>"; };
 		8134F90A2C68CB600052D0DF /* CoatOfArms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoatOfArms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatOfArmsApp.swift; sourceTree = "<group>"; };
 		8134F90F2C68CB600052D0DF /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		8134F9112C68CB610052D0DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8134F9142C68CB610052D0DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8134F91A2C68CB610052D0DF /* CoatOfArmsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoatOfArmsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8134F9422C68CEDE0052D0DF /* WhichCountryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryRepository.swift; sourceTree = "<group>"; };
+		8134F9422C68CEDE0052D0DF /* CountryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRepository.swift; sourceTree = "<group>"; };
 		8134F9442C68CFED0052D0DF /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		8134F9482C68D3900052D0DF /* Country+Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+Decoder.swift"; sourceTree = "<group>"; };
 		8134F94A2C68D4EE0052D0DF /* RemoteResource+Make.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteResource+Make.swift"; sourceTree = "<group>"; };
-		8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryRepositoryTests.swift; sourceTree = "<group>"; };
+		8134F94E2C69F1CB0052D0DF /* CountryRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRepositoryTests.swift; sourceTree = "<group>"; };
 		8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSenderProtocolMock.swift; sourceTree = "<group>"; };
 		8134F9532C69F3520052D0DF /* ReactiveStorageProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveStorageProtocolMock.swift; sourceTree = "<group>"; };
+		8190ADF12C825ADD0031F1E3 /* Publisher+asyncMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+asyncMap.swift"; sourceTree = "<group>"; };
+		8190ADF32C8260D40031F1E3 /* QuestionViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewData.swift; sourceTree = "<group>"; };
 		81D415C82C7461630061A1B6 /* MultipleChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceView.swift; sourceTree = "<group>"; };
 		81D416002C7471600061A1B6 /* CoatOfArms.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoatOfArms.xctestplan; sourceTree = "<group>"; };
 		81D416012C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModelDouble.swift; sourceTree = "<group>"; };
-		81D416032C74803B0061A1B6 /* WhichCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryView.swift; sourceTree = "<group>"; };
+		81D416032C74803B0061A1B6 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		81D416052C7481D20061A1B6 /* WhichCountryViewModelDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryViewModelDouble.swift; sourceTree = "<group>"; };
-		81D416072C7488930061A1B6 /* WhichCountryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryFactory.swift; sourceTree = "<group>"; };
-		81D4160B2C7493C30061A1B6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		81D416072C7488930061A1B6 /* QuestionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFactory.swift; sourceTree = "<group>"; };
+		81D4160B2C7493C30061A1B6 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
 		81E36CE62C734CB500F71DB5 /* MultipleChoice+makeDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultipleChoice+makeDouble.swift"; sourceTree = "<group>"; };
-		81E36CE82C739C9600F71DB5 /* WhichCountryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryViewModelTests.swift; sourceTree = "<group>"; };
+		81E36CE82C739C9600F71DB5 /* QuestionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModelTests.swift; sourceTree = "<group>"; };
 		81E36CEA2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModelProtocolMock.swift; sourceTree = "<group>"; };
 		81E36CEC2C74541E00F71DB5 /* WhichCountryRepostoryProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryRepostoryProtocolMock.swift; sourceTree = "<group>"; };
 		81E36CEE2C7458BA00F71DB5 /* Country+makeDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+makeDouble.swift"; sourceTree = "<group>"; };
-		81E44F392C6B5B6F00029516 /* WhichCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryViewModel.swift; sourceTree = "<group>"; };
+		81E44F392C6B5B6F00029516 /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,9 +138,12 @@
 		81184FE02C75CEF0005B49E3 /* _shared */ = {
 			isa = PBXGroup;
 			children = (
+				811D3A622C82E1210057FE8E /* LoadingState.swift */,
 				81097A572C6C7B2200554C1E /* CountryCodeProvider.swift */,
 				81184FE12C75CF02005B49E3 /* DynamicStack.swift */,
 				81184FE32C75CFB9005B49E3 /* View+detectOrientation.swift */,
+				8190ADF12C825ADD0031F1E3 /* Publisher+asyncMap.swift */,
+				811D3A642C82E1BB0057FE8E /* ImagePrefetcher+prefetchImage.swift */,
 			);
 			path = _shared;
 			sourceTree = "<group>";
@@ -149,7 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				811B38562C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift */,
-				8134F94E2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift */,
+				8134F94E2C69F1CB0052D0DF /* CountryRepositoryTests.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -158,9 +169,18 @@
 			isa = PBXGroup;
 			children = (
 				811B385C2C71014F003856C3 /* MultipleChoiceViewModelTests.swift */,
-				81E36CE82C739C9600F71DB5 /* WhichCountryViewModelTests.swift */,
+				81E36CE82C739C9600F71DB5 /* QuestionViewModelTests.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		811D3A662C82EC6F0057FE8E /* ViewData */ = {
+			isa = PBXGroup;
+			children = (
+				81097A5D2C6CAF0A00554C1E /* ChoiceButtonViewData.swift */,
+				8190ADF32C8260D40031F1E3 /* QuestionViewData.swift */,
+			);
+			path = ViewData;
 			sourceTree = "<group>";
 		};
 		8134F9012C68CB600052D0DF = {
@@ -188,7 +208,7 @@
 			children = (
 				81184FE02C75CEF0005B49E3 /* _shared */,
 				81184FE52C7639B1005B49E3 /* _styles */,
-				8134F9402C68CE9F0052D0DF /* WichCountry */,
+				8134F9402C68CE9F0052D0DF /* WichCountryIsThisScreen */,
 				8134F9132C68CB610052D0DF /* Preview Content */,
 				8134F9112C68CB610052D0DF /* Assets.xcassets */,
 				8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */,
@@ -218,16 +238,16 @@
 			path = CoatOfArmsTests;
 			sourceTree = "<group>";
 		};
-		8134F9402C68CE9F0052D0DF /* WichCountry */ = {
+		8134F9402C68CE9F0052D0DF /* WichCountryIsThisScreen */ = {
 			isa = PBXGroup;
 			children = (
 				8134F9412C68CEAD0052D0DF /* Data */,
 				81E44F382C6B5B5400029516 /* ViewModel */,
 				81D415C72C7461460061A1B6 /* View */,
-				81D416072C7488930061A1B6 /* WhichCountryFactory.swift */,
-				81D4160B2C7493C30061A1B6 /* Router.swift */,
+				81D416072C7488930061A1B6 /* QuestionFactory.swift */,
+				81D4160B2C7493C30061A1B6 /* GameRouter.swift */,
 			);
-			path = WichCountry;
+			path = WichCountryIsThisScreen;
 			sourceTree = "<group>";
 		};
 		8134F9412C68CEAD0052D0DF /* Data */ = {
@@ -235,8 +255,8 @@
 			children = (
 				81D4160A2C74927F0061A1B6 /* DomainEntities */,
 				81D416092C74926E0061A1B6 /* Network */,
+				8134F9422C68CEDE0052D0DF /* CountryRepository.swift */,
 				81097A5B2C6C814500554C1E /* MultipleChoiceRepository.swift */,
-				8134F9422C68CEDE0052D0DF /* WhichCountryRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -258,8 +278,9 @@
 		81D415C72C7461460061A1B6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				811D3A662C82EC6F0057FE8E /* ViewData */,
 				81D415C82C7461630061A1B6 /* MultipleChoiceView.swift */,
-				81D416032C74803B0061A1B6 /* WhichCountryView.swift */,
+				81D416032C74803B0061A1B6 /* QuestionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,9 +325,8 @@
 		81E44F382C6B5B5400029516 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				81E44F392C6B5B6F00029516 /* WhichCountryViewModel.swift */,
 				81097A592C6C800B00554C1E /* MultipleChoiceViewModel.swift */,
-				81097A5D2C6CAF0A00554C1E /* ChoiceButtonViewData.swift */,
+				81E44F392C6B5B6F00029516 /* QuestionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -424,23 +444,27 @@
 				81097A602C6CAFDE00554C1E /* CountryCode.swift in Sources */,
 				8134F9452C68CFED0052D0DF /* Country.swift in Sources */,
 				8134F9492C68D3900052D0DF /* Country+Decoder.swift in Sources */,
-				81E44F3A2C6B5B6F00029516 /* WhichCountryViewModel.swift in Sources */,
+				81E44F3A2C6B5B6F00029516 /* QuestionViewModel.swift in Sources */,
 				8134F9102C68CB600052D0DF /* GameView.swift in Sources */,
+				8190ADF22C825ADD0031F1E3 /* Publisher+asyncMap.swift in Sources */,
+				811D3A632C82E1210057FE8E /* LoadingState.swift in Sources */,
 				81D415C92C7461630061A1B6 /* MultipleChoiceView.swift in Sources */,
-				8134F9432C68CEDE0052D0DF /* WhichCountryRepository.swift in Sources */,
+				8134F9432C68CEDE0052D0DF /* CountryRepository.swift in Sources */,
+				811D3A652C82E1BB0057FE8E /* ImagePrefetcher+prefetchImage.swift in Sources */,
 				81D416022C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift in Sources */,
 				811B38512C70786D003856C3 /* GameSettings.swift in Sources */,
 				81184FE72C7639E4005B49E3 /* WhichCountryViewStyle+default.swift in Sources */,
 				81097A582C6C7B2200554C1E /* CountryCodeProvider.swift in Sources */,
 				81184FE42C75CFB9005B49E3 /* View+detectOrientation.swift in Sources */,
-				81D4160C2C7493C30061A1B6 /* Router.swift in Sources */,
+				81D4160C2C7493C30061A1B6 /* GameRouter.swift in Sources */,
 				811B38532C70EE6D003856C3 /* UserChoice.swift in Sources */,
-				81D416082C7488930061A1B6 /* WhichCountryFactory.swift in Sources */,
+				81D416082C7488930061A1B6 /* QuestionFactory.swift in Sources */,
 				81097A562C6C783A00554C1E /* MultipleChoice.swift in Sources */,
 				81184FE22C75CF02005B49E3 /* DynamicStack.swift in Sources */,
 				81097A5A2C6C800B00554C1E /* MultipleChoiceViewModel.swift in Sources */,
-				81D416042C74803B0061A1B6 /* WhichCountryView.swift in Sources */,
+				81D416042C74803B0061A1B6 /* QuestionView.swift in Sources */,
 				81097A5C2C6C814500554C1E /* MultipleChoiceRepository.swift in Sources */,
+				8190ADF42C8260D40031F1E3 /* QuestionViewData.swift in Sources */,
 				81D416062C7481D20061A1B6 /* WhichCountryViewModelDouble.swift in Sources */,
 				8134F90E2C68CB600052D0DF /* CoatOfArmsApp.swift in Sources */,
 				81097A5E2C6CAF0A00554C1E /* ChoiceButtonViewData.swift in Sources */,
@@ -455,8 +479,8 @@
 				811B38572C70F69B003856C3 /* MultipleChoiceRepositoryTests.swift in Sources */,
 				811B38592C70F71E003856C3 /* CountryCodeProviderProtocolMock.swift in Sources */,
 				811B385D2C71014F003856C3 /* MultipleChoiceViewModelTests.swift in Sources */,
-				81E36CE92C739C9600F71DB5 /* WhichCountryViewModelTests.swift in Sources */,
-				8134F94F2C69F1CB0052D0DF /* WhichCountryRepositoryTests.swift in Sources */,
+				81E36CE92C739C9600F71DB5 /* QuestionViewModelTests.swift in Sources */,
+				8134F94F2C69F1CB0052D0DF /* CountryRepositoryTests.swift in Sources */,
 				81E36CEB2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift in Sources */,
 				811B38552C70F5EB003856C3 /* MultipleChoiceRepositoryProtocolMock.swift in Sources */,
 				81E36CEF2C7458BA00F71DB5 /* Country+makeDouble.swift in Sources */,

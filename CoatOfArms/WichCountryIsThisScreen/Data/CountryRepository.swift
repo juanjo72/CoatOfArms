@@ -9,12 +9,12 @@ import Combine
 import Network
 import ReactiveStorage
 
-protocol WhichCountryRepostoryProtocol {
+protocol CountryRepositoryProtocol {
     func countryObservable() -> AnyPublisher<Country?, Never>
     func fetchCountry() async throws
 }
 
-final class WhichCountryRepository: WhichCountryRepostoryProtocol {
+final class CountryRepository: CountryRepositoryProtocol {
     
     // MARK: Injected
     

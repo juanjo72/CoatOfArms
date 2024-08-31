@@ -7,7 +7,7 @@
 
 @testable import CoatOfArms
 
-final class RouterProtocolMock: RouterProtocol {
+final class GameRouterProtocolMock: GameRouterProtocol {
     
    // MARK: - code
 

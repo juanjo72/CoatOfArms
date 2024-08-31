@@ -12,6 +12,7 @@ enum DecodeError: Error {
     case empty
 }
 
+/// Factory to provide Remote resource to obtain Country detail, given a country code
 extension RemoteResource where T == Country {
     static func make(code: String) -> Self {
         Network.RemoteResource<Country>(

@@ -9,11 +9,11 @@ import ReactiveStorage
 import SwiftUI
 
 struct GameView: View {
-    @StateObject private var router: Router
+    @StateObject private var router: GameRouter<DispatchQueue>
     private let storage: ReactiveStorageProtocol
     
     var body: some View {
-        WhichCountryFactory(
+        QuestionFactory(
             router: self.router,
             storage: self.storage
         ).make(code: self.router.code)
@@ -24,7 +24,7 @@ struct GameView: View {
     init() {
         let storage = ReactiveInMemoryStorage()
         self._router = StateObject(
-            wrappedValue: Router(
+            wrappedValue: GameRouter(
                 countryCodeProvider: CountryCodeProvider(),
                 storage: storage
             )

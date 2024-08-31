@@ -11,7 +11,7 @@ import Network
 import ReactiveStorage
 import XCTest
 
-final class WhichCountryRepositoryTests: XCTestCase {
+final class CountryRepositoryTests: XCTestCase {
     
     // MARK: SUT
     
@@ -19,8 +19,8 @@ final class WhichCountryRepositoryTests: XCTestCase {
         countryCode: String = "es",
         requestSender: Network.RequestSenderProtocol = RequestSenderProtocolMock<Country>(),
         storage: ReactiveStorage.ReactiveStorageProtocol = ReactiveStorageProtocolMock<Country>()
-    ) -> WhichCountryRepository {
-        WhichCountryRepository(
+    ) -> CountryRepository {
+        CountryRepository(
             countryCode: countryCode,
             requestSender: requestSender,
             storage: storage

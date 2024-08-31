@@ -61,11 +61,6 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
             otherChoices: otherChoices,
             rightChoicePosition: rightChoicePosition
         )
-        // reset previous answer, if any
-        await self.storage.removeSingleElement(
-            of: UserChoice.self,
-            id: self.countryCode
-        )
         await self.storage.add(answers)
     }
     

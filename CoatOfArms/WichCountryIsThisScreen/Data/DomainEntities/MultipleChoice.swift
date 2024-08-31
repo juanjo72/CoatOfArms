@@ -7,20 +7,11 @@
 
 import Foundation
 
+/// Set of possible answers, including the right one
 struct MultipleChoice: Identifiable, Equatable {
     let id: CountryCode
     let otherChoices: [CountryCode]
     let rightChoicePosition: Int
-    
-    init(
-        id: CountryCode,
-        otherChoices: [CountryCode],
-        rightChoicePosition: Int
-    ) {
-        self.id = id
-        self.otherChoices = otherChoices
-        self.rightChoicePosition = rightChoicePosition
-    }
 }
 
 extension MultipleChoice {
