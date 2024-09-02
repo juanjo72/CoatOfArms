@@ -52,7 +52,6 @@ final class QuestionViewModel<
             self.imageURLObservable,
             self.prefetchObservable
         )
-        .print("[CombineLatest]")
         .map { [multipleChoiceProvider] url, _ -> QuestionViewData<MultipleChoice>? in
             guard let url else { return nil }
             return QuestionViewData(

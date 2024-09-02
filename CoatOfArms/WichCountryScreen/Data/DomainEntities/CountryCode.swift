@@ -11,9 +11,9 @@ import Foundation
 typealias CountryCode = String
 
 extension CountryCode {
-    var countryName: String {
-        Locale.autoupdatingCurrent.localizedString(forRegionCode: self)
-        ?? Locale(identifier: "en_EN").localizedString(forRegionCode: self)
+    func countryName(locale: Locale = Locale.autoupdatingCurrent) -> String {
+        locale.localizedString(forRegionCode: self)
+        ?? Locale(identifier: "en_US").localizedString(forRegionCode: self)
         ?? self
      }
 }

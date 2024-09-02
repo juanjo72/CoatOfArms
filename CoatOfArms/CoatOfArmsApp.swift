@@ -13,13 +13,14 @@ struct CoatOfArmsApp: App {
     var body: some Scene {
         let storage = ReactiveInMemoryStorage()
         let router = GameRouter(
-            countryCodeProvider: CountryCodeProvider(),
             gameSettings: .default,
+            randomCountryCodeProvider: RandomCountryCodeProvider(),
             storage: storage
         )
         WindowGroup {
             GameView(
                 storage: storage,
+                style: .default,
                 router: router
             )
         }

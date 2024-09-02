@@ -24,6 +24,7 @@ final class MultipleChoiceViewModel<
     // MARK: Injected
     
     private let gameSettings: GameSettings
+    private let locale: Locale
     private let repository: MultipleChoiceRepositoryProtocol
     private let outputScheduler: OutputScheduler
     private let router: Router
@@ -40,27 +41,29 @@ final class MultipleChoiceViewModel<
             self.repository.multipleChoiceObservable(),
             self.repository.storedAnswerObservable()
         )
-            .map { choices, userAnswer in
-                guard let choices else { return [] }
-                return choices.allChoices.map { each in
-                    ChoiceButtonViewData(
-                        id: each,
-                        label: each.countryName,
-                        effect: ChoiceButtonViewData.Effect(id: each, userChoice: userAnswer)
-                    )
-                }
+        .map { choices, userAnswer in
+            guard let choices else { return [] }
+            return choices.allChoices.map { each in
+                ChoiceButtonViewData(
+                    id: each,
+                    label: each.countryName(locale: self.locale),
+                    effect: ChoiceButtonViewData.Effect(id: each, userChoice: userAnswer)
+                )
             }
+        }
     }
     
     // MARK: Lifecycle
     
     init(
         gameSettings: GameSettings,
+        locale: Locale = Locale.autoupdatingCurrent,
         outputScheduler: OutputScheduler = DispatchQueue.main,
         repository: MultipleChoiceRepositoryProtocol,
         router: Router
     ) {
         self.gameSettings = gameSettings
+        self.locale = locale
         self.outputScheduler = outputScheduler
         self.repository = repository
         self.router = router

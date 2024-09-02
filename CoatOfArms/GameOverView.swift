@@ -9,33 +9,42 @@ import SwiftUI
 
 struct GameOverView: View {
     private let score: Int
+    private let style: GameOverViewStyle
     private let action: () -> Void
 
     var body: some View {
         VStack(
-            spacing: 20
+            spacing: self.style.spacing
         ) {
-            Text("Game over")
-                .font(.title)
+            Text("GAME_OVER")
+                .font(.headline)
 
-            Text("Score: \(self.score)")
+            Text("SCORE: \(self.score)")
+                .font(.subheadline)
 
             Button(
                 action: self.action,
                 label: {
-                    Text("Start again")
+                    Text("AGAIN")
+                        .padding(.horizontal)
                 }
             )
-            .clipShape(Capsule())
             .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
         }
     }
     
     init(
         score: Int,
+        style: GameOverViewStyle,
         action: @escaping () -> Void
     ) {
         self.score = score
+        self.style = style
         self.action = action
     }
+}
+
+struct GameOverViewStyle {
+    let spacing: CGFloat
 }

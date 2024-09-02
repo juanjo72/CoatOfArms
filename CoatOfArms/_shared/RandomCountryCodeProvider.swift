@@ -2,18 +2,24 @@
 //  RandomCountryGenerator.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 14/8/24.
+//  Created by Juanjo García on 14/8/24.
 //
 
 import Foundation
 
-protocol CountryCodeProviderProtocol {
+protocol RandomCountryCodeProviderProtocol {
     func generateCode(excluding: [CountryCode]) -> CountryCode
     func generateCodes(n: Int, excluding: [CountryCode]) -> [CountryCode]
 }
 
+extension RandomCountryCodeProviderProtocol {
+    func generateCode(excluding: [CountryCode] = []) -> CountryCode {
+        self.generateCode(excluding: [])
+    }
+}
+
 /// Provides random country codes
-struct CountryCodeProvider: CountryCodeProviderProtocol {
+struct RandomCountryCodeProvider: RandomCountryCodeProviderProtocol {
     func generateCode(excluding: [CountryCode]) -> CountryCode {
         self.generateCodes(n: 1, excluding: excluding).first!
     }
@@ -21,7 +27,6 @@ struct CountryCodeProvider: CountryCodeProviderProtocol {
     func generateCodes(n: Int, excluding: [CountryCode]) -> [CountryCode] {
         let allCodes = Set(NSLocale.isoCountryCodes)
         let allButExcluding = allCodes.subtracting(excluding).shuffled()
-        let slice = Array(allButExcluding)[0..<n]
-        return Array(slice)
+        return Array(Array(allButExcluding)[0..<n])
     }
 }

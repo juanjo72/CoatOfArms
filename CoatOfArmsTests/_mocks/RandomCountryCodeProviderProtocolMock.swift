@@ -7,7 +7,7 @@
 
 @testable import CoatOfArms
 
-final class CountryCodeProviderProtocolMock: CountryCodeProviderProtocol {
+final class RandomCountryCodeProviderProtocolMock: RandomCountryCodeProviderProtocol {
     
    // MARK: - generateCode
 

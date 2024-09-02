@@ -17,7 +17,7 @@ extension GameSettings {
         GameSettings(
             numPossibleChoices: 4,
             resultTime: .seconds(1),
-            maxWrongAnswers: 2
+            maxWrongAnswers: 3
         )
     }
 }

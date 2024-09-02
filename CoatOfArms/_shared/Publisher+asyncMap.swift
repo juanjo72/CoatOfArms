@@ -2,7 +2,7 @@
 //  Publisher+asyncMap.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 30/8/24.
+//  Created by Juanjo García on 30/8/24.
 //
 
 import Combine

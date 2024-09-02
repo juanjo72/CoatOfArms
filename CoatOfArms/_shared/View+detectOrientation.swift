@@ -2,7 +2,7 @@
 //  View+detectOrientation.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 21/8/24.
+//  Created by Juanjo García on 21/8/24.
 //
 
 import SwiftUI
@@ -19,8 +19,10 @@ private struct DetectOrientation: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
-                self.orientation = UIDevice.current.orientation
-            }
+            .onReceive(
+                NotificationCenter.default
+                    .publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                        self.orientation = UIDevice.current.orientation
+                    }
     }
 }

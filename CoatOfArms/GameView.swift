@@ -15,6 +15,7 @@ struct GameView<
     // MARK: Injected
 
     @ObservedObject private var router: Router
+    private let style: GameViewStyle
     private let storage: ReactiveStorageProtocol
     
     // MARK: View
@@ -24,12 +25,16 @@ struct GameView<
         case .question(let countryCode):
             QuestionFactory(
                 router: self.router,
-                storage: self.storage
+                storage: self.storage,
+                style: self.style.question
             ).make(code: countryCode)
-                .padding()
                 .id(countryCode)
+                .background()
         case .gameOver(let score):
-            GameOverView(score: score) {
+            GameOverView(
+                score: score,
+                style: self.style.gameOver
+            ) {
                 Task {
                     await self.router.reset()
                 }
@@ -41,9 +46,16 @@ struct GameView<
     
     init(
         storage: any ReactiveStorageProtocol,
+        style: GameViewStyle,
         router: Router
     ) {
         self.storage = storage
+        self.style = style
         self.router = router
     }
+}
+
+struct GameViewStyle {
+    let gameOver: GameOverViewStyle
+    let question: QuestionViewStyle
 }

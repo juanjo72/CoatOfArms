@@ -8,7 +8,7 @@
 import Foundation
 
 extension QuestionViewStyle {
-    static func `default`() -> Self {
+    static var `default`: Self {
         QuestionViewStyle(
             imageSide: 250,
             spacing: 40

@@ -20,7 +20,7 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     // MARK: Injected
     
     private let countryCode: CountryCode
-    private let countryCodeProvider: CountryCodeProviderProtocol
+    private let countryCodeProvider: RandomCountryCodeProviderProtocol
     private let gameSettings: GameSettings
     private let storage: ReactiveStorage.ReactiveStorageProtocol
     
@@ -28,7 +28,7 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     
     init(
         countryCode: CountryCode,
-        countryCodeProvider: CountryCodeProviderProtocol,
+        countryCodeProvider: RandomCountryCodeProviderProtocol,
         gameSettings: GameSettings,
         storage: ReactiveStorage.ReactiveStorageProtocol
     ) {

@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  Publisher+prefetch.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 31/8/24.
+//  Created by Juanjo García on 31/8/24.
 //
 
 import Combine

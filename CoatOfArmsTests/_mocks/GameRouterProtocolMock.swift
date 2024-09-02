@@ -9,13 +9,13 @@
 
 final class GameRouterProtocolMock: GameRouterProtocol {
     
-   // MARK: - code
+   // MARK: - screen
 
-    var code: CountryCode {
-        get { underlyingCode }
-        set(value) { underlyingCode = value }
+    var screen: GameScreen {
+        get { underlyingScreen }
+        set(value) { underlyingScreen = value }
     }
-    private var underlyingCode: CountryCode!
+    private var underlyingScreen: GameScreen!
     
    // MARK: - next
 
@@ -28,5 +28,18 @@ final class GameRouterProtocolMock: GameRouterProtocol {
     func next() {
         nextCallsCount += 1
         nextClosure?()
+    }
+    
+   // MARK: - reset
+
+    var resetCallsCount = 0
+    var resetCalled: Bool {
+        resetCallsCount > 0
+    }
+    var resetClosure: (() -> Void)?
+
+    func reset() {
+        resetCallsCount += 1
+        resetClosure?()
     }
 }

@@ -5,14 +5,11 @@
 //  Created by Juanjo García Villaescusa on 20/8/24.
 //
 
+import Combine
 import Foundation
 import Network
 import ReactiveStorage
 import SwiftUI
-
-import Kingfisher
-
-import Combine
 
 protocol QuestionFactoryProtocol {
     associatedtype Question: View
@@ -27,15 +24,18 @@ struct QuestionFactory<
     
     private let router: Router
     private let storage: ReactiveStorageProtocol
+    private let style: QuestionViewStyle
     
     // MARK: Lifecycle
     
     init(
         router: Router,
-        storage: ReactiveStorageProtocol
+        storage: ReactiveStorageProtocol,
+        style: QuestionViewStyle
     ) {
         self.router = router
         self.storage = storage
+        self.style = style
     }
     
     // MARK: WhichCountryFactoryProtocol
@@ -49,7 +49,7 @@ struct QuestionFactory<
         )
         let multipleChoiceRepo = MultipleChoiceRepository(
             countryCode: code,
-            countryCodeProvider: CountryCodeProvider(),
+            countryCodeProvider: RandomCountryCodeProvider(),
             gameSettings: .default,
             storage: storage
         )
@@ -73,7 +73,7 @@ struct QuestionFactory<
         )
         return QuestionView(
             viewModel: viewModel,
-            style: .default()
+            style: self.style
         )
     }
 }

@@ -8,11 +8,10 @@
 import Combine
 import Foundation
 import ReactiveStorage
-import SwiftUI
 
-enum GameScreen {
-    case question(CountryCode)
-    case gameOver(Int)
+enum GameScreen: Equatable {
+    case question(code: CountryCode)
+    case gameOver(score: Int)
 }
 
 protocol GameRouterProtocol: ObservableObject {
@@ -21,17 +20,17 @@ protocol GameRouterProtocol: ObservableObject {
     func reset() async
 }
 
-/// General game's router
+/// Component used to jump to a different screen
 final class GameRouter<
     OutputScheduler: Scheduler
 >: GameRouterProtocol {
     
     // MARK: Injected
 
-    private let countryCodeProvider: CountryCodeProviderProtocol
     private let gameSettings: GameSettings
-    private let output: OutputScheduler
-    private let storage: ReactiveStorageProtocol
+    private let outputScheduler: OutputScheduler
+    private let randomCountryCodeProvider: any RandomCountryCodeProviderProtocol
+    private let storage: any ReactiveStorageProtocol
     
     // MARK: RouterProtocol
     
@@ -40,36 +39,36 @@ final class GameRouter<
     // MARK: Lifecycle
     
     init(
-        countryCodeProvider: CountryCodeProviderProtocol,
         gameSettings: GameSettings,
-        output: OutputScheduler = DispatchQueue.main,
-        storage: ReactiveStorageProtocol
+        outputScheduler: OutputScheduler = DispatchQueue.main,
+        randomCountryCodeProvider: any RandomCountryCodeProviderProtocol,
+        storage: any ReactiveStorageProtocol
     ) {
-        self.countryCodeProvider = countryCodeProvider
         self.gameSettings = gameSettings
-        self.output = output
+        self.outputScheduler = outputScheduler
+        self.randomCountryCodeProvider = randomCountryCodeProvider
         self.storage = storage
         
-        let code = countryCodeProvider.generateCode(excluding: [])
-        self.screen = .question(code)
+        self.screen = .question(code: randomCountryCodeProvider.generateCode())
     }
     
     // MARK: RouterProtocol
     
     func next() async {
         let allAnswers = await self.storage.getAllElements(of: UserChoice.self)
-        let rightAnswered = allAnswers.filter { $0.isCorrect }
-        let wrongAnswered = allAnswers.filter { !$0.isCorrect }
-        guard wrongAnswered.count < self.gameSettings.maxWrongAnswers else {
-            self.output.schedule {
-                self.screen = .gameOver(rightAnswered.count)
+        let rightCount = allAnswers.filter { $0.isCorrect }.count
+        let wrongCount = allAnswers.count - rightCount
+        
+        if wrongCount >= self.gameSettings.maxWrongAnswers {
+            self.outputScheduler.schedule {
+                self.screen = .gameOver(score: rightCount)
             }
-            return
-        }
-        let alreadyAnswered = await self.storage.getAllElements(of: UserChoice.self).map(\.id)
-        let newCode = self.countryCodeProvider.generateCode(excluding: alreadyAnswered)
-        self.output.schedule {
-            self.screen = .question(newCode)
+        } else {
+            let alreadyAnswered = await self.storage.getAllElements(of: UserChoice.self).map(\.id)
+            let newCode = self.randomCountryCodeProvider.generateCode(excluding: alreadyAnswered)
+            self.outputScheduler.schedule {
+                self.screen = .question(code: newCode)
+            }
         }
     }
     

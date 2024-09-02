@@ -21,6 +21,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
     ) -> some MultipleChoiceViewModelProtocol {
         MultipleChoiceViewModel(
             gameSettings: .default,
+            locale: Locale(identifier: "en_US"),
             outputScheduler: ImmediateScheduler.shared,
             repository: repository,
             router: router

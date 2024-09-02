@@ -27,24 +27,24 @@ struct QuestionView<
             case .loading:
                 ProgressView()
             case .loaded(let question):
-                    DynamicStack(
-                        spacing: self.style.spacing
-                    ) {
-                        KFImage(question.imageURL)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(
-                                width: self.style.imageSide,
-                                height: self.style.imageSide,
-                                alignment: .bottom
-                            )
-                        
-                        MultipleChoiceView(
-                            viewModel: question.multipleChoice
+                DynamicStack(
+                    spacing: self.style.spacing
+                ) {
+                    KFImage(question.imageURL)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(
+                            width: self.style.imageSide,
+                            height: self.style.imageSide,
+                            alignment: .bottom
                         )
-                    }
-                    .padding()
+                    
+                    MultipleChoiceView(
+                        viewModel: question.multipleChoice
+                    )
                 }
+                .padding()
+            }
         }
         .task {
             await self.viewModel.viewWillAppear()
@@ -80,20 +80,20 @@ struct QuestionViewStyle {
 #Preview {
     QuestionView(
         viewModel: WhichCountryViewModelDouble_Interactive(),
-        style: .default()
+        style: .default
     )
 }
 
 #Preview {
     QuestionView(
         viewModel: WhichCountryViewModelDouble_RightChoice(),
-        style: .default()
+        style: .default
     )
 }
 
 #Preview {
     QuestionView(
         viewModel: WhichCountryViewModelDouble_WrongChoice(),
-        style: .default()
+        style: .default
     )
 }
