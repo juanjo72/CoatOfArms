@@ -2,7 +2,7 @@
 //  LoadingState.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García on 31/8/24.
+//  Created on 31/8/24.
 //
 
 /// Different loading states of a view

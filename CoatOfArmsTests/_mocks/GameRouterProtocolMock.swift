@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  GameRouterProtocolMock.swift
 //  CoatOfArmsTests
 //
-//  Created by Juanjo García Villaescusa on 21/8/24.
+//  Created on 21/8/24.
 //
 
 @testable import CoatOfArms

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -48,7 +48,7 @@
 		81D415C92C7461630061A1B6 /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D415C82C7461630061A1B6 /* MultipleChoiceView.swift */; };
 		81D416022C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416012C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift */; };
 		81D416042C74803B0061A1B6 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416032C74803B0061A1B6 /* QuestionView.swift */; };
-		81D416062C7481D20061A1B6 /* WhichCountryViewModelDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416052C7481D20061A1B6 /* WhichCountryViewModelDouble.swift */; };
+		81D416062C7481D20061A1B6 /* QuestionViewModelDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416052C7481D20061A1B6 /* QuestionViewModelDouble.swift */; };
 		81D416082C7488930061A1B6 /* QuestionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416072C7488930061A1B6 /* QuestionFactory.swift */; };
 		81D4160C2C7493C30061A1B6 /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D4160B2C7493C30061A1B6 /* GameRouter.swift */; };
 		81E36CE72C734CB500F71DB5 /* MultipleChoice+makeDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CE62C734CB500F71DB5 /* MultipleChoice+makeDouble.swift */; };
@@ -112,7 +112,7 @@
 		81D416002C7471600061A1B6 /* CoatOfArms.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoatOfArms.xctestplan; sourceTree = "<group>"; };
 		81D416012C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModelDouble.swift; sourceTree = "<group>"; };
 		81D416032C74803B0061A1B6 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
-		81D416052C7481D20061A1B6 /* WhichCountryViewModelDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhichCountryViewModelDouble.swift; sourceTree = "<group>"; };
+		81D416052C7481D20061A1B6 /* QuestionViewModelDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModelDouble.swift; sourceTree = "<group>"; };
 		81D416072C7488930061A1B6 /* QuestionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFactory.swift; sourceTree = "<group>"; };
 		81D4160B2C7493C30061A1B6 /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
 		81E36CE62C734CB500F71DB5 /* MultipleChoice+makeDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MultipleChoice+makeDouble.swift"; sourceTree = "<group>"; };
@@ -238,7 +238,7 @@
 			children = (
 				8134F9142C68CB610052D0DF /* Preview Assets.xcassets */,
 				81D416012C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift */,
-				81D416052C7481D20061A1B6 /* WhichCountryViewModelDouble.swift */,
+				81D416052C7481D20061A1B6 /* QuestionViewModelDouble.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -409,7 +409,7 @@
 				};
 			};
 			buildConfigurationList = 8134F9052C68CB600052D0DF /* Build configuration list for PBXProject "CoatOfArms" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -485,7 +485,7 @@
 				81D416042C74803B0061A1B6 /* QuestionView.swift in Sources */,
 				81097A5C2C6C814500554C1E /* MultipleChoiceRepository.swift in Sources */,
 				8190ADF42C8260D40031F1E3 /* QuestionViewData.swift in Sources */,
-				81D416062C7481D20061A1B6 /* WhichCountryViewModelDouble.swift in Sources */,
+				81D416062C7481D20061A1B6 /* QuestionViewModelDouble.swift in Sources */,
 				8134F90E2C68CB600052D0DF /* CoatOfArmsApp.swift in Sources */,
 				81097A5E2C6CAF0A00554C1E /* ChoiceButtonViewData.swift in Sources */,
 				8134F94B2C68D4EE0052D0DF /* RemoteResource+Make.swift in Sources */,

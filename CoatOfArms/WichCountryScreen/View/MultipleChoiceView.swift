@@ -2,7 +2,7 @@
 //  MultipleChoiceView.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 20/8/24.
+//  Created on 20/8/24.
 //
 
 import SwiftUI

@@ -2,7 +2,7 @@
 //  RandomCountryGenerator.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García on 14/8/24.
+//  Created on 14/8/24.
 //
 
 import Foundation

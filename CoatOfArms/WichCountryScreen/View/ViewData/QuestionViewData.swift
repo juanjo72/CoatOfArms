@@ -2,7 +2,7 @@
 //  Question.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 30/8/24.
+//  Created on 30/8/24.
 //
 
 import Foundation

@@ -1,8 +1,8 @@
 //
-//  File.swift
+//  ReactiveStorageProtocolMock.swift
 //  CoatOfArmsTests
 //
-//  Created by Juanjo García Villaescusa on 12/8/24.
+//  Created on 12/8/24.
 //
 
 import Combine

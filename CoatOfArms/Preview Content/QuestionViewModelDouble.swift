@@ -1,14 +1,13 @@
 //
-//  WhichCountryViewDouble.swift
+//  QuestionViewModelDouble.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 20/8/24.
+//  Created on 20/8/24.
 //
 
 import Foundation
 
-
-final class WhichCountryViewModelDouble_Interactive: QuestionViewModelProtocol {
+final class QuestionViewModelDouble_Interactive: QuestionViewModelProtocol {
     var loadingState: LoadingState<QuestionViewData<some MultipleChoiceViewModelProtocol>> = {
         .loaded(
             QuestionViewData(
@@ -21,7 +20,7 @@ final class WhichCountryViewModelDouble_Interactive: QuestionViewModelProtocol {
     func viewWillAppear() async {}
 }
 
-final class WhichCountryViewModelDouble_RightChoice: QuestionViewModelProtocol {
+final class QuestionViewModelDouble_RightChoice: QuestionViewModelProtocol {
     var loadingState: LoadingState<QuestionViewData<some MultipleChoiceViewModelProtocol>> = {
         .loaded(
             QuestionViewData(
@@ -34,7 +33,7 @@ final class WhichCountryViewModelDouble_RightChoice: QuestionViewModelProtocol {
     func viewWillAppear() async {}
 }
 
-final class WhichCountryViewModelDouble_WrongChoice: QuestionViewModelProtocol {
+final class QuestionViewModelDouble_WrongChoice: QuestionViewModelProtocol {
     var loadingState: LoadingState<QuestionViewData<some MultipleChoiceViewModelProtocol>> = {
         .loaded(
             QuestionViewData(

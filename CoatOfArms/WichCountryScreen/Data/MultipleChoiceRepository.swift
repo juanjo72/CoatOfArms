@@ -2,7 +2,7 @@
 //  PossibleAnswersRepository.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 14/8/24.
+//  Created on 14/8/24.
 //
 
 import Combine

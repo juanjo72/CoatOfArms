@@ -2,7 +2,7 @@
 //  WhichCountryView.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 20/8/24.
+//  Created on 20/8/24.
 //
 
 import Kingfisher
@@ -79,21 +79,21 @@ struct QuestionViewStyle {
 
 #Preview {
     QuestionView(
-        viewModel: WhichCountryViewModelDouble_Interactive(),
+        viewModel: QuestionViewModelDouble_Interactive(),
         style: .default
     )
 }
 
 #Preview {
     QuestionView(
-        viewModel: WhichCountryViewModelDouble_RightChoice(),
+        viewModel: QuestionViewModelDouble_RightChoice(),
         style: .default
     )
 }
 
 #Preview {
     QuestionView(
-        viewModel: WhichCountryViewModelDouble_WrongChoice(),
+        viewModel: QuestionViewModelDouble_WrongChoice(),
         style: .default
     )
 }

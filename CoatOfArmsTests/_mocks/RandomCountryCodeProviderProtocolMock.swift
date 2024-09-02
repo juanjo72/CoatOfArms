@@ -2,7 +2,7 @@
 //  CountryProviderProtocolMock.swift
 //  CoatOfArmsTests
 //
-//  Created by Juanjo García Villaescusa on 17/8/24.
+//  Created on 17/8/24.
 //
 
 @testable import CoatOfArms

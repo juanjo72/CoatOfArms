@@ -2,7 +2,7 @@
 //  GameStyle+default.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 1/9/24.
+//  Created on 1/9/24.
 //
 
 import Foundation

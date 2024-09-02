@@ -2,7 +2,7 @@
 //  GameRouterTests.swift
 //  CoatOfArmsTests
 //
-//  Created by Juanjo García Villaescusa on 2/9/24.
+//  Created on 2/9/24.
 //
 
 import Combine

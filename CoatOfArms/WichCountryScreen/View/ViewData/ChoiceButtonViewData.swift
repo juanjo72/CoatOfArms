@@ -2,7 +2,7 @@
 //  AnswerRow.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 14/8/24.
+//  Created on 14/8/24.
 //
 
 /// View Data representing each one of the choices

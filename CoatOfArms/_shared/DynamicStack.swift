@@ -2,7 +2,7 @@
 //  DynamicStack.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García on 21/8/24.
+//  Created on 21/8/24.
 //
 
 import SwiftUI

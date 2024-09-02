@@ -2,7 +2,7 @@
 //  GameOverView.swift
 //  CoatOfArms
 //
-//  Created by Juanjo García Villaescusa on 31/8/24.
+//  Created on 31/8/24.
 //
 
 import SwiftUI
