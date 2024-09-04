@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Ssrver Country with code and Coat-of-arms url
+/// Ssrver entity fetched from server
 struct ServerCountry: Identifiable, Equatable {
     let id: CountryCode
     let coatOfArmsURL: URL

@@ -4,47 +4,57 @@
 //
 // Created on 3/9/24
 
-import Foundation
 import Combine
+import Foundation
 
 protocol RootViewModelProtocol: ObservableObject {
     associatedtype Game: GameViewModelProtocol
     var game: Game? { get }
-    func viewWillAppear()
-    func userDidTapRestart()
+    func viewWillAppear() async
+    func userDidTapRestart() async
 }
 
 final class RootViewModel<
     OutputScheduler: Scheduler,
-    Router: GameViewModelProtocol
+    Game: GameViewModelProtocol
 >: RootViewModelProtocol {
-    private let outputScheduler: OutputScheduler
-    private let routerFactory: () -> Router
     
-    @Published
-    var game: Router?
+    // MARK: Injected
+
+    private let gameProvider: () -> Game
+    private let outputScheduler: OutputScheduler
+    
+    // MARK: RootViewModelProtocol
+    
+    @Published var game: Game?
+    
+    // MARK: Lifecycle
     
     init(
-        outputScheduler: OutputScheduler = DispatchQueue.main,
-        gameProvider: @escaping () -> Router
+        gameProvider: @escaping () -> Game,
+        outputScheduler: OutputScheduler = DispatchQueue.main
     ) {
+        self.gameProvider = gameProvider
         self.outputScheduler = outputScheduler
-        self.routerFactory = gameProvider
     }
     
-    func viewWillAppear() {
-        self.loadAndStartNewRouter()
+    // MARK: RootViewModelProtocol
+    
+    func viewWillAppear() async {
+        self.loadAndStartNewGame()
     }
     
-    func userDidTapRestart() {
-        self.loadAndStartNewRouter()
+    func userDidTapRestart() async {
+        self.loadAndStartNewGame()
     }
     
-    private func loadAndStartNewRouter() {
-        let newRouter = self.routerFactory()
+    // MARK: Private
+    
+    private func loadAndStartNewGame() {
+        let newGame = self.gameProvider()
         self.outputScheduler.schedule {
-            self.game = newRouter
+            self.game = newGame
         }
-        newRouter.start()
+        newGame.start()
     }
 }

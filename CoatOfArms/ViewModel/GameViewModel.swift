@@ -45,7 +45,13 @@ final class GameViewModel<
     
     @Published var status: GameStatus<QuestionViewModel, RemainingLives> = .idle
     
+    private var cancellable: [AnyCancellable] = []
+    
     // MARK: Lifecycle
+    
+    deinit {
+        print("DEINIT \(String(describing: self))")
+    }
     
     init(
         game: GameStamp,
@@ -63,6 +69,11 @@ final class GameViewModel<
         self.randomCountryCodeProvider = randomCountryCodeProvider
         self.remainingLives = remainingLives
         self.storage = storage
+        
+         self.$status
+            .print("[STATUS]")
+            .sink { _ in }
+            .store(in: &cancellable)
     }
     
     // MARK: GameRouterProtocol
@@ -71,12 +82,15 @@ final class GameViewModel<
         let newCode = self.randomCountryCodeProvider.generateCode(excluding: [])
         let newQuestion = self.questionProvider(newCode)
         self.outputScheduler.schedule {
-            self.status = .playing(question: newQuestion, remainingLives: self.remainingLives)
+            self.status = .playing(
+                question: newQuestion,
+                remainingLives: self.remainingLives
+            )
         }
     }
     
     func next() async {
-        let allAnswers = await self.storage.getAllElements(of: UserChoice.self).filter { $0.gameId == self.game }
+        let allAnswers = await self.storage.getAllElements(of: UserChoice.self).filter { [self] in $0.game == self.game }
         let rightCount = allAnswers.filter { $0.isCorrect }.count
         let wrongCount = allAnswers.count - rightCount
         
@@ -85,7 +99,10 @@ final class GameViewModel<
             let newCode = self.randomCountryCodeProvider.generateCode(excluding: alreadyAnswered)
             let newQuestion = self.questionProvider(newCode)
             self.outputScheduler.schedule {
-                self.status = .playing(question: newQuestion, remainingLives: self.remainingLives)
+                self.status = .playing(
+                    question: newQuestion,
+                    remainingLives: self.remainingLives
+                )
             }
         } else {
             self.outputScheduler.schedule {
@@ -94,3 +111,11 @@ final class GameViewModel<
         }
     }
 }
+
+#if DEBUG
+extension GameViewModel: CustomDebugStringConvertible  {
+    var debugDescription: String {
+        "GameViewModel"
+    }
+}
+#endif

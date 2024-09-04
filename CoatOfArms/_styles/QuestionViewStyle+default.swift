@@ -8,7 +8,6 @@
 extension QuestionViewStyle {
     static var `default`: Self {
         QuestionViewStyle(
-            imageSide: 250,
             spacing: 40
         )
     }

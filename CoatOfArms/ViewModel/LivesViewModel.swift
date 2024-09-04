@@ -38,6 +38,10 @@ final class LivesViewModel<
     
     // MARK: Lifecycle
     
+    deinit {
+        print("DEINIT \(String(describing: self))")
+    }
+    
     init(
         gameSettings: GameSettings,
         outputScheduler: OutputScheduler = DispatchQueue.main,
@@ -53,3 +57,11 @@ final class LivesViewModel<
             .assign(to: &self.$numberOfLives)
     }
 }
+
+#if DEBUG
+extension LivesViewModel: CustomDebugStringConvertible  {
+    var debugDescription: String {
+        "LivesViewModel"
+    }
+}
+#endif

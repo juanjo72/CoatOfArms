@@ -11,7 +11,7 @@ import Kingfisher
 
 protocol QuestionViewModelProtocol: ObservableObject {
     associatedtype MultipleChoice: MultipleChoiceViewModelProtocol
-    var country: CountryCode? { get }
+    var country: CountryCode { get }
     var loadingState: LoadingState<QuestionViewData<MultipleChoice>> { get }
     func viewWillAppear() async
 }
@@ -24,21 +24,22 @@ final class QuestionViewModel<
     
     // MARK: Injected
     
+    private let countryCode: CountryCode
     private let multipleChoiceProvider: () -> MultipleChoice
     private let remoteImagePrefetcher: (URL) -> AnyPublisher<Bool, Never>
     private let repository: QuestionRepositoryProtocol
     private let outputScheduler: OutputScheduler
-    private let next: () async -> Void
+    private let nextAction: () async -> Void
 
     // MARK: WhichCountryViewModelProtocol
     
-    @Published var country: CountryCode?
+    @Published var country: CountryCode
     @Published var loadingState: LoadingState<QuestionViewData<MultipleChoice>> = .idle
     
     // MARK: Observables
     
     private var imageURLObservable: some Publisher<URL?, Never> {
-        self.repository.countryObservable()
+        self.repository.countryObservable
             .map(\.?.coatOfArmsURL)
     }
     
@@ -64,19 +65,26 @@ final class QuestionViewModel<
     
     // MARK: Lifecycle
     
+    deinit {
+        print("DEINIT \(String(describing: self))")
+    }
+    
     init(
+        countryCode: CountryCode,
         multipleChoiceProvider: @escaping () -> MultipleChoice,
         outputScheduler: OutputScheduler = DispatchQueue.main,
         remoteImagePrefetcher: @escaping (URL) -> AnyPublisher<Bool, Never>,
         repository: QuestionRepositoryProtocol,
-        next: @escaping () async -> Void
+        nextAction: @escaping () async -> Void
     ) {
+        self.countryCode = countryCode
         self.multipleChoiceProvider = multipleChoiceProvider
         self.outputScheduler = outputScheduler
         self.remoteImagePrefetcher = remoteImagePrefetcher
         self.repository = repository
-        self.next = next
+        self.nextAction = nextAction
 
+        self.country = countryCode
         self.questionObservable
             .map { question in
                 return if let question {
@@ -87,10 +95,6 @@ final class QuestionViewModel<
             }
             .receive(on: self.outputScheduler)
             .assign(to: &self.$loadingState)
-        self.repository.countryObservable()
-            .map(\.?.id)
-            .receive(on: self.outputScheduler)
-            .assign(to: &self.$country)
     }
     
     // MARK: WhichCountryViewModelProtocol
@@ -102,10 +106,19 @@ final class QuestionViewModel<
         do {
             try await self.repository.fetchCountry()
         } catch {
+            print("[ERROR] \(String(describing: error))")
             if error is DecodingError {
                 // tries with a new country; possibly coat of arms unavailable
-                await self.next()
+                await self.nextAction()
             }
         }
     }
 }
+
+#if DEBUG
+extension QuestionViewModel: CustomDebugStringConvertible  {
+    var debugDescription: String {
+        "QuestionViewModel"
+    }
+}
+#endif

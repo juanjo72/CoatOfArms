@@ -12,21 +12,31 @@ protocol RemainingLivesRepositoryProtocol {
     var wrongAnswers: AnyPublisher<[UserChoice], Never> { get }
 }
 
+/// Remaining lives view's data layer
 struct RemainingLivesRepository: RemainingLivesRepositoryProtocol {
-    private let gameId: GameStamp
+    
+    // MARK: Injected
+
+    private let game: GameStamp
     private let storage: any ReactiveStorageProtocol
+    
+    // MARK: RemainingLivesRepositoryProtocol
     
     var wrongAnswers: AnyPublisher<[UserChoice], Never> {
         self.storage.getAllElementsObservable(of: UserChoice.self)
+            .map { $0.filter { [self] in $0.game == self.game }}
             .map { $0.filter { !$0.isCorrect } }
+            .removeDuplicates()
             .eraseToAnyPublisher()
     }
     
+    // MARK: Lifecycle
+    
     init(
-        gameId: GameStamp,
+        game: GameStamp,
         storage: any ReactiveStorageProtocol
     ) {
-        self.gameId = gameId
+        self.game = game
         self.storage = storage
     }
 }

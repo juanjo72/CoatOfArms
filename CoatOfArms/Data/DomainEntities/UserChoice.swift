@@ -7,10 +7,10 @@
 
 import Foundation
 
-/// User's pick
+/// User's answer
 struct UserChoice: Identifiable, Equatable {
     let id: CountryCode
-    let gameId: GameStamp
+    let game: GameStamp
     let pickedCountryCode: CountryCode
 }
 

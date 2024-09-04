@@ -14,27 +14,40 @@ struct RootView<
     // MARK: Injected
 
     @ObservedObject private var viewModel: ViewModel
+    private let style: RootStyle
     
     // MARK: View
 
     var body: some View {
-        VStack {
-            if let game = viewModel.game {
-                GameView(viewModel: game) {
-                    self.viewModel.userDidTapRestart()
-                }
+        Group {
+            if let game = self.viewModel.game {
+                GameView(
+                    viewModel: game,
+                    style: self.style.game,
+                    restartAction: {
+                        Task {
+                            await self.viewModel.userDidTapRestart()
+                        }
+                    }
+                )
             }
         }
-        .task {
-            self.viewModel.viewWillAppear()
+        .task() {
+            await self.viewModel.viewWillAppear()
         }
     }
     
     // MARK: Lifecycle
     
     init(
-        viewModel: ViewModel
+        viewModel: ViewModel,
+        style: RootStyle
     ) {
         self.viewModel = viewModel
+        self.style = style
     }
+}
+
+struct RootStyle {
+    let game: GameViewStyle
 }

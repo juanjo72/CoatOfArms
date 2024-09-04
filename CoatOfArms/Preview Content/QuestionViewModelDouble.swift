@@ -8,7 +8,7 @@
 import Foundation
 
 final class QuestionViewModelDouble_Interactive: QuestionViewModelProtocol {
-    var country: CountryCode?
+    var country: CountryCode = "AR"
     var loadingState: LoadingState<QuestionViewData<some MultipleChoiceViewModelProtocol>> = {
         .loaded(
             QuestionViewData(
@@ -22,7 +22,7 @@ final class QuestionViewModelDouble_Interactive: QuestionViewModelProtocol {
 }
 
 final class QuestionViewModelDouble_RightChoice: QuestionViewModelProtocol {
-    var country: CountryCode?
+    var country: CountryCode = "AR"
     var loadingState: LoadingState<QuestionViewData<some MultipleChoiceViewModelProtocol>> = {
         .loaded(
             QuestionViewData(
@@ -36,7 +36,7 @@ final class QuestionViewModelDouble_RightChoice: QuestionViewModelProtocol {
 }
 
 final class QuestionViewModelDouble_WrongChoice: QuestionViewModelProtocol {
-    var country: CountryCode?
+    var country: CountryCode = "AR"
     var loadingState: LoadingState<QuestionViewData<some MultipleChoiceViewModelProtocol>> = {
         .loaded(
             QuestionViewData(

@@ -24,8 +24,10 @@ struct QuestionView<
             switch self.viewModel.loadingState {
             case .idle:
                 EmptyView()
+
             case .loading:
                 ProgressView()
+
             case .loaded(let question):
                 DynamicStack(
                     spacing: self.style.spacing
@@ -33,11 +35,6 @@ struct QuestionView<
                     KFImage(question.imageURL)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(
-                            width: self.style.imageSide,
-                            height: self.style.imageSide,
-                            alignment: .bottom
-                        )
                     
                     MultipleChoiceView(
                         viewModel: question.multipleChoice
@@ -67,14 +64,11 @@ struct QuestionView<
 // MARK: Style
 
 struct QuestionViewStyle {
-    let imageSide: CGFloat
     let spacing: CGFloat
 
     init(
-        imageSide: CGFloat,
         spacing: CGFloat
     ) {
-        self.imageSide = imageSide
         self.spacing = spacing
     }
 }

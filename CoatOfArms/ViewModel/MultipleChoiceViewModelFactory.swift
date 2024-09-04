@@ -11,33 +11,33 @@ struct MultipleChoiceViewModelFactory {
     private let game: GameStamp
     private let gameSettings: GameSettings
     private let storage: ReactiveStorageProtocol
-    private let next: () async -> Void
+    private let nextAction: () async -> Void
     
     init(
         game: GameStamp,
         gameSettings: GameSettings,
         storage: ReactiveStorageProtocol,
-        next: @escaping () async -> Void
+        nextAction: @escaping () async -> Void
     ) {
         self.game = game
         self.gameSettings = gameSettings
         self.storage = storage
-        self.next = next
+        self.nextAction = nextAction
     }
     
     func make(code: CountryCode) -> some MultipleChoiceViewModelProtocol {
         let randomCountryCodeProvider = RandomCountryCodeProvider()
         let repository = MultipleChoiceRepository(
-            gameId: self.game,
+            game: self.game,
             countryCode: code,
-            randomCountryCodeProvider: randomCountryCodeProvider,
             gameSettings: self.gameSettings,
+            randomCountryCodeProvider: randomCountryCodeProvider,
             storage: self.storage
         )
         return MultipleChoiceViewModel(
             gameSettings: self.gameSettings,
             repository: repository,
-            next: self.next
+            nextAction: self.nextAction
         )
     }
 }

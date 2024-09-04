@@ -27,7 +27,10 @@ struct CoatOfArmsApp: App {
                 }
             )
 
-            RootView(viewModel: rootViewModel)
+            RootView(
+                viewModel: rootViewModel,
+                style: .default
+            )
         }
     }
 }

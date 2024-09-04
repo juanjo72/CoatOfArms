@@ -10,10 +10,11 @@ import Network
 import ReactiveStorage
 
 protocol QuestionRepositoryProtocol {
-    func countryObservable() -> AnyPublisher<ServerCountry?, Never>
+    var countryObservable: AnyPublisher<ServerCountry?, Never> { get }
     func fetchCountry() async throws
 }
 
+/// Question view's data layer
 final class QuestionRepository: QuestionRepositoryProtocol {
     
     // MARK: Injected
@@ -21,6 +22,14 @@ final class QuestionRepository: QuestionRepositoryProtocol {
     private let countryCode: CountryCode
     private let requestSender: Network.RequestSenderProtocol
     private let storage: ReactiveStorage.ReactiveStorageProtocol
+    
+    // MARK: QuestionRepositoryProtocol
+    
+    var countryObservable: AnyPublisher<ServerCountry?, Never> {
+        self.storage.getSingleElementObservable(of: ServerCountry.self, id: self.countryCode)
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
     
     // MARK: Lifecycle
     
@@ -35,12 +44,6 @@ final class QuestionRepository: QuestionRepositoryProtocol {
     }
     
     // MARK: WhichCountryRepostoryProtocol
-    
-    func countryObservable() -> AnyPublisher<ServerCountry?, Never> {
-        self.storage.getSingleElementObservable(of: ServerCountry.self, id: self.countryCode)
-            .removeDuplicates()
-            .eraseToAnyPublisher()
-    }
 
     func fetchCountry() async throws {
         let remoteResource = Network.RemoteResource<ServerCountry>.make(code: self.countryCode)

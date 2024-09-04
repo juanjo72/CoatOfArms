@@ -26,26 +26,28 @@ final class MultipleChoiceViewModel<
     private let locale: Locale
     private let outputScheduler: OutputScheduler
     private let repository: any MultipleChoiceRepositoryProtocol
-    private let next: () async -> Void
+    private let nextAction: () async -> Void
     
     // MARK: PossibleAnswersRepositoryProtocol
     
-    @Published var isEnabled: Bool = false
+    @Published var isEnabled: Bool = true
     @Published var choiceButtons: [ChoiceButtonViewData] = []
     
     // MARK: Observables
     
     private var answersObservable: some Publisher<[ChoiceButtonViewData], Never> {
         Publishers.CombineLatest(
-            self.repository.multipleChoiceObservable(),
-            self.repository.storedAnswerObservable()
+            self.repository.multipleChoiceObservable,
+            self.repository.storedAnswerObservable
         )
-        .map { choices, userAnswer in
-            guard let choices else { return [] }
+        .map { [locale] choices, userAnswer in
+            guard let choices else {
+                return []
+            }
             return choices.allChoices.map { each in
                 ChoiceButtonViewData(
                     id: each,
-                    label: each.countryName(locale: self.locale),
+                    label: each.countryName(locale: locale),
                     effect: ChoiceButtonViewData.Effect(
                         id: each,
                         userChoice: userAnswer
@@ -57,18 +59,22 @@ final class MultipleChoiceViewModel<
     
     // MARK: Lifecycle
     
+    deinit {
+        print("DEINIT \(String(describing: self))")
+    }
+    
     init(
         gameSettings: GameSettings,
         locale: Locale = Locale.autoupdatingCurrent,
         outputScheduler: OutputScheduler = DispatchQueue.main,
         repository: any MultipleChoiceRepositoryProtocol,
-        next: @escaping () async -> Void
+        nextAction: @escaping () async -> Void
     ) {
         self.gameSettings = gameSettings
         self.locale = locale
         self.outputScheduler = outputScheduler
         self.repository = repository
-        self.next = next
+        self.nextAction = nextAction
         
         self.answersObservable
             .receive(on: outputScheduler)
@@ -79,9 +85,6 @@ final class MultipleChoiceViewModel<
     
     func viewWillAppear() async {
         await self.repository.fetchAnswers()
-        self.outputScheduler.schedule {
-            self.isEnabled = true
-        }
     }
     
     func userDidHit(code: CountryCode) async {
@@ -90,7 +93,7 @@ final class MultipleChoiceViewModel<
         }
         await self.repository.set(answer: code)
         try? await Task.sleep(for: self.gameSettings.resultTime)
-        await self.next()
+        await self.nextAction()
     }
 }
 

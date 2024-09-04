@@ -13,20 +13,20 @@ struct QuestionViewModelFactory {
     private let gameSettings: GameSettings
     private let storage: ReactiveStorageProtocol
     private let requestSender: RequestSenderProtocol
-    private let next: () async -> Void
+    private let nextAction: () async -> Void
     
     init(
         gameId: GameStamp,
         gameSettings: GameSettings,
         storage: ReactiveStorageProtocol,
         requestSender: RequestSenderProtocol,
-        next: @escaping () async -> Void
+        nextAction: @escaping () async -> Void
     ) {
         self.gameId = gameId
         self.gameSettings = gameSettings
         self.storage = storage
         self.requestSender = requestSender
-        self.next = next
+        self.nextAction = nextAction
     }
 
     func make(code: CountryCode) -> some QuestionViewModelProtocol {
@@ -34,7 +34,7 @@ struct QuestionViewModelFactory {
             game: self.gameId,
             gameSettings: self.gameSettings,
             storage: self.storage,
-            next: self.next
+            nextAction: self.nextAction
         )
         let repository = QuestionRepository(
             countryCode: code,
@@ -42,6 +42,7 @@ struct QuestionViewModelFactory {
             storage: self.storage
         )
         return QuestionViewModel(
+            countryCode: code,
             multipleChoiceProvider: {
                 multipleChoiceViewModelFactory.make(code: code)
             },
@@ -51,7 +52,7 @@ struct QuestionViewModelFactory {
                     .eraseToAnyPublisher()
             },
             repository: repository,
-            next: self.next
+            nextAction: self.nextAction
         )
     }
 }

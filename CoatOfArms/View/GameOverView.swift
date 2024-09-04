@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct GameOverView: View {
+    
+    // MARK: Injected
+
     private let score: Int
     private let style: GameOverViewStyle
     private let action: () -> Void
+    
+    // MARK: View
 
     var body: some View {
         VStack(
@@ -33,6 +38,8 @@ struct GameOverView: View {
             .buttonBorderShape(.capsule)
         }
     }
+    
+    // MARK: Lifecycle
     
     init(
         score: Int,

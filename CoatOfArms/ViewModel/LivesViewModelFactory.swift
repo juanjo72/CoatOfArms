@@ -24,7 +24,7 @@ struct LivesViewModelFactory {
     
     func make() -> some LivesViewModelProtocol {
         let repository = RemainingLivesRepository(
-            gameId: self.gameId,
+            game: self.gameId,
             storage: self.storage
         )
         return LivesViewModel(

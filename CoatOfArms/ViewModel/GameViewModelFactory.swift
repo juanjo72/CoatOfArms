@@ -32,7 +32,7 @@ struct GameViewModelFactory {
             storage: self.storage
         ).make()
         var questionFactory: QuestionViewModelFactory!
-        let router = GameViewModel(
+        let game = GameViewModel(
             game: stamp,
             gameSettings: self.gameSettings,
             questionProvider: {
@@ -47,8 +47,10 @@ struct GameViewModelFactory {
             gameSettings: self.gameSettings,
             storage: self.storage,
             requestSender: self.requestSender,
-            next: router.next
+            nextAction: { [weak game] in
+                await game?.next()
+            }
         )
-        return router
+        return game
     }
 }

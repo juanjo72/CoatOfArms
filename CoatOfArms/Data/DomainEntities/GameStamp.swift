@@ -7,4 +7,5 @@
 
 import Foundation
 
+/// Each game will be id only with the creation date
 typealias GameStamp = Date
