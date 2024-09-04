@@ -9,12 +9,12 @@ import Combine
 import Network
 import ReactiveStorage
 
-protocol CountryRepositoryProtocol {
-    func countryObservable() -> AnyPublisher<Country?, Never>
+protocol QuestionRepositoryProtocol {
+    func countryObservable() -> AnyPublisher<ServerCountry?, Never>
     func fetchCountry() async throws
 }
 
-final class CountryRepository: CountryRepositoryProtocol {
+final class QuestionRepository: QuestionRepositoryProtocol {
     
     // MARK: Injected
     
@@ -36,14 +36,14 @@ final class CountryRepository: CountryRepositoryProtocol {
     
     // MARK: WhichCountryRepostoryProtocol
     
-    func countryObservable() -> AnyPublisher<Country?, Never> {
-        self.storage.getSingleElementObservable(of: Country.self, id: self.countryCode)
+    func countryObservable() -> AnyPublisher<ServerCountry?, Never> {
+        self.storage.getSingleElementObservable(of: ServerCountry.self, id: self.countryCode)
             .removeDuplicates()
             .eraseToAnyPublisher()
     }
 
     func fetchCountry() async throws {
-        let remoteResource = Network.RemoteResource<Country>.make(code: self.countryCode)
+        let remoteResource = Network.RemoteResource<ServerCountry>.make(code: self.countryCode)
         let country = try await self.requestSender.request(resource: remoteResource)
         await self.storage.add(country)
     }

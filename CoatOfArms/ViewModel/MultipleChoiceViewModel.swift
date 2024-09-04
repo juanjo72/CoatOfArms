@@ -17,17 +17,16 @@ protocol MultipleChoiceViewModelProtocol: ObservableObject {
 
 /// Represents view containing set of answer buttons
 final class MultipleChoiceViewModel<
-    OutputScheduler: Scheduler,
-    Router: GameRouterProtocol
+    OutputScheduler: Scheduler
 >: MultipleChoiceViewModelProtocol {
     
     // MARK: Injected
     
     private let gameSettings: GameSettings
     private let locale: Locale
-    private let repository: MultipleChoiceRepositoryProtocol
     private let outputScheduler: OutputScheduler
-    private let router: Router
+    private let repository: any MultipleChoiceRepositoryProtocol
+    private let next: () async -> Void
     
     // MARK: PossibleAnswersRepositoryProtocol
     
@@ -47,7 +46,10 @@ final class MultipleChoiceViewModel<
                 ChoiceButtonViewData(
                     id: each,
                     label: each.countryName(locale: self.locale),
-                    effect: ChoiceButtonViewData.Effect(id: each, userChoice: userAnswer)
+                    effect: ChoiceButtonViewData.Effect(
+                        id: each,
+                        userChoice: userAnswer
+                    )
                 )
             }
         }
@@ -59,14 +61,14 @@ final class MultipleChoiceViewModel<
         gameSettings: GameSettings,
         locale: Locale = Locale.autoupdatingCurrent,
         outputScheduler: OutputScheduler = DispatchQueue.main,
-        repository: MultipleChoiceRepositoryProtocol,
-        router: Router
+        repository: any MultipleChoiceRepositoryProtocol,
+        next: @escaping () async -> Void
     ) {
         self.gameSettings = gameSettings
         self.locale = locale
         self.outputScheduler = outputScheduler
         self.repository = repository
-        self.router = router
+        self.next = next
         
         self.answersObservable
             .receive(on: outputScheduler)
@@ -88,7 +90,7 @@ final class MultipleChoiceViewModel<
         }
         await self.repository.set(answer: code)
         try? await Task.sleep(for: self.gameSettings.resultTime)
-        await self.router.next()
+        await self.next()
     }
 }
 

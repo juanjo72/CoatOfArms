@@ -5,24 +5,29 @@
 //  Created on 11/8/24.
 //
 
+import Network
 import ReactiveStorage
 import SwiftUI
 
 @main
 struct CoatOfArmsApp: App {
     var body: some Scene {
-        let storage = ReactiveInMemoryStorage()
-        let router = GameRouter(
-            gameSettings: .default,
-            randomCountryCodeProvider: RandomCountryCodeProvider(),
-            storage: storage
-        )
         WindowGroup {
-            GameView(
-                storage: storage,
-                style: .default,
-                router: router
+            let settings = GameSettings.default
+            let storage = ReactiveStorage.ReactiveInMemoryStorage()
+            let requestSender = Network.RequestSender.shared()
+            let gameViewModelFactory = GameViewModelFactory(
+                gameSettings: settings,
+                requestSender: requestSender,
+                storage: storage
             )
+            let rootViewModel = RootViewModel(
+                gameProvider: {
+                    gameViewModelFactory.make(stamp: .now)
+                }
+            )
+
+            RootView(viewModel: rootViewModel)
         }
     }
 }

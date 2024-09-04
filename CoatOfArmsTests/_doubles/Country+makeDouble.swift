@@ -8,12 +8,12 @@
 @testable import CoatOfArms
 import Foundation
 
-extension Country {
+extension ServerCountry {
     static func makeDouble(
         id: CountryCode = "es",
         coatOfArmsURL: URL = URL(string: "https://mainfacts.com/media/images/coats_of_arms/es.png")!
-    ) -> Country {
-        Country(
+    ) -> ServerCountry {
+        ServerCountry(
             id: id,
             coatOfArmsURL: coatOfArmsURL
         )

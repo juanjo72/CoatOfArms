@@ -5,8 +5,6 @@
 //  Created on 21/8/24.
 //
 
-import Foundation
-
 extension QuestionViewStyle {
     static var `default`: Self {
         QuestionViewStyle(

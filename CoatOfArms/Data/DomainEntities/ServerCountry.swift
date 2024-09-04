@@ -8,7 +8,7 @@
 import Foundation
 
 /// Ssrver Country with code and Coat-of-arms url
-struct Country: Identifiable, Equatable {
+struct ServerCountry: Identifiable, Equatable {
     let id: CountryCode
     let coatOfArmsURL: URL
 }

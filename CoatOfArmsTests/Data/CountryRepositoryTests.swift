@@ -17,10 +17,10 @@ final class CountryRepositoryTests: XCTestCase {
     
     func makeMock(
         countryCode: String = "es",
-        requestSender: Network.RequestSenderProtocol = RequestSenderProtocolMock<Country>(),
-        storage: ReactiveStorage.ReactiveStorageProtocol = ReactiveStorageProtocolMock<Country>()
-    ) -> CountryRepository {
-        CountryRepository(
+        requestSender: Network.RequestSenderProtocol = RequestSenderProtocolMock<ServerCountry>(),
+        storage: ReactiveStorage.ReactiveStorageProtocol = ReactiveStorageProtocolMock<ServerCountry>()
+    ) -> QuestionRepository {
+        QuestionRepository(
             countryCode: countryCode,
             requestSender: requestSender,
             storage: storage
@@ -31,9 +31,9 @@ final class CountryRepositoryTests: XCTestCase {
 
     func testThat_WhenCountryIsFetched_ThenResponseIsStored() async throws {
         // Given
-        let sender = RequestSenderProtocolMock<Country>()
-        let store = ReactiveStorageProtocolMock<Country>()
-        let returnCountry = Country(id: "es", coatOfArmsURL: URL(string: "http://www.google.com")!)
+        let sender = RequestSenderProtocolMock<ServerCountry>()
+        let store = ReactiveStorageProtocolMock<ServerCountry>()
+        let returnCountry = ServerCountry(id: "es", coatOfArmsURL: URL(string: "http://www.google.com")!)
         sender.requestResourceReturnValue = returnCountry
         let sut = self.makeMock(requestSender: sender, storage: store)
         
@@ -50,13 +50,13 @@ final class CountryRepositoryTests: XCTestCase {
     
     func testThat_WhenSubscribedToCountryID_ThenCountryIsObserved() {
         // Given
-        let store = ReactiveStorageProtocolMock<Country>()
-        let returnCountry = Country(id: "es", coatOfArmsURL: URL(string: "http://www.google.com")!)
+        let store = ReactiveStorageProtocolMock<ServerCountry>()
+        let returnCountry = ServerCountry(id: "es", coatOfArmsURL: URL(string: "http://www.google.com")!)
         store.getSingleElementObservableOfIdReturnValue = Just(returnCountry).eraseToAnyPublisher()
         let sut = self.makeMock(storage: store)
         
         // When
-        var observed: Country?
+        var observed: ServerCountry?
         let _ = sut.countryObservable()
             .sink { observed = $0 }
         

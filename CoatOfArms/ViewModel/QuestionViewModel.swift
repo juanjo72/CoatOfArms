@@ -11,6 +11,7 @@ import Kingfisher
 
 protocol QuestionViewModelProtocol: ObservableObject {
     associatedtype MultipleChoice: MultipleChoiceViewModelProtocol
+    var country: CountryCode? { get }
     var loadingState: LoadingState<QuestionViewData<MultipleChoice>> { get }
     func viewWillAppear() async
 }
@@ -18,20 +19,20 @@ protocol QuestionViewModelProtocol: ObservableObject {
 /// Represents question view, with image and answer buttons
 final class QuestionViewModel<
     MultipleChoice: MultipleChoiceViewModelProtocol,
-    OutputScheduler: Scheduler,
-    Router: GameRouterProtocol
+    OutputScheduler: Scheduler
 >: QuestionViewModelProtocol {
     
     // MARK: Injected
     
     private let multipleChoiceProvider: () -> MultipleChoice
     private let remoteImagePrefetcher: (URL) -> AnyPublisher<Bool, Never>
-    private let repository: CountryRepositoryProtocol
-    private let router: Router
+    private let repository: QuestionRepositoryProtocol
     private let outputScheduler: OutputScheduler
+    private let next: () async -> Void
 
     // MARK: WhichCountryViewModelProtocol
     
+    @Published var country: CountryCode?
     @Published var loadingState: LoadingState<QuestionViewData<MultipleChoice>> = .idle
     
     // MARK: Observables
@@ -67,14 +68,14 @@ final class QuestionViewModel<
         multipleChoiceProvider: @escaping () -> MultipleChoice,
         outputScheduler: OutputScheduler = DispatchQueue.main,
         remoteImagePrefetcher: @escaping (URL) -> AnyPublisher<Bool, Never>,
-        repository: CountryRepositoryProtocol,
-        router: Router
+        repository: QuestionRepositoryProtocol,
+        next: @escaping () async -> Void
     ) {
         self.multipleChoiceProvider = multipleChoiceProvider
         self.outputScheduler = outputScheduler
         self.remoteImagePrefetcher = remoteImagePrefetcher
         self.repository = repository
-        self.router = router
+        self.next = next
 
         self.questionObservable
             .map { question in
@@ -86,6 +87,10 @@ final class QuestionViewModel<
             }
             .receive(on: self.outputScheduler)
             .assign(to: &self.$loadingState)
+        self.repository.countryObservable()
+            .map(\.?.id)
+            .receive(on: self.outputScheduler)
+            .assign(to: &self.$country)
     }
     
     // MARK: WhichCountryViewModelProtocol
@@ -99,7 +104,7 @@ final class QuestionViewModel<
         } catch {
             if error is DecodingError {
                 // tries with a new country; possibly coat of arms unavailable
-                await self.router.next()
+                await self.next()
             }
         }
     }

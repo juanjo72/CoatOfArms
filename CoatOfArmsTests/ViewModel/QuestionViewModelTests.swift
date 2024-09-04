@@ -90,7 +90,7 @@ final class QuestionViewModelTests: XCTestCase {
     func testThat_GivenStoredCountry_WhenCreated_ThenURLIsPublished() async throws {
         // Given
         let repository = WhichCountryRepostoryProtocolMock()
-        let returnCountry = Country.makeDouble()
+        let returnCountry = ServerCountry.makeDouble()
         repository.countryObservableReturnValue = Just(returnCountry).eraseToAnyPublisher()
         
         // When

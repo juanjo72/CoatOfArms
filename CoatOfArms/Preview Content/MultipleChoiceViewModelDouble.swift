@@ -5,8 +5,6 @@
 //  Created on 20/8/24.
 //
 
-import Foundation
-
 final class MultipleChoiceViewModelDouble_Interative: MultipleChoiceViewModelProtocol {
     var isEnabled: Bool = true
     var prompt: String = "Pick one:"

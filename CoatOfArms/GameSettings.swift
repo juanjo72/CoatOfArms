@@ -5,6 +5,8 @@
 //  Created on 17/8/24.
 //
 
+import Foundation
+
 /// Game's global settings
 struct GameSettings {
     let numPossibleChoices: Int

@@ -10,6 +10,7 @@ import Foundation
 /// Set of possible answers, including the right one
 struct MultipleChoice: Identifiable, Equatable {
     let id: CountryCode
+    let gameId: GameStamp
     let otherChoices: [CountryCode]
     let rightChoicePosition: Int
 }

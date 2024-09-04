@@ -19,21 +19,24 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     
     // MARK: Injected
     
+    private let gameId: GameStamp
     private let countryCode: CountryCode
-    private let countryCodeProvider: RandomCountryCodeProviderProtocol
+    private let randomCountryCodeProvider: RandomCountryCodeProviderProtocol
     private let gameSettings: GameSettings
     private let storage: ReactiveStorage.ReactiveStorageProtocol
     
     // MARK: Lifecycle
     
     init(
+        gameId: GameStamp,
         countryCode: CountryCode,
-        countryCodeProvider: RandomCountryCodeProviderProtocol,
+        randomCountryCodeProvider: RandomCountryCodeProviderProtocol,
         gameSettings: GameSettings,
         storage: ReactiveStorage.ReactiveStorageProtocol
     ) {
+        self.gameId = gameId
         self.countryCode = countryCode
-        self.countryCodeProvider = countryCodeProvider
+        self.randomCountryCodeProvider = randomCountryCodeProvider
         self.gameSettings = gameSettings
         self.storage = storage
     }
@@ -51,13 +54,14 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     }
     
     func fetchAnswers() async {
-        let otherChoices = self.countryCodeProvider.generateCodes(
+        let otherChoices = self.randomCountryCodeProvider.generateCodes(
             n: self.gameSettings.numPossibleChoices - 1,
             excluding: [self.countryCode]
         )
         let rightChoicePosition = (0..<self.gameSettings.numPossibleChoices).randomElement()!
         let answers = MultipleChoice(
             id: self.countryCode,
+            gameId: self.gameId,
             otherChoices: otherChoices,
             rightChoicePosition: rightChoicePosition
         )
@@ -67,6 +71,7 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     func set(answer: CountryCode) async {
         let answer = UserChoice(
             id: self.countryCode,
+            gameId: self.gameId,
             pickedCountryCode: answer
         )
         await self.storage.add(answer)

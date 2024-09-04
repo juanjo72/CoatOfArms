@@ -10,6 +10,7 @@ import Foundation
 /// User's pick
 struct UserChoice: Identifiable, Equatable {
     let id: CountryCode
+    let gameId: GameStamp
     let pickedCountryCode: CountryCode
 }
 

@@ -8,7 +8,7 @@
 @testable import CoatOfArms
 import Combine
 
-final class WhichCountryRepostoryProtocolMock: CountryRepositoryProtocol {
+final class WhichCountryRepostoryProtocolMock: QuestionRepositoryProtocol {
     
    // MARK: - countryObservable
 
@@ -16,10 +16,10 @@ final class WhichCountryRepostoryProtocolMock: CountryRepositoryProtocol {
     var countryObservableCalled: Bool {
         countryObservableCallsCount > 0
     }
-    var countryObservableReturnValue: AnyPublisher<Country?, Never>!
-    var countryObservableClosure: (() -> AnyPublisher<Country?, Never>)?
+    var countryObservableReturnValue: AnyPublisher<ServerCountry?, Never>!
+    var countryObservableClosure: (() -> AnyPublisher<ServerCountry?, Never>)?
 
-    func countryObservable() -> AnyPublisher<Country?, Never> {
+    func countryObservable() -> AnyPublisher<ServerCountry?, Never> {
         countryObservableCallsCount += 1
         return countryObservableClosure.map({ $0() }) ?? countryObservableReturnValue
     }

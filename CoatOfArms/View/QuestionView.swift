@@ -46,7 +46,9 @@ struct QuestionView<
                 .padding()
             }
         }
-        .task {
+        .task(
+            id: self.viewModel.country
+        ) {
             await self.viewModel.viewWillAppear()
         }
     }

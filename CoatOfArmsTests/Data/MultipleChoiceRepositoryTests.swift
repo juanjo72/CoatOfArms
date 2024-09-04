@@ -19,7 +19,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
         countryCode: CountryCode = "ES",
         countryProvider: RandomCountryCodeProviderProtocol = RandomCountryCodeProviderProtocolMock(),
         gameSettings: GameSettings = .default,
-        storage: ReactiveStorage.ReactiveStorageProtocol = ReactiveStorageProtocolMock<Country>()
+        storage: ReactiveStorage.ReactiveStorageProtocol = ReactiveStorageProtocolMock<ServerCountry>()
     ) -> MultipleChoiceRepository {
         MultipleChoiceRepository(
             countryCode: countryCode,

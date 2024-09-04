@@ -7,7 +7,7 @@
 
 @testable import CoatOfArms
 
-final class GameRouterProtocolMock: GameRouterProtocol {
+final class GameRouterProtocolMock: GameViewModelProtocol {
     
    // MARK: - screen
 

@@ -18,10 +18,9 @@ final class GameRouterTests: XCTestCase {
         gameSettings: GameSettings = .default,
         randomCountryCodeProvider: RandomCountryCodeProviderProtocolMock = .init(),
         storage: ReactiveStorageProtocolMock<UserChoice> = ReactiveStorageProtocolMock<UserChoice>()
-    ) -> GameRouter<ImmediateScheduler> {
-        GameRouter(
+    ) -> GameViewModel {
+        GameViewModel(
             gameSettings: gameSettings,
-            outputScheduler: ImmediateScheduler.shared,
             randomCountryCodeProvider: randomCountryCodeProvider,
             storage: storage
         )
