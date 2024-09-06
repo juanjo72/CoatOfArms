@@ -26,9 +26,11 @@ final class QuestionRepository: QuestionRepositoryProtocol {
     // MARK: QuestionRepositoryProtocol
     
     var countryObservable: AnyPublisher<ServerCountry?, Never> {
-        self.storage.getSingleElementObservable(of: ServerCountry.self, id: self.countryCode)
-            .removeDuplicates()
-            .eraseToAnyPublisher()
+        self.storage.getSingleElementObservable(
+            of: ServerCountry.self,
+            id: self.countryCode
+        )
+        .eraseToAnyPublisher()
     }
     
     // MARK: Lifecycle
@@ -46,8 +48,8 @@ final class QuestionRepository: QuestionRepositoryProtocol {
     // MARK: WhichCountryRepostoryProtocol
 
     func fetchCountry() async throws {
-        let remoteResource = Network.RemoteResource<ServerCountry>.make(code: self.countryCode)
-        let country = try await self.requestSender.request(resource: remoteResource)
+        let remoteResourceToFetch = Network.RemoteResource<ServerCountry>.make(code: self.countryCode)
+        let country = try await self.requestSender.request(resource: remoteResourceToFetch) // actual call
         await self.storage.add(country)
     }
 }

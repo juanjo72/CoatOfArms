@@ -15,13 +15,13 @@ protocol RootViewModelProtocol: ObservableObject {
 }
 
 final class RootViewModel<
-    OutputScheduler: Scheduler,
-    Game: GameViewModelProtocol
+    Game: GameViewModelProtocol,
+    OutputScheduler: Scheduler
 >: RootViewModelProtocol {
     
     // MARK: Injected
 
-    private let gameProvider: () -> Game
+    private let gameProvider: (GameStamp) -> Game
     private let outputScheduler: OutputScheduler
     
     // MARK: RootViewModelProtocol
@@ -31,7 +31,7 @@ final class RootViewModel<
     // MARK: Lifecycle
     
     init(
-        gameProvider: @escaping () -> Game,
+        gameProvider: @escaping (GameStamp) -> Game,
         outputScheduler: OutputScheduler = DispatchQueue.main
     ) {
         self.gameProvider = gameProvider
@@ -51,7 +51,7 @@ final class RootViewModel<
     // MARK: Private
     
     private func loadAndStartNewGame() {
-        let newGame = self.gameProvider()
+        let newGame = self.gameProvider(.now)
         self.outputScheduler.schedule {
             self.game = newGame
         }

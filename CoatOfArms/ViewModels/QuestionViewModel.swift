@@ -26,9 +26,9 @@ final class QuestionViewModel<
     
     private let countryCode: CountryCode
     private let multipleChoiceProvider: () -> MultipleChoice
+    private let outputScheduler: OutputScheduler
     private let remoteImagePrefetcher: (URL) -> AnyPublisher<Bool, Never>
     private let repository: QuestionRepositoryProtocol
-    private let outputScheduler: OutputScheduler
     private let nextAction: () async -> Void
 
     // MARK: WhichCountryViewModelProtocol
@@ -64,10 +64,6 @@ final class QuestionViewModel<
     }
     
     // MARK: Lifecycle
-    
-    deinit {
-        print("DEINIT \(String(describing: self))")
-    }
     
     init(
         countryCode: CountryCode,
@@ -106,7 +102,7 @@ final class QuestionViewModel<
         do {
             try await self.repository.fetchCountry()
         } catch {
-            print("[ERROR] \(String(describing: error))")
+            print("[ERROR] \(self.country) \(String(describing: error))")
             if error is DecodingError {
                 // tries with a new country; possibly coat of arms unavailable
                 await self.nextAction()

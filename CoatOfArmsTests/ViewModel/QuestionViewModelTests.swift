@@ -16,17 +16,18 @@ final class QuestionViewModelTests: XCTestCase {
     // MARK: SUT
     
     private func makeSUT(
+        countryCode: CountryCode = "ES",
         multipleChoiceProvider: @escaping () -> some MultipleChoiceViewModelProtocolMock = { MultipleChoiceViewModelProtocolMock() },
         remoteImagePrefetcher: @escaping (URL) -> AnyPublisher<Bool, Never> = { _ in Just(true).eraseToAnyPublisher() },
-        repository: WhichCountryRepostoryProtocolMock = .init(),
-        router: GameRouterProtocolMock = .init()
+        repository: QuestionRepositoryProtocolMock = .init()
     ) -> some QuestionViewModelProtocol {
         QuestionViewModel(
+            countryCode: countryCode,
             multipleChoiceProvider: multipleChoiceProvider,
             outputScheduler: ImmediateScheduler.shared,
             remoteImagePrefetcher: remoteImagePrefetcher,
             repository: repository,
-            router: router
+            nextAction: {}
         )
     }
     
@@ -34,8 +35,8 @@ final class QuestionViewModelTests: XCTestCase {
     
     func testThat_WhenViewWillAppear_ThenCountryIsFetched() async {
         // Given
-        let repository = WhichCountryRepostoryProtocolMock()
-        repository.countryObservableReturnValue = Just(nil).eraseToAnyPublisher()
+        let repository = QuestionRepositoryProtocolMock()
+        repository.countryObservable = Just(nil).eraseToAnyPublisher()
         let multipleChoice = MultipleChoiceViewModelProtocolMock()
         let sut = self.makeSUT(
             multipleChoiceProvider: { multipleChoice },
@@ -51,8 +52,8 @@ final class QuestionViewModelTests: XCTestCase {
     
     func testThat_WhenViewWillAppear_ThenMultipleChoiceIsAssigned() async throws {
         // Given
-        let repository = WhichCountryRepostoryProtocolMock()
-        repository.countryObservableReturnValue = Just(.makeDouble()).eraseToAnyPublisher()
+        let repository = QuestionRepositoryProtocolMock()
+        repository.countryObservable = Just(.makeDouble()).eraseToAnyPublisher()
         let expectedMultipleChoice = MultipleChoiceViewModelProtocolMock()
         let sut = self.makeSUT(
             multipleChoiceProvider: { expectedMultipleChoice },
@@ -73,8 +74,8 @@ final class QuestionViewModelTests: XCTestCase {
     
     func testThat_WhenCreated_ThenQuestionIsNull() throws {
         // Given
-        let repository = WhichCountryRepostoryProtocolMock()
-        repository.countryObservableReturnValue = Just(nil).eraseToAnyPublisher()
+        let repository = QuestionRepositoryProtocolMock()
+        repository.countryObservable = Just(nil).eraseToAnyPublisher()
         let multipleChoice = MultipleChoiceViewModelProtocolMock()
         
         // When
@@ -89,9 +90,9 @@ final class QuestionViewModelTests: XCTestCase {
     
     func testThat_GivenStoredCountry_WhenCreated_ThenURLIsPublished() async throws {
         // Given
-        let repository = WhichCountryRepostoryProtocolMock()
+        let repository = QuestionRepositoryProtocolMock()
         let returnCountry = ServerCountry.makeDouble()
-        repository.countryObservableReturnValue = Just(returnCountry).eraseToAnyPublisher()
+        repository.countryObservable = Just(returnCountry).eraseToAnyPublisher()
         
         // When
         let sut = self.makeSUT(

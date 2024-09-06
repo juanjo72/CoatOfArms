@@ -7,7 +7,6 @@
 
 @testable import CoatOfArms
 import Combine
-import Network
 import ReactiveStorage
 import XCTest
 
@@ -16,15 +15,15 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
     // MARK: SUT
     
     private func makeSUT(
-        countryCode: CountryCode = "ES",
-        countryProvider: RandomCountryCodeProviderProtocol = RandomCountryCodeProviderProtocolMock(),
+        id: MultipleChoice.ID = .init(game: Date(), countryCode: "ES"),
         gameSettings: GameSettings = .default,
+        randomCountryCodeProvider: RandomCountryCodeProviderProtocol = RandomCountryCodeProviderProtocolMock(),
         storage: ReactiveStorage.ReactiveStorageProtocol = ReactiveStorageProtocolMock<ServerCountry>()
     ) -> MultipleChoiceRepository {
         MultipleChoiceRepository(
-            countryCode: countryCode,
-            countryCodeProvider: countryProvider,
+            id: id,
             gameSettings: gameSettings,
+            randomCountryCodeProvider: randomCountryCodeProvider,
             storage: storage
         )
     }
@@ -33,18 +32,11 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
     
     func testThat_WhenMultipleChoiceIsFetched_ThenIsCreatedAndStored() async throws {
         // Given
-        let countryProvider = RandomCountryCodeProviderProtocolMock()
-        countryProvider.generateCodesNExcludingReturnValue = ["UK", "AR", "US"]
-        let gameSettings = GameSettings(
-            numPossibleChoices: 4,
-            resultTime: .seconds(1),
-            maxWrongAnswers: 3
-        )
+        let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
+        randomCountryCodeProvider.generateCodesNExcludingReturnValue = ["UK", "AR", "US"]
         let store = ReactiveStorageProtocolMock<MultipleChoice>()
         let sut = self.makeSUT(
-            countryCode: "ES",
-            countryProvider: countryProvider,
-            gameSettings: .default,
+            randomCountryCodeProvider: randomCountryCodeProvider,
             storage: store
         )
         
@@ -53,7 +45,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
         
         // Then
         XCTAssertEqual(store.addCallsCount, 1)
-        XCTAssertEqual(store.addReceivedElement?.id, "ES")
+        XCTAssertEqual(store.addReceivedElement?.id.countryCode, "ES")
         XCTAssertEqual(store.addReceivedElement?.otherChoices, ["UK", "AR", "US"])
         let rightChoicePosition = try XCTUnwrap(store.addReceivedElement?.rightChoicePosition)
         XCTAssertLessThan(rightChoicePosition, 4)
@@ -61,13 +53,11 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
     
     func testThat_WhenAnswerIsSet_ThenUserChoiceIsStored() async {
         // Given
-        let countryProvider = RandomCountryCodeProviderProtocolMock()
-        countryProvider.generateCodesNExcludingReturnValue = ["UK", "AR", "US"]
+        let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
+        randomCountryCodeProvider.generateCodesNExcludingReturnValue = ["UK", "AR", "US"]
         let store = ReactiveStorageProtocolMock<UserChoice>()
         let sut = self.makeSUT(
-            countryCode: "ES",
-            countryProvider: countryProvider,
-            gameSettings: .default,
+            randomCountryCodeProvider: randomCountryCodeProvider,
             storage: store
         )
         
@@ -76,7 +66,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
         
         // Then
         XCTAssertEqual(store.addCallsCount, 1)
-        XCTAssertEqual(store.addReceivedElement?.id, "ES")
+        XCTAssertEqual(store.addReceivedElement?.id.countryCode, "ES")
         XCTAssertEqual(store.addReceivedElement?.pickedCountryCode, "UK")
     }
     
@@ -85,18 +75,18 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
     func testThat_WhenMultipleChoiceIsObserved_ThenStoredValueIsSent() {
         // Given
         let store = ReactiveStorageProtocolMock<MultipleChoice>()
-        let returnValue = MultipleChoice(id: "ES", otherChoices: ["UK", "AR", "US"], rightChoicePosition: 0)
+        let returnValue = MultipleChoice.makeDouble()
         store.getSingleElementObservableOfIdReturnValue = Just(returnValue).eraseToAnyPublisher()
         let sut = self.makeSUT(storage: store)
         
         // When
         var observed: MultipleChoice?
-        let _ = sut.multipleChoiceObservable()
+        let _ = sut.multipleChoiceObservable
             .sink { observed = $0 }
         
         // Then
         XCTAssertEqual(store.getSingleElementObservableOfIdCallsCount, 1)
-        XCTAssertEqual(store.getSingleElementObservableOfIdReceivedArguments?.id, "ES")
+        XCTAssertEqual(store.getSingleElementObservableOfIdReceivedArguments?.id.countryCode, "ES")
         XCTAssertEqual(observed, returnValue)
     }
     
@@ -105,18 +95,18 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
     func testThat_WhenStoredAnswerIsObserved_ThenStoredValueIsSent() {
         // Given
         let store = ReactiveStorageProtocolMock<UserChoice>()
-        let returnValue = UserChoice(id: "ES", pickedCountryCode: "UK")
+        let returnValue = UserChoice.makeDouble()
         store.getSingleElementObservableOfIdReturnValue = Just(returnValue).eraseToAnyPublisher()
         let sut = self.makeSUT(storage: store)
         
         // When
         var observed: UserChoice?
-        let _ = sut.storedAnswerObservable()
+        let _ = sut.storedAnswerObservable
             .sink { observed = $0 }
         
         // Then
         XCTAssertEqual(store.getSingleElementObservableOfIdCallsCount, 1)
-        XCTAssertEqual(store.getSingleElementObservableOfIdReceivedArguments?.id, "ES")
+        XCTAssertEqual(store.getSingleElementObservableOfIdReceivedArguments?.id.countryCode, "ES")
         XCTAssertEqual(observed, returnValue)
     }
 }

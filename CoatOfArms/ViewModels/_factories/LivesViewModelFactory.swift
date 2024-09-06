@@ -27,7 +27,7 @@ struct LivesViewModelFactory {
             game: self.gameId,
             storage: self.storage
         )
-        return LivesViewModel(
+        return RemainingLivesViewModel(
             gameSettings: self.gameSettings,
             repository: repository
         )

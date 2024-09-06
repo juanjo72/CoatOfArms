@@ -9,8 +9,12 @@ import Foundation
 
 /// Set of possible answers, including the right one
 struct MultipleChoice: Identifiable, Equatable {
-    let id: CountryCode
-    let game: GameStamp
+    struct ID: Hashable {
+        let game: GameStamp
+        let countryCode: CountryCode
+    }
+    
+    let id: ID
     let otherChoices: [CountryCode]
     let rightChoicePosition: Int
 }
@@ -18,7 +22,7 @@ struct MultipleChoice: Identifiable, Equatable {
 extension MultipleChoice {
     var allChoices: [CountryCode] {
         var choices = self.otherChoices
-        choices.insert(self.id, at: self.rightChoicePosition)
+        choices.insert(self.id.countryCode, at: self.rightChoicePosition)
         return choices
     }
 }

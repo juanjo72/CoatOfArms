@@ -27,11 +27,14 @@ struct GameView<
 
             case .playing(let question, let remainingLives):
                 VStack {
-                    QuestionView(
-                        viewModel: question,
-                        style: self.style.question
-                    )
-                    .frame(maxWidth: .infinity, maxHeight: self.style.height)
+                        QuestionView(
+                            viewModel: question,
+                            style: self.style.question
+                        )
+                        .frame(
+                            maxWidth: .infinity,
+                            maxHeight: self.style.height
+                        )
                     
                     RemainingLivesView(
                         viewModel: remainingLives

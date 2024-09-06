@@ -9,13 +9,17 @@ import Foundation
 
 /// User's answer
 struct UserChoice: Identifiable, Equatable {
-    let id: CountryCode
-    let game: GameStamp
+    struct ID: Hashable {
+        let game: GameStamp
+        let countryCode: CountryCode
+    }
+
+    let id: ID
     let pickedCountryCode: CountryCode
 }
 
 extension UserChoice {
     var isCorrect: Bool {
-        self.id == self.pickedCountryCode
+        self.id.countryCode == self.pickedCountryCode
     }
 }

@@ -22,9 +22,7 @@ struct CoatOfArmsApp: App {
                 storage: storage
             )
             let rootViewModel = RootViewModel(
-                gameProvider: {
-                    gameViewModelFactory.make(stamp: .now)
-                }
+                gameProvider: gameViewModelFactory.make
             )
 
             RootView(

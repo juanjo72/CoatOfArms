@@ -6,15 +6,17 @@
 //
 
 @testable import CoatOfArms
+import Foundation
 
 extension MultipleChoice {
     static func makeDouble(
-        id: CountryCode = "es",
-        otherChoices: [CountryCode] = ["uk", "ar"],
+        game: GameStamp = Date(timeIntervalSince1970: 0),
+        countryCode: CountryCode = "ES",
+        otherChoices: [CountryCode] = ["IT", "AR", "US"],
         rightChoicePosition: Int = 0
     ) -> MultipleChoice {
         MultipleChoice(
-            id: id,
+            id: ID(game: game, countryCode: countryCode),
             otherChoices: otherChoices,
             rightChoicePosition: rightChoicePosition
         )

@@ -27,9 +27,9 @@ extension ChoiceButtonViewData.Effect {
             self = .none
             return
         }
-        if id == userChoice.id, userChoice.id == userChoice.pickedCountryCode {
+        if id == userChoice.id.countryCode, userChoice.id.countryCode == userChoice.pickedCountryCode {
             self = .rightChoice
-        } else if id == userChoice.pickedCountryCode, userChoice.id != userChoice.pickedCountryCode {
+        } else if id == userChoice.pickedCountryCode, userChoice.id.countryCode != userChoice.pickedCountryCode {
             self = .wrongChoice
         } else {
             self = .none

@@ -1,43 +1,30 @@
 //
-//  MultipleChoiceRepositoryProtocolMock.swift
-//  CoatOfArmsTests
+// MultipleChoiceRepositoryProtocolMock.swift
+// CoatOfArmsTests
 //
-//  Created on 17/8/24.
-//
+// Created on 6/9/24
+    
 
 @testable import CoatOfArms
 import Combine
-@testable import ReactiveStorage
 
 final class MultipleChoiceRepositoryProtocolMock: MultipleChoiceRepositoryProtocol {
     
    // MARK: - multipleChoiceObservable
 
-    var multipleChoiceObservableCallsCount = 0
-    var multipleChoiceObservableCalled: Bool {
-        multipleChoiceObservableCallsCount > 0
+    var multipleChoiceObservable: AnyPublisher<MultipleChoice?, Never> {
+        get { underlyingMultipleChoiceObservable }
+        set(value) { underlyingMultipleChoiceObservable = value }
     }
-    var multipleChoiceObservableReturnValue: AnyPublisher<MultipleChoice?, Never>!
-    var multipleChoiceObservableClosure: (() -> AnyPublisher<MultipleChoice?, Never>)?
-
-    func multipleChoiceObservable() -> AnyPublisher<MultipleChoice?, Never> {
-        multipleChoiceObservableCallsCount += 1
-        return multipleChoiceObservableClosure.map({ $0() }) ?? multipleChoiceObservableReturnValue
-    }
+    private var underlyingMultipleChoiceObservable: AnyPublisher<MultipleChoice?, Never>!
     
    // MARK: - storedAnswerObservable
 
-    var storedAnswerObservableCallsCount = 0
-    var storedAnswerObservableCalled: Bool {
-        storedAnswerObservableCallsCount > 0
+    var storedAnswerObservable: AnyPublisher<UserChoice?, Never> {
+        get { underlyingStoredAnswerObservable }
+        set(value) { underlyingStoredAnswerObservable = value }
     }
-    var storedAnswerObservableReturnValue: AnyPublisher<UserChoice?, Never>!
-    var storedAnswerObservableClosure: (() -> AnyPublisher<UserChoice?, Never>)?
-
-    func storedAnswerObservable() -> AnyPublisher<UserChoice?, Never> {
-        storedAnswerObservableCallsCount += 1
-        return storedAnswerObservableClosure.map({ $0() }) ?? storedAnswerObservableReturnValue
-    }
+    private var underlyingStoredAnswerObservable: AnyPublisher<UserChoice?, Never>!
     
    // MARK: - fetchAnswers
 

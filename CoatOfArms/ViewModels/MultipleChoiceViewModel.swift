@@ -59,10 +59,6 @@ final class MultipleChoiceViewModel<
     
     // MARK: Lifecycle
     
-    deinit {
-        print("DEINIT \(String(describing: self))")
-    }
-    
     init(
         gameSettings: GameSettings,
         locale: Locale = Locale.autoupdatingCurrent,

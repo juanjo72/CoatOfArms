@@ -24,9 +24,8 @@ struct RemainingLivesRepository: RemainingLivesRepositoryProtocol {
     
     var wrongAnswers: AnyPublisher<[UserChoice], Never> {
         self.storage.getAllElementsObservable(of: UserChoice.self)
-            .map { $0.filter { [self] in $0.game == self.game }}
+            .map { $0.filter { $0.id.game == self.game } }
             .map { $0.filter { !$0.isCorrect } }
-            .removeDuplicates()
             .eraseToAnyPublisher()
     }
     

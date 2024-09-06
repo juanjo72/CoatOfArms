@@ -47,10 +47,8 @@ struct MultipleChoiceView<
                     }
                 )
                 .buttonStyle(.borderedProminent)
-                .disabled(!self.viewModel.isEnabled)
-                .overlay(
-                    (button.effect != .none) ? color.blendMode((self.colorScheme == .light) ? .plusDarker : .plusLighter) : nil
-                )
+                .tint(color)
+                .allowsHitTesting(self.viewModel.isEnabled)
                 .clipShape(Capsule())
                 .padding(.horizontal)
             }

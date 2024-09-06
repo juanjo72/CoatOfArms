@@ -1,5 +1,5 @@
 //
-// LivesViewModel.swift
+// RemainingLivesViewModel.swift
 // CoatOfArms
 //
 // Created on 2/9/24
@@ -13,7 +13,7 @@ protocol LivesViewModelProtocol: ObservableObject {
     var totalLives: Int { get }
 }
 
-final class LivesViewModel<
+final class RemainingLivesViewModel<
     OutputScheduler: Scheduler
 >: LivesViewModelProtocol {
     
@@ -38,10 +38,6 @@ final class LivesViewModel<
     
     // MARK: Lifecycle
     
-    deinit {
-        print("DEINIT \(String(describing: self))")
-    }
-    
     init(
         gameSettings: GameSettings,
         outputScheduler: OutputScheduler = DispatchQueue.main,
@@ -59,7 +55,7 @@ final class LivesViewModel<
 }
 
 #if DEBUG
-extension LivesViewModel: CustomDebugStringConvertible  {
+extension RemainingLivesViewModel: CustomDebugStringConvertible  {
     var debugDescription: String {
         "LivesViewModel"
     }

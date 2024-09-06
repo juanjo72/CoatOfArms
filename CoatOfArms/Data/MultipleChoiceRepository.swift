@@ -20,8 +20,7 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     
     // MARK: Injected
     
-    private let game: GameStamp
-    private let countryCode: CountryCode
+    private let id: MultipleChoice.ID
     private let gameSettings: GameSettings
     private let randomCountryCodeProvider: any RandomCountryCodeProviderProtocol
     private let storage: any ReactiveStorage.ReactiveStorageProtocol
@@ -29,28 +28,33 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     // MARK: MultipleChoiceRepositoryProtocol
     
     var storedAnswerObservable: AnyPublisher<UserChoice?, Never> {
-        self.storage.getSingleElementObservable(of: UserChoice.self, id: self.countryCode)
-            .removeDuplicates()
-            .eraseToAnyPublisher()
+        self.storage.getSingleElementObservable(
+            of: UserChoice.self,
+            id: UserChoice.ID(
+                game: self.id.game,
+                countryCode: self.id.countryCode
+            )
+        )
+        .eraseToAnyPublisher()
     }
     
     var multipleChoiceObservable: AnyPublisher<MultipleChoice?, Never> {
-        self.storage.getSingleElementObservable(of: MultipleChoice.self, id: self.countryCode)
-            .removeDuplicates()
-            .eraseToAnyPublisher()
+        self.storage.getSingleElementObservable(
+            of: MultipleChoice.self,
+            id: self.id
+        )
+        .eraseToAnyPublisher()
     }
     
     // MARK: Lifecycle
     
     init(
-        game: GameStamp,
-        countryCode: CountryCode,
+        id: MultipleChoice.ID,
         gameSettings: GameSettings,
         randomCountryCodeProvider: any RandomCountryCodeProviderProtocol,
         storage: any ReactiveStorage.ReactiveStorageProtocol
     ) {
-        self.game = game
-        self.countryCode = countryCode
+        self.id = id
         self.gameSettings = gameSettings
         self.randomCountryCodeProvider = randomCountryCodeProvider
         self.storage = storage
@@ -61,12 +65,11 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     func fetchAnswers() async {
         let otherChoices = self.randomCountryCodeProvider.generateCodes(
             n: self.gameSettings.numPossibleChoices - 1,
-            excluding: [self.countryCode]
+            excluding: [self.id.countryCode]
         )
         let rightChoicePosition = (0..<self.gameSettings.numPossibleChoices).randomElement()!
         let answers = MultipleChoice(
-            id: self.countryCode,
-            game: self.game,
+            id: self.id,
             otherChoices: otherChoices,
             rightChoicePosition: rightChoicePosition
         )
@@ -75,8 +78,10 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     
     func set(answer: CountryCode) async {
         let answer = UserChoice(
-            id: self.countryCode,
-            game: self.game,
+            id: UserChoice.ID(
+                game: self.id.game,
+                countryCode: self.id.countryCode
+            ),
             pickedCountryCode: answer
         )
         await self.storage.add(answer)

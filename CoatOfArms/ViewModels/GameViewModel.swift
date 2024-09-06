@@ -45,13 +45,7 @@ final class GameViewModel<
     
     @Published var status: GameStatus<QuestionViewModel, RemainingLives> = .idle
     
-    private var cancellable: [AnyCancellable] = []
-    
     // MARK: Lifecycle
-    
-    deinit {
-        print("DEINIT \(String(describing: self))")
-    }
     
     init(
         game: GameStamp,
@@ -69,11 +63,6 @@ final class GameViewModel<
         self.randomCountryCodeProvider = randomCountryCodeProvider
         self.remainingLives = remainingLives
         self.storage = storage
-        
-         self.$status
-            .print("[STATUS]")
-            .sink { _ in }
-            .store(in: &cancellable)
     }
     
     // MARK: GameRouterProtocol
@@ -90,13 +79,14 @@ final class GameViewModel<
     }
     
     func next() async {
-        let allAnswers = await self.storage.getAllElements(of: UserChoice.self).filter { [self] in $0.game == self.game }
-        let rightCount = allAnswers.filter { $0.isCorrect }.count
-        let wrongCount = allAnswers.count - rightCount
+        let allAnswersInCurrentGame = await self.storage.getAllElements(of: UserChoice.self)
+            .filter { [self] in $0.id.game == self.game }
+        let rightCount = allAnswersInCurrentGame.filter { $0.isCorrect }.count
+        let wrongCount = allAnswersInCurrentGame.count - rightCount
         
         if wrongCount < self.gameSettings.maxWrongAnswers {
-            let alreadyAnswered = allAnswers.map { $0.id }
-            let newCode = self.randomCountryCodeProvider.generateCode(excluding: alreadyAnswered)
+            let allShownCountriesSoFar = await self.storage.getAllElements(of: UserChoice.self).map { $0.id.countryCode }
+            let newCode = self.randomCountryCodeProvider.generateCode(excluding: allShownCountriesSoFar)
             let newQuestion = self.questionProvider(newCode)
             self.outputScheduler.schedule {
                 self.status = .playing(

@@ -28,8 +28,7 @@ struct MultipleChoiceViewModelFactory {
     func make(code: CountryCode) -> some MultipleChoiceViewModelProtocol {
         let randomCountryCodeProvider = RandomCountryCodeProvider()
         let repository = MultipleChoiceRepository(
-            game: self.game,
-            countryCode: code,
+            id: .init(game: self.game, countryCode: code),
             gameSettings: self.gameSettings,
             randomCountryCodeProvider: randomCountryCodeProvider,
             storage: self.storage

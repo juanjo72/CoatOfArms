@@ -18,8 +18,8 @@ struct QuestionViewModelFactory {
     init(
         gameId: GameStamp,
         gameSettings: GameSettings,
-        storage: ReactiveStorageProtocol,
-        requestSender: RequestSenderProtocol,
+        storage: any ReactiveStorageProtocol,
+        requestSender: any RequestSenderProtocol,
         nextAction: @escaping () async -> Void
     ) {
         self.gameId = gameId
