@@ -1,9 +1,9 @@
 //
-// GameView.swift
-// CoatOfArms
+//  GameView.swift
+//  CoatOfArms
 //
-// Created on 2/9/24
-    
+//  Created on 2/9/24.
+//
 
 import SwiftUI
 

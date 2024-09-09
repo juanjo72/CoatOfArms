@@ -1,8 +1,8 @@
 //
-// RootViewStyle.swift
-// CoatOfArms
+//  RootViewStyle.swift
+//  CoatOfArms
 //
-// Created on 4/9/24
+//  Created on 4/9/24.
 //
 
 extension RootStyle {

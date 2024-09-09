@@ -1,8 +1,8 @@
 //
-// NetworkProtocolMock.swift
-// CoatOfArmsTests
+//  NetworkProtocolMock.swift
+//  CoatOfArmsTests
 //
-// Created on 9/9/242
+//  Created on 9/9/24.
 //
 
 @testable import CoatOfArms
@@ -10,25 +10,26 @@ import Foundation
 
 final class NetworkProtocolMock<U>: NetworkProtocol {
     
-   // MARK: - request<Resource: Decodable>
+   // MARK: - request<T>
 
-    var requestUrlThrowableError: Error?
-    var requestUrlCallsCount = 0
-    var requestUrlCalled: Bool {
-        requestUrlCallsCount > 0
+    var requestUrlDecoderThrowableError: Error?
+    var requestUrlDecoderCallsCount = 0
+    var requestUrlDecoderCalled: Bool {
+        requestUrlDecoderCallsCount > 0
     }
-    var requestUrlReceivedUrl: URL?
-    var requestUrlReceivedInvocations: [URL] = []
-    var requestUrlReturnValue: U!
-    var requestUrlClosure: ((URL) throws -> U)?
+    var requestUrlDecoderReceivedArguments: (url: URL, decoder: (Data) throws -> U)?
+    var requestUrlDecoderReceivedInvocations: [(url: URL, decoder: (Data) throws -> U)] = []
+    var requestUrlDecoderReturnValue: U!
+    var requestUrlDecoderClosure: ((URL, @escaping (Data) throws -> U) throws -> U)?
 
-    func request<Resource: Decodable>(url: URL) throws -> Resource {
-        if let error = requestUrlThrowableError {
+    func request<T>(url: URL, decoder: @escaping (Data) throws -> T) throws -> T {
+        if let error = requestUrlDecoderThrowableError {
             throw error
         }
-        requestUrlCallsCount += 1
-        requestUrlReceivedUrl = url
-        requestUrlReceivedInvocations.append(url)
-        return try requestUrlClosure.map({ try $0(url) as! Resource }) ?? requestUrlReturnValue as! Resource
+        requestUrlDecoderCallsCount += 1
+        let x = (url: url, decoder: decoder) as! (URL, (Data) throws -> U)
+        requestUrlDecoderReceivedArguments = x
+        requestUrlDecoderReceivedInvocations.append(x)
+        return try requestUrlDecoderClosure.map({ try $0(url, decoder as! (Data) throws -> U) as! T }) ?? requestUrlDecoderReturnValue as! T
     }
 }

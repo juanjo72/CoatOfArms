@@ -1,5 +1,5 @@
 //
-//  WhichCountryViewModelTests.swift
+//  QuestionViewModelTests.swift
 //  CoatOfArmsTests
 //
 //  Created on 19/8/24.

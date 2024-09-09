@@ -1,5 +1,5 @@
 //
-//  Possible answers.swift
+//  MultipleChoice.swift
 //  CoatOfArms
 //
 //  Created on 14/8/24.

@@ -1,9 +1,9 @@
 //
-// RootView.swift
-// CoatOfArms
+//  RootView.swift
+//  CoatOfArms
 //
-// Created on 3/9/24
-    
+//  Created on 3/9/24.
+//
 
 import SwiftUI
 

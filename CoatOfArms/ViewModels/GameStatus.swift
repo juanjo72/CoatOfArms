@@ -1,8 +1,8 @@
 //
-// GameStatus.swift
-// CoatOfArms
+//  GameStatus.swift
+//  CoatOfArms
 //
-// Created on 8/9/24
+//  Created on 8/9/24.
 //
 
 enum GameStatus<

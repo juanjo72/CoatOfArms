@@ -11,7 +11,6 @@ struct MockError: Error {}
 
 public final class RequestSenderProtocolMock<U>: RequestSenderProtocol {
     
-    
    // MARK: - request<T>
 
     public var requestResourceThrowableError: Error?

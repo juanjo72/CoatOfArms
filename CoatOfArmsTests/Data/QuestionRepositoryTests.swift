@@ -15,7 +15,7 @@ final class QuestionRepositoryTests: XCTestCase {
     
     func makeMock(
         countryCode: String = "ES",
-        network: NetworkProtocolMock<[ServerCountry]> = .init(),
+        network: NetworkProtocolMock<ServerCountry> = .init(),
         storage: StorageProtocolMock<ServerCountry> = .init()
     ) -> QuestionRepository {
         QuestionRepository(
@@ -29,9 +29,9 @@ final class QuestionRepositoryTests: XCTestCase {
     
     func testThat_WhenCountryIsFetched_ThenRequestIsSent() async throws {
         // Given
-        let network = NetworkProtocolMock<[ServerCountry]>()
+        let network = NetworkProtocolMock<ServerCountry>()
         let returnCountry = ServerCountry.makeDouble()
-        network.requestUrlReturnValue = [returnCountry]
+        network.requestUrlDecoderReturnValue = returnCountry
         let sut = self.makeMock(
             network: network
         )
@@ -40,13 +40,13 @@ final class QuestionRepositoryTests: XCTestCase {
         try await sut.fetchCountry()
         
         // Then
-        XCTAssertEqual(network.requestUrlCallsCount, 1)
+        XCTAssertEqual(network.requestUrlDecoderCallsCount, 1)
     }
     
     func testThat_WhenCountryIsFetched_AndRequestFails_ThenThrowsError() async {
         // Given
-        let network = NetworkProtocolMock<[ServerCountry]>()
-        network.requestUrlThrowableError = DecodeError.empty
+        let network = NetworkProtocolMock<ServerCountry>()
+        network.requestUrlDecoderThrowableError = DecodeError.empty
         let sut = self.makeMock(
             network: network
         )
@@ -60,10 +60,10 @@ final class QuestionRepositoryTests: XCTestCase {
 
     func testThat_WhenCountryIsFetched_ThenResponseIsStored() async throws {
         // Given
-        let network = NetworkProtocolMock<[ServerCountry]>()
+        let network = NetworkProtocolMock<ServerCountry>()
         let store = StorageProtocolMock<ServerCountry>()
         let returnCountry = ServerCountry.makeDouble()
-        network.requestUrlReturnValue = [returnCountry]
+        network.requestUrlDecoderReturnValue = returnCountry
         let sut = self.makeMock(
             countryCode: "ES",
             network: network,
@@ -83,7 +83,6 @@ final class QuestionRepositoryTests: XCTestCase {
     func testThat_WhenSubscribedToCountryID_ThenCountryIsObserved() {
         // Given
         let store = StorageProtocolMock<ServerCountry>()
-        let network = NetworkProtocolMock<[ServerCountry]>()
         let returnCountry = ServerCountry.makeDouble()
         store.getSingleElementObservableOfIdReturnValue = Just(returnCountry).eraseToAnyPublisher()
         let sut = self.makeMock(storage: store)

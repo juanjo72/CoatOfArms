@@ -1,5 +1,5 @@
 //
-//  whichCountryRepository.swift
+//  QuestionRepository.swift
 //  CoatOfArms
 //
 //  Created on 11/8/24.
@@ -52,9 +52,11 @@ final class QuestionRepository: QuestionRepositoryProtocol {
 
     func fetchCountry() async throws {
         let url = URL(string: "https://restcountries.com/v3.1/alpha/\(self.countryCode)")!
-        let countries: [ServerCountry] = try await self.network.request(url: url)
-        guard let country = countries.first else {
-            throw DecodeError.empty
+        let country: ServerCountry = try await self.network.request(url: url) { data in
+            guard let country = try JSONDecoder().decode([ServerCountry].self, from: data).first else {
+                throw DecodeError.empty
+            }
+            return country
         }
         await self.storage.add(country)
     }

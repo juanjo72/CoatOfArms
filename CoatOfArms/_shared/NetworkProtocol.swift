@@ -1,16 +1,18 @@
 //
-// NetworkProtocol.swift
-// CoatOfArms
+//  NetworkProtocol.swift
+//  CoatOfArms
 //
-// Created on 9/9/24
-    
+//  Created on 9/9/24.
+//
+
 import Foundation
 import Network
 
 protocol NetworkProtocol {
-    func request<Resource: Decodable>(url: URL) async throws -> Resource
+    func request<T>(url: URL, decoder: @escaping (Data) throws -> T) async throws -> T
 }
 
+/// Adapter converting third party's RequestSenderProtocol to local NetworkProtocol
 struct NetworkAdapter: NetworkProtocol {
     private let sender: any Network.RequestSenderProtocol
     
@@ -20,10 +22,8 @@ struct NetworkAdapter: NetworkProtocol {
         self.sender = sender
     }
     
-    func request<Resource: Decodable>(url: URL) async throws -> Resource {
-        let resource = Network.RemoteResource(url: url) { data in
-            try JSONDecoder().decode(Resource.self, from: data)
-        }
+    func request<T>(url: URL, decoder: @escaping (Data) throws -> T) async throws -> T {
+        let resource = Network.RemoteResource(url: url, decoder: decoder)
         return try await self.sender.request(resource: resource)
     }
 }

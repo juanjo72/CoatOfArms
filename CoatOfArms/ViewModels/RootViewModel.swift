@@ -1,8 +1,9 @@
 //
-// RootViewModel.swift
-// CoatOfArms
+//  RootViewModel.swift
+//  CoatOfArms
 //
-// Created on 3/9/24
+//  Created on 3/9/24.
+//
 
 import Combine
 import Foundation

@@ -1,9 +1,9 @@
 //
-// GameSettings+double.swift
-// CoatOfArmsTests
+//  GameSettings+double.swift
+//  CoatOfArmsTests
 //
-// Created on 8/9/24
-    
+//  Created on 8/9/24
+//
 
 @testable import CoatOfArms
 

@@ -1,9 +1,9 @@
 //
-// LivesRepository.swift
-// CoatOfArms
+//  RemainingLivesRepository.swift
+//  CoatOfArms
 //
-// Created on 2/9/24
-    
+//  Created on 2/9/24.
+//
 
 import Combine
 

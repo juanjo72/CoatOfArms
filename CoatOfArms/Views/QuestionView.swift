@@ -1,5 +1,5 @@
 //
-//  WhichCountryView.swift
+//  QuestionView.swift
 //  CoatOfArms
 //
 //  Created on 20/8/24.

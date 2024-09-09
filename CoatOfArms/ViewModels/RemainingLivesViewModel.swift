@@ -1,9 +1,9 @@
 //
-// RemainingLivesViewModel.swift
-// CoatOfArms
+//  RemainingLivesViewModel.swift
+//  CoatOfArms
 //
-// Created on 2/9/24
-    
+//  Created on 2/9/24.
+//
 
 import Combine
 import Foundation

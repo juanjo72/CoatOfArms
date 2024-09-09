@@ -1,12 +1,11 @@
 //
-// StorageProtocol.swift
-// CoatOfArms
+//  StorageProtocol.swift
+//  CoatOfArms
 //
-// Created on 9/9/24
-    
+//  Created on 9/9/24.
+//
 
 import Combine
-import ReactiveStorage
 
 public typealias EntityType = Identifiable & Equatable
 
@@ -16,5 +15,3 @@ protocol StorageProtocol {
     func getAllElements<Entity: EntityType>(of type: Entity.Type) async -> [Entity]
     func add<Entity: EntityType>(_ element: Entity) async
 }
-
-extension ReactiveInMemoryStorage: StorageProtocol {}

@@ -1,8 +1,9 @@
 //
-// GameViewModelFactory.swift
-// CoatOfArms
+//  GameViewModelFactory.swift
+//  CoatOfArms
 //
-// Created on 3/9/24
+//  Created on 3/9/24.
+//
 
 import Combine
 import Foundation
@@ -24,7 +25,7 @@ struct GameViewModelFactory {
     
     func make(stamp: GameStamp) -> some GameViewModelProtocol {
         let randomCountryProvider = RandomCountryCodeProvider()
-        let remainingLives = LivesViewModelFactory(
+        let remainingLives = RemainingLivesViewModelFactory(
             gameId: stamp,
             gameSettings: self.gameSettings,
             storage: self.storage

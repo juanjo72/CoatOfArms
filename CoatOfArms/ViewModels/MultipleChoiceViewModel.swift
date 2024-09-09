@@ -1,5 +1,5 @@
 //
-//  PossibleAnswersViewModel.swift
+//  MultipleChoiceViewModel.swift
 //  CoatOfArms
 //
 //  Created on 14/8/24.

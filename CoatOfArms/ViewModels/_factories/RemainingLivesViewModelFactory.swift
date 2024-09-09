@@ -1,11 +1,11 @@
 //
-// LivesViewModelFactory.swift
-// CoatOfArms
+//  RemainingLivesViewModelFactory.swift
+//  CoatOfArms
 //
-// Created on 3/9/24
+//  Created on 3/9/24.
 //
 
-struct LivesViewModelFactory {
+struct RemainingLivesViewModelFactory {
     private let gameId: GameStamp
     private let gameSettings: GameSettings
     private let storage: any StorageProtocol

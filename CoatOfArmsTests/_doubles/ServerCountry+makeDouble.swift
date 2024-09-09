@@ -1,5 +1,5 @@
 //
-//  Country+makeDouble.swift
+//  ServerCountry+makeDouble.swift
 //  CoatOfArmsTests
 //
 //  Created on 20/8/24.

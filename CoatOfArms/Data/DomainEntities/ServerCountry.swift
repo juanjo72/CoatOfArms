@@ -1,5 +1,5 @@
 //
-//  Country.swift
+//  ServerCountry.swift
 //  CoatOfArms
 //
 //  Created on 11/8/24.
