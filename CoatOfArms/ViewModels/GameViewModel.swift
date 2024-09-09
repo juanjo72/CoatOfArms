@@ -3,23 +3,15 @@
 // CoatOfArms
 //
 // Created on 4/9/24
+//
     
 import Combine
 import Foundation
 import ReactiveStorage
 
-enum GameStatus<
-    QuestionViewModel: QuestionViewModelProtocol,
-    RemainingLives: LivesViewModelProtocol
-> {
-    case idle
-    case playing(question: QuestionViewModel, remainingLives: RemainingLives)
-    case gameOver(score: Int)
-}
-
 protocol GameViewModelProtocol: ObservableObject {
     associatedtype QuestionViewModel: QuestionViewModelProtocol
-    associatedtype RemainingLives: LivesViewModelProtocol
+    associatedtype RemainingLives: RemainingLivesViewModelProtocol
     var status: GameStatus<QuestionViewModel, RemainingLives> { get }
     func next() async
     func start()
@@ -27,7 +19,7 @@ protocol GameViewModelProtocol: ObservableObject {
 
 final class GameViewModel<
     QuestionViewModel: QuestionViewModelProtocol,
-    RemainingLives: LivesViewModelProtocol,
+    RemainingLives: RemainingLivesViewModelProtocol,
     OutputScheduler: Scheduler
 >: GameViewModelProtocol {
     
@@ -80,7 +72,7 @@ final class GameViewModel<
     
     func next() async {
         let allAnswersInCurrentGame = await self.storage.getAllElements(of: UserChoice.self)
-            .filter { [self] in $0.id.game == self.game }
+            .filter { $0.id.game == self.game }
         let rightCount = allAnswersInCurrentGame.filter { $0.isCorrect }.count
         let wrongCount = allAnswersInCurrentGame.count - rightCount
         

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RemainingLivesView<
-    ViewModel: LivesViewModelProtocol
+    ViewModel: RemainingLivesViewModelProtocol
 >: View {
     
     // MARK: Injected

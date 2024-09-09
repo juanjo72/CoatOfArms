@@ -13,7 +13,7 @@ enum DecodeError: Error {
 }
 
 /// Factory to provide Remote resource to obtain Country detail, given a country code
-extension RemoteResource where T == ServerCountry {
+extension Network.RemoteResource where T == ServerCountry {
     static func make(code: String) -> Self {
         Network.RemoteResource<ServerCountry>(
             url: URL(string: "https://restcountries.com/v3.1/alpha/\(code)")!,

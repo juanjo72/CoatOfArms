@@ -5,6 +5,7 @@
 //  Created on 14/8/24.
 //
 
+import AudioToolbox
 import Combine
 import Foundation
 
@@ -38,7 +39,7 @@ final class MultipleChoiceViewModel<
     private var answersObservable: some Publisher<[ChoiceButtonViewData], Never> {
         Publishers.CombineLatest(
             self.repository.multipleChoiceObservable,
-            self.repository.storedAnswerObservable
+            self.repository.userChoiceObservable
         )
         .map { [locale] choices, userAnswer in
             guard let choices else {

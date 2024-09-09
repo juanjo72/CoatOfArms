@@ -34,7 +34,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
         let repo = MultipleChoiceRepositoryProtocolMock()
         let expected = MultipleChoice.makeDouble()
         repo.multipleChoiceObservable = Just(expected).eraseToAnyPublisher()
-        repo.storedAnswerObservable = Just(nil).eraseToAnyPublisher()
+        repo.userChoiceObservable = Just(nil).eraseToAnyPublisher()
         let sut = self.makeSUT(
             repository: repo
         )
@@ -51,7 +51,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
         let repo = MultipleChoiceRepositoryProtocolMock()
         let expected = MultipleChoice.makeDouble()
         repo.multipleChoiceObservable = Just(expected).eraseToAnyPublisher()
-        repo.storedAnswerObservable = Just(nil).eraseToAnyPublisher()
+        repo.userChoiceObservable = Just(nil).eraseToAnyPublisher()
         let sut = self.makeSUT(
             repository: repo
         )
@@ -70,7 +70,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
         let repo = MultipleChoiceRepositoryProtocolMock()
         let multipleChoice: MultipleChoice = MultipleChoice.makeDouble()
         repo.multipleChoiceObservable = Just(multipleChoice).eraseToAnyPublisher()
-        repo.storedAnswerObservable = Just(nil).eraseToAnyPublisher()
+        repo.userChoiceObservable = Just(nil).eraseToAnyPublisher()
         let sut = self.makeSUT(
             repository: repo
         )
@@ -88,7 +88,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
         let repo = MultipleChoiceRepositoryProtocolMock()
         let multipleChoice: MultipleChoice = MultipleChoice.makeDouble()
         repo.multipleChoiceObservable = Just(multipleChoice).eraseToAnyPublisher()
-        repo.storedAnswerObservable = Just(nil).eraseToAnyPublisher()
+        repo.userChoiceObservable = Just(nil).eraseToAnyPublisher()
         let sut = self.makeSUT(
             repository: repo
         )
@@ -107,7 +107,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
         // Given
         let repo = MultipleChoiceRepositoryProtocolMock()
         repo.multipleChoiceObservable = Just(nil).eraseToAnyPublisher()
-        repo.storedAnswerObservable = Just(nil).eraseToAnyPublisher()
+        repo.userChoiceObservable = Just(nil).eraseToAnyPublisher()
         let sut = self.makeSUT(
             repository: repo
         )
@@ -130,7 +130,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
             rightChoicePosition: 0
         )
         repo.multipleChoiceObservable = Just(multipleChoice).eraseToAnyPublisher()
-        repo.storedAnswerObservable = Just(nil).eraseToAnyPublisher()
+        repo.userChoiceObservable = Just(nil).eraseToAnyPublisher()
         let sut = self.makeSUT(
             repository: repo
         )
@@ -157,7 +157,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
             countryCode: "ES",
             pickedCountryCode: "AR"
         )
-        repo.storedAnswerObservable = Just(userChoice).eraseToAnyPublisher()
+        repo.userChoiceObservable = Just(userChoice).eraseToAnyPublisher()
         let sut = self.makeSUT(
             repository: repo
         )
@@ -184,7 +184,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
             countryCode: "ES",
             pickedCountryCode: "ES"
         )
-        repo.storedAnswerObservable = Just(userChoice).eraseToAnyPublisher()
+        repo.userChoiceObservable = Just(userChoice).eraseToAnyPublisher()
         let sut = self.makeSUT(
             repository: repo
         )

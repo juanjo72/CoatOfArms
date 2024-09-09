@@ -19,7 +19,8 @@ final class QuestionViewModelTests: XCTestCase {
         countryCode: CountryCode = "ES",
         multipleChoiceProvider: @escaping () -> some MultipleChoiceViewModelProtocolMock = { MultipleChoiceViewModelProtocolMock() },
         remoteImagePrefetcher: @escaping (URL) -> AnyPublisher<Bool, Never> = { _ in Just(true).eraseToAnyPublisher() },
-        repository: QuestionRepositoryProtocolMock = .init()
+        repository: QuestionRepositoryProtocolMock = .init(),
+        nextAction: @escaping () async -> Void = {}
     ) -> some QuestionViewModelProtocol {
         QuestionViewModel(
             countryCode: countryCode,
@@ -27,7 +28,7 @@ final class QuestionViewModelTests: XCTestCase {
             outputScheduler: ImmediateScheduler.shared,
             remoteImagePrefetcher: remoteImagePrefetcher,
             repository: repository,
-            nextAction: {}
+            nextAction: nextAction
         )
     }
     
@@ -55,14 +56,12 @@ final class QuestionViewModelTests: XCTestCase {
         let repository = QuestionRepositoryProtocolMock()
         repository.countryObservable = Just(.makeDouble()).eraseToAnyPublisher()
         let expectedMultipleChoice = MultipleChoiceViewModelProtocolMock()
+        
+        // When
         let sut = self.makeSUT(
             multipleChoiceProvider: { expectedMultipleChoice },
             repository: repository
         )
-        
-        // When
-        //await sut.viewWillAppear()
-        
         
         // Then
         let element = try XCTUnwrap(sut.loadingState.element)

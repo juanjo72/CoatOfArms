@@ -101,7 +101,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
         
         // When
         var observed: UserChoice?
-        let _ = sut.storedAnswerObservable
+        let _ = sut.userChoiceObservable
             .sink { observed = $0 }
         
         // Then

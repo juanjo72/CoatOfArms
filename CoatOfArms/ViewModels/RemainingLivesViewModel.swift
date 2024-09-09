@@ -8,14 +8,14 @@
 import Combine
 import Foundation
 
-protocol LivesViewModelProtocol: ObservableObject {
+protocol RemainingLivesViewModelProtocol: ObservableObject {
     var numberOfLives: Int { get }
     var totalLives: Int { get }
 }
 
 final class RemainingLivesViewModel<
     OutputScheduler: Scheduler
->: LivesViewModelProtocol {
+>: RemainingLivesViewModelProtocol {
     
     // MARK: Injected
     

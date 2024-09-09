@@ -10,7 +10,7 @@ import ReactiveStorage
 
 protocol MultipleChoiceRepositoryProtocol {
     var multipleChoiceObservable: AnyPublisher<MultipleChoice?, Never> { get }
-    var storedAnswerObservable: AnyPublisher<UserChoice?, Never> { get }
+    var userChoiceObservable: AnyPublisher<UserChoice?, Never> { get }
     func fetchAnswers() async
     func set(answer: CountryCode) async
 }
@@ -27,7 +27,7 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     
     // MARK: MultipleChoiceRepositoryProtocol
     
-    var storedAnswerObservable: AnyPublisher<UserChoice?, Never> {
+    var userChoiceObservable: AnyPublisher<UserChoice?, Never> {
         self.storage.getSingleElementObservable(
             of: UserChoice.self,
             id: UserChoice.ID(

@@ -5,6 +5,7 @@
 //  Created on 20/8/24.
 //
 
+import AudioToolbox
 import SwiftUI
 
 struct MultipleChoiceView<
@@ -27,14 +28,6 @@ struct MultipleChoiceView<
                 self.viewModel.choiceButtons,
                 id: \.id
             ) { button in
-                let color: Color = switch(button.effect) {
-                case .none:
-                        .accentColor
-                case .rightChoice:
-                        .green
-                case .wrongChoice:
-                        .red
-                }
                 Button(
                     action: {
                         Task {
@@ -47,10 +40,9 @@ struct MultipleChoiceView<
                     }
                 )
                 .buttonStyle(.borderedProminent)
-                .tint(color)
+                .tint(button.effect.color)
                 .allowsHitTesting(self.viewModel.isEnabled)
                 .clipShape(Capsule())
-                .padding(.horizontal)
             }
         }
         .task {

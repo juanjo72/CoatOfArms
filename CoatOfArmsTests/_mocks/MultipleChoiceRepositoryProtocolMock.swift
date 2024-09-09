@@ -3,7 +3,7 @@
 // CoatOfArmsTests
 //
 // Created on 6/9/24
-    
+//
 
 @testable import CoatOfArms
 import Combine
@@ -20,7 +20,7 @@ final class MultipleChoiceRepositoryProtocolMock: MultipleChoiceRepositoryProtoc
     
    // MARK: - storedAnswerObservable
 
-    var storedAnswerObservable: AnyPublisher<UserChoice?, Never> {
+    var userChoiceObservable: AnyPublisher<UserChoice?, Never> {
         get { underlyingStoredAnswerObservable }
         set(value) { underlyingStoredAnswerObservable = value }
     }

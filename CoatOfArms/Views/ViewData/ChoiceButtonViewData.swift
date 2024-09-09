@@ -5,6 +5,8 @@
 //  Created on 14/8/24.
 //
 
+import SwiftUI
+
 /// View Data representing each one of the choices
 struct ChoiceButtonViewData: Equatable {
     enum Effect {
@@ -33,6 +35,19 @@ extension ChoiceButtonViewData.Effect {
             self = .wrongChoice
         } else {
             self = .none
+        }
+    }
+}
+
+extension ChoiceButtonViewData.Effect {
+    var color: Color {
+        return switch(self) {
+        case .none:
+                .accentColor
+        case .rightChoice:
+                .green
+        case .wrongChoice:
+                .red
         }
     }
 }
