@@ -6,7 +6,6 @@
 
 @testable import CoatOfArms
 import Combine
-import ReactiveStorage
 import XCTest
 
 final class RamainingLivesRepositoryTests: XCTestCase {
@@ -15,7 +14,7 @@ final class RamainingLivesRepositoryTests: XCTestCase {
     
     private func makeSUT(
         game: GameStamp = Date(timeIntervalSince1970: 0),
-        storage: ReactiveStorageProtocol = ReactiveStorageProtocolMock<UserChoice>()
+        storage: StorageProtocol = StorageProtocolMock<UserChoice>()
     ) -> RemainingLivesRepository {
         RemainingLivesRepository(
             game: game,
@@ -27,7 +26,7 @@ final class RamainingLivesRepositoryTests: XCTestCase {
     
     func testThat_WhenWrongAnswersAreObserved_ThenOnlyThisGameOnesAreObserved() {
         // Given
-        let storage = ReactiveStorageProtocolMock<UserChoice>()
+        let storage = StorageProtocolMock<UserChoice>()
         storage.getAllElementsObservableOfReturnValue = Just(
             [
                 UserChoice.makeDouble(game: Date(timeIntervalSince1970: 1)),
@@ -48,7 +47,7 @@ final class RamainingLivesRepositoryTests: XCTestCase {
     
     func testThat_WhenWrongAnswersAreObserved_ThenOnlyWrongOnesAreObserved() {
         // Given
-        let storage = ReactiveStorageProtocolMock<UserChoice>()
+        let storage = StorageProtocolMock<UserChoice>()
         storage.getAllElementsObservableOfReturnValue = Just(
             [
                 UserChoice.makeDouble(countryCode: "ES", pickedCountryCode: "ES"),

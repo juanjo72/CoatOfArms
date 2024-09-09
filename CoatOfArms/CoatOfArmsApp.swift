@@ -18,7 +18,7 @@ struct CoatOfArmsApp: App {
             let requestSender = Network.RequestSender.shared()
             let gameViewModelFactory = GameViewModelFactory(
                 gameSettings: settings,
-                requestSender: requestSender,
+                network: NetworkAdapter(sender: requestSender),
                 storage: storage
             )
             let rootViewModel = RootViewModel(

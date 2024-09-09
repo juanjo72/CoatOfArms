@@ -6,7 +6,6 @@
 //
 
 import Combine
-import ReactiveStorage
 
 protocol MultipleChoiceRepositoryProtocol {
     var multipleChoiceObservable: AnyPublisher<MultipleChoice?, Never> { get }
@@ -23,7 +22,7 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
     private let id: MultipleChoice.ID
     private let gameSettings: GameSettings
     private let randomCountryCodeProvider: any RandomCountryCodeProviderProtocol
-    private let storage: any ReactiveStorage.ReactiveStorageProtocol
+    private let storage: any StorageProtocol
     
     // MARK: MultipleChoiceRepositoryProtocol
     
@@ -52,7 +51,7 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
         id: MultipleChoice.ID,
         gameSettings: GameSettings,
         randomCountryCodeProvider: any RandomCountryCodeProviderProtocol,
-        storage: any ReactiveStorage.ReactiveStorageProtocol
+        storage: StorageProtocol
     ) {
         self.id = id
         self.gameSettings = gameSettings

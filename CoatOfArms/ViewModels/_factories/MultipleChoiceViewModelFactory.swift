@@ -3,20 +3,18 @@
 // CoatOfArms
 //
 // Created on 3/9/24
-    
-
-import ReactiveStorage
+//
 
 struct MultipleChoiceViewModelFactory {
     private let game: GameStamp
     private let gameSettings: GameSettings
-    private let storage: ReactiveStorageProtocol
+    private let storage: any StorageProtocol
     private let nextAction: () async -> Void
     
     init(
         game: GameStamp,
         gameSettings: GameSettings,
-        storage: ReactiveStorageProtocol,
+        storage: any StorageProtocol,
         nextAction: @escaping () async -> Void
     ) {
         self.game = game

@@ -6,7 +6,6 @@
     
 
 import Combine
-import ReactiveStorage
 
 protocol RemainingLivesRepositoryProtocol {
     var wrongAnswers: AnyPublisher<[UserChoice], Never> { get }
@@ -18,7 +17,7 @@ struct RemainingLivesRepository: RemainingLivesRepositoryProtocol {
     // MARK: Injected
 
     private let game: GameStamp
-    private let storage: any ReactiveStorageProtocol
+    private let storage: any StorageProtocol
     
     // MARK: RemainingLivesRepositoryProtocol
     
@@ -33,7 +32,7 @@ struct RemainingLivesRepository: RemainingLivesRepositoryProtocol {
     
     init(
         game: GameStamp,
-        storage: any ReactiveStorageProtocol
+        storage: any StorageProtocol
     ) {
         self.game = game
         self.storage = storage

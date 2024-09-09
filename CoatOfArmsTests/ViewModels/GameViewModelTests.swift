@@ -7,7 +7,6 @@
     
 @testable import CoatOfArms
 import Combine
-import ReactiveStorage
 import XCTest
 
 final class GameViewModelTests: XCTestCase {
@@ -20,7 +19,7 @@ final class GameViewModelTests: XCTestCase {
         questionProvider: @escaping (CountryCode) -> some QuestionViewModelProtocol = { _ in QuestionViewModelProtocolMock<MultipleChoiceViewModelProtocolMock>() },
         randomCountryCodeProvider: RandomCountryCodeProviderProtocolMock = .init(),
         remainingLives: RemainingLivesViewModelProtocolMock = .init(),
-        storage: ReactiveStorageProtocolMock<UserChoice> = .init()
+        storage: StorageProtocolMock<UserChoice> = .init()
     ) -> some GameViewModelProtocol {
         GameViewModel(
             game: game,
@@ -48,7 +47,6 @@ final class GameViewModelTests: XCTestCase {
         // When
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodeExcludingReturnValue = "ES"
-        let remainingLives = RemainingLivesViewModelProtocolMock()
         let sut = self.makeSUT(
             randomCountryCodeProvider: randomCountryCodeProvider
         )
@@ -70,7 +68,6 @@ final class GameViewModelTests: XCTestCase {
             codeUsedToMakeQuestion = country
             return QuestionViewModelProtocolMock<MultipleChoiceViewModelProtocolMock>()
         }
-        let remainingLives = RemainingLivesViewModelProtocolMock()
         let sut = self.makeSUT(
             questionProvider: questionProvider,
             randomCountryCodeProvider: randomCountryCodeProvider
@@ -115,7 +112,7 @@ final class GameViewModelTests: XCTestCase {
     func testThat_WhenGameNextIsCalled_ThenANewCountryIsFetchedExcludingAllCountrieCodesSoFar() async {
         // When
         let gameSettings = GameSettings.makeDouble(maxWrongAnwers: 3)
-        let storage = ReactiveStorageProtocolMock<UserChoice>()
+        let storage = StorageProtocolMock<UserChoice>()
         storage.getAllElementsOfReturnValue = [
             UserChoice.makeDouble(countryCode: "GR", pickedCountryCode: "GR"),
             UserChoice.makeDouble(countryCode: "IT", pickedCountryCode: "EN"),
@@ -142,7 +139,7 @@ final class GameViewModelTests: XCTestCase {
     func testThat_WhenGameNextIsCalled_ThenANewQuestionIsBuilt() async throws {
         // When
         let gameSettings = GameSettings.makeDouble(maxWrongAnwers: 3)
-        let storage = ReactiveStorageProtocolMock<UserChoice>()
+        let storage = StorageProtocolMock<UserChoice>()
         storage.getAllElementsOfReturnValue = []
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodeExcludingReturnValue = "ES"
@@ -175,7 +172,7 @@ final class GameViewModelTests: XCTestCase {
     func testThat_WhenWronAnswersAreMoreThanAllowed_ThenIsGameOverWithTheRightScore() async throws {
         // When
         let gameSettings = GameSettings.makeDouble(maxWrongAnwers: 2)
-        let storage = ReactiveStorageProtocolMock<UserChoice>()
+        let storage = StorageProtocolMock<UserChoice>()
         storage.getAllElementsOfReturnValue = [
             UserChoice.makeDouble(countryCode: "GR", pickedCountryCode: "GR"),
             UserChoice.makeDouble(countryCode: "IT", pickedCountryCode: "EN"),

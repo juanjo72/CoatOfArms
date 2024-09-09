@@ -6,8 +6,11 @@
 //
 
 import Combine
-import Network
-import ReactiveStorage
+import Foundation
+
+enum DecodeError: Error {
+    case empty
+}
 
 protocol QuestionRepositoryProtocol {
     var countryObservable: AnyPublisher<ServerCountry?, Never> { get }
@@ -20,8 +23,8 @@ final class QuestionRepository: QuestionRepositoryProtocol {
     // MARK: Injected
     
     private let countryCode: CountryCode
-    private let requestSender: Network.RequestSenderProtocol
-    private let storage: ReactiveStorage.ReactiveStorageProtocol
+    private let network: any NetworkProtocol
+    private let storage: any StorageProtocol
     
     // MARK: QuestionRepositoryProtocol
     
@@ -37,19 +40,22 @@ final class QuestionRepository: QuestionRepositoryProtocol {
     
     init(
         countryCode: CountryCode,
-        requestSender: Network.RequestSenderProtocol,
-        storage: ReactiveStorage.ReactiveStorageProtocol
+        network: any NetworkProtocol,
+        storage: any StorageProtocol
     ) {
         self.countryCode = countryCode
-        self.requestSender = requestSender
+        self.network = network
         self.storage = storage
     }
     
     // MARK: WhichCountryRepostoryProtocol
 
     func fetchCountry() async throws {
-        let remoteResourceToFetch = Network.RemoteResource<ServerCountry>.make(code: self.countryCode)
-        let country = try await self.requestSender.request(resource: remoteResourceToFetch) // actual call
+        let url = URL(string: "https://restcountries.com/v3.1/alpha/\(self.countryCode)")!
+        let countries: [ServerCountry] = try await self.network.request(url: url)
+        guard let country = countries.first else {
+            throw DecodeError.empty
+        }
         await self.storage.add(country)
     }
 }

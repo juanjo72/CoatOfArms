@@ -7,7 +7,6 @@
     
 import Combine
 import Foundation
-import ReactiveStorage
 
 protocol GameViewModelProtocol: ObservableObject {
     associatedtype QuestionViewModel: QuestionViewModelProtocol
@@ -31,7 +30,7 @@ final class GameViewModel<
     private let questionProvider: (CountryCode) -> QuestionViewModel
     private let randomCountryCodeProvider: any RandomCountryCodeProviderProtocol
     private let remainingLives: RemainingLives
-    private let storage: any ReactiveStorageProtocol
+    private let storage: any StorageProtocol
     
     // MARK: GameRouterProtocol
     
@@ -46,7 +45,7 @@ final class GameViewModel<
         questionProvider: @escaping (CountryCode) -> QuestionViewModel,
         randomCountryCodeProvider: any RandomCountryCodeProviderProtocol,
         remainingLives: RemainingLives,
-        storage: any ReactiveStorageProtocol
+        storage: any StorageProtocol
     ) {
         self.game = game
         self.gameSettings = gameSettings

@@ -5,10 +5,10 @@
 //  Created on 12/8/24.
 //
 
+@testable import CoatOfArms
 import Combine
-@testable import ReactiveStorage
 
-final class ReactiveStorageProtocolMock<E: Identifiable>: ReactiveStorageProtocol {
+final class StorageProtocolMock<E: Identifiable>: StorageProtocol {
     
    // MARK: - getAllElementsObservable<Entity: Identifiable>
 
@@ -73,27 +73,6 @@ final class ReactiveStorageProtocolMock<E: Identifiable>: ReactiveStorageProtoco
         return getAllElementsOfClosure.map({ $0(type) as! [Entity] }) ?? getAllElementsOfReturnValue as! [Entity]
     }
     
-   // MARK: - getSingleElement<Entity: Identifiable>
-
-    var getSingleElementOfIdCallsCount = 0
-    var getSingleElementOfIdCalled: Bool {
-        getSingleElementOfIdCallsCount > 0
-    }
-    var getSingleElementOfIdReceivedArguments: (type: E.Type, id: E.ID)?
-    var getSingleElementOfIdReceivedInvocations: [(type: E.Type, id: E.ID)] = []
-    var getSingleElementOfIdReturnValue: E?
-    var getSingleElementOfIdClosure: ((E.Type, E.ID) -> E?)?
-
-    func getSingleElement<Entity: Identifiable>(of type: Entity.Type, id: Entity.ID) async -> Entity? {
-        getSingleElementOfIdCallsCount += 1
-        guard let type = type as? E.Type, let id = id as? E.ID else {
-            return nil
-        }
-        getSingleElementOfIdReceivedArguments = (type: type, id: id)
-        getSingleElementOfIdReceivedInvocations.append((type: type, id: id))
-        return getSingleElementOfIdClosure.map({ $0(type, id) as! Entity }) ?? getSingleElementOfIdReturnValue as! Entity
-    }
-    
    // MARK: - add<Entity: Identifiable>
 
     var addCallsCount = 0
@@ -112,65 +91,5 @@ final class ReactiveStorageProtocolMock<E: Identifiable>: ReactiveStorageProtoco
         addReceivedElement = element
         addReceivedInvocations.append(element)
         addClosure?(element)
-    }
-    
-   // MARK: - add<Entity: Identifiable>
-
-    var addElementsCallsCount = 0
-    var addElementsCalled: Bool {
-        addCallsCount > 0
-    }
-    var addReceivedElements: [E]?
-    var addElementsReceivedInvocations: [[E]] = []
-    var addElementsClosure: (([E]) -> Void)?
-
-    func add<Entity: Identifiable>(_ elements: [Entity]) async {
-        addCallsCount += 1
-        guard let elements = elements as? [E] else {
-            return
-        }
-        addReceivedElements = elements
-        addElementsReceivedInvocations.append(elements)
-        addElementsClosure?(elements)
-    }
-    
-   // MARK: - removeSingleElement<Entity: Identifiable>
-
-    var removeSingleElementOfIdCallsCount = 0
-    var removeSingleElementOfIdCalled: Bool {
-        removeSingleElementOfIdCallsCount > 0
-    }
-    var removeSingleElementOfIdReceivedArguments: (type: E.Type, id: E.ID)?
-    var removeSingleElementOfIdReceivedInvocations: [(type: E.Type, id: E.ID)] = []
-    var removeSingleElementOfIdClosure: ((E.Type, E.ID) -> Void)?
-
-    func removeSingleElement<Entity: Identifiable>(of type: Entity.Type, id: Entity.ID) async {
-        removeSingleElementOfIdCallsCount += 1
-        guard let type = type as? E.Type, let id = id as? E.ID else {
-            return
-        }
-        removeSingleElementOfIdReceivedArguments = (type: type, id: id)
-        removeSingleElementOfIdReceivedInvocations.append((type: type, id: id))
-        removeSingleElementOfIdClosure?(type, id)
-    }
-    
-   // MARK: - removeAllElements<Entity: Identifiable>
-
-    var removeAllElementsOfCallsCount = 0
-    var removeAllElementsOfCalled: Bool {
-        removeAllElementsOfCallsCount > 0
-    }
-    var removeAllElementsOfReceivedType: E.Type?
-    var removeAllElementsOfReceivedInvocations: [E.Type] = []
-    var removeAllElementsOfClosure: ((E.Type) -> Void)?
-
-    func removeAllElements<Entity: Identifiable>(of type: Entity.Type) {
-        removeAllElementsOfCallsCount += 1
-        guard let type = type as? E.Type else {
-            return
-        }
-        removeAllElementsOfReceivedType = type
-        removeAllElementsOfReceivedInvocations.append(type)
-        removeAllElementsOfClosure?(type)
     }
 }

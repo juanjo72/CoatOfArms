@@ -15,12 +15,12 @@ final class QuestionRepositoryTests: XCTestCase {
     
     func makeMock(
         countryCode: String = "ES",
-        requestSender: RequestSenderProtocolMock<ServerCountry> = .init(),
-        storage: ReactiveStorageProtocolMock<ServerCountry> = .init()
+        network: NetworkProtocolMock<[ServerCountry]> = .init(),
+        storage: StorageProtocolMock<ServerCountry> = .init()
     ) -> QuestionRepository {
         QuestionRepository(
             countryCode: countryCode,
-            requestSender: requestSender,
+            network: network,
             storage: storage
         )
     }
@@ -29,26 +29,26 @@ final class QuestionRepositoryTests: XCTestCase {
     
     func testThat_WhenCountryIsFetched_ThenRequestIsSent() async throws {
         // Given
-        let sender = RequestSenderProtocolMock<ServerCountry>()
+        let network = NetworkProtocolMock<[ServerCountry]>()
         let returnCountry = ServerCountry.makeDouble()
-        sender.requestResourceReturnValue = returnCountry
+        network.requestUrlReturnValue = [returnCountry]
         let sut = self.makeMock(
-            requestSender: sender
+            network: network
         )
         
         // When
         try await sut.fetchCountry()
         
         // Then
-        XCTAssertEqual(sender.requestResourceCallsCount, 1)
+        XCTAssertEqual(network.requestUrlCallsCount, 1)
     }
     
     func testThat_WhenCountryIsFetched_AndRequestFails_ThenThrowsError() async {
         // Given
-        let sender = RequestSenderProtocolMock<ServerCountry>()
-        sender.requestResourceThrowableError = DecodeError.empty
+        let network = NetworkProtocolMock<[ServerCountry]>()
+        network.requestUrlThrowableError = DecodeError.empty
         let sut = self.makeMock(
-            requestSender: sender
+            network: network
         )
         
         do {
@@ -60,13 +60,13 @@ final class QuestionRepositoryTests: XCTestCase {
 
     func testThat_WhenCountryIsFetched_ThenResponseIsStored() async throws {
         // Given
-        let sender = RequestSenderProtocolMock<ServerCountry>()
-        let store = ReactiveStorageProtocolMock<ServerCountry>()
+        let network = NetworkProtocolMock<[ServerCountry]>()
+        let store = StorageProtocolMock<ServerCountry>()
         let returnCountry = ServerCountry.makeDouble()
-        sender.requestResourceReturnValue = returnCountry
+        network.requestUrlReturnValue = [returnCountry]
         let sut = self.makeMock(
             countryCode: "ES",
-            requestSender: sender,
+            network: network,
             storage: store
         )
         
@@ -82,7 +82,8 @@ final class QuestionRepositoryTests: XCTestCase {
     
     func testThat_WhenSubscribedToCountryID_ThenCountryIsObserved() {
         // Given
-        let store = ReactiveStorageProtocolMock<ServerCountry>()
+        let store = StorageProtocolMock<ServerCountry>()
+        let network = NetworkProtocolMock<[ServerCountry]>()
         let returnCountry = ServerCountry.makeDouble()
         store.getSingleElementObservableOfIdReturnValue = Just(returnCountry).eraseToAnyPublisher()
         let sut = self.makeMock(storage: store)

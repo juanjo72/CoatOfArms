@@ -3,29 +3,28 @@
 // CoatOfArms
 //
 // Created on 3/9/24
+//
     
 import Combine
-import ReactiveStorage
-import Network
 
 struct QuestionViewModelFactory {
     private let gameId: GameStamp
     private let gameSettings: GameSettings
-    private let storage: ReactiveStorageProtocol
-    private let requestSender: RequestSenderProtocol
+    private let network: any NetworkProtocol
+    private let storage: any StorageProtocol
     private let nextAction: () async -> Void
     
     init(
         gameId: GameStamp,
         gameSettings: GameSettings,
-        storage: any ReactiveStorageProtocol,
-        requestSender: any RequestSenderProtocol,
+        network: any NetworkProtocol,
+        storage: any StorageProtocol,
         nextAction: @escaping () async -> Void
     ) {
         self.gameId = gameId
         self.gameSettings = gameSettings
         self.storage = storage
-        self.requestSender = requestSender
+        self.network = network
         self.nextAction = nextAction
     }
 
@@ -38,7 +37,7 @@ struct QuestionViewModelFactory {
         )
         let repository = QuestionRepository(
             countryCode: code,
-            requestSender: self.requestSender,
+            network: self.network,
             storage: self.storage
         )
         return QuestionViewModel(

@@ -7,7 +7,6 @@
 
 @testable import CoatOfArms
 import Combine
-import ReactiveStorage
 import XCTest
 
 final class MultipleChoiceRepositoryTests: XCTestCase {
@@ -18,7 +17,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
         id: MultipleChoice.ID = .init(game: Date(), countryCode: "ES"),
         gameSettings: GameSettings = .default,
         randomCountryCodeProvider: RandomCountryCodeProviderProtocol = RandomCountryCodeProviderProtocolMock(),
-        storage: ReactiveStorage.ReactiveStorageProtocol = ReactiveStorageProtocolMock<ServerCountry>()
+        storage: StorageProtocol = StorageProtocolMock<ServerCountry>()
     ) -> MultipleChoiceRepository {
         MultipleChoiceRepository(
             id: id,
@@ -34,7 +33,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
         // Given
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodesNExcludingReturnValue = ["UK", "AR", "US"]
-        let store = ReactiveStorageProtocolMock<MultipleChoice>()
+        let store = StorageProtocolMock<MultipleChoice>()
         let sut = self.makeSUT(
             randomCountryCodeProvider: randomCountryCodeProvider,
             storage: store
@@ -55,7 +54,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
         // Given
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodesNExcludingReturnValue = ["UK", "AR", "US"]
-        let store = ReactiveStorageProtocolMock<UserChoice>()
+        let store = StorageProtocolMock<UserChoice>()
         let sut = self.makeSUT(
             randomCountryCodeProvider: randomCountryCodeProvider,
             storage: store
@@ -74,7 +73,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
     
     func testThat_WhenMultipleChoiceIsObserved_ThenStoredValueIsSent() {
         // Given
-        let store = ReactiveStorageProtocolMock<MultipleChoice>()
+        let store = StorageProtocolMock<MultipleChoice>()
         let returnValue = MultipleChoice.makeDouble()
         store.getSingleElementObservableOfIdReturnValue = Just(returnValue).eraseToAnyPublisher()
         let sut = self.makeSUT(storage: store)
@@ -94,7 +93,7 @@ final class MultipleChoiceRepositoryTests: XCTestCase {
     
     func testThat_WhenStoredAnswerIsObserved_ThenStoredValueIsSent() {
         // Given
-        let store = ReactiveStorageProtocolMock<UserChoice>()
+        let store = StorageProtocolMock<UserChoice>()
         let returnValue = UserChoice.makeDouble()
         store.getSingleElementObservableOfIdReturnValue = Just(returnValue).eraseToAnyPublisher()
         let sut = self.makeSUT(storage: store)

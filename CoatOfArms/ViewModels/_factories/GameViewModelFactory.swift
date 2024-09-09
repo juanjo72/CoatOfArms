@@ -6,21 +6,19 @@
 
 import Combine
 import Foundation
-import Network
-import ReactiveStorage
 
 struct GameViewModelFactory {
     private let gameSettings: GameSettings
-    private let requestSender: RequestSenderProtocol
-    private let storage: ReactiveStorageProtocol
+    private let network: any NetworkProtocol
+    private let storage: any StorageProtocol
     
     init(
         gameSettings: GameSettings,
-        requestSender: RequestSenderProtocol,
-        storage: ReactiveStorageProtocol
+        network: any NetworkProtocol,
+        storage: any StorageProtocol
     ) {
         self.gameSettings = gameSettings
-        self.requestSender = requestSender
+        self.network = network
         self.storage = storage
     }
     
@@ -45,8 +43,8 @@ struct GameViewModelFactory {
         questionFactory = QuestionViewModelFactory(
             gameId: stamp,
             gameSettings: self.gameSettings,
+            network: self.network,
             storage: self.storage,
-            requestSender: self.requestSender,
             nextAction: { [weak game] in
                 await game?.next()
             }

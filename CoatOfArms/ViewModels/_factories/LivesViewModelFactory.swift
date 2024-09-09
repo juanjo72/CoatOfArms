@@ -3,19 +3,17 @@
 // CoatOfArms
 //
 // Created on 3/9/24
-    
-
-import ReactiveStorage
+//
 
 struct LivesViewModelFactory {
     private let gameId: GameStamp
     private let gameSettings: GameSettings
-    private let storage: ReactiveStorageProtocol
+    private let storage: any StorageProtocol
     
     init(
         gameId: GameStamp,
         gameSettings: GameSettings,
-        storage: ReactiveStorageProtocol
+        storage: any StorageProtocol
     ) {
         self.gameId = gameId
         self.gameSettings = gameSettings
