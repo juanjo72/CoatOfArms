@@ -36,3 +36,14 @@ struct RemainingLivesView<
         self.viewModel = viewModel
     }
 }
+
+#Preview {
+    RemainingLivesView(
+        viewModel: RemainingLivesViewModel_Double(
+            numberOfLives: 1,
+            totalLives: 3
+        )
+    )
+}
+
+

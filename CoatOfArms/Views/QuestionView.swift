@@ -79,17 +79,3 @@ struct QuestionViewStyle {
         style: .default
     )
 }
-
-#Preview {
-    QuestionView(
-        viewModel: QuestionViewModelDouble_RightChoice(),
-        style: .default
-    )
-}
-
-#Preview {
-    QuestionView(
-        viewModel: QuestionViewModelDouble_WrongChoice(),
-        style: .default
-    )
-}

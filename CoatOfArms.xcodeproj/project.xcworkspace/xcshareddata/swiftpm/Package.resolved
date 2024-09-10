@@ -1,5 +1,5 @@
 {
-  "originHash" : "999162ff69eea4c3e8a42522719da978d460d299df1d84255676e4b54e3bff4b",
+  "originHash" : "46dc811e9e9bbd438bfbf391f755eada91a6de7ed9afeb1de0cc439e0bc4699b",
   "pins" : [
     {
       "identity" : "kingfisher",
@@ -16,7 +16,7 @@
       "location" : "https://github.com/juanjo72/Network.git",
       "state" : {
         "branch" : "main",
-        "revision" : "58867be945e548088bdd2e6e3494e0874c7cfb5b"
+        "revision" : "ceea6e313360c92eff51d75b007cf852045e161c"
       }
     },
     {
@@ -25,7 +25,25 @@
       "location" : "https://github.com/juanjo72/ReactiveStorage.git",
       "state" : {
         "branch" : "main",
-        "revision" : "5d25c876a9f6c0940b3ad963627adbdb20edba1f"
+        "revision" : "6b78756508e963545da4f8b48478fecbca0ed214"
+      }
+    },
+    {
+      "identity" : "swift-snapshot-testing",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-snapshot-testing",
+      "state" : {
+        "revision" : "6d932a79e7173b275b96c600c86c603cf84f153c",
+        "version" : "1.17.4"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax",
+      "state" : {
+        "revision" : "515f79b522918f83483068d99c68daeb5116342d",
+        "version" : "600.0.0-prerelease-2024-09-04"
       }
     }
   ],
