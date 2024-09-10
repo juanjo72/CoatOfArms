@@ -292,9 +292,7 @@
 			children = (
 				81184FE02C75CEF0005B49E3 /* _shared */,
 				81184FE52C7639B1005B49E3 /* _styles */,
-				8134F9412C68CEAD0052D0DF /* Data */,
-				81E44F382C6B5B5400029516 /* ViewModels */,
-				81D415C72C7461460061A1B6 /* Views */,
+				8182871C2C906F930019C132 /* Game */,
 				8134F9132C68CB610052D0DF /* Preview Content */,
 				8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */,
 				811B38502C70786D003856C3 /* GameSettings.swift */,
@@ -365,6 +363,16 @@
 				8182871A2C906CF20019C132 /* RemainingLivesViewTests.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8182871C2C906F930019C132 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				8134F9412C68CEAD0052D0DF /* Data */,
+				81E44F382C6B5B5400029516 /* ViewModels */,
+				81D415C72C7461460061A1B6 /* Views */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 		81D415C72C7461460061A1B6 /* Views */ = {
