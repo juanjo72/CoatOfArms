@@ -16,7 +16,8 @@ final class RemainingLivesViewTests: XCTestCase {
             viewModel: RemainingLivesViewModel_Double(
                 numberOfLives: 1,
                 totalLives: 3
-            )
+            ),
+            style: .default
         )
         
         // Then

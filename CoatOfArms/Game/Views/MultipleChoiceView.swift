@@ -43,11 +43,13 @@ struct MultipleChoiceView<
                 .tint(button.effect.color)
                 .allowsHitTesting(self.viewModel.isEnabled)
                 .clipShape(Capsule())
+                .transition(.blurReplace)
             }
         }
         .task {
             await self.viewModel.viewWillAppear()
         }
+        .animation(.default, value: self.viewModel.choiceButtons)
     }
     
     // MARK: Lifecycle

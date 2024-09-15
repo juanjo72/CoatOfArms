@@ -27,18 +27,22 @@ struct GameView<
 
             case .playing(let question, let remainingLives):
                 VStack {
-                        QuestionView(
-                            viewModel: question,
-                            style: self.style.question
-                        )
-                        .frame(
-                            maxWidth: .infinity,
-                            maxHeight: self.style.height
-                        )
+                    QuestionView(
+                        viewModel: question,
+                        style: self.style.question
+                    )
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: self.style.height
+                    )
                     
                     RemainingLivesView(
-                        viewModel: remainingLives
+                        viewModel: remainingLives,
+                        style: self.style.remainingLives
                     )
+                }
+                .transaction { transaction in
+                    transaction.animation = nil
                 }
 
             case .gameOver(let score):
@@ -47,7 +51,12 @@ struct GameView<
                     style: self.style.gameOver,
                     action: self.restartAction
                 )
+                .transition(.asymmetric(insertion: .slide, removal: .identity))
             }
+        }
+        .transaction { transaction in
+            transaction.animation = .default
+
         }
     }
     
@@ -68,6 +77,7 @@ struct GameViewStyle {
     let height: CGFloat
     let gameOver: GameOverViewStyle
     let question: QuestionViewStyle
+    let remainingLives: RemainingLivesStyle
 }
 
 struct GameOverView_Previews: PreviewProvider {

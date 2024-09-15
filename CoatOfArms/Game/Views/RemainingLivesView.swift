@@ -14,6 +14,7 @@ struct RemainingLivesView<
     // MARK: Injected
 
     @ObservedObject private var viewModel: ViewModel
+    private let style: RemainingLivesStyle
     
     // MARK: View
     
@@ -23,7 +24,11 @@ struct RemainingLivesView<
                 Circle()
                     .stroke(Color.gray)
                     .fill(i < self.viewModel.numberOfLives ? Color.gray : Color.clear)
-                    .frame(width: 10, height: 10)
+                    .frame(
+                        width: self.style.circleDiameter,
+                        height: self.style.circleDiameter
+                    )
+                    .animation(.easeOut, value: self.viewModel.numberOfLives)
             }
         }
     }
@@ -31,10 +36,16 @@ struct RemainingLivesView<
     // MARK: Lifecycle
     
     init(
-        viewModel: ViewModel
+        viewModel: ViewModel,
+        style: RemainingLivesStyle
     ) {
         self.viewModel = viewModel
+        self.style = style
     }
+}
+
+struct RemainingLivesStyle {
+    let circleDiameter: CGFloat
 }
 
 #Preview {
@@ -42,8 +53,7 @@ struct RemainingLivesView<
         viewModel: RemainingLivesViewModel_Double(
             numberOfLives: 1,
             totalLives: 3
-        )
+        ),
+        style: .default
     )
 }
-
-
