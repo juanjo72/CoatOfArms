@@ -31,18 +31,11 @@ struct GameView<
                         viewModel: question,
                         style: self.style.question
                     )
-                    .frame(
-                        maxWidth: .infinity,
-                        maxHeight: self.style.height
-                    )
                     
                     RemainingLivesView(
                         viewModel: remainingLives,
                         style: self.style.remainingLives
                     )
-                }
-                .transaction { transaction in
-                    transaction.animation = nil
                 }
 
             case .gameOver(let score):
@@ -51,12 +44,7 @@ struct GameView<
                     style: self.style.gameOver,
                     action: self.restartAction
                 )
-                .transition(.asymmetric(insertion: .slide, removal: .identity))
             }
-        }
-        .transaction { transaction in
-            transaction.animation = .default
-
         }
     }
     
@@ -74,14 +62,7 @@ struct GameView<
 }
 
 struct GameViewStyle {
-    let height: CGFloat
     let gameOver: GameOverViewStyle
     let question: QuestionViewStyle
     let remainingLives: RemainingLivesStyle
-}
-
-struct GameOverView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameOverView(score: 25, style: .default, action: {})
-    }
 }

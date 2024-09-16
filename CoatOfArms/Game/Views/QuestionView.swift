@@ -35,7 +35,11 @@ struct QuestionView<
                     KFImage(question.imageURL)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                    
+                        .frame(
+                            width: self.style.imageSize.width,
+                            height: self.style.imageSize.height
+                        )
+
                     MultipleChoiceView(
                         viewModel: question.multipleChoice
                     )
@@ -64,11 +68,14 @@ struct QuestionView<
 // MARK: Style
 
 struct QuestionViewStyle {
+    let imageSize: CGSize
     let spacing: CGFloat
 
     init(
+        imageSize: CGSize,
         spacing: CGFloat
     ) {
+        self.imageSize = imageSize
         self.spacing = spacing
     }
 }

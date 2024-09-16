@@ -38,6 +38,7 @@ struct DynamicStack<
             }
         }
         .detectOrientation(self.$orientation)
+        .environment(\.deviceOrientation, self.orientation)
     }
     
     // MARK: Lifecycle
@@ -48,5 +49,37 @@ struct DynamicStack<
     ) {
         self.spacing = spacing
         self.content = content
+    }
+}
+
+/// View extension to detect device orientation changes
+extension View {
+    func detectOrientation(_ orientation: Binding<UIDeviceOrientation>) -> some View {
+        modifier(DetectOrientation(orientation: orientation))
+    }
+}
+
+private struct DetectOrientation: ViewModifier {
+    @Binding var orientation: UIDeviceOrientation
+    
+    func body(content: Content) -> some View {
+        content
+            .onReceive(
+                NotificationCenter.default
+                    .publisher(for: UIDevice.orientationDidChangeNotification)
+            ) { notification in
+                self.orientation = UIDevice.current.orientation
+            }
+    }
+}
+
+private struct DeviceOrientationKey: EnvironmentKey {
+    static let defaultValue: UIDeviceOrientation = .unknown
+}
+
+extension EnvironmentValues {
+    var deviceOrientation: UIDeviceOrientation {
+        get { self[DeviceOrientationKey.self] }
+        set { self[DeviceOrientationKey.self] = newValue }
     }
 }

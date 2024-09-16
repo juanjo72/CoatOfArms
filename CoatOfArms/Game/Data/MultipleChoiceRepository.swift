@@ -51,7 +51,7 @@ struct MultipleChoiceRepository: MultipleChoiceRepositoryProtocol {
         id: MultipleChoice.ID,
         gameSettings: GameSettings,
         randomCountryCodeProvider: any RandomCountryCodeProviderProtocol,
-        storage: StorageProtocol
+        storage: any StorageProtocol
     ) {
         self.id = id
         self.gameSettings = gameSettings

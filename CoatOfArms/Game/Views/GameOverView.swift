@@ -55,3 +55,9 @@ struct GameOverView: View {
 struct GameOverViewStyle {
     let spacing: CGFloat
 }
+
+struct GameOverView_Previews: PreviewProvider {
+    static var previews: some View {
+        GameOverView(score: 25, style: .default, action: {})
+    }
+}
