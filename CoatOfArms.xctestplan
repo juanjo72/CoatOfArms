@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "FAE8AED4-E690-4338-9BCA-B5D0A55E4B6E",
+      "id" : "631B2745-28DA-4F69-8655-616CFE5268CC",
       "name" : "Configuration 1",
       "options" : {
 
@@ -13,13 +13,17 @@
   },
   "testTargets" : [
     {
-      "skippedTests" : [
-        "GameOverViewTests"
-      ],
       "target" : {
         "containerPath" : "container:CoatOfArms.xcodeproj",
         "identifier" : "8134F9192C68CB610052D0DF",
         "name" : "CoatOfArmsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:CoatOfArms.xcodeproj",
+        "identifier" : "81E5DD122C9BEB4300CE10AB",
+        "name" : "SnapshotTests"
       }
     }
   ],

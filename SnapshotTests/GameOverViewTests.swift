@@ -12,7 +12,7 @@ import XCTest
 final class GameOverViewTests: XCTestCase {
     private var record = false
 
-    func test() {
+    func testGameOver() {
         // Given
         let view = GameOverView_Previews.previews
         

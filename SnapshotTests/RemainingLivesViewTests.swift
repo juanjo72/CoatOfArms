@@ -10,8 +10,9 @@ import SnapshotTesting
 import XCTest
 
 final class RemainingLivesViewTests: XCTestCase {
-    private var record: Bool = false
-    func test() {
+    private var record = false
+
+    func testRemainingLives() {
         // Given
         let view = RemainingLivesView(
             viewModel: RemainingLivesViewModel_Double(

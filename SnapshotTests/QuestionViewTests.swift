@@ -12,7 +12,7 @@ import XCTest
 final class QuestionViewTests: XCTestCase {
     private var record = false
 
-    func test() {
+    func testQuestionView() {
         // Given
         let view = QuestionView(viewModel: QuestionViewModelDouble_Interactive(), style: .default)
         

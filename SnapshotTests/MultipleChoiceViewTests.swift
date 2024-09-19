@@ -12,7 +12,7 @@ import XCTest
 final class MultipleChoiceViewTests: XCTestCase {
     private var record = false
 
-    func testInteractive() {
+    func testMultipleChoiceInteractive() {
         // Given
         let view = MultipleChoiceView(viewModel: MultipleChoiceViewModelDouble_Interative())
         
@@ -20,7 +20,7 @@ final class MultipleChoiceViewTests: XCTestCase {
         assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)), record: self.record)
     }
     
-    func testRightChoice() {
+    func testMultipleChoiceRightChoice() {
         // Given
         let view = MultipleChoiceView(viewModel: MultipleChoiceViewModelDouble_RightChoice())
         
@@ -28,7 +28,7 @@ final class MultipleChoiceViewTests: XCTestCase {
         assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)), record: self.record)
     }
     
-    func testWrongChoice() {
+    func testMultipleChoiceWrongChoice() {
         // Given
         let view = MultipleChoiceView(viewModel: MultipleChoiceViewModelDouble_WrongChoice())
         
