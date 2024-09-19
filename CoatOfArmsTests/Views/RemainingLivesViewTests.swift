@@ -10,6 +10,7 @@ import SnapshotTesting
 import XCTest
 
 final class RemainingLivesViewTests: XCTestCase {
+    private var record: Bool = false
     func test() {
         // Given
         let view = RemainingLivesView(
@@ -21,6 +22,6 @@ final class RemainingLivesViewTests: XCTestCase {
         )
         
         // Then
-        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)))
+        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)), record: self.record)
     }
 }

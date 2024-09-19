@@ -16,6 +16,8 @@ struct QuestionView<
     
     @ObservedObject private var viewModel: ViewModel
     private let style: QuestionViewStyle
+    
+    @Environment(\.deviceOrientation) private var deviceOrientation
 
     // MARK: View
     
@@ -27,24 +29,24 @@ struct QuestionView<
 
             case .loading:
                 ProgressView()
-
+                
             case .loaded(let question):
                 DynamicStack(
                     spacing: self.style.spacing
                 ) {
+                    if self.deviceOrientation == .portrait || self.deviceOrientation == .portraitUpsideDown {
+                        Spacer()
+                    }
+                    
                     KFImage(question.imageURL)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(
-                            width: self.style.imageSize.width,
-                            height: self.style.imageSize.height
-                        )
-
+                        .padding(.horizontal)
+                    
                     MultipleChoiceView(
                         viewModel: question.multipleChoice
                     )
                 }
-                .padding()
             }
         }
         .task(
@@ -68,14 +70,11 @@ struct QuestionView<
 // MARK: Style
 
 struct QuestionViewStyle {
-    let imageSize: CGSize
     let spacing: CGFloat
 
     init(
-        imageSize: CGSize,
         spacing: CGFloat
     ) {
-        self.imageSize = imageSize
         self.spacing = spacing
     }
 }

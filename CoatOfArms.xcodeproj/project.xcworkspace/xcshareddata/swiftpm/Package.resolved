@@ -1,5 +1,5 @@
 {
-  "originHash" : "46dc811e9e9bbd438bfbf391f755eada91a6de7ed9afeb1de0cc439e0bc4699b",
+  "originHash" : "e50b8d7d08b5e470ec204db9b7412f2c64d4a029a72309726e2a113713484640",
   "pins" : [
     {
       "identity" : "kingfisher",
@@ -25,7 +25,7 @@
       "location" : "https://github.com/juanjo72/ReactiveStorage.git",
       "state" : {
         "branch" : "main",
-        "revision" : "6b78756508e963545da4f8b48478fecbca0ed214"
+        "revision" : "57359810f19c9253752583572ed57122307de6dd"
       }
     },
     {

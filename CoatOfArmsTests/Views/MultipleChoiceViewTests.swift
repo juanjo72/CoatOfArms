@@ -10,12 +10,14 @@ import SnapshotTesting
 import XCTest
 
 final class MultipleChoiceViewTests: XCTestCase {
+    private var record = false
+
     func testInteractive() {
         // Given
         let view = MultipleChoiceView(viewModel: MultipleChoiceViewModelDouble_Interative())
         
         // Then
-        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)))
+        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)), record: self.record)
     }
     
     func testRightChoice() {
@@ -23,7 +25,7 @@ final class MultipleChoiceViewTests: XCTestCase {
         let view = MultipleChoiceView(viewModel: MultipleChoiceViewModelDouble_RightChoice())
         
         // Then
-        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)))
+        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)), record: self.record)
     }
     
     func testWrongChoice() {
@@ -31,6 +33,6 @@ final class MultipleChoiceViewTests: XCTestCase {
         let view = MultipleChoiceView(viewModel: MultipleChoiceViewModelDouble_WrongChoice())
         
         // Then
-        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)))
+        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)), record: self.record)
     }
 }

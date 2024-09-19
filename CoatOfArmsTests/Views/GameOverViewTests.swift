@@ -10,11 +10,13 @@ import SnapshotTesting
 import XCTest
 
 final class GameOverViewTests: XCTestCase {
+    private var record = false
+
     func test() {
         // Given
         let view = GameOverView_Previews.previews
         
         // Then
-        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)))
+        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)), record: self.record)
     }
 }

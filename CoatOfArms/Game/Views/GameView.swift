@@ -36,7 +36,9 @@ struct GameView<
                         viewModel: remainingLives,
                         style: self.style.remainingLives
                     )
+                    .padding(.vertical)
                 }
+                .padding()
 
             case .gameOver(let score):
                 GameOverView(
@@ -46,6 +48,7 @@ struct GameView<
                 )
             }
         }
+        .detectOrientationChanges()
     }
     
     // MARK: Lifecycle

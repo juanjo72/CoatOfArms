@@ -10,7 +10,7 @@ import Foundation
 import Kingfisher
 
 extension Publisher where Output == URL, Failure == Never {
-    func prefetch() -> Publishers.FlatMap<Future<Bool, Never>, Self> {
+    func ImagePrefech() -> Publishers.FlatMap<Future<Bool, Never>, Self> {
         self.flatMap { value in
             Future { promise in
                 Task {

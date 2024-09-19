@@ -47,7 +47,7 @@ struct QuestionViewModelFactory {
             },
             remoteImagePrefetcher: { url in
                 Just(url)
-                    .prefetch()
+                    .ImagePrefech()
                     .eraseToAnyPublisher()
             },
             repository: repository,

@@ -67,11 +67,10 @@
 		8190ADF42C8260D40031F1E3 /* QuestionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8190ADF32C8260D40031F1E3 /* QuestionViewData.swift */; };
 		81A3CFFB2C84AF8300D789E5 /* GameOverViewStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3CFFA2C84AF8300D789E5 /* GameOverViewStyle+default.swift */; };
 		81A3CFFD2C84AFCE00D789E5 /* GameViewStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3CFFC2C84AFCE00D789E5 /* GameViewStyle+default.swift */; };
+		81ABE8292C9945A000FC89D0 /* ReactiveStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 81ABE8282C9945A000FC89D0 /* ReactiveStorage */; };
 		81B59CA92C94474A00DB8CFA /* RemainingLivesStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B59CA82C94474A00DB8CFA /* RemainingLivesStyle+default.swift */; };
 		81BB95B22C8F070500003393 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB95B12C8F070500003393 /* NetworkProtocol.swift */; };
 		81BB95B42C8F0EE700003393 /* NetworkProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB95B32C8F0EE700003393 /* NetworkProtocolMock.swift */; };
-		81BB95B62C8F284B00003393 /* ReactiveInMemoryStorage+StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB95B52C8F284B00003393 /* ReactiveInMemoryStorage+StorageProtocol.swift */; };
-		81C390252C8B2470006C1888 /* ReactiveStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 81C390242C8B2470006C1888 /* ReactiveStorage */; };
 		81C390272C8B2B47006C1888 /* RamainingLivesRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C390262C8B2B47006C1888 /* RamainingLivesRepositoryTests.swift */; };
 		81D415C92C7461630061A1B6 /* MultipleChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D415C82C7461630061A1B6 /* MultipleChoiceView.swift */; };
 		81D416022C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416012C7472170061A1B6 /* MultipleChoiceViewModelDouble.swift */; };
@@ -82,6 +81,9 @@
 		81E36CEB2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CEA2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift */; };
 		81E36CEF2C7458BA00F71DB5 /* ServerCountry+makeDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CEE2C7458BA00F71DB5 /* ServerCountry+makeDouble.swift */; };
 		81E44F3A2C6B5B6F00029516 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E44F392C6B5B6F00029516 /* QuestionViewModel.swift */; };
+		81E5DD082C9B123400CE10AB /* ReactiveStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 81E5DD072C9B123400CE10AB /* ReactiveStorage */; };
+		81E5DD0B2C9B1B1F00CE10AB /* EntryPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E5DD0A2C9B1B1F00CE10AB /* EntryPoint.swift */; };
+		81E5DD0D2C9BE50500CE10AB /* View+detectOrientationChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E5DD0C2C9BE50500CE10AB /* View+detectOrientationChanges.swift */; };
 		81EE1BE72C85D5D800D874D9 /* RemainingLivesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE1BE62C85D5D800D874D9 /* RemainingLivesViewModel.swift */; };
 		81EE1BE92C85D64D00D874D9 /* RemainingLivesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE1BE82C85D64D00D874D9 /* RemainingLivesRepository.swift */; };
 		81EE1BEB2C85D8CD00D874D9 /* RemainingLivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE1BEA2C85D8CD00D874D9 /* RemainingLivesView.swift */; };
@@ -159,7 +161,6 @@
 		81B59CA82C94474A00DB8CFA /* RemainingLivesStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemainingLivesStyle+default.swift"; sourceTree = "<group>"; };
 		81BB95B12C8F070500003393 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		81BB95B32C8F0EE700003393 /* NetworkProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocolMock.swift; sourceTree = "<group>"; };
-		81BB95B52C8F284B00003393 /* ReactiveInMemoryStorage+StorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReactiveInMemoryStorage+StorageProtocol.swift"; sourceTree = "<group>"; };
 		81C390262C8B2B47006C1888 /* RamainingLivesRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamainingLivesRepositoryTests.swift; sourceTree = "<group>"; };
 		81D415C82C7461630061A1B6 /* MultipleChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceView.swift; sourceTree = "<group>"; };
 		81D416002C7471600061A1B6 /* CoatOfArms.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoatOfArms.xctestplan; sourceTree = "<group>"; };
@@ -171,6 +172,8 @@
 		81E36CEA2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleChoiceViewModelProtocolMock.swift; sourceTree = "<group>"; };
 		81E36CEE2C7458BA00F71DB5 /* ServerCountry+makeDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServerCountry+makeDouble.swift"; sourceTree = "<group>"; };
 		81E44F392C6B5B6F00029516 /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
+		81E5DD0A2C9B1B1F00CE10AB /* EntryPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPoint.swift; sourceTree = "<group>"; };
+		81E5DD0C2C9BE50500CE10AB /* View+detectOrientationChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+detectOrientationChanges.swift"; sourceTree = "<group>"; };
 		81EE1BE62C85D5D800D874D9 /* RemainingLivesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingLivesViewModel.swift; sourceTree = "<group>"; };
 		81EE1BE82C85D64D00D874D9 /* RemainingLivesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingLivesRepository.swift; sourceTree = "<group>"; };
 		81EE1BEA2C85D8CD00D874D9 /* RemainingLivesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingLivesView.swift; sourceTree = "<group>"; };
@@ -183,7 +186,8 @@
 			files = (
 				8134F93F2C68CDF60052D0DF /* Kingfisher in Frameworks */,
 				8134F9392C68CD4D0052D0DF /* Network in Frameworks */,
-				81C390252C8B2470006C1888 /* ReactiveStorage in Frameworks */,
+				81ABE8292C9945A000FC89D0 /* ReactiveStorage in Frameworks */,
+				81E5DD082C9B123400CE10AB /* ReactiveStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,13 +218,11 @@
 			isa = PBXGroup;
 			children = (
 				81184FE12C75CF02005B49E3 /* DynamicStack.swift */,
+				81E5DD0C2C9BE50500CE10AB /* View+detectOrientationChanges.swift */,
 				811D3A622C82E1210057FE8E /* LoadingState.swift */,
 				8190ADF12C825ADD0031F1E3 /* Publisher+asyncMap.swift */,
 				811D3A642C82E1BB0057FE8E /* Publisher+prefetch.swift */,
 				81097A572C6C7B2200554C1E /* RandomCountryCodeProvider.swift */,
-				817A66212C8EF5F100B21E5A /* StorageProtocol.swift */,
-				81BB95B52C8F284B00003393 /* ReactiveInMemoryStorage+StorageProtocol.swift */,
-				81BB95B12C8F070500003393 /* NetworkProtocol.swift */,
 			);
 			path = _shared;
 			sourceTree = "<group>";
@@ -290,12 +292,14 @@
 		8134F90C2C68CB600052D0DF /* CoatOfArms */ = {
 			isa = PBXGroup;
 			children = (
+				81E5DD092C9B1ADC00CE10AB /* _protocols */,
 				81184FE02C75CEF0005B49E3 /* _shared */,
 				81184FE52C7639B1005B49E3 /* _styles */,
 				8182871C2C906F930019C132 /* Game */,
 				8134F9132C68CB610052D0DF /* Preview Content */,
 				8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */,
 				811B38502C70786D003856C3 /* GameSettings.swift */,
+				81E5DD0A2C9B1B1F00CE10AB /* EntryPoint.swift */,
 				8134F9112C68CB610052D0DF /* Assets.xcassets */,
 				8101D52B2C8489D90013CE5A /* Localizable.xcstrings */,
 			);
@@ -441,6 +445,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		81E5DD092C9B1ADC00CE10AB /* _protocols */ = {
+			isa = PBXGroup;
+			children = (
+				817A66212C8EF5F100B21E5A /* StorageProtocol.swift */,
+				81BB95B12C8F070500003393 /* NetworkProtocol.swift */,
+			);
+			path = _protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -460,7 +473,8 @@
 			packageProductDependencies = (
 				8134F9382C68CD4D0052D0DF /* Network */,
 				8134F93E2C68CDF60052D0DF /* Kingfisher */,
-				81C390242C8B2470006C1888 /* ReactiveStorage */,
+				81ABE8282C9945A000FC89D0 /* ReactiveStorage */,
+				81E5DD072C9B123400CE10AB /* ReactiveStorage */,
 			);
 			productName = CoatOfArms;
 			productReference = 8134F90A2C68CB600052D0DF /* CoatOfArms.app */;
@@ -520,8 +534,8 @@
 			packageReferences = (
 				8134F9372C68CD4D0052D0DF /* XCRemoteSwiftPackageReference "Network" */,
 				8134F93D2C68CDF60052D0DF /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				81C390232C8B2464006C1888 /* XCRemoteSwiftPackageReference "ReactiveStorage" */,
 				8182870C2C905CEB0019C132 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+				81E5DD062C9B123400CE10AB /* XCRemoteSwiftPackageReference "ReactiveStorage" */,
 			);
 			productRefGroup = 8134F90B2C68CB600052D0DF /* Products */;
 			projectDirPath = "";
@@ -572,7 +586,6 @@
 				81135F182C86DBF700889507 /* QuestionViewModelFactory.swift in Sources */,
 				81EE1BE72C85D5D800D874D9 /* RemainingLivesViewModel.swift in Sources */,
 				81A3CFFB2C84AF8300D789E5 /* GameOverViewStyle+default.swift in Sources */,
-				81BB95B62C8F284B00003393 /* ReactiveInMemoryStorage+StorageProtocol.swift in Sources */,
 				8134F9432C68CEDE0052D0DF /* QuestionRepository.swift in Sources */,
 				81A3CFFD2C84AFCE00D789E5 /* GameViewStyle+default.swift in Sources */,
 				811D3A652C82E1BB0057FE8E /* Publisher+prefetch.swift in Sources */,
@@ -586,7 +599,9 @@
 				811B38532C70EE6D003856C3 /* UserChoice.swift in Sources */,
 				81097A562C6C783A00554C1E /* MultipleChoice.swift in Sources */,
 				81184FE22C75CF02005B49E3 /* DynamicStack.swift in Sources */,
+				81E5DD0B2C9B1B1F00CE10AB /* EntryPoint.swift in Sources */,
 				81097A5A2C6C800B00554C1E /* MultipleChoiceViewModel.swift in Sources */,
+				81E5DD0D2C9BE50500CE10AB /* View+detectOrientationChanges.swift in Sources */,
 				81D416042C74803B0061A1B6 /* QuestionView.swift in Sources */,
 				817AAB312C8833C400778E67 /* GameViewModel.swift in Sources */,
 				81097A5C2C6C814500554C1E /* MultipleChoiceRepository.swift in Sources */,
@@ -782,8 +797,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -812,8 +827,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -925,7 +940,7 @@
 				minimumVersion = 1.17.4;
 			};
 		};
-		81C390232C8B2464006C1888 /* XCRemoteSwiftPackageReference "ReactiveStorage" */ = {
+		81E5DD062C9B123400CE10AB /* XCRemoteSwiftPackageReference "ReactiveStorage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/juanjo72/ReactiveStorage.git";
 			requirement = {
@@ -956,9 +971,13 @@
 			package = 8182870C2C905CEB0019C132 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
 			productName = SnapshotTesting;
 		};
-		81C390242C8B2470006C1888 /* ReactiveStorage */ = {
+		81ABE8282C9945A000FC89D0 /* ReactiveStorage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 81C390232C8B2464006C1888 /* XCRemoteSwiftPackageReference "ReactiveStorage" */;
+			productName = ReactiveStorage;
+		};
+		81E5DD072C9B123400CE10AB /* ReactiveStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 81E5DD062C9B123400CE10AB /* XCRemoteSwiftPackageReference "ReactiveStorage" */;
 			productName = ReactiveStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
