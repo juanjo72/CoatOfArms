@@ -8,19 +8,19 @@
 struct MultipleChoiceViewModelFactory {
     private let game: GameStamp
     private let gameSettings: GameSettings
+    private let router: any GameRouterProtocol
     private let storage: any StorageProtocol
-    private let nextAction: () async -> Void
     
     init(
         game: GameStamp,
         gameSettings: GameSettings,
-        storage: any StorageProtocol,
-        nextAction: @escaping () async -> Void
+        router: any GameRouterProtocol,
+        storage: any StorageProtocol
     ) {
         self.game = game
         self.gameSettings = gameSettings
         self.storage = storage
-        self.nextAction = nextAction
+        self.router = router
     }
     
     func make(code: CountryCode) -> some MultipleChoiceViewModelProtocol {
@@ -34,7 +34,7 @@ struct MultipleChoiceViewModelFactory {
         return MultipleChoiceViewModel(
             gameSettings: self.gameSettings,
             repository: repository,
-            nextAction: self.nextAction
+            router: self.router
         )
     }
 }

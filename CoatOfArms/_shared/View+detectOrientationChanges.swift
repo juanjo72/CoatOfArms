@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  View+detectOrientationChanges.swift
 //  CoatOfArms
 //
 //  Created on 19/9/24.

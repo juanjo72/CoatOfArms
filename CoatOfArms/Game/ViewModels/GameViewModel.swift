@@ -11,85 +11,50 @@ import Foundation
 protocol GameViewModelProtocol: ObservableObject {
     associatedtype QuestionViewModel: QuestionViewModelProtocol
     associatedtype RemainingLives: RemainingLivesViewModelProtocol
+    var gameStamp: GameStamp { get }
     var status: GameStatus<QuestionViewModel, RemainingLives> { get }
-    func next() async
-    func start()
+    func viewWillAppear() async
 }
 
+/// Represents a new game with a new stamp
 final class GameViewModel<
     QuestionViewModel: QuestionViewModelProtocol,
     RemainingLives: RemainingLivesViewModelProtocol,
-    OutputScheduler: Scheduler
+    OutputScheduler: Scheduler,
+    Router: GameRouterProtocol
 >: GameViewModelProtocol {
+    typealias Status = GameStatus<QuestionViewModel, RemainingLives>
     
     // MARK: Injected
 
-    private let game: GameStamp
-    private let gameSettings: GameSettings
-    private let outputScheduler: OutputScheduler
-    private let questionProvider: (CountryCode) -> QuestionViewModel
-    private let randomCountryCodeProvider: any RandomCountryCodeProviderProtocol
-    private let remainingLives: RemainingLives
-    private let storage: any StorageProtocol
+    internal let gameStamp: GameStamp
+    private let router: Router
+    private let scheduler: OutputScheduler
     
     // MARK: GameRouterProtocol
     
-    @Published var status: GameStatus<QuestionViewModel, RemainingLives> = .idle
+    @Published var status: Status = .idle
     
     // MARK: Lifecycle
     
     init(
-        game: GameStamp,
-        gameSettings: GameSettings,
-        outputScheduler: OutputScheduler = DispatchQueue.main,
-        questionProvider: @escaping (CountryCode) -> QuestionViewModel,
-        randomCountryCodeProvider: any RandomCountryCodeProviderProtocol,
-        remainingLives: RemainingLives,
-        storage: any StorageProtocol
-    ) {
-        self.game = game
-        self.gameSettings = gameSettings
-        self.outputScheduler = outputScheduler
-        self.questionProvider = questionProvider
-        self.randomCountryCodeProvider = randomCountryCodeProvider
-        self.remainingLives = remainingLives
-        self.storage = storage
+        gameStamp: GameStamp,
+        router: Router,
+        scheduler: OutputScheduler = DispatchQueue.main
+    ) where Router.QuestionViewModel == QuestionViewModel, Router.RemainingLives == RemainingLives {
+        self.gameStamp = gameStamp
+        self.router = router
+        self.scheduler = scheduler
+        
+        self.router.pathObservable
+            .receive(on: self.scheduler)
+            .assign(to: &self.$status)
     }
     
     // MARK: GameRouterProtocol
     
-    func start() {
-        let newCode = self.randomCountryCodeProvider.generateCode(excluding: [])
-        let newQuestion = self.questionProvider(newCode)
-        self.outputScheduler.schedule {
-            self.status = .playing(
-                question: newQuestion,
-                remainingLives: self.remainingLives
-            )
-        }
-    }
-    
-    func next() async {
-        let allAnswersInCurrentGame = await self.storage.getAllElements(of: UserChoice.self)
-            .filter { $0.id.game == self.game }
-        let rightCount = allAnswersInCurrentGame.filter { $0.isCorrect }.count
-        let wrongCount = allAnswersInCurrentGame.count - rightCount
-        
-        if wrongCount < self.gameSettings.maxWrongAnswers {
-            let allShownCountriesSoFar = await self.storage.getAllElements(of: UserChoice.self).map { $0.id.countryCode }
-            let newCode = self.randomCountryCodeProvider.generateCode(excluding: allShownCountriesSoFar)
-            let newQuestion = self.questionProvider(newCode)
-            self.outputScheduler.schedule {
-                self.status = .playing(
-                    question: newQuestion,
-                    remainingLives: self.remainingLives
-                )
-            }
-        } else {
-            self.outputScheduler.schedule {
-                self.status = .gameOver(score: rightCount)
-            }
-        }
+    func viewWillAppear() async {
+        await self.router.gotNextQuestion()
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  Publisher+prefetch.swift
+//  Publisher+imagePrefech.swift
 //  CoatOfArms
 //
 //  Created on 31/8/24.
@@ -10,7 +10,7 @@ import Foundation
 import Kingfisher
 
 extension Publisher where Output == URL, Failure == Never {
-    func ImagePrefech() -> Publishers.FlatMap<Future<Bool, Never>, Self> {
+    func imagePrefech() -> Publishers.FlatMap<Future<Bool, Never>, Self> {
         self.flatMap { value in
             Future { promise in
                 Task {

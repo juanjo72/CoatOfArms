@@ -27,7 +27,7 @@ final class MultipleChoiceViewModel<
     private let locale: Locale
     private let outputScheduler: OutputScheduler
     private let repository: any MultipleChoiceRepositoryProtocol
-    private let nextAction: () async -> Void
+    private let router: any GameRouterProtocol
     
     // MARK: PossibleAnswersRepositoryProtocol
     
@@ -65,13 +65,13 @@ final class MultipleChoiceViewModel<
         locale: Locale = Locale.autoupdatingCurrent,
         outputScheduler: OutputScheduler = DispatchQueue.main,
         repository: any MultipleChoiceRepositoryProtocol,
-        nextAction: @escaping () async -> Void
+        router: any GameRouterProtocol
     ) {
         self.gameSettings = gameSettings
         self.locale = locale
         self.outputScheduler = outputScheduler
         self.repository = repository
-        self.nextAction = nextAction
+        self.router = router
         
         self.answersObservable
             .receive(on: outputScheduler)
@@ -90,7 +90,7 @@ final class MultipleChoiceViewModel<
         }
         await self.repository.set(answer: code)
         try? await Task.sleep(for: self.gameSettings.resultTime)
-        await self.nextAction()
+        await self.router.gotNextQuestion()
     }
 }
 

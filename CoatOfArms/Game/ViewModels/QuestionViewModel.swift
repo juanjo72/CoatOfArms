@@ -28,8 +28,8 @@ final class QuestionViewModel<
     private let multipleChoiceProvider: () -> MultipleChoice
     private let outputScheduler: OutputScheduler
     private let remoteImagePrefetcher: (URL) -> AnyPublisher<Bool, Never>
-    private let repository: QuestionRepositoryProtocol
-    private let nextAction: () async -> Void
+    private let repository: any QuestionRepositoryProtocol
+    private let router: any GameRouterProtocol
 
     // MARK: WhichCountryViewModelProtocol
     
@@ -70,15 +70,15 @@ final class QuestionViewModel<
         multipleChoiceProvider: @escaping () -> MultipleChoice,
         outputScheduler: OutputScheduler = DispatchQueue.main,
         remoteImagePrefetcher: @escaping (URL) -> AnyPublisher<Bool, Never>,
-        repository: QuestionRepositoryProtocol,
-        nextAction: @escaping () async -> Void
+        repository: any QuestionRepositoryProtocol,
+        router: any GameRouterProtocol
     ) {
         self.countryCode = countryCode
         self.multipleChoiceProvider = multipleChoiceProvider
         self.outputScheduler = outputScheduler
         self.remoteImagePrefetcher = remoteImagePrefetcher
         self.repository = repository
-        self.nextAction = nextAction
+        self.router = router
 
         self.country = countryCode
         self.questionObservable
@@ -105,7 +105,7 @@ final class QuestionViewModel<
             print("[ERROR] \(self.country) \(String(describing: error))")
             if error is DecodingError {
                 // tries with a new country; possibly coat of arms unavailable
-                await self.nextAction()
+                await self.router.gotNextQuestion()
             }
         }
     }

@@ -9,19 +9,25 @@
 import Combine
 import XCTest
 
+typealias Router = GameRouterProtocolMock<
+    QuestionViewModelProtocolMock<MultipleChoiceViewModelProtocolMock>,
+    RemainingLivesViewModelProtocolMock
+>
+
 final class MultipleChoiceViewModelTests: XCTestCase {
     
     // MARK: SUT
     
     func makeSUT(
-        repository: MultipleChoiceRepositoryProtocolMock = .init()
+        repository: MultipleChoiceRepositoryProtocolMock = .init(),
+        router: Router = .init()
     ) -> some MultipleChoiceViewModelProtocol {
         MultipleChoiceViewModel(
             gameSettings: .default,
             locale: Locale(identifier: "en_US"),
             outputScheduler: ImmediateScheduler.shared,
             repository: repository,
-            nextAction: {}
+            router: router
         )
     }
     

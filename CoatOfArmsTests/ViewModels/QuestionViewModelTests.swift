@@ -18,7 +18,7 @@ final class QuestionViewModelTests: XCTestCase {
         multipleChoiceProvider: @escaping () -> some MultipleChoiceViewModelProtocolMock = { MultipleChoiceViewModelProtocolMock() },
         remoteImagePrefetcher: @escaping (URL) -> AnyPublisher<Bool, Never> = { _ in Just(true).eraseToAnyPublisher() },
         repository: QuestionRepositoryProtocolMock = .init(),
-        nextAction: @escaping () async -> Void = {}
+        router: Router = .init()
     ) -> some QuestionViewModelProtocol {
         QuestionViewModel(
             countryCode: countryCode,
@@ -26,7 +26,7 @@ final class QuestionViewModelTests: XCTestCase {
             outputScheduler: ImmediateScheduler.shared,
             remoteImagePrefetcher: remoteImagePrefetcher,
             repository: repository,
-            nextAction: nextAction
+            router: router
         )
     }
     

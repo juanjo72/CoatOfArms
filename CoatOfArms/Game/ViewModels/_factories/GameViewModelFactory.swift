@@ -31,25 +31,27 @@ struct GameViewModelFactory {
             storage: self.storage
         ).make()
         var questionFactory: QuestionViewModelFactory!
-        let game = GameViewModel(
-            game: stamp,
-            gameSettings: self.gameSettings,
+        let router = GameRouter(
+            gameStamp: stamp,
+            gameSettings: gameSettings,
             questionProvider: {
                 questionFactory.make(code: $0)
             },
-            randomCountryCodeProvider: randomCountryProvider,
+            randomCodeProvider: randomCountryProvider,
             remainingLives: remainingLives,
-            storage: self.storage
+            store: storage
         )
         questionFactory = QuestionViewModelFactory(
             gameId: stamp,
             gameSettings: self.gameSettings,
             network: self.network,
-            storage: self.storage,
-            nextAction: { [weak game] in
-                await game?.next()
-            }
+            router: router,
+            storage: self.storage
         )
-        return game
+        let gameViewModel = GameViewModel(
+            gameStamp: stamp,
+            router: router
+        )
+        return gameViewModel
     }
 }

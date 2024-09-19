@@ -42,20 +42,19 @@ final class RootViewModel<
     // MARK: RootViewModelProtocol
     
     func viewWillAppear() async {
-        self.loadAndStartNewGame()
+        await self.loadNewGame()
     }
     
     func userDidTapRestart() async {
-        self.loadAndStartNewGame()
+        await self.loadNewGame()
     }
     
     // MARK: Private
     
-    private func loadAndStartNewGame() {
+    private func loadNewGame() async {
         let newGame = self.gameProvider(.now)
         self.outputScheduler.schedule {
             self.game = newGame
         }
-        newGame.start()
     }
 }

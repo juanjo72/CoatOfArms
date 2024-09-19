@@ -9,6 +9,7 @@ import Network
 import ReactiveStorage
 import SwiftUI
 
+/// Main View factory
 struct EntryPoint {
     private let gameSettings: GameSettings = {
         .default

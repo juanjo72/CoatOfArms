@@ -20,7 +20,7 @@ struct GameView<
     // MARK: View
 
     var body: some View {
-        Group {
+        VStack {
             switch self.viewModel.status {
             case .idle:
                 EmptyView()
@@ -49,6 +49,9 @@ struct GameView<
             }
         }
         .detectOrientationChanges()
+        .task {
+            await self.viewModel.viewWillAppear()
+        }
     }
     
     // MARK: Lifecycle

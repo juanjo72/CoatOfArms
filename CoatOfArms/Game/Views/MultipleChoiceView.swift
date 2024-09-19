@@ -15,10 +15,6 @@ struct MultipleChoiceView<
     
     @ObservedObject private var viewModel: ViewModel
     
-    // MARK: Environment
-    
-    @Environment(\.colorScheme) private var colorScheme
-    
     // MARK: View
     
     var body: some View {

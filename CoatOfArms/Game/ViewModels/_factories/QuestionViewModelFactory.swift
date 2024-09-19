@@ -11,29 +11,29 @@ struct QuestionViewModelFactory {
     private let gameId: GameStamp
     private let gameSettings: GameSettings
     private let network: any NetworkProtocol
+    private let router: any GameRouterProtocol
     private let storage: any StorageProtocol
-    private let nextAction: () async -> Void
     
     init(
         gameId: GameStamp,
         gameSettings: GameSettings,
         network: any NetworkProtocol,
-        storage: any StorageProtocol,
-        nextAction: @escaping () async -> Void
+        router: any GameRouterProtocol,
+        storage: any StorageProtocol
     ) {
         self.gameId = gameId
         self.gameSettings = gameSettings
         self.storage = storage
         self.network = network
-        self.nextAction = nextAction
+        self.router = router
     }
 
     func make(code: CountryCode) -> some QuestionViewModelProtocol {
         let multipleChoiceViewModelFactory = MultipleChoiceViewModelFactory(
             game: self.gameId,
             gameSettings: self.gameSettings,
-            storage: self.storage,
-            nextAction: self.nextAction
+            router: self.router,
+            storage: self.storage
         )
         let repository = QuestionRepository(
             countryCode: code,
@@ -47,11 +47,11 @@ struct QuestionViewModelFactory {
             },
             remoteImagePrefetcher: { url in
                 Just(url)
-                    .ImagePrefech()
+                    .imagePrefech()
                     .eraseToAnyPublisher()
             },
             repository: repository,
-            nextAction: self.nextAction
+            router: self.router
         )
     }
 }

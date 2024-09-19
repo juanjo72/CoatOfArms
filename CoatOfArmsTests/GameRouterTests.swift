@@ -9,7 +9,7 @@
 import Combine
 import XCTest
 
-final class GameViewModelTests: XCTestCase {
+final class GameRouterTests: XCTestCase {
 
     // MARK: SUT
     
@@ -20,47 +20,55 @@ final class GameViewModelTests: XCTestCase {
         randomCountryCodeProvider: RandomCountryCodeProviderProtocolMock = .init(),
         remainingLives: RemainingLivesViewModelProtocolMock = .init(),
         storage: StorageProtocolMock<UserChoice> = .init()
-    ) -> some GameViewModelProtocol {
-        GameViewModel(
-            game: game,
+    ) -> some GameRouterProtocol {
+        GameRouter(
+            gameStamp: game,
             gameSettings: gameSettings,
-            outputScheduler: ImmediateScheduler.shared,
             questionProvider: questionProvider,
-            randomCountryCodeProvider: randomCountryCodeProvider,
+            randomCodeProvider: randomCountryCodeProvider,
             remainingLives: remainingLives,
-            storage: storage)
+            store: storage
+        )
     }
 
     // MARK: status
     
-    func testThat_WhenTheGameIsCreated_ThenStatusIsIdle() {
+    func testThat_WhenTheGameIsCreated_ThenStatusIsIdle() async throws {
         // When
         let sut = self.makeSUT()
         
+        var iterator = sut.pathObservable.values.makeAsyncIterator()
+        let element = await iterator.next()
+        let status = try XCTUnwrap(element)
         // Then
-        XCTAssertTrue(sut.status.isIdle)
+        XCTAssertTrue(status.isIdle)
     }
     
     // MARK: start
     
-    func testThat_WhenGameIsStarted_ThenRancomCodeProvidedIsCalled() {
+    func testThat_WhenGameIsStarted_ThenRancomCodeProvidedIsCalled() async {
         // When
+        let store = StorageProtocolMock<UserChoice>()
+        store.getAllElementsOfReturnValue = []
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodeExcludingReturnValue = "ES"
         let sut = self.makeSUT(
-            randomCountryCodeProvider: randomCountryCodeProvider
+            randomCountryCodeProvider: randomCountryCodeProvider,
+            storage: store
         )
 
         // When
-        sut.start()
+        await sut.start()
         
         // Then
         XCTAssertEqual(randomCountryCodeProvider.generateCodeExcludingCallsCount, 1)
         XCTAssertEqual(randomCountryCodeProvider.generateCodeExcludingReceivedExcluding, [])
     }
     
-    func testThat_WhenGameIsStarted_ThenQuestionProviderIsCalled() {
+    func testThat_WhenGameIsStarted_ThenQuestionProviderIsCalled() async {
         // When
+        let store = StorageProtocolMock<UserChoice>()
+        store.getAllElementsOfReturnValue = []
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodeExcludingReturnValue = "ES"
         var codeUsedToMakeQuestion: CountryCode?
@@ -70,18 +78,21 @@ final class GameViewModelTests: XCTestCase {
         }
         let sut = self.makeSUT(
             questionProvider: questionProvider,
-            randomCountryCodeProvider: randomCountryCodeProvider
+            randomCountryCodeProvider: randomCountryCodeProvider,
+            storage: store
         )
 
         // When
-        sut.start()
+        await sut.start()
         
         // Then
         XCTAssertEqual(codeUsedToMakeQuestion, "ES")
     }
     
-    func testThat_WhenGameIsStarted_ThenStatusIsPlaying() throws {
+    func testThat_WhenGameIsStarted_ThenStatusIsPlaying() async throws {
         // When
+        let store = StorageProtocolMock<UserChoice>()
+        store.getAllElementsOfReturnValue = []
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodeExcludingReturnValue = "ES"
         var codeUsedToMakeQuestion: CountryCode?
@@ -94,15 +105,18 @@ final class GameViewModelTests: XCTestCase {
         let sut = self.makeSUT(
             questionProvider: questionProvider,
             randomCountryCodeProvider: randomCountryCodeProvider,
-            remainingLives: remainingLives
+            remainingLives: remainingLives,
+            storage: store
         )
 
         // When
-        sut.start()
+        await sut.start()
         
         // Then
         XCTAssertEqual(codeUsedToMakeQuestion, "ES")
-        let playingStatus = try XCTUnwrap(sut.status.playing)
+        var iterator = sut.pathObservable.values.makeAsyncIterator()
+        let status = await iterator.next()
+        let playingStatus = try XCTUnwrap(status?.playing)
         XCTAssertIdentical(playingStatus.question, providerQuestion)
         XCTAssertIdentical(playingStatus.lives, remainingLives)
     }
@@ -129,7 +143,7 @@ final class GameViewModelTests: XCTestCase {
         )
 
         // When
-        await sut.next()
+        await sut.gotNextQuestion()
         
         // Then
         XCTAssertEqual(randomCountryCodeProvider.generateCodeExcludingCallsCount, 1)
@@ -160,11 +174,13 @@ final class GameViewModelTests: XCTestCase {
         )
 
         // When
-        await sut.next()
+        await sut.gotNextQuestion()
         
         // Then
         XCTAssertEqual(codeUsedToMakeQuestion, "ES")
-        let playingStatus = try XCTUnwrap(sut.status.playing)
+        var iterator = sut.pathObservable.values.makeAsyncIterator()
+        let status = await iterator.next()
+        let playingStatus = try XCTUnwrap(status?.playing)
         XCTAssertIdentical(playingStatus.question, providerQuestion)
         XCTAssertIdentical(playingStatus.lives, remainingLives)
     }
@@ -189,9 +205,11 @@ final class GameViewModelTests: XCTestCase {
         )
 
         // When
-        await sut.next()
+        await sut.gotNextQuestion()
         
         // Then
-        XCTAssertEqual(sut.status.gameOverScore, 1)
+        var iterator = sut.pathObservable.values.makeAsyncIterator()
+        let status = await iterator.next()
+        XCTAssertEqual(status?.gameOverScore, 1)
     }
 }

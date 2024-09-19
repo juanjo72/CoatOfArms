@@ -19,7 +19,7 @@ struct RootView<
     // MARK: View
 
     var body: some View {
-        Group {
+        VStack {
             if let game = self.viewModel.game {
                 GameView(
                     viewModel: game,
@@ -30,8 +30,10 @@ struct RootView<
                         }
                     }
                 )
+                .id(game.gameStamp)
             }
         }
+        .frame(alignment: .bottom)
         .task() {
             await self.viewModel.viewWillAppear()
         }

@@ -34,7 +34,7 @@ struct QuestionView<
                 DynamicStack(
                     spacing: self.style.spacing
                 ) {
-                    if self.deviceOrientation == .portrait || self.deviceOrientation == .portraitUpsideDown {
+                    if self.deviceOrientation == .portrait || self.deviceOrientation == .portraitUpsideDown || self.deviceOrientation == .unknown {
                         Spacer()
                     }
                     
