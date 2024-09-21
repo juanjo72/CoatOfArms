@@ -31,6 +31,8 @@ struct RemainingLivesView<
                     .animation(.easeOut, value: self.viewModel.numberOfLives)
             }
         }
+        .accessibilityElement(children: .ignore)
+        .accessibilityValue("You have \(self.viewModel.numberOfLives) lives left")
     }
     
     // MARK: Lifecycle

@@ -12,7 +12,7 @@ final class QuestionViewModelDouble_Interactive: QuestionViewModelProtocol {
     var loadingState: LoadingState<QuestionViewData<some MultipleChoiceViewModelProtocol>> = {
         .loaded(
             QuestionViewData(
-                imageURL: URL(string: "https://mainfacts.com/media/images/coats_of_arms/ar.png")!, 
+                imageURL: URL(string: "https://mainfacts.com/media/images/coats_of_arms/ar.png")!,
                 multipleChoice: MultipleChoiceViewModelDouble_Interative()
             )
         )

@@ -21,16 +21,16 @@ struct GameOverView: View {
         VStack(
             spacing: self.style.spacing
         ) {
-            Text("GAME_OVER")
+            Text("Game Over")
                 .font(.headline)
 
-            Text("SCORE: \(self.score)")
+            Text("Score: \(self.score)")
                 .font(.subheadline)
 
             Button(
                 action: self.action,
                 label: {
-                    Text("AGAIN")
+                    Text("Again")
                         .padding(.horizontal)
                 }
             )

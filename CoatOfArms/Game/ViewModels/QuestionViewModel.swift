@@ -38,26 +38,22 @@ final class QuestionViewModel<
     
     // MARK: Observables
     
-    private var imageURLObservable: some Publisher<URL?, Never> {
-        self.repository.countryObservable
-            .map(\.?.coatOfArmsURL)
-    }
-    
     private var prefetchObservable: some Publisher<Bool, Never> {
-        self.imageURLObservable
+        self.repository.countryObservable
             .compactMap { $0 }
+            .map(\.coatOfArmsURL)
             .flatMap(self.remoteImagePrefetcher)
     }
     
     private var questionObservable: some Publisher<QuestionViewData<MultipleChoice>?, Never> {
         Publishers.CombineLatest(
-            self.imageURLObservable,
+            self.self.repository.countryObservable,
             self.prefetchObservable
         )
-        .map { [multipleChoiceProvider] url, _ -> QuestionViewData<MultipleChoice>? in
-            guard let url else { return nil }
+        .map { [multipleChoiceProvider] country, _ -> QuestionViewData<MultipleChoice>? in
+            guard let country else { return nil }
             return QuestionViewData(
-                imageURL: url,
+                imageURL: country.coatOfArmsURL,
                 multipleChoice: multipleChoiceProvider()
             )
         }

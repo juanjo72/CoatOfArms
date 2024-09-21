@@ -22,7 +22,7 @@ private struct DetectOrientation: ViewModifier {
             .onReceive(
                 NotificationCenter.default
                     .publisher(for: UIDevice.orientationDidChangeNotification)
-            ) { notification in
+            ) { _ in
                 self.orientation = UIDevice.current.orientation
             }
             .environment(\.deviceOrientation, self.orientation)

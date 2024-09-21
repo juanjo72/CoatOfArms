@@ -26,6 +26,7 @@ final class MultipleChoiceViewModel<
     private let gameSettings: GameSettings
     private let locale: Locale
     private let outputScheduler: OutputScheduler
+    private let playSound: any PlaySoundProtocol
     private let repository: any MultipleChoiceRepositoryProtocol
     private let router: any GameRouterProtocol
     
@@ -64,12 +65,14 @@ final class MultipleChoiceViewModel<
         gameSettings: GameSettings,
         locale: Locale = Locale.autoupdatingCurrent,
         outputScheduler: OutputScheduler = DispatchQueue.main,
+        playSound: any PlaySoundProtocol,
         repository: any MultipleChoiceRepositoryProtocol,
         router: any GameRouterProtocol
     ) {
         self.gameSettings = gameSettings
         self.locale = locale
         self.outputScheduler = outputScheduler
+        self.playSound = playSound
         self.repository = repository
         self.router = router
         
@@ -88,7 +91,15 @@ final class MultipleChoiceViewModel<
         self.outputScheduler.schedule {
             self.isEnabled = false
         }
+        
         await self.repository.set(answer: code)
+        
+        var iterator = self.repository.userChoiceObservable.values.makeAsyncIterator()
+        guard let userChoice = await iterator.next() as? UserChoice else {
+            return
+        }
+        await self.playSound.play(sound: userChoice.isCorrect ? .rightAnswer : .wrongAnswer)
+        
         try? await Task.sleep(for: self.gameSettings.resultTime)
         await self.router.gotNextQuestion()
     }

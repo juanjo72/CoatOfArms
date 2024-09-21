@@ -28,8 +28,8 @@ final class GameViewModel<
     // MARK: Injected
 
     internal let gameStamp: GameStamp
+    private let outputScheduler: OutputScheduler
     private let router: Router
-    private let scheduler: OutputScheduler
     
     // MARK: GameRouterProtocol
     
@@ -39,15 +39,15 @@ final class GameViewModel<
     
     init(
         gameStamp: GameStamp,
-        router: Router,
-        scheduler: OutputScheduler = DispatchQueue.main
+        outputScheduler: OutputScheduler = DispatchQueue.main,
+        router: Router
     ) where Router.QuestionViewModel == QuestionViewModel, Router.RemainingLives == RemainingLives {
         self.gameStamp = gameStamp
         self.router = router
-        self.scheduler = scheduler
+        self.outputScheduler = outputScheduler
         
         self.router.pathObservable
-            .receive(on: self.scheduler)
+            .receive(on: self.outputScheduler)
             .assign(to: &self.$status)
     }
     

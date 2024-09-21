@@ -34,18 +34,28 @@ struct QuestionView<
                 DynamicStack(
                     spacing: self.style.spacing
                 ) {
-                    if self.deviceOrientation == .portrait || self.deviceOrientation == .portraitUpsideDown || self.deviceOrientation == .unknown {
+                    if self.deviceOrientation.isPortrait
+                        || self.deviceOrientation == .unknown {
                         Spacer()
                     }
                     
                     KFImage(question.imageURL)
                         .resizable()
+                        .frame(
+                            minWidth: self.deviceOrientation.isLandscape ? 200 : nil
+                        )
+                        .frame(
+                            minHeight: self.deviceOrientation.isPortrait ? 200 : nil
+                        )
                         .aspectRatio(contentMode: .fit)
-                        .padding(.horizontal)
+                        .padding(self.deviceOrientation.isPortrait ? .horizontal : .vertical)
+                        .allowsHitTesting(false)
+                        .accessibilityLabel(Text("Unknown Coat of Arms"))
                     
                     MultipleChoiceView(
                         viewModel: question.multipleChoice
                     )
+                    .layoutPriority(1)
                 }
             }
         }

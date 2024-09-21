@@ -31,14 +31,20 @@ struct MultipleChoiceView<
                     },
                     label: {
                         Text(button.label)
+                            .font(.title2)
+                            .lineLimit(nil)
                             .frame(maxWidth: .infinity)
+                            .accessibilityLabel(
+                                button.a11y
+                            )
                     }
                 )
                 .buttonStyle(.borderedProminent)
-                .tint(button.effect.color)
+                .tint(button.color)
                 .allowsHitTesting(self.viewModel.isEnabled)
                 .clipShape(Capsule())
             }
+            
         }
         .task {
             await self.viewModel.viewWillAppear()

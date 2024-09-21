@@ -33,6 +33,7 @@ struct MultipleChoiceViewModelFactory {
         )
         return MultipleChoiceViewModel(
             gameSettings: self.gameSettings,
+            playSound: PlaySound(),
             repository: repository,
             router: self.router
         )

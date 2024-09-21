@@ -39,15 +39,26 @@ extension ChoiceButtonViewData.Effect {
     }
 }
 
-extension ChoiceButtonViewData.Effect {
+extension ChoiceButtonViewData {
     var color: Color {
-        return switch(self) {
+        return switch(self.effect) {
         case .none:
                 .accentColor
         case .rightChoice:
                 .green
         case .wrongChoice:
                 .red
+        }
+    }
+    
+    var a11y: String {
+        return switch(self.effect) {
+        case .none:
+            self.label
+        case .rightChoice:
+            String(localized: "Correct")
+        case .wrongChoice:
+            String(localized: "Wrong")
         }
     }
 }

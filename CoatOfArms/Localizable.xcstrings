@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "AGAIN" : {
+    "Again" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -18,7 +18,23 @@
         }
       }
     },
-    "GAME_OVER" : {
+    "Correct" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yep"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pues sí"
+          }
+        }
+      }
+    },
+    "Game Over" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -35,7 +51,7 @@
         }
       }
     },
-    "SCORE: %lld" : {
+    "Score: %lld" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -47,6 +63,78 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Puntuación: %lld"
+          }
+        }
+      }
+    },
+    "Unknown Coat of Arms" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown Coat of Arms"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escudo desconocido"
+          }
+        }
+      }
+    },
+    "Wrong" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nope"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noooooo"
+          }
+        }
+      }
+    },
+    "You have %lld lives left" : {
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "You have %lld life left"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "new",
+                  "value" : "You have %lld lives left"
+                }
+              }
+            }
+          }
+        },
+        "es" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Te quedan %lld vida"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Te quedan %lld vidas"
+                }
+              }
+            }
           }
         }
       }

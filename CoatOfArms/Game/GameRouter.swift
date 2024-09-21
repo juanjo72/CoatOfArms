@@ -97,7 +97,3 @@ final class GameRouter<
         )
     }
 }
-
-// MARK: - GameRouterProtocolMock -
-
-
