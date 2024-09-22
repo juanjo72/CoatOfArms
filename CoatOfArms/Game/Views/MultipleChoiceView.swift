@@ -19,32 +19,9 @@ struct MultipleChoiceView<
     
     var body: some View {
         VStack {
-            ForEach(
-                self.viewModel.choiceButtons,
-                id: \.id
-            ) { button in
-                Button(
-                    action: {
-                        Task {
-                            await self.viewModel.userDidHit(code: button.id)
-                        }
-                    },
-                    label: {
-                        Text(button.label)
-                            .font(.title2)
-                            .lineLimit(nil)
-                            .frame(maxWidth: .infinity)
-                            .accessibilityLabel(
-                                button.a11y
-                            )
-                    }
-                )
-                .buttonStyle(.borderedProminent)
-                .tint(button.color)
-                .allowsHitTesting(self.viewModel.isEnabled)
-                .clipShape(Capsule())
+            ForEach(self.viewModel.choiceButtons, id: \.id) { button in
+                ChoiceButton(viewModel: button)
             }
-            
         }
         .task {
             await self.viewModel.viewWillAppear()

@@ -34,6 +34,9 @@
 		811D3A632C82E1210057FE8E /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D3A622C82E1210057FE8E /* LoadingState.swift */; };
 		811D3A652C82E1BB0057FE8E /* Publisher+imagePrefech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D3A642C82E1BB0057FE8E /* Publisher+imagePrefech.swift */; };
 		811D3A682C833D000057FE8E /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D3A672C833D000057FE8E /* GameOverView.swift */; };
+		813247E02C9EE905000D1C57 /* GetCountryName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813247DF2C9EE8FA000D1C57 /* GetCountryName.swift */; };
+		813247E22C9EEE36000D1C57 /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813247E12C9EEE23000D1C57 /* ChoiceButton.swift */; };
+		813247E42C9EF1EA000D1C57 /* ChoiceButtonViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813247E32C9EF1DC000D1C57 /* ChoiceButtonViewModelFactory.swift */; };
 		8134F90E2C68CB600052D0DF /* CoatOfArmsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */; };
 		8134F9122C68CB610052D0DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8134F9112C68CB610052D0DF /* Assets.xcassets */; };
 		8134F9152C68CB610052D0DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8134F9142C68CB610052D0DF /* Preview Assets.xcassets */; };
@@ -60,6 +63,10 @@
 		8190ADF22C825ADD0031F1E3 /* Publisher+asyncMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8190ADF12C825ADD0031F1E3 /* Publisher+asyncMap.swift */; };
 		8190ADF42C8260D40031F1E3 /* QuestionViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8190ADF32C8260D40031F1E3 /* QuestionViewData.swift */; };
 		8191DECC2C9DD521001F98DB /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8191DECB2C9DD51F001F98DB /* PlaySound.swift */; };
+		8191DECE2C9EE22B001F98DB /* PlaySoundProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8191DECD2C9EE228001F98DB /* PlaySoundProtocolMock.swift */; };
+		8191DED02C9EE2CE001F98DB /* ChoiceButtonViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8191DECF2C9EE2C8001F98DB /* ChoiceButtonViewModelTests.swift */; };
+		8191DED22C9EE309001F98DB /* ChoiceButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8191DED12C9EE2F6001F98DB /* ChoiceButtonViewModel.swift */; };
+		8191DED42C9EE48E001F98DB /* ChoiceButtonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8191DED32C9EE489001F98DB /* ChoiceButtonRepository.swift */; };
 		81A3CFFB2C84AF8300D789E5 /* GameOverViewStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3CFFA2C84AF8300D789E5 /* GameOverViewStyle+default.swift */; };
 		81A3CFFD2C84AFCE00D789E5 /* GameViewStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3CFFC2C84AFCE00D789E5 /* GameViewStyle+default.swift */; };
 		81ABE8292C9945A000FC89D0 /* ReactiveStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 81ABE8282C9945A000FC89D0 /* ReactiveStorage */; };
@@ -137,6 +144,9 @@
 		811D3A622C82E1210057FE8E /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
 		811D3A642C82E1BB0057FE8E /* Publisher+imagePrefech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+imagePrefech.swift"; sourceTree = "<group>"; };
 		811D3A672C833D000057FE8E /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		813247DF2C9EE8FA000D1C57 /* GetCountryName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryName.swift; sourceTree = "<group>"; };
+		813247E12C9EEE23000D1C57 /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
+		813247E32C9EF1DC000D1C57 /* ChoiceButtonViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonViewModelFactory.swift; sourceTree = "<group>"; };
 		8134F90A2C68CB600052D0DF /* CoatOfArms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoatOfArms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoatOfArmsApp.swift; sourceTree = "<group>"; };
 		8134F9112C68CB610052D0DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,6 +177,10 @@
 		8190ADF12C825ADD0031F1E3 /* Publisher+asyncMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+asyncMap.swift"; sourceTree = "<group>"; };
 		8190ADF32C8260D40031F1E3 /* QuestionViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewData.swift; sourceTree = "<group>"; };
 		8191DECB2C9DD51F001F98DB /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
+		8191DECD2C9EE228001F98DB /* PlaySoundProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySoundProtocolMock.swift; sourceTree = "<group>"; };
+		8191DECF2C9EE2C8001F98DB /* ChoiceButtonViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonViewModelTests.swift; sourceTree = "<group>"; };
+		8191DED12C9EE2F6001F98DB /* ChoiceButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonViewModel.swift; sourceTree = "<group>"; };
+		8191DED32C9EE489001F98DB /* ChoiceButtonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonRepository.swift; sourceTree = "<group>"; };
 		81A3CFFA2C84AF8300D789E5 /* GameOverViewStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameOverViewStyle+default.swift"; sourceTree = "<group>"; };
 		81A3CFFC2C84AFCE00D789E5 /* GameViewStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewStyle+default.swift"; sourceTree = "<group>"; };
 		81B59CA82C94474A00DB8CFA /* RemainingLivesStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemainingLivesStyle+default.swift"; sourceTree = "<group>"; };
@@ -227,6 +241,7 @@
 		8107D6E92C8B112100F0094D /* _factories */ = {
 			isa = PBXGroup;
 			children = (
+				813247E32C9EF1DC000D1C57 /* ChoiceButtonViewModelFactory.swift */,
 				81135F1D2C86E37900889507 /* GameViewModelFactory.swift */,
 				81135F192C86DD5B00889507 /* MultipleChoiceViewModelFactory.swift */,
 				81135F172C86DBF700889507 /* QuestionViewModelFactory.swift */,
@@ -270,6 +285,7 @@
 		811B385B2C710142003856C3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				8191DECF2C9EE2C8001F98DB /* ChoiceButtonViewModelTests.swift */,
 				811B385C2C71014F003856C3 /* MultipleChoiceViewModelTests.swift */,
 				81E36CE82C739C9600F71DB5 /* QuestionViewModelTests.swift */,
 				817A66152C8D6CE700B21E5A /* RemainingLivesViewModelTests.swift */,
@@ -354,6 +370,7 @@
 			children = (
 				81D4160A2C74927F0061A1B6 /* DomainEntities */,
 				81D416092C74926E0061A1B6 /* Network */,
+				8191DED32C9EE489001F98DB /* ChoiceButtonRepository.swift */,
 				81097A5B2C6C814500554C1E /* MultipleChoiceRepository.swift */,
 				8134F9422C68CEDE0052D0DF /* QuestionRepository.swift */,
 				81EE1BE82C85D64D00D874D9 /* RemainingLivesRepository.swift */,
@@ -364,17 +381,18 @@
 		8134F9502C69F1FC0052D0DF /* _mocks */ = {
 			isa = PBXGroup;
 			children = (
+				81E5DD2A2C9C71CE00CE10AB /* GameRouterProtocolMock.swift */,
 				8107D6E52C8AD29D00F0094D /* MultipleChoiceRepositoryProtocolMock.swift */,
 				81E36CEA2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift */,
+				81BB95B32C8F0EE700003393 /* NetworkProtocolMock.swift */,
+				8191DECD2C9EE228001F98DB /* PlaySoundProtocolMock.swift */,
 				8107D6E72C8AD51B00F0094D /* QuestionRepositoryProtocolMock.swift */,
 				817A661B2C8E1FD000B21E5A /* QuestionViewModelProtocolMock.swift */,
 				811B38582C70F71E003856C3 /* RandomCountryCodeProviderProtocolMock.swift */,
-				8134F9532C69F3520052D0DF /* StorageProtocolMock.swift */,
 				817A66132C8D6C7900B21E5A /* RemainingLivesRepositoryMock.swift */,
 				817A661D2C8E236100B21E5A /* RemainingLivesViewModelProtocolMock.swift */,
 				8134F9512C69F2540052D0DF /* RequestSenderProtocolMock.swift */,
-				81BB95B32C8F0EE700003393 /* NetworkProtocolMock.swift */,
-				81E5DD2A2C9C71CE00CE10AB /* GameRouterProtocolMock.swift */,
+				8134F9532C69F3520052D0DF /* StorageProtocolMock.swift */,
 			);
 			path = _mocks;
 			sourceTree = "<group>";
@@ -394,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				811D3A662C82EC6F0057FE8E /* ViewData */,
+				813247E12C9EEE23000D1C57 /* ChoiceButton.swift */,
 				811D3A672C833D000057FE8E /* GameOverView.swift */,
 				81135F0D2C86312600889507 /* GameView.swift */,
 				81D415C82C7461630061A1B6 /* MultipleChoiceView.swift */,
@@ -446,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				8107D6E92C8B112100F0094D /* _factories */,
+				8191DED12C9EE2F6001F98DB /* ChoiceButtonViewModel.swift */,
 				817AAB302C8833C400778E67 /* GameViewModel.swift */,
 				81097A592C6C800B00554C1E /* MultipleChoiceViewModel.swift */,
 				81E44F392C6B5B6F00029516 /* QuestionViewModel.swift */,
@@ -497,6 +517,7 @@
 		81FCD9172C9C80C700C6FFFD /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				813247DF2C9EE8FA000D1C57 /* GetCountryName.swift */,
 				8191DECB2C9DD51F001F98DB /* PlaySound.swift */,
 				81097A572C6C7B2200554C1E /* RandomCountryCodeProvider.swift */,
 			);
@@ -659,6 +680,9 @@
 				818BC32B2C88B92E003F4D8A /* RootViewStyle+default.swift in Sources */,
 				8134F9492C68D3900052D0DF /* ServerCountry+Decoder.swift in Sources */,
 				81E44F3A2C6B5B6F00029516 /* QuestionViewModel.swift in Sources */,
+				8191DED42C9EE48E001F98DB /* ChoiceButtonRepository.swift in Sources */,
+				813247E42C9EF1EA000D1C57 /* ChoiceButtonViewModelFactory.swift in Sources */,
+				813247E02C9EE905000D1C57 /* GetCountryName.swift in Sources */,
 				81135F162C86D7EF00889507 /* RootView.swift in Sources */,
 				8190ADF22C825ADD0031F1E3 /* Publisher+asyncMap.swift in Sources */,
 				81BB95B22C8F070500003393 /* NetworkProtocol.swift in Sources */,
@@ -680,6 +704,7 @@
 				81097A582C6C7B2200554C1E /* RandomCountryCodeProvider.swift in Sources */,
 				81135F1A2C86DD5B00889507 /* MultipleChoiceViewModelFactory.swift in Sources */,
 				811B38532C70EE6D003856C3 /* UserChoice.swift in Sources */,
+				8191DED22C9EE309001F98DB /* ChoiceButtonViewModel.swift in Sources */,
 				81097A562C6C783A00554C1E /* MultipleChoice.swift in Sources */,
 				81184FE22C75CF02005B49E3 /* DynamicStack.swift in Sources */,
 				81E5DD0B2C9B1B1F00CE10AB /* EntryPoint.swift in Sources */,
@@ -698,6 +723,7 @@
 				818287192C906CA90019C132 /* RemainingLivesViewDouble.swift in Sources */,
 				81097A5E2C6CAF0A00554C1E /* ChoiceButtonViewData.swift in Sources */,
 				81135F1C2C86E29E00889507 /* RemainingLivesViewModelFactory.swift in Sources */,
+				813247E22C9EEE36000D1C57 /* ChoiceButton.swift in Sources */,
 				81135F1E2C86E37900889507 /* GameViewModelFactory.swift in Sources */,
 				817AAB2F2C87B53000778E67 /* GameStamp.swift in Sources */,
 				81135F0E2C86312600889507 /* GameView.swift in Sources */,
@@ -721,10 +747,12 @@
 				81E36CE92C739C9600F71DB5 /* QuestionViewModelTests.swift in Sources */,
 				8134F94F2C69F1CB0052D0DF /* QuestionRepositoryTests.swift in Sources */,
 				81E36CEB2C7450AB00F71DB5 /* MultipleChoiceViewModelProtocolMock.swift in Sources */,
+				8191DECE2C9EE22B001F98DB /* PlaySoundProtocolMock.swift in Sources */,
 				81E36CEF2C7458BA00F71DB5 /* ServerCountry+makeDouble.swift in Sources */,
 				8107D6E62C8AD29D00F0094D /* MultipleChoiceRepositoryProtocolMock.swift in Sources */,
 				817A66142C8D6C7900B21E5A /* RemainingLivesRepositoryMock.swift in Sources */,
 				81C390272C8B2B47006C1888 /* RamainingLivesRepositoryTests.swift in Sources */,
+				8191DED02C9EE2CE001F98DB /* ChoiceButtonViewModelTests.swift in Sources */,
 				81E36CE72C734CB500F71DB5 /* MultipleChoice+makeDouble.swift in Sources */,
 				817A66162C8D6CE700B21E5A /* RemainingLivesViewModelTests.swift in Sources */,
 				8134F9542C69F3520052D0DF /* StorageProtocolMock.swift in Sources */,

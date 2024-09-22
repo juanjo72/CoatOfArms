@@ -19,6 +19,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
     // MARK: SUT
     
     func makeSUT(
+        playSound: PlaySoundProtocolMock = .init(),
         repository: MultipleChoiceRepositoryProtocolMock = .init(),
         router: Router = .init()
     ) -> some MultipleChoiceViewModelProtocol {
@@ -26,6 +27,7 @@ final class MultipleChoiceViewModelTests: XCTestCase {
             gameSettings: .default,
             locale: Locale(identifier: "en_US"),
             outputScheduler: ImmediateScheduler.shared,
+            playSound: playSound,
             repository: repository,
             router: router
         )

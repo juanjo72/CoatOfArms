@@ -5,41 +5,33 @@
 //  Created on 20/8/24.
 //
 
+import SwiftUI
+
 final class MultipleChoiceViewModelDouble_Interative: MultipleChoiceViewModelProtocol {
-    var isEnabled: Bool = true
-    var prompt: String = "Pick one:"
-    var choiceButtons: [ChoiceButtonViewData] = [
-        ChoiceButtonViewData(id: "ES", label: "Spain", effect: .none),
-        ChoiceButtonViewData(id: "AR", label: "Argentina", effect: .none),
-        ChoiceButtonViewData(id: "UK", label: "United Kingdom", effect: .none),
+    var choiceButtons: [ChoiceButtonViewModelDouble] = [
+        ChoiceButtonViewModelDouble(),
     ]
-    
     func viewWillAppear() async {}
-    func userDidHit(code: CountryCode) async {}
 }
 
 final class MultipleChoiceViewModelDouble_RightChoice: MultipleChoiceViewModelProtocol {
-    var isEnabled: Bool = false
-    var prompt: String = "Pick one:"
-    var choiceButtons: [ChoiceButtonViewData] = [
-        ChoiceButtonViewData(id: "ES", label: "Spain", effect: .none),
-        ChoiceButtonViewData(id: "AR", label: "Argentina", effect: .rightChoice),
-        ChoiceButtonViewData(id: "UK", label: "United Kingdom", effect: .none),
+    var choiceButtons: [ChoiceButtonViewModelDouble] = [
+        ChoiceButtonViewModelDouble(),
     ]
-    
     func viewWillAppear() async {}
-    func userDidHit(code: CountryCode) async {}
 }
 
 final class MultipleChoiceViewModelDouble_WrongChoice: MultipleChoiceViewModelProtocol {
-    var isEnabled: Bool = false
-    var prompt: String = "Pick one:"
-    var choiceButtons: [ChoiceButtonViewData] = [
-        ChoiceButtonViewData(id: "ES", label: "Spain", effect: .wrongChoice),
-        ChoiceButtonViewData(id: "AR", label: "Argentina", effect: .none),
-        ChoiceButtonViewData(id: "UK", label: "United Kingdom", effect: .none),
+    var choiceButtons: [ChoiceButtonViewModelDouble] = [
+        ChoiceButtonViewModelDouble(),
     ]
-    
     func viewWillAppear() async {}
-    func userDidHit(code: CountryCode) async {}
+}
+
+final class ChoiceButtonViewModelDouble: ChoiceButtonViewModelProtocol {
+    let id: CountryCode = "AR"
+    let label: String = "Argentina"
+    let tint: Color = .clear
+    func viewWillAppear() async {}
+    func userDidTap() async {}
 }

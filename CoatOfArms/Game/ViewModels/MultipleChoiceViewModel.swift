@@ -10,71 +10,47 @@ import Combine
 import Foundation
 
 protocol MultipleChoiceViewModelProtocol: ObservableObject {
-    var isEnabled: Bool { get }
-    var choiceButtons: [ChoiceButtonViewData] { get }
+    associatedtype ButtonViewModel: ChoiceButtonViewModelProtocol
+    var choiceButtons: [ButtonViewModel] { get }
     func viewWillAppear() async
-    func userDidHit(code: CountryCode) async
 }
 
 /// Represents view containing set of answer buttons
 final class MultipleChoiceViewModel<
-    OutputScheduler: Scheduler
+    OutputScheduler: Scheduler,
+    ButtonViewModel: ChoiceButtonViewModelProtocol
 >: MultipleChoiceViewModelProtocol {
     
     // MARK: Injected
     
-    private let gameSettings: GameSettings
-    private let locale: Locale
+    private let buttonProvider: (CountryCode) -> ButtonViewModel
     private let outputScheduler: OutputScheduler
-    private let playSound: any PlaySoundProtocol
     private let repository: any MultipleChoiceRepositoryProtocol
-    private let router: any GameRouterProtocol
     
     // MARK: PossibleAnswersRepositoryProtocol
-    
-    @Published var isEnabled: Bool = true
-    @Published var choiceButtons: [ChoiceButtonViewData] = []
+
+    @Published var choiceButtons: [ButtonViewModel] = []
     
     // MARK: Observables
     
-    private var answersObservable: some Publisher<[ChoiceButtonViewData], Never> {
-        Publishers.CombineLatest(
-            self.repository.multipleChoiceObservable,
-            self.repository.userChoiceObservable
-        )
-        .map { [locale] choices, userAnswer in
-            guard let choices else {
-                return []
+    private var answersObservable: some Publisher<[ButtonViewModel], Never> {
+        self.repository.multipleChoiceObservable
+            .map { [self] choices in
+                guard let choices else { return [] }
+                return choices.allChoices.map { [buttonProvider] in buttonProvider($0) }
             }
-            return choices.allChoices.map { each in
-                ChoiceButtonViewData(
-                    id: each,
-                    label: each.countryName(locale: locale),
-                    effect: ChoiceButtonViewData.Effect(
-                        id: each,
-                        userChoice: userAnswer
-                    )
-                )
-            }
-        }
     }
     
     // MARK: Lifecycle
     
     init(
-        gameSettings: GameSettings,
-        locale: Locale = Locale.autoupdatingCurrent,
+        buttonProvider: @escaping (CountryCode) -> ButtonViewModel,
         outputScheduler: OutputScheduler = DispatchQueue.main,
-        playSound: any PlaySoundProtocol,
-        repository: any MultipleChoiceRepositoryProtocol,
-        router: any GameRouterProtocol
+        repository: any MultipleChoiceRepositoryProtocol
     ) {
-        self.gameSettings = gameSettings
-        self.locale = locale
+        self.buttonProvider = buttonProvider
         self.outputScheduler = outputScheduler
-        self.playSound = playSound
         self.repository = repository
-        self.router = router
         
         self.answersObservable
             .receive(on: outputScheduler)
@@ -85,23 +61,6 @@ final class MultipleChoiceViewModel<
     
     func viewWillAppear() async {
         await self.repository.fetchAnswers()
-    }
-    
-    func userDidHit(code: CountryCode) async {
-        self.outputScheduler.schedule {
-            self.isEnabled = false
-        }
-        
-        await self.repository.set(answer: code)
-        
-        var iterator = self.repository.userChoiceObservable.values.makeAsyncIterator()
-        guard let userChoice = await iterator.next() as? UserChoice else {
-            return
-        }
-        await self.playSound.play(sound: userChoice.isCorrect ? .rightAnswer : .wrongAnswer)
-        
-        try? await Task.sleep(for: self.gameSettings.resultTime)
-        await self.router.gotNextQuestion()
     }
 }
 

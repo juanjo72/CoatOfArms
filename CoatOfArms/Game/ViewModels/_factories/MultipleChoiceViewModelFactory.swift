@@ -31,11 +31,15 @@ struct MultipleChoiceViewModelFactory {
             randomCountryCodeProvider: randomCountryCodeProvider,
             storage: self.storage
         )
-        return MultipleChoiceViewModel(
+        let buttonFactory = ChoiceButtonViewModelFactory(
+            questionId: (self.game, code),
             gameSettings: self.gameSettings,
-            playSound: PlaySound(),
-            repository: repository,
-            router: self.router
+            router: self.router,
+            storage: self.storage
+        )
+        return MultipleChoiceViewModel(
+            buttonProvider: buttonFactory.make,
+            repository: repository
         )
     }
 }
