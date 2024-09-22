@@ -8,24 +8,8 @@
 import Foundation
 
 struct QuestionViewData<
-    MultipleChoice: MultipleChoiceViewModelProtocol
+    ButtonViewModel: ChoiceButtonViewModelProtocol
 > {
     let imageURL: URL
-    let multipleChoice: MultipleChoice
-    
-    init(
-        imageURL: URL,
-        multipleChoice: MultipleChoice
-    ) {
-        self.imageURL = imageURL
-        self.multipleChoice = multipleChoice
-    }
+    let buttons: [ButtonViewModel]
 }
-
-#if DEBUG
-extension QuestionViewData: CustomDebugStringConvertible {
-    var debugDescription: String {
-        "Question for \(self.imageURL.lastPathComponent)"
-    }
-}
-#endif

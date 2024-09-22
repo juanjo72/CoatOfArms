@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 protocol ChoiceButtonViewModelProtocol: ObservableObject {
-    var id: CountryCode { get }
+    var countryCode: CountryCode { get }
     var label: String { get }
     var tint: Color { get }
     func viewWillAppear() async
@@ -23,7 +23,7 @@ final class ChoiceButtonViewModel<
     
     // MARK: Injected
 
-    internal let id: CountryCode
+    internal let countryCode: CountryCode
     private let gameSettings: GameSettings
     private let getCountryName: any GetCountryNameProtocol
     private let outputScheduler: OutputScheduler
@@ -42,7 +42,7 @@ final class ChoiceButtonViewModel<
         self.repository.userChoiceObservable
             .map { [self] userChoice in
                 guard let userChoice,
-                      userChoice.pickedCountryCode == self.id else {
+                      userChoice.pickedCountryCode == self.countryCode else {
                     return .accentColor
                 }
                 if userChoice.isCorrect {
@@ -56,7 +56,7 @@ final class ChoiceButtonViewModel<
     // MARK: Lifecycle
     
     init(
-        id: CountryCode,
+        countryCode: CountryCode,
         gameSettings: GameSettings,
         getCountryName: any GetCountryNameProtocol,
         outputScheduler: OutputScheduler = DispatchQueue.main,
@@ -64,7 +64,7 @@ final class ChoiceButtonViewModel<
         repository: any ChoiceButtonRepositoryProtocol,
         router: any GameRouterProtocol
     ) {
-        self.id = id
+        self.countryCode = countryCode
         self.gameSettings = gameSettings
         self.getCountryName = getCountryName
         self.outputScheduler = outputScheduler
@@ -78,7 +78,7 @@ final class ChoiceButtonViewModel<
     
     func viewWillAppear() async {
         self.outputScheduler.schedule {
-            self.label = self.getCountryName.getName(for: self.id)
+            self.label = self.getCountryName.getName(for: self.countryCode)
         }
     }
     

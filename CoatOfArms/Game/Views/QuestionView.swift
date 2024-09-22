@@ -52,9 +52,14 @@ struct QuestionView<
                         .allowsHitTesting(false)
                         .accessibilityLabel(Text("Unknown Coat of Arms"))
                     
-                    MultipleChoiceView(
-                        viewModel: question.multipleChoice
-                    )
+                    VStack {
+                        ForEach(question.buttons, id: \.countryCode) { button in
+                            ChoiceButton(viewModel: button)
+                                .task {
+                                    await button.viewWillAppear()
+                                }
+                        }
+                    }
                     .layoutPriority(1)
                 }
             }
@@ -87,11 +92,4 @@ struct QuestionViewStyle {
     ) {
         self.spacing = spacing
     }
-}
-
-#Preview {
-    QuestionView(
-        viewModel: QuestionViewModelDouble_Interactive(),
-        style: .default
-    )
 }

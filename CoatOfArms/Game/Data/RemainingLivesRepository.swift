@@ -16,14 +16,14 @@ struct RemainingLivesRepository: RemainingLivesRepositoryProtocol {
     
     // MARK: Injected
 
-    private let game: GameStamp
-    private let storage: any StorageProtocol
+    private let gameStamp: GameStamp
+    private let store: any StorageProtocol
     
     // MARK: RemainingLivesRepositoryProtocol
     
     var wrongAnswers: AnyPublisher<[UserChoice], Never> {
-        self.storage.getAllElementsObservable(of: UserChoice.self)
-            .map { $0.filter { $0.id.game == self.game } }
+        self.store.getAllElementsObservable(of: UserChoice.self)
+            .map { $0.filter { $0.id.gameStamp == self.gameStamp } }
             .map { $0.filter { !$0.isCorrect } }
             .eraseToAnyPublisher()
     }
@@ -31,10 +31,10 @@ struct RemainingLivesRepository: RemainingLivesRepositoryProtocol {
     // MARK: Lifecycle
     
     init(
-        game: GameStamp,
-        storage: any StorageProtocol
+        gameStamp: GameStamp,
+        store: any StorageProtocol
     ) {
-        self.game = game
-        self.storage = storage
+        self.gameStamp = gameStamp
+        self.store = store
     }
 }

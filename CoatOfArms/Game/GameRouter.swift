@@ -70,7 +70,7 @@ final class GameRouter<
     }
     
     func gotNextQuestion() async {
-        let allAnswersInCurrentGame = await self.store.getAllElements(of: UserChoice.self).filter { $0.id.game == self.gameStamp }
+        let allAnswersInCurrentGame = await self.store.getAllElements(of: UserChoice.self).filter { $0.id.gameStamp == self.gameStamp }
         let rightCount = allAnswersInCurrentGame.filter { $0.isCorrect }.count
         let wrongCount = allAnswersInCurrentGame.count - rightCount
         

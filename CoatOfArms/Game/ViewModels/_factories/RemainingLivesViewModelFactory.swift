@@ -6,24 +6,24 @@
 //
 
 struct RemainingLivesViewModelFactory {
-    private let gameId: GameStamp
+    private let gameStamp: GameStamp
     private let gameSettings: GameSettings
-    private let storage: any StorageProtocol
+    private let store: any StorageProtocol
     
     init(
-        gameId: GameStamp,
+        gameStamp: GameStamp,
         gameSettings: GameSettings,
-        storage: any StorageProtocol
+        store: any StorageProtocol
     ) {
-        self.gameId = gameId
+        self.gameStamp = gameStamp
         self.gameSettings = gameSettings
-        self.storage = storage
+        self.store = store
     }
     
     func make() -> some RemainingLivesViewModelProtocol {
         let repository = RemainingLivesRepository(
-            game: self.gameId,
-            storage: self.storage
+            gameStamp: self.gameStamp,
+            store: self.store
         )
         return RemainingLivesViewModel(
             gameSettings: self.gameSettings,

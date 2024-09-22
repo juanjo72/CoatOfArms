@@ -6,12 +6,14 @@
 //
 
 import AudioToolbox
+import Mockable
 
 enum SoundEffect: SystemSoundID {
     case rightAnswer = 1057
     case wrongAnswer = 1006
 }
 
+@Mockable
 protocol PlaySoundProtocol {
     func play(sound: SoundEffect) async
 }

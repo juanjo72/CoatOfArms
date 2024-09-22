@@ -30,7 +30,6 @@ struct ChoiceButton<
         )
         .buttonStyle(.borderedProminent)
         .tint(self.viewModel.tint)
-        .allowsHitTesting(true)
         .clipShape(Capsule())
         .task {
             await self.viewModel.viewWillAppear()

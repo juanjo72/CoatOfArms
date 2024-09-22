@@ -32,7 +32,7 @@ struct EntryPoint {
         let gameViewModelFactory = GameViewModelFactory(
             gameSettings: self.gameSettings,
             network: self.network,
-            storage: self.store
+            store: self.store
         )
         let rootViewModel = RootViewModel(
             gameProvider: gameViewModelFactory.make

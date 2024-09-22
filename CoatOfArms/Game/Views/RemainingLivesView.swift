@@ -14,7 +14,7 @@ struct RemainingLivesView<
     // MARK: Injected
 
     @ObservedObject private var viewModel: ViewModel
-    private let style: RemainingLivesStyle
+    private let style: RemainingLivesViewStyle
     
     // MARK: View
     
@@ -39,23 +39,13 @@ struct RemainingLivesView<
     
     init(
         viewModel: ViewModel,
-        style: RemainingLivesStyle
+        style: RemainingLivesViewStyle
     ) {
         self.viewModel = viewModel
         self.style = style
     }
 }
 
-struct RemainingLivesStyle {
+struct RemainingLivesViewStyle {
     let circleDiameter: CGFloat
-}
-
-#Preview {
-    RemainingLivesView(
-        viewModel: RemainingLivesViewModel_Double(
-            numberOfLives: 1,
-            totalLives: 3
-        ),
-        style: .default
-    )
 }

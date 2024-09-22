@@ -9,7 +9,7 @@
 import Foundation
 
 extension ServerCountry {
-    static func makeDouble(
+    static func make(
         id: CountryCode = "ES",
         coatOfArmsURL: URL = URL(string: "https://mainfacts.com/media/images/coats_of_arms/es.png")!
     ) -> ServerCountry {

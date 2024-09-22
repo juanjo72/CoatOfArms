@@ -8,23 +8,21 @@
 import Foundation
 
 struct ChoiceButtonViewModelFactory {
-    typealias QuestionId = (gameStamp: GameStamp, countryCode: CountryCode)
-
-    private let questionId: QuestionId
+    private let questionId: Question.ID
     private let gameSettings: GameSettings
     private let router: any GameRouterProtocol
-    private let storage: any StorageProtocol
+    private let store: any StorageProtocol
     
     init(
-        questionId: QuestionId,
+        questionId: Question.ID,
         gameSettings: GameSettings,
         router: any GameRouterProtocol,
-        storage: any StorageProtocol
+        store: any StorageProtocol
     ) {
         self.questionId = questionId
         self.gameSettings = gameSettings
         self.router = router
-        self.storage = storage
+        self.store = store
     }
 
     func make(code: CountryCode) -> some ChoiceButtonViewModelProtocol {
@@ -33,12 +31,12 @@ struct ChoiceButtonViewModelFactory {
         )
         let playSound = PlaySound()
         let repository = ChoiceButtonRepository(
-            id: code,
+            buttonCode: code,
             questionId: self.questionId,
-            storage: self.storage
+            store: self.store
         )
         return ChoiceButtonViewModel(
-            id: code,
+            countryCode: code,
             gameSettings: self.gameSettings,
             getCountryName: countryNameProvider,
             playSound: playSound,

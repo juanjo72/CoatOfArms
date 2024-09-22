@@ -9,13 +9,13 @@
 import Foundation
 
 extension UserChoice {
-    static func makeDouble(
+    static func make(
         game: Date = Date(timeIntervalSince1970: 0),
         countryCode: CountryCode = "ES",
         pickedCountryCode: CountryCode = "IT"
     ) -> Self {
         UserChoice(
-            id: ID(game: game, countryCode: countryCode),
+            id: Question.ID(gameStamp: game, countryCode: countryCode),
             pickedCountryCode: pickedCountryCode
         )
     }

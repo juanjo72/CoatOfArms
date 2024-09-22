@@ -8,7 +8,7 @@
 @testable import CoatOfArms
 
 extension GameSettings {
-    static func makeDouble(
+    static func make(
         numPossibleChoices: Int = 4,
         resultTime: Duration = .seconds(1),
         maxWrongAnwers: Int = 3

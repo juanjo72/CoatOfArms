@@ -71,5 +71,5 @@ struct GameView<
 struct GameViewStyle {
     let gameOver: GameOverViewStyle
     let question: QuestionViewStyle
-    let remainingLives: RemainingLivesStyle
+    let remainingLives: RemainingLivesViewStyle
 }

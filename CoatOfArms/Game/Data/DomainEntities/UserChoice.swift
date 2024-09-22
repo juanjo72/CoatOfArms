@@ -9,12 +9,7 @@ import Foundation
 
 /// User's answer
 struct UserChoice: Identifiable, Equatable {
-    struct ID: Hashable {
-        let game: GameStamp
-        let countryCode: CountryCode
-    }
-
-    let id: ID
+    let id: Question.ID
     let pickedCountryCode: CountryCode
 }
 

@@ -13,23 +13,19 @@ protocol ChoiceButtonRepositoryProtocol {
 }
 
 struct ChoiceButtonRepository: ChoiceButtonRepositoryProtocol {
-    typealias QuestionId = (gameStamp: GameStamp, countryCode: CountryCode)
     
     // MARK: Injected
     
-    private let id: CountryCode
-    private let questionId: QuestionId
-    private let storage: any StorageProtocol
+    private let buttonCode: CountryCode
+    private let questionId: Question.ID
+    private let store: any StorageProtocol
     
     // MARK: ChoiceButtonRepositoryProtocol
     
     var userChoiceObservable: AnyPublisher<UserChoice?, Never> {
-        self.storage.getSingleElementObservable(
+        self.store.getSingleElementObservable(
             of: UserChoice.self,
-            id: UserChoice.ID(
-                game: self.questionId.gameStamp,
-                countryCode: self.questionId.countryCode
-            )
+            id: self.questionId
         )
         .eraseToAnyPublisher()
     }
@@ -37,26 +33,23 @@ struct ChoiceButtonRepository: ChoiceButtonRepositoryProtocol {
     // MARK: Lifecycle
     
     init(
-        id: CountryCode,
-        questionId: QuestionId,
-        storage: any StorageProtocol
+        buttonCode: CountryCode,
+        questionId: Question.ID,
+        store: any StorageProtocol
     ) {
-        self.id = id
+        self.buttonCode = buttonCode
         self.questionId = questionId
-        self.storage = storage
+        self.store = store
     }
     
     // MARK: ChoiceButtonRepositoryProtocol
     
     func markAsChoice() async -> UserChoice {
         let answer = UserChoice(
-            id: UserChoice.ID(
-                game: self.questionId.gameStamp,
-                countryCode: self.questionId.countryCode
-            ),
-            pickedCountryCode: self.id
+            id: self.questionId,
+            pickedCountryCode: self.buttonCode
         )
-        await self.storage.add(answer)
+        await self.store.add(answer)
         return answer
     }
 }

@@ -11,24 +11,24 @@ import Foundation
 struct GameViewModelFactory {
     private let gameSettings: GameSettings
     private let network: any NetworkProtocol
-    private let storage: any StorageProtocol
+    private let store: any StorageProtocol
     
     init(
         gameSettings: GameSettings,
         network: any NetworkProtocol,
-        storage: any StorageProtocol
+        store: any StorageProtocol
     ) {
         self.gameSettings = gameSettings
         self.network = network
-        self.storage = storage
+        self.store = store
     }
     
     func make(stamp: GameStamp) -> some GameViewModelProtocol {
         let randomCountryProvider = RandomCountryCodeProvider()
         let remainingLives = RemainingLivesViewModelFactory(
-            gameId: stamp,
+            gameStamp: stamp,
             gameSettings: self.gameSettings,
-            storage: self.storage
+            store: self.store
         ).make()
         var questionFactory: QuestionViewModelFactory!
         let router = GameRouter(
@@ -39,14 +39,15 @@ struct GameViewModelFactory {
             },
             randomCodeProvider: randomCountryProvider,
             remainingLives: remainingLives,
-            store: storage
+            store: store
         )
         questionFactory = QuestionViewModelFactory(
-            gameId: stamp,
+            gameStamp: stamp,
             gameSettings: self.gameSettings,
             network: self.network,
+            randomCountryCodeProvider: randomCountryProvider,
             router: router,
-            storage: self.storage
+            store: self.store
         )
         let gameViewModel = GameViewModel(
             gameStamp: stamp,

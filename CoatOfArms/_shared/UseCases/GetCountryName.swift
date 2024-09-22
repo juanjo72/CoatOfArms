@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import Mockable
 
+@Mockable
 protocol GetCountryNameProtocol {
     func getName(for country: CountryCode) -> String
 }

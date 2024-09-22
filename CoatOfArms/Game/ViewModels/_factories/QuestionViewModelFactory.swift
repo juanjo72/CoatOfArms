@@ -8,43 +8,50 @@
 import Combine
 
 struct QuestionViewModelFactory {
-    private let gameId: GameStamp
+    private let gameStamp: GameStamp
     private let gameSettings: GameSettings
     private let network: any NetworkProtocol
+    private let randomCountryCodeProvider: any RandomCountryCodeProviderProtocol
     private let router: any GameRouterProtocol
-    private let storage: any StorageProtocol
+    private let store: any StorageProtocol
     
     init(
-        gameId: GameStamp,
+        gameStamp: GameStamp,
         gameSettings: GameSettings,
         network: any NetworkProtocol,
+        randomCountryCodeProvider: any RandomCountryCodeProviderProtocol,
         router: any GameRouterProtocol,
-        storage: any StorageProtocol
+        store: any StorageProtocol
     ) {
-        self.gameId = gameId
+        self.gameStamp = gameStamp
         self.gameSettings = gameSettings
-        self.storage = storage
+        self.store = store
         self.network = network
+        self.randomCountryCodeProvider = randomCountryCodeProvider
         self.router = router
     }
 
     func make(code: CountryCode) -> some QuestionViewModelProtocol {
-        let multipleChoiceViewModelFactory = MultipleChoiceViewModelFactory(
-            game: self.gameId,
-            gameSettings: self.gameSettings,
-            router: self.router,
-            storage: self.storage
+        let questionId = Question.ID(
+            gameStamp: self.gameStamp,
+            countryCode: code
         )
         let repository = QuestionRepository(
-            countryCode: code,
+            questionId: questionId,
+            gameSettings: self.gameSettings,
             network: self.network,
-            storage: self.storage
+            randomCountryCodeProvider: self.randomCountryCodeProvider,
+            storage: self.store
+        )
+        let buttonFactory = ChoiceButtonViewModelFactory(
+            questionId: questionId,
+            gameSettings: self.gameSettings,
+            router: self.router,
+            store: self.store
         )
         return QuestionViewModel(
             countryCode: code,
-            multipleChoiceProvider: {
-                multipleChoiceViewModelFactory.make(code: code)
-            },
+            buttonProvider: buttonFactory.make,
             remoteImagePrefetcher: { url in
                 Just(url)
                     .imagePrefech()

@@ -10,22 +10,22 @@ import Foundation
 import Kingfisher
 
 protocol QuestionViewModelProtocol: ObservableObject {
-    associatedtype MultipleChoice: MultipleChoiceViewModelProtocol
+    associatedtype ButtonViewModel: ChoiceButtonViewModelProtocol
     var country: CountryCode { get }
-    var loadingState: LoadingState<QuestionViewData<MultipleChoice>> { get }
+    var loadingState: LoadingState<QuestionViewData<ButtonViewModel>> { get }
     func viewWillAppear() async
 }
 
 /// Represents question view, with image and answer buttons
 final class QuestionViewModel<
-    MultipleChoice: MultipleChoiceViewModelProtocol,
+    ButtonViewModel: ChoiceButtonViewModelProtocol,
     OutputScheduler: Scheduler
 >: QuestionViewModelProtocol {
     
     // MARK: Injected
     
     private let countryCode: CountryCode
-    private let multipleChoiceProvider: () -> MultipleChoice
+    private let buttonProvider: (CountryCode) -> ButtonViewModel
     private let outputScheduler: OutputScheduler
     private let remoteImagePrefetcher: (URL) -> AnyPublisher<Bool, Never>
     private let repository: any QuestionRepositoryProtocol
@@ -34,27 +34,27 @@ final class QuestionViewModel<
     // MARK: WhichCountryViewModelProtocol
     
     @Published var country: CountryCode
-    @Published var loadingState: LoadingState<QuestionViewData<MultipleChoice>> = .idle
+    @Published var loadingState: LoadingState<QuestionViewData<ButtonViewModel>> = .idle
     
     // MARK: Observables
     
     private var prefetchObservable: some Publisher<Bool, Never> {
-        self.repository.countryObservable
+        self.repository.questionObservable
             .compactMap { $0 }
             .map(\.coatOfArmsURL)
             .flatMap(self.remoteImagePrefetcher)
     }
     
-    private var questionObservable: some Publisher<QuestionViewData<MultipleChoice>?, Never> {
+    private var questionObservable: some Publisher<QuestionViewData<ButtonViewModel>?, Never> {
         Publishers.CombineLatest(
-            self.self.repository.countryObservable,
+            self.repository.questionObservable,
             self.prefetchObservable
         )
-        .map { [multipleChoiceProvider] country, _ -> QuestionViewData<MultipleChoice>? in
-            guard let country else { return nil }
+        .map { [buttonProvider] question, _ -> QuestionViewData<ButtonViewModel>? in
+            guard let question else { return nil }
             return QuestionViewData(
-                imageURL: country.coatOfArmsURL,
-                multipleChoice: multipleChoiceProvider()
+                imageURL: question.coatOfArmsURL,
+                buttons: question.allChoices.map(buttonProvider)
             )
         }
     }
@@ -63,14 +63,14 @@ final class QuestionViewModel<
     
     init(
         countryCode: CountryCode,
-        multipleChoiceProvider: @escaping () -> MultipleChoice,
+        buttonProvider: @escaping (CountryCode) -> ButtonViewModel,
         outputScheduler: OutputScheduler = DispatchQueue.main,
         remoteImagePrefetcher: @escaping (URL) -> AnyPublisher<Bool, Never>,
         repository: any QuestionRepositoryProtocol,
         router: any GameRouterProtocol
     ) {
         self.countryCode = countryCode
-        self.multipleChoiceProvider = multipleChoiceProvider
+        self.buttonProvider = buttonProvider
         self.outputScheduler = outputScheduler
         self.remoteImagePrefetcher = remoteImagePrefetcher
         self.repository = repository
@@ -96,7 +96,7 @@ final class QuestionViewModel<
             self.loadingState = .loading
         }
         do {
-            try await self.repository.fetchCountry()
+            try await self.repository.fetchQuestion()
         } catch {
             print("[ERROR] \(self.country) \(String(describing: error))")
             if error is DecodingError {

@@ -1,25 +1,25 @@
 //
-//  MultipleChoice.swift
+//  Question.swift
 //  CoatOfArms
 //
-//  Created on 14/8/24.
+//  Created on 22/9/24.
 //
 
 import Foundation
 
-/// Set of possible answers, including the right one
-struct MultipleChoice: Identifiable, Equatable {
+struct Question: Identifiable, Equatable {
     struct ID: Hashable {
-        let game: GameStamp
+        let gameStamp: GameStamp
         let countryCode: CountryCode
     }
     
     let id: ID
+    let coatOfArmsURL: URL
     let otherChoices: [CountryCode]
     let rightChoicePosition: Int
 }
 
-extension MultipleChoice {
+extension Question {
     var allChoices: [CountryCode] {
         var choices = self.otherChoices
         choices.insert(self.id.countryCode, at: self.rightChoicePosition)
