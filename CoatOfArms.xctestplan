@@ -18,13 +18,6 @@
         "identifier" : "8134F9192C68CB610052D0DF",
         "name" : "CoatOfArmsTests"
       }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:CoatOfArms.xcodeproj",
-        "identifier" : "81E5DD122C9BEB4300CE10AB",
-        "name" : "SnapshotTests"
-      }
     }
   ],
   "version" : 1

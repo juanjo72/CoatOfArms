@@ -10,4 +10,5 @@ import Testing
 extension Tag {
     @Tag static var dataLayer: Self
     @Tag static var logicLayer: Self
+    @Tag static var viewLayer: Self
 }

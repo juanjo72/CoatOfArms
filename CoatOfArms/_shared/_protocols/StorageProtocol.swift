@@ -6,12 +6,10 @@
 //
 
 import Combine
-import Mockable
 import ReactiveStorage
 
 public typealias EntityType = Identifiable & Equatable
 
-@Mockable
 protocol StorageProtocol {
     func getAllElementsObservable<Entity: EntityType>(of type: Entity.Type) -> AnyPublisher<[Entity], Never>
     func getSingleElementObservable<Entity: EntityType>(of type: Entity.Type, id: Entity.ID) -> AnyPublisher<Entity?, Never>

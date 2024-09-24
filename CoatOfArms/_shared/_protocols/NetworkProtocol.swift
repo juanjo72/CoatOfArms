@@ -6,10 +6,8 @@
 //
 
 import Foundation
-import Mockable
 import Network
 
-@Mockable
 protocol NetworkProtocol {
     func request<T>(url: URL, decoder: @escaping (Data) throws -> T) async throws -> T
 }

@@ -56,3 +56,10 @@ struct GameOverViewStyle {
     let spacing: CGFloat
 }
 
+#Preview {
+    GameOverView(
+        score: 100,
+        style: .init(spacing: 10),
+        action: {}
+    )
+}

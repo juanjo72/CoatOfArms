@@ -42,3 +42,40 @@ struct ChoiceButton<
         self.viewModel = viewModel
     }
 }
+
+#Preview("Non selected button")  {
+    ChoiceButton(
+        viewModel: PreviewChoiceButtonViewModel(
+            tint: .accentColor
+        )
+    )
+    .padding(.horizontal)
+}
+
+#Preview("Long label") {
+    ChoiceButton(
+        viewModel: PreviewChoiceButtonViewModel(
+            label: "A very very very very very very very very very very very very very very very long name",
+            tint: .accentColor
+        )
+    )
+    .padding(.horizontal)
+}
+
+#Preview("Right answer") {
+    ChoiceButton(
+        viewModel: PreviewChoiceButtonViewModel(
+            tint: .green
+        )
+    )
+    .padding(.horizontal)
+}
+
+#Preview("Wrong answer") {
+    ChoiceButton(
+        viewModel: PreviewChoiceButtonViewModel(
+            tint: .red
+        )
+    )
+    .padding(.horizontal)
+}
