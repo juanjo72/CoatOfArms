@@ -12,6 +12,8 @@
 		81097A582C6C7B2200554C1E /* RandomCountryCodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A572C6C7B2200554C1E /* RandomCountryCodeProvider.swift */; };
 		81097A5E2C6CAF0A00554C1E /* ChoiceButtonViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A5D2C6CAF0A00554C1E /* ChoiceButtonViewData.swift */; };
 		81097A602C6CAFDE00554C1E /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A5F2C6CAFDE00554C1E /* CountryCode.swift */; };
+		810F903B2CA1BE7D0016A04F /* Prefetchimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F903A2CA1BE750016A04F /* Prefetchimage.swift */; };
+		810F903F2CA1C8570016A04F /* QuestionRepositoryProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F903E2CA1C8560016A04F /* QuestionRepositoryProtocolMock.swift */; };
 		81135F0E2C86312600889507 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81135F0D2C86312600889507 /* GameView.swift */; };
 		81135F162C86D7EF00889507 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81135F152C86D7EF00889507 /* RootView.swift */; };
 		81135F182C86DBF700889507 /* QuestionViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81135F172C86DBF700889507 /* QuestionViewModelFactory.swift */; };
@@ -36,6 +38,15 @@
 		8134F9432C68CEDE0052D0DF /* QuestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9422C68CEDE0052D0DF /* QuestionRepository.swift */; };
 		8134F9452C68CFED0052D0DF /* ServerCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9442C68CFED0052D0DF /* ServerCountry.swift */; };
 		8134F9492C68D3900052D0DF /* ServerCountry+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9482C68D3900052D0DF /* ServerCountry+Decoder.swift */; };
+		816E7DF42CA141D700374239 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7DF32CA141D400374239 /* Tags.swift */; };
+		816E7DF72CA1423900374239 /* ChoiceButtonViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7DF62CA1423200374239 /* ChoiceButtonViewModelTests.swift */; };
+		816E7DFD2CA146BC00374239 /* GameRouterProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7DFC2CA146BB00374239 /* GameRouterProtocolMock.swift */; };
+		816E7DFF2CA1472C00374239 /* ChoiceButtonRepositoryProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7DFE2CA1472B00374239 /* ChoiceButtonRepositoryProtocolMock.swift */; };
+		816E7E012CA1721F00374239 /* ChoiceButtonViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7E002CA1721D00374239 /* ChoiceButtonViewModelProtocolMock.swift */; };
+		816E7E032CA1729600374239 /* QuestionViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7E022CA1728E00374239 /* QuestionViewModelProtocolMock.swift */; };
+		816E7E052CA1738D00374239 /* RemainingLivesViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7E042CA1738A00374239 /* RemainingLivesViewModelProtocolMock.swift */; };
+		816E7E072CA1AC5400374239 /* GameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7E062CA1AC4800374239 /* GameViewModelTests.swift */; };
+		816E7E092CA1B35500374239 /* QuesionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7E082CA1B34B00374239 /* QuesionViewModelTests.swift */; };
 		817A66182C8D6E3600B21E5A /* GameSettings+make.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A66172C8D6E3600B21E5A /* GameSettings+make.swift */; };
 		817A66202C8E251E00B21E5A /* GameStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A661F2C8E251E00B21E5A /* GameStatus.swift */; };
 		817A66222C8EF5F100B21E5A /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817A66212C8EF5F100B21E5A /* StorageProtocol.swift */; };
@@ -61,6 +72,11 @@
 		81A3CFFD2C84AFCE00D789E5 /* GameViewStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3CFFC2C84AFCE00D789E5 /* GameViewStyle+default.swift */; };
 		81ABE8292C9945A000FC89D0 /* ReactiveStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 81ABE8282C9945A000FC89D0 /* ReactiveStorage */; };
 		81B59CA92C94474A00DB8CFA /* RemainingLivesViewStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B59CA82C94474A00DB8CFA /* RemainingLivesViewStyle+default.swift */; };
+		81B8BC3E2CA2B88500B0B395 /* RemainingLivesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B8BC3D2CA2B87A00B0B395 /* RemainingLivesViewModelTests.swift */; };
+		81B8BC402CA2B97900B0B395 /* RemainingLivesRepositoryProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B8BC3F2CA2B97700B0B395 /* RemainingLivesRepositoryProtocolMock.swift */; };
+		81B8BC422CA2BCEC00B0B395 /* RootViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B8BC412CA2BCE200B0B395 /* RootViewModelTests.swift */; };
+		81B8BC442CA2BD9C00B0B395 /* RootViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B8BC432CA2BD9A00B0B395 /* RootViewModelProtocolMock.swift */; };
+		81B8BC462CA2BDDD00B0B395 /* GameViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B8BC452CA2BDDC00B0B395 /* GameViewModelProtocolMock.swift */; };
 		81BB95B22C8F070500003393 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BB95B12C8F070500003393 /* NetworkProtocol.swift */; };
 		81D416042C74803B0061A1B6 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D416032C74803B0061A1B6 /* QuestionView.swift */; };
 		81E36CEF2C7458BA00F71DB5 /* ServerCountry+make.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E36CEE2C7458BA00F71DB5 /* ServerCountry+make.swift */; };
@@ -99,6 +115,8 @@
 		81097A572C6C7B2200554C1E /* RandomCountryCodeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCountryCodeProvider.swift; sourceTree = "<group>"; };
 		81097A5D2C6CAF0A00554C1E /* ChoiceButtonViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonViewData.swift; sourceTree = "<group>"; };
 		81097A5F2C6CAFDE00554C1E /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
+		810F903A2CA1BE750016A04F /* Prefetchimage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefetchimage.swift; sourceTree = "<group>"; };
+		810F903E2CA1C8560016A04F /* QuestionRepositoryProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepositoryProtocolMock.swift; sourceTree = "<group>"; };
 		81135F0D2C86312600889507 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		81135F152C86D7EF00889507 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		81135F172C86DBF700889507 /* QuestionViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModelFactory.swift; sourceTree = "<group>"; };
@@ -123,6 +141,15 @@
 		8134F9422C68CEDE0052D0DF /* QuestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepository.swift; sourceTree = "<group>"; };
 		8134F9442C68CFED0052D0DF /* ServerCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCountry.swift; sourceTree = "<group>"; };
 		8134F9482C68D3900052D0DF /* ServerCountry+Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServerCountry+Decoder.swift"; sourceTree = "<group>"; };
+		816E7DF32CA141D400374239 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		816E7DF62CA1423200374239 /* ChoiceButtonViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonViewModelTests.swift; sourceTree = "<group>"; };
+		816E7DFC2CA146BB00374239 /* GameRouterProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouterProtocolMock.swift; sourceTree = "<group>"; };
+		816E7DFE2CA1472B00374239 /* ChoiceButtonRepositoryProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonRepositoryProtocolMock.swift; sourceTree = "<group>"; };
+		816E7E002CA1721D00374239 /* ChoiceButtonViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonViewModelProtocolMock.swift; sourceTree = "<group>"; };
+		816E7E022CA1728E00374239 /* QuestionViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModelProtocolMock.swift; sourceTree = "<group>"; };
+		816E7E042CA1738A00374239 /* RemainingLivesViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingLivesViewModelProtocolMock.swift; sourceTree = "<group>"; };
+		816E7E062CA1AC4800374239 /* GameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelTests.swift; sourceTree = "<group>"; };
+		816E7E082CA1B34B00374239 /* QuesionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuesionViewModelTests.swift; sourceTree = "<group>"; };
 		817A66172C8D6E3600B21E5A /* GameSettings+make.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameSettings+make.swift"; sourceTree = "<group>"; };
 		817A661F2C8E251E00B21E5A /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
 		817A66212C8EF5F100B21E5A /* StorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
@@ -145,6 +172,11 @@
 		81A3CFFA2C84AF8300D789E5 /* GameOverViewStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameOverViewStyle+default.swift"; sourceTree = "<group>"; };
 		81A3CFFC2C84AFCE00D789E5 /* GameViewStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameViewStyle+default.swift"; sourceTree = "<group>"; };
 		81B59CA82C94474A00DB8CFA /* RemainingLivesViewStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemainingLivesViewStyle+default.swift"; sourceTree = "<group>"; };
+		81B8BC3D2CA2B87A00B0B395 /* RemainingLivesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingLivesViewModelTests.swift; sourceTree = "<group>"; };
+		81B8BC3F2CA2B97700B0B395 /* RemainingLivesRepositoryProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingLivesRepositoryProtocolMock.swift; sourceTree = "<group>"; };
+		81B8BC412CA2BCE200B0B395 /* RootViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelTests.swift; sourceTree = "<group>"; };
+		81B8BC432CA2BD9A00B0B395 /* RootViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModelProtocolMock.swift; sourceTree = "<group>"; };
+		81B8BC452CA2BDDC00B0B395 /* GameViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelProtocolMock.swift; sourceTree = "<group>"; };
 		81BB95B12C8F070500003393 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		81D416032C74803B0061A1B6 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		81E36CEE2C7458BA00F71DB5 /* ServerCountry+make.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServerCountry+make.swift"; sourceTree = "<group>"; };
@@ -206,6 +238,7 @@
 		81184FE02C75CEF0005B49E3 /* _shared */ = {
 			isa = PBXGroup;
 			children = (
+				81E5DD092C9B1ADC00CE10AB /* _protocols */,
 				81FCD9152C9C806A00C6FFFD /* extensions */,
 				81FCD9162C9C80BB00C6FFFD /* UI */,
 				81FCD9172C9C80C700C6FFFD /* UseCases */,
@@ -233,13 +266,6 @@
 				818E16FD2CA073E0004AFD0E /* RemainingLivesRepositoryTests.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		811B385B2C710142003856C3 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		811D3A662C82EC6F0057FE8E /* ViewData */ = {
@@ -277,7 +303,6 @@
 		8134F90C2C68CB600052D0DF /* CoatOfArms */ = {
 			isa = PBXGroup;
 			children = (
-				81E5DD092C9B1ADC00CE10AB /* _protocols */,
 				81184FE02C75CEF0005B49E3 /* _shared */,
 				81184FE52C7639B1005B49E3 /* _styles */,
 				8182871C2C906F930019C132 /* Game */,
@@ -302,10 +327,10 @@
 		8134F91D2C68CB610052D0DF /* CoatOfArmsTests */ = {
 			isa = PBXGroup;
 			children = (
+				816E7DF32CA141D400374239 /* Tags.swift */,
 				81E36CE52C734C5D00F71DB5 /* _doubles */,
 				8134F9502C69F1FC0052D0DF /* _mocks */,
 				818E17032CA085E4004AFD0E /* Game */,
-				811B385B2C710142003856C3 /* ViewModels */,
 			);
 			path = CoatOfArmsTests;
 			sourceTree = "<group>";
@@ -324,11 +349,32 @@
 		8134F9502C69F1FC0052D0DF /* _mocks */ = {
 			isa = PBXGroup;
 			children = (
+				81B8BC452CA2BDDC00B0B395 /* GameViewModelProtocolMock.swift */,
+				816E7DFE2CA1472B00374239 /* ChoiceButtonRepositoryProtocolMock.swift */,
+				81B8BC432CA2BD9A00B0B395 /* RootViewModelProtocolMock.swift */,
+				816E7E002CA1721D00374239 /* ChoiceButtonViewModelProtocolMock.swift */,
+				816E7DFC2CA146BB00374239 /* GameRouterProtocolMock.swift */,
 				818E16F52CA055DE004AFD0E /* NetwotkProtocolMock.swift */,
+				810F903E2CA1C8560016A04F /* QuestionRepositoryProtocolMock.swift */,
+				816E7E022CA1728E00374239 /* QuestionViewModelProtocolMock.swift */,
 				818E16F72CA05667004AFD0E /* RandomCountryCodeProviderProtocolMock.swift */,
+				81B8BC3F2CA2B97700B0B395 /* RemainingLivesRepositoryProtocolMock.swift */,
+				816E7E042CA1738A00374239 /* RemainingLivesViewModelProtocolMock.swift */,
 				818E16F92CA056E9004AFD0E /* StorageProtocolMock.swift */,
 			);
 			path = _mocks;
+			sourceTree = "<group>";
+		};
+		816E7DF52CA1422A00374239 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				816E7DF62CA1423200374239 /* ChoiceButtonViewModelTests.swift */,
+				816E7E062CA1AC4800374239 /* GameViewModelTests.swift */,
+				816E7E082CA1B34B00374239 /* QuesionViewModelTests.swift */,
+				81B8BC3D2CA2B87A00B0B395 /* RemainingLivesViewModelTests.swift */,
+				81B8BC412CA2BCE200B0B395 /* RootViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		8182871C2C906F930019C132 /* Game */ = {
@@ -346,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				811B385A2C710135003856C3 /* Data */,
+				816E7DF52CA1422A00374239 /* ViewModels */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -446,6 +493,7 @@
 		81FCD9172C9C80C700C6FFFD /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				810F903A2CA1BE750016A04F /* Prefetchimage.swift */,
 				813247DF2C9EE8FA000D1C57 /* GetCountryName.swift */,
 				8191DECB2C9DD51F001F98DB /* PlaySound.swift */,
 				81097A572C6C7B2200554C1E /* RandomCountryCodeProvider.swift */,
@@ -609,6 +657,7 @@
 				81097A602C6CAFDE00554C1E /* CountryCode.swift in Sources */,
 				817A66222C8EF5F100B21E5A /* StorageProtocol.swift in Sources */,
 				8134F9452C68CFED0052D0DF /* ServerCountry.swift in Sources */,
+				810F903B2CA1BE7D0016A04F /* Prefetchimage.swift in Sources */,
 				818BC32B2C88B92E003F4D8A /* RootViewStyle+default.swift in Sources */,
 				8134F9492C68D3900052D0DF /* ServerCountry+Decoder.swift in Sources */,
 				81E44F3A2C6B5B6F00029516 /* QuestionViewModel.swift in Sources */,
@@ -659,15 +708,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				816E7E012CA1721F00374239 /* ChoiceButtonViewModelProtocolMock.swift in Sources */,
+				816E7E092CA1B35500374239 /* QuesionViewModelTests.swift in Sources */,
+				816E7DFD2CA146BC00374239 /* GameRouterProtocolMock.swift in Sources */,
+				816E7E072CA1AC5400374239 /* GameViewModelTests.swift in Sources */,
 				818E16FC2CA05A2D004AFD0E /* Question+make.swift in Sources */,
 				818E16FE2CA073EA004AFD0E /* RemainingLivesRepositoryTests.swift in Sources */,
+				81B8BC462CA2BDDD00B0B395 /* GameViewModelProtocolMock.swift in Sources */,
+				816E7DF72CA1423900374239 /* ChoiceButtonViewModelTests.swift in Sources */,
+				816E7E032CA1729600374239 /* QuestionViewModelProtocolMock.swift in Sources */,
+				816E7DF42CA141D700374239 /* Tags.swift in Sources */,
+				816E7DFF2CA1472C00374239 /* ChoiceButtonRepositoryProtocolMock.swift in Sources */,
 				8107D6E42C8AD16300F0094D /* UserChoice+make.swift in Sources */,
 				81E36CEF2C7458BA00F71DB5 /* ServerCountry+make.swift in Sources */,
+				81B8BC422CA2BCEC00B0B395 /* RootViewModelTests.swift in Sources */,
 				818E16FA2CA056EA004AFD0E /* StorageProtocolMock.swift in Sources */,
+				81B8BC3E2CA2B88500B0B395 /* RemainingLivesViewModelTests.swift in Sources */,
 				817A66182C8D6E3600B21E5A /* GameSettings+make.swift in Sources */,
+				816E7E052CA1738D00374239 /* RemainingLivesViewModelProtocolMock.swift in Sources */,
 				818E17022CA07B70004AFD0E /* ChoiceButtonRepositoryTests.swift in Sources */,
 				818E16ED2CA0335F004AFD0E /* QuestionRepositoryTests.swift in Sources */,
+				81B8BC402CA2B97900B0B395 /* RemainingLivesRepositoryProtocolMock.swift in Sources */,
 				818E16F82CA05668004AFD0E /* RandomCountryCodeProviderProtocolMock.swift in Sources */,
+				810F903F2CA1C8570016A04F /* QuestionRepositoryProtocolMock.swift in Sources */,
+				81B8BC442CA2BD9C00B0B395 /* RootViewModelProtocolMock.swift in Sources */,
 				818E16F62CA055EB004AFD0E /* NetwotkProtocolMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

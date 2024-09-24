@@ -8,20 +8,17 @@
 import Foundation
 import Mockable
 
-@Mockable
-protocol GetCountryNameProtocol {
-    func getName(for country: CountryCode) -> String
-}
-
-struct GetCountryName: GetCountryNameProtocol {
+struct GetCountryName {
     private let locale: Locale
     
-    init(locale: Locale) {
+    init(
+        locale: Locale = Locale.current
+    ) {
         self.locale = locale
     }
     
-    func getName(for country: CountryCode) -> String {
-        locale.localizedString(forRegionCode: country)
+    func callAsFunction(for country: CountryCode) -> String {
+        self.locale.localizedString(forRegionCode: country)
         ?? Locale(identifier: "en_US").localizedString(forRegionCode: country)
         ?? country
     }

@@ -57,11 +57,3 @@ final class GameViewModel<
         await self.router.gotNextQuestion()
     }
 }
-
-#if DEBUG
-extension GameViewModel: CustomDebugStringConvertible  {
-    var debugDescription: String {
-        "GameViewModel"
-    }
-}
-#endif

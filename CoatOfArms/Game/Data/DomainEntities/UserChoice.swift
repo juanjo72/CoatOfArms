@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 /// User's answer
 struct UserChoice: Identifiable, Equatable {
@@ -16,5 +17,16 @@ struct UserChoice: Identifiable, Equatable {
 extension UserChoice {
     var isCorrect: Bool {
         self.id.countryCode == self.pickedCountryCode
+    }
+}
+
+extension Optional<UserChoice> {
+    var resultColor: Color {
+        return switch self {
+        case .none:
+                .accent
+        case .some(let choice):
+            choice.isCorrect ? .green : .red
+        }
     }
 }

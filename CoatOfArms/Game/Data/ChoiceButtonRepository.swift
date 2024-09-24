@@ -27,6 +27,10 @@ struct ChoiceButtonRepository: ChoiceButtonRepositoryProtocol {
             of: UserChoice.self,
             id: self.questionId
         )
+        .filter { choice in
+            guard let choice else { return true }
+            return choice.pickedCountryCode == self.buttonCode
+        }
         .eraseToAnyPublisher()
     }
     

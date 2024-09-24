@@ -11,7 +11,7 @@ import Foundation
 import MockableTest
 import Testing
 
-@Suite("RemainingLivesRepository")
+@Suite("RemainingLivesRepository", .tags(.dataLayer))
 struct RemainingLivesRepositoryTests {
     
     // MARK: SUT
@@ -28,7 +28,7 @@ struct RemainingLivesRepositoryTests {
     
     // MARK: wrongAnswers
     
-    @Test
+    @Test("Observing: filters out other games")
     func testThat_WhenWrongAnswersAreObserved_ThenOnlyThisGameOnesAreObserved() async {
         // Given
         let store = StorageProtocolMock<UserChoice>()
@@ -49,7 +49,7 @@ struct RemainingLivesRepositoryTests {
         #expect(choices == [])
     }
     
-    @Test
+    @Test("Observing: filters out succesful ones")
     func testThat_WhenWrongAnswersAreObserved_ThenOnlyWrongOnesAreObserved() async {
         // Given
         let store = StorageProtocolMock<UserChoice>()

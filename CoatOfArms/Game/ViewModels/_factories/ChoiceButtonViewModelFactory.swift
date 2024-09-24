@@ -26,10 +26,6 @@ struct ChoiceButtonViewModelFactory {
     }
 
     func make(code: CountryCode) -> some ChoiceButtonViewModelProtocol {
-        let countryNameProvider = GetCountryName(
-            locale: Locale.current
-        )
-        let playSound = PlaySound()
         let repository = ChoiceButtonRepository(
             buttonCode: code,
             questionId: self.questionId,
@@ -38,8 +34,8 @@ struct ChoiceButtonViewModelFactory {
         return ChoiceButtonViewModel(
             countryCode: code,
             gameSettings: self.gameSettings,
-            getCountryName: countryNameProvider,
-            playSound: playSound,
+            getCountryName: GetCountryName().callAsFunction,
+            playSound: PlaySound().callAsFunction,
             repository: repository,
             router: self.router
         )

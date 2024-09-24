@@ -65,7 +65,7 @@ struct QuestionView<
             }
         }
         .task(
-            id: self.viewModel.country
+            id: self.viewModel.countryCode
         ) {
             await self.viewModel.viewWillAppear()
         }

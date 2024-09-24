@@ -13,6 +13,15 @@ enum LoadingState<Element> {
 }
 
 extension LoadingState {
+    var isLoading: Bool {
+        return switch self {
+        case .loading:
+            true
+        case .idle, .loaded:
+            false
+        }
+    }
+    
     var element: Element? {
         return switch self {
         case .loaded(let view):

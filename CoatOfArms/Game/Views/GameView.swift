@@ -31,7 +31,7 @@ struct GameView<
                         viewModel: question,
                         style: self.style.question
                     )
-                    .id(question.country)
+                    .id(question.countryCode)
                     
                     RemainingLivesView(
                         viewModel: remainingLives,

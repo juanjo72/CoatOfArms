@@ -53,11 +53,3 @@ final class RemainingLivesViewModel<
             .assign(to: &self.$numberOfLives)
     }
 }
-
-#if DEBUG
-extension RemainingLivesViewModel: CustomDebugStringConvertible  {
-    var debugDescription: String {
-        "LivesViewModel"
-    }
-}
-#endif

@@ -11,7 +11,7 @@ import Foundation
 import MockableTest
 import Testing
 
-@Suite("QuestionRepository")
+@Suite("QuestionRepository", .tags(.dataLayer))
 struct QuestionRepositoryTests {
     
     // MARK: SUT
@@ -34,7 +34,7 @@ struct QuestionRepositoryTests {
     
     // MARK: fetchQuestion
 
-    @Test
+    @Test("Country network request succeeds")
     func testThat_WhenServerCountryIsFetched_ThenRequestIsSent() async throws {
         // Given
         let network = NetworkProtocolMock<ServerCountry>()
@@ -54,7 +54,7 @@ struct QuestionRepositoryTests {
         #expect(network.requestUrlDecoderCallsCount == 1)
     }
     
-    @Test
+    @Test("Country network request fails")
     func testThat_WhenServerCountryIsFetched_AndRequestFails_ThenThrowsError() async {
         // Given
         let network = NetworkProtocolMock<ServerCountry>()
@@ -70,7 +70,7 @@ struct QuestionRepositoryTests {
         }
     }
     
-    @Test
+    @Test("Question is created and stored")
     func testThat_WhenQuestionIsFetched_ThenStoredQuestionIsExpected() async throws {
         // Given
         let questionId = Question.ID(gameStamp: Date(timeIntervalSince1970: 0), countryCode: "ES")
@@ -103,7 +103,7 @@ struct QuestionRepositoryTests {
     
     // MARK: questionObservable
     
-    @Test
+    @Test("Question is observed")
     func testThat_WhenQuestionIsSubscribed_ThenStoredIsObserved() async {
         // Given
         let expectedQuestion = Question.make()

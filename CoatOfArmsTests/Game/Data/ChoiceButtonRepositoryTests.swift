@@ -11,11 +11,11 @@ import Foundation
 import MockableTest
 import Testing
 
-@Suite("ChoiceButtonRepository")
+@Suite("ChoiceButtonRepository", .tags(.dataLayer))
 struct ChoiceButtonRepositoryTests {
     
     // MARK: SUT
-    
+
     private func makeSUT(
         buttonCode: CountryCode = "IT",
         questionId: Question.ID = .make(countryCode: "ES"),
@@ -30,7 +30,7 @@ struct ChoiceButtonRepositoryTests {
     
     // MARK: markAsChoice
     
-    @Test
+    @Test("markAsChoice")
     func testThat_WhenMarkAsChoice_ThenChoiceIsStoredAndReturned() async throws {
         // MARK: Given
         let store = StorageProtocolMock<UserChoice>()
@@ -50,7 +50,7 @@ struct ChoiceButtonRepositoryTests {
     
     // MARK: userChoiceObservable
     
-    @Test
+    @Test("Observing answered question")
     func testThat_WhenSubscribedToUserChoice_And_Answered_ThenReturnsUserChoice() async throws {
         // MARK: Given
         let storedChoice = UserChoice.make()
@@ -70,7 +70,7 @@ struct ChoiceButtonRepositoryTests {
         #expect(observedChoice == storedChoice)
     }
     
-    @Test
+    @Test("Observing not answered question")
     func testThat_WhenSubscribedToUserChoice_And_NotAnswered_ThenReturnsNil() async throws {
         // MARK: Given
         let store = StorageProtocolMock<UserChoice>()

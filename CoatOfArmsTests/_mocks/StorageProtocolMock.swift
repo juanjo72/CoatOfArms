@@ -8,7 +8,9 @@
 @testable import CoatOfArms
 import Combine
 
-final class StorageProtocolMock<E: Identifiable>: StorageProtocol {
+final class StorageProtocolMock<
+    E: Identifiable & Equatable
+>: StorageProtocol {
     
    // MARK: - getAllElementsObservable<Entity: Identifiable>
 

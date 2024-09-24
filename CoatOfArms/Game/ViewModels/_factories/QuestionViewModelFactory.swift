@@ -52,11 +52,6 @@ struct QuestionViewModelFactory {
         return QuestionViewModel(
             countryCode: code,
             buttonProvider: buttonFactory.make,
-            remoteImagePrefetcher: { url in
-                Just(url)
-                    .imagePrefech()
-                    .eraseToAnyPublisher()
-            },
             repository: repository,
             router: self.router
         )

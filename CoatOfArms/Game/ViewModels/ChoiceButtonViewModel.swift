@@ -25,9 +25,9 @@ final class ChoiceButtonViewModel<
 
     internal let countryCode: CountryCode
     private let gameSettings: GameSettings
-    private let getCountryName: any GetCountryNameProtocol
+    private let getCountryName: (CountryCode) -> String
     private let outputScheduler: OutputScheduler
-    private let playSound: any PlaySoundProtocol
+    private let playSound: (SoundEffect) async -> Void
     private let repository: any ChoiceButtonRepositoryProtocol
     private let router: any GameRouterProtocol
     
@@ -40,17 +40,7 @@ final class ChoiceButtonViewModel<
     
     private var tintObservable: some Publisher<Color, Never> {
         self.repository.userChoiceObservable
-            .map { [self] userChoice in
-                guard let userChoice,
-                      userChoice.pickedCountryCode == self.countryCode else {
-                    return .accentColor
-                }
-                if userChoice.isCorrect {
-                    return .green
-                } else {
-                    return .red
-                }
-            }
+            .map { $0.resultColor }
     }
     
     // MARK: Lifecycle
@@ -58,9 +48,9 @@ final class ChoiceButtonViewModel<
     init(
         countryCode: CountryCode,
         gameSettings: GameSettings,
-        getCountryName: any GetCountryNameProtocol,
+        getCountryName: @escaping (CountryCode) -> String,
         outputScheduler: OutputScheduler = DispatchQueue.main,
-        playSound: any PlaySoundProtocol,
+        playSound: @escaping (SoundEffect) async -> Void,
         repository: any ChoiceButtonRepositoryProtocol,
         router: any GameRouterProtocol
     ) {
@@ -73,12 +63,15 @@ final class ChoiceButtonViewModel<
         self.router = router
         
         self.tintObservable
+            .receive(on: self.outputScheduler)
             .assign(to: &self.$tint)
     }
     
+    // MARK: ChoiceButtonViewModelProtocol
+    
     func viewWillAppear() async {
         self.outputScheduler.schedule {
-            self.label = self.getCountryName.getName(for: self.countryCode)
+            self.label = self.getCountryName(self.countryCode)
         }
     }
     
@@ -86,9 +79,9 @@ final class ChoiceButtonViewModel<
         let choice = await self.repository.markAsChoice()
         
         if choice.isCorrect {
-            await self.playSound.play(sound: .rightAnswer)
+            await self.playSound(.rightAnswer)
         } else {
-            await self.playSound.play(sound: .wrongAnswer)
+            await self.playSound(.wrongAnswer)
         }
         
         try? await Task.sleep(for: self.gameSettings.resultTime)

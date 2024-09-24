@@ -13,13 +13,8 @@ enum SoundEffect: SystemSoundID {
     case wrongAnswer = 1006
 }
 
-@Mockable
-protocol PlaySoundProtocol {
-    func play(sound: SoundEffect) async
-}
-
-final class PlaySound: PlaySoundProtocol {
-    func play(sound: SoundEffect) async {
+final class PlaySound {
+    func callAsFunction(sound: SoundEffect) async {
         await withCheckedContinuation { continuation in
             AudioServicesPlaySystemSoundWithCompletion(sound.rawValue) {
                 continuation.resume()
