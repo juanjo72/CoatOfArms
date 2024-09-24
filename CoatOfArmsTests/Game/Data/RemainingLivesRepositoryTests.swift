@@ -8,7 +8,6 @@
 @testable import CoatOfArms
 import Combine
 import Foundation
-import MockableTest
 import Testing
 
 @Suite("RemainingLivesRepository", .tags(.dataLayer))

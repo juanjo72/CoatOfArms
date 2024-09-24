@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Mockable
 
 protocol RandomCountryCodeProviderProtocol {
     func generateCode(excluding: [CountryCode]) -> CountryCode

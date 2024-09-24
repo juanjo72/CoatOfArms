@@ -6,7 +6,6 @@
 //
 
 import AudioToolbox
-import Mockable
 
 enum SoundEffect: SystemSoundID {
     case rightAnswer = 1057

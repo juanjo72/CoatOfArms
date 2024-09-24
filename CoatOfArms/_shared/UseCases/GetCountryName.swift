@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Mockable
 
 struct GetCountryName {
     private let locale: Locale
