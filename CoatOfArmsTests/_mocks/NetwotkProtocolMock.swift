@@ -8,28 +8,27 @@
 @testable import CoatOfArms
 import Foundation
 
-final class NetworkProtocolMock<U>: NetworkProtocol {
+final class NetworkProtocolMock<U: Decodable>: NetworkProtocol {
     
-   // MARK: - request<T>
+   // MARK: - request<T: Decodable>
 
-    var requestUrlDecoderThrowableError: Error?
-    var requestUrlDecoderCallsCount = 0
-    var requestUrlDecoderCalled: Bool {
-        requestUrlDecoderCallsCount > 0
+    var requestUrlThrowableError: Error?
+    var requestUrlCallsCount = 0
+    var requestUrlCalled: Bool {
+        requestUrlCallsCount > 0
     }
-    var requestUrlDecoderReceivedArguments: (url: URL, decoder: (Data) throws -> U)?
-    var requestUrlDecoderReceivedInvocations: [(url: URL, decoder: (Data) throws -> U)] = []
-    var requestUrlDecoderReturnValue: U!
-    var requestUrlDecoderClosure: ((URL, @escaping (Data) throws -> U) throws -> U)?
+    var requestUrlReceivedUrl: URL?
+    var requestUrlReceivedInvocations: [URL] = []
+    var requestUrlReturnValue: U!
+    var requestUrlClosure: ((URL) throws -> U)?
 
-    func request<T>(url: URL, decoder: @escaping (Data) throws -> T) throws -> T {
-        if let error = requestUrlDecoderThrowableError {
+    func request<T: Decodable>(url: URL) throws -> T {
+        if let error = requestUrlThrowableError {
             throw error
         }
-        requestUrlDecoderCallsCount += 1
-        let x = (url: url, decoder: decoder) as! (URL, (Data) throws -> U)
-        requestUrlDecoderReceivedArguments = x
-        requestUrlDecoderReceivedInvocations.append(x)
-        return try requestUrlDecoderClosure.map({ try $0(url, decoder as! (Data) throws -> U) as! T }) ?? requestUrlDecoderReturnValue as! T
+        requestUrlCallsCount += 1
+        requestUrlReceivedUrl = url
+        requestUrlReceivedInvocations.append(url)
+        return try requestUrlClosure.map({ try $0(url) as! T }) ?? requestUrlReturnValue as! T
     }
 }

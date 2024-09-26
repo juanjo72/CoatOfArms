@@ -12,6 +12,7 @@ enum GameStatus<
     case idle
     case playing(question: QuestionViewModel, remainingLives: RemainingLives)
     case gameOver(score: Int)
+    case error(message: String, action: () async -> Void)
 }
 
 extension GameStatus {
@@ -39,6 +40,15 @@ extension GameStatus {
             (question, lives)
         default:
             nil
+        }
+    }
+    
+    var isError: Bool {
+        return switch self {
+        case .error:
+            true
+        default:
+            false
         }
     }
 }

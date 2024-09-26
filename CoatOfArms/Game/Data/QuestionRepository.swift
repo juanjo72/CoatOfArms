@@ -8,10 +8,6 @@
 import Combine
 import Foundation
 
-enum DecodeError: Error {
-    case empty
-}
-
 protocol QuestionRepositoryProtocol {
     var questionObservable: AnyPublisher<Question?, Never> { get }
     func fetchQuestion() async throws
@@ -76,12 +72,7 @@ final class QuestionRepository: QuestionRepositoryProtocol {
 
     private func fetchCountry() async throws -> ServerCountry {
         let url = URL(string: "https://restcountries.com/v3.1/alpha/\(self.questionId.countryCode)")!
-        let country: ServerCountry = try await self.network.request(url: url) { data in
-            guard let country = try JSONDecoder().decode([ServerCountry].self, from: data).first else {
-                throw DecodeError.empty
-            }
-            return country
-        }
-        return country
+        let response: ServerResponse = try await self.network.request(url: url)
+        return response.country
     }
 }

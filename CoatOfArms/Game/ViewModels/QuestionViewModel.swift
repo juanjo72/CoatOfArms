@@ -83,11 +83,34 @@ final class QuestionViewModel<
         do {
             try await self.repository.fetchQuestion()
         } catch {
-            print("[ERROR] \(self.countryCode) \(String(describing: error))")
-            if error is DecodingError {
-                // tries with a new country; possibly coat of arms unavailable
-                await self.router.gotNextQuestion()
-            }
+            await self.handleError(error)
+        }
+    }
+    
+    // MARK: Private methods
+    
+    private func handleError(_ error: Error) async {
+        if let error = error as? DecodingError,
+           error.isCoatOfArmsMissing {
+            await self.router.gotNextQuestion()
+        } else {
+            self.router.show(
+                message: error.localizedDescription,
+                action: {
+                    await self.router.gotNextQuestion()
+                }
+            )
+        }
+    }
+}
+
+private extension DecodingError {
+    var isCoatOfArmsMissing: Bool {
+        return switch self {
+        case .keyNotFound(let key, let context):
+            key.stringValue == "png" && context.codingPath.last?.stringValue == "coatOfArms"
+        default:
+            false
         }
     }
 }

@@ -18,7 +18,7 @@ extension GameSettings {
     static var `default`: Self {
         GameSettings(
             numPossibleChoices: 4,
-            resultTime: Duration.seconds(1),
+            resultTime: .seconds(1),
             maxWrongAnswers: 3
         )
     }

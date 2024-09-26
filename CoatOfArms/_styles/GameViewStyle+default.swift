@@ -10,7 +10,8 @@ extension GameViewStyle {
         GameViewStyle(
             gameOver: .default,
             question: .default,
-            remainingLives: .default
+            remainingLives: .default,
+            error: .default
         )
     }
 }

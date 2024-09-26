@@ -7,6 +7,8 @@
 
 extension RemainingLivesViewStyle {
     static var `default`: Self {
-        RemainingLivesViewStyle(circleDiameter: 10)
+        RemainingLivesViewStyle(
+            circleDiameter: 10
+        )
     }
 }

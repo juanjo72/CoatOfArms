@@ -15,6 +15,7 @@ protocol GameRouterProtocol {
     func start() async
     func gotNextQuestion() async
     func stop() async
+    func show(message: String, action: @escaping () async -> Void)
 }
 
 /// Component routing in a particular game, specically going to the next question
@@ -83,6 +84,10 @@ final class GameRouter<
     
     func stop() async {
         self.mutablePathObservable.value = .idle
+    }
+    
+    func show(message: String, action: @escaping () async -> Void) {
+        self.mutablePathObservable.value = .error(message: message, action: action)
     }
     
     // MARK: Private

@@ -47,9 +47,15 @@ struct GameView<
                     style: self.style.gameOver,
                     action: self.restartAction
                 )
+                
+            case .error(let message, let action):
+                ErrorView(
+                    message: message,
+                    style: self.style.error,
+                    action: action
+                )
             }
         }
-        .detectOrientationChanges()
         .task {
             await self.viewModel.viewWillAppear()
         }
@@ -72,4 +78,5 @@ struct GameViewStyle {
     let gameOver: GameOverViewStyle
     let question: QuestionViewStyle
     let remainingLives: RemainingLivesViewStyle
+    let error: ErrorViewStyle
 }

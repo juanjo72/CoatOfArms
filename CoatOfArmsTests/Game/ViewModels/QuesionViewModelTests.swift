@@ -64,31 +64,6 @@ struct QuestionViewModelTests {
         #expect(sut.loadingState.isLoading)
     }
     
-    @Test("Coat of arms not found")
-    func testThat_WhenWillAppear_And_FetchReturnsDecodingError_TheRouterIsCalled() async throws {
-        // Given
-        let repository = QuestionRepositoryProtocolMock()
-        repository.questionObservable = Just(nil).eraseToAnyPublisher()
-        let router = GameRouterProtocolMock()
-        let error = DecodingError.keyNotFound(
-            ServerCountry.CodingKeys.coatOfArms,
-            DecodingError.Context(codingPath: [ServerCountry.CoatOfArms.png], debugDescription: "")
-        )
-        repository.fetchQuestionThrowableError = error
-        let sut = self.makeSUT(
-            repository: repository,
-            router: router
-        )
-        
-        // When
-        await sut.viewWillAppear()
-        
-        // Then
-        #expect(router.gotNextQuestionCallsCount == 1)
-    }
-    
-    // loadingState
-    
     @Test("Observed question")
     func testThat_GivenObservedQuestion_WhenCreated_ThenStatusElementMatchesQuestion() async throws {
         // MARK: Given
@@ -116,5 +91,50 @@ struct QuestionViewModelTests {
         // Then
         #expect(sut.loadingState.element?.imageURL == expectedURL)
         #expect(codes == ["IT", "ES", "DE", "FR"])
+    }
+    
+    // MARK: Error handling
+    
+    @Test("Coat of arms not found")
+    func testThat_WhenWillAppear_And_FetchReturnsDecodingError_TheNextQuestionIsCalled() async throws {
+        // Given
+        let repository = QuestionRepositoryProtocolMock()
+        repository.questionObservable = Just(nil).eraseToAnyPublisher()
+        let router = GameRouterProtocolMock()
+        let error = DecodingError.keyNotFound(
+            ServerCountry.CoatOfArms.png,
+            DecodingError.Context(codingPath: [ServerCountry.CodingKeys.coatOfArms], debugDescription: "")
+        )
+        repository.fetchQuestionThrowableError = error
+        let sut = self.makeSUT(
+            repository: repository,
+            router: router
+        )
+        
+        // When
+        await sut.viewWillAppear()
+        
+        // Then
+        #expect(router.gotNextQuestionCallsCount == 1)
+    }
+    
+    @Test("No connection")
+    func testThat_WhenFetchReturnsOtherError_TheShowErrorIsCalled() async throws {
+        // Given
+        let repository = QuestionRepositoryProtocolMock()
+        repository.questionObservable = Just(nil).eraseToAnyPublisher()
+        let router = GameRouterProtocolMock()
+        let error = Foundation.URLError(.notConnectedToInternet)
+        repository.fetchQuestionThrowableError = error
+        let sut = self.makeSUT(
+            repository: repository,
+            router: router
+        )
+        
+        // When
+        await sut.viewWillAppear()
+        
+        // Then
+        #expect(router.showMessageActionCallsCount == 1)
     }
 }

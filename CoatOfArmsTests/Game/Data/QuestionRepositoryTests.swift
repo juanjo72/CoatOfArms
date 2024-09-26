@@ -18,7 +18,7 @@ struct QuestionRepositoryTests {
     private func makeSUT(
         questionId: Question.ID = .make(),
         gemeSettings: GameSettings = .default,
-        network: NetworkProtocolMock<ServerCountry> = .init(),
+        network: NetworkProtocolMock<ServerResponse> = .init(),
         randomCountryCodeProvider: RandomCountryCodeProviderProtocolMock = .init(),
         store: StorageProtocolMock<Question> = .init()
     ) -> QuestionRepository {
@@ -36,8 +36,8 @@ struct QuestionRepositoryTests {
     @Test("Country network request succeeds")
     func testThat_WhenServerCountryIsFetched_ThenRequestIsSent() async throws {
         // Given
-        let network = NetworkProtocolMock<ServerCountry>()
-        network.requestUrlDecoderReturnValue = .make()
+        let network = NetworkProtocolMock<ServerResponse>()
+        network.requestUrlReturnValue = ServerResponse(country: ServerCountry.make())
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodesNExcludingReturnValue = ["AR", "US", "PR"]
         let sut = self.makeSUT(
@@ -50,23 +50,28 @@ struct QuestionRepositoryTests {
         try await sut.fetchQuestion()
         
         // Then
-        #expect(network.requestUrlDecoderCallsCount == 1)
+        #expect(network.requestUrlCallsCount == 1)
     }
     
     @Test("Country network request fails")
-    func testThat_WhenServerCountryIsFetched_AndRequestFails_ThenThrowsError() async {
+    func testThat_WhenServerCountryIsFetched_AndRequestFails_ThenThrowsError() async throws {
         // Given
-        let network = NetworkProtocolMock<ServerCountry>()
-        network.requestUrlDecoderThrowableError = DecodeError.empty
+        let network = NetworkProtocolMock<ServerResponse>()
+        network.requestUrlThrowableError = NSError()
         let sut = self.makeSUT(
             network: network
         )
         
         // When
-        // Then
-        await #expect(throws: DecodeError.self) {
+        var thrownError: Error?
+        do {
             try await sut.fetchQuestion()
+        } catch {
+            thrownError = error
         }
+        
+        // Then
+        _ = try #require(thrownError)
     }
     
     @Test("Question is created and stored")
@@ -75,8 +80,8 @@ struct QuestionRepositoryTests {
         let questionId = Question.ID(gameStamp: Date(timeIntervalSince1970: 0), countryCode: "ES")
         let expectedStoredURL = URL(string: "https://mainfacts.com/media/images/coats_of_arms/es.png")!
         let gameSettings = GameSettings.make(numPossibleChoices: 4)
-        let network = NetworkProtocolMock<ServerCountry>()
-        network.requestUrlDecoderReturnValue = .make(coatOfArmsURL: expectedStoredURL)
+        let network = NetworkProtocolMock<ServerResponse>()
+        network.requestUrlReturnValue = ServerResponse(country: ServerCountry.make(coatOfArmsURL: expectedStoredURL))
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodesNExcludingReturnValue = ["AR", "US", "PR"]
         let store = StorageProtocolMock<Question>()

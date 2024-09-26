@@ -10,7 +10,6 @@
 		8101D52C2C8489D90013CE5A /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8101D52B2C8489D90013CE5A /* Localizable.xcstrings */; };
 		8107D6E42C8AD16300F0094D /* UserChoice+make.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8107D6E32C8AD16300F0094D /* UserChoice+make.swift */; };
 		81097A582C6C7B2200554C1E /* RandomCountryCodeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A572C6C7B2200554C1E /* RandomCountryCodeProvider.swift */; };
-		81097A5E2C6CAF0A00554C1E /* ChoiceButtonViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A5D2C6CAF0A00554C1E /* ChoiceButtonViewData.swift */; };
 		81097A602C6CAFDE00554C1E /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81097A5F2C6CAFDE00554C1E /* CountryCode.swift */; };
 		810F903F2CA1C8570016A04F /* QuestionRepositoryProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F903E2CA1C8560016A04F /* QuestionRepositoryProtocolMock.swift */; };
 		81135F0E2C86312600889507 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81135F0D2C86312600889507 /* GameView.swift */; };
@@ -19,12 +18,10 @@
 		81135F1C2C86E29E00889507 /* RemainingLivesViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81135F1B2C86E29E00889507 /* RemainingLivesViewModelFactory.swift */; };
 		81135F1E2C86E37900889507 /* GameViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81135F1D2C86E37900889507 /* GameViewModelFactory.swift */; };
 		81135F202C86F58C00889507 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81135F1F2C86F58C00889507 /* RootViewModel.swift */; };
-		81184FE22C75CF02005B49E3 /* DynamicStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81184FE12C75CF02005B49E3 /* DynamicStack.swift */; };
 		81184FE72C7639E4005B49E3 /* QuestionViewStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81184FE62C7639E4005B49E3 /* QuestionViewStyle+default.swift */; };
 		811B38512C70786D003856C3 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38502C70786D003856C3 /* GameSettings.swift */; };
 		811B38532C70EE6D003856C3 /* UserChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811B38522C70EE6D003856C3 /* UserChoice.swift */; };
 		811D3A632C82E1210057FE8E /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D3A622C82E1210057FE8E /* LoadingState.swift */; };
-		811D3A652C82E1BB0057FE8E /* Publisher+imagePrefech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D3A642C82E1BB0057FE8E /* Publisher+imagePrefech.swift */; };
 		811D3A682C833D000057FE8E /* GameOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D3A672C833D000057FE8E /* GameOverView.swift */; };
 		813247E02C9EE905000D1C57 /* GetCountryName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813247DF2C9EE8FA000D1C57 /* GetCountryName.swift */; };
 		813247E22C9EEE36000D1C57 /* ChoiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 813247E12C9EEE23000D1C57 /* ChoiceButton.swift */; };
@@ -37,6 +34,9 @@
 		8134F9432C68CEDE0052D0DF /* QuestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9422C68CEDE0052D0DF /* QuestionRepository.swift */; };
 		8134F9452C68CFED0052D0DF /* ServerCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9442C68CFED0052D0DF /* ServerCountry.swift */; };
 		8134F9492C68D3900052D0DF /* ServerCountry+Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8134F9482C68D3900052D0DF /* ServerCountry+Decoder.swift */; };
+		816C79132CA3D7FB00528FFE /* ErrorViewStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816C79122CA3D7F200528FFE /* ErrorViewStyle+default.swift */; };
+		816C79152CA41BA000528FFE /* ErrorViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816C79142CA41B9B00528FFE /* ErrorViewTests.swift */; };
+		816C79182CA4E58300528FFE /* ServerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816C79172CA4E57B00528FFE /* ServerResponse.swift */; };
 		816E7DF42CA141D700374239 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7DF32CA141D400374239 /* Tags.swift */; };
 		816E7DF72CA1423900374239 /* ChoiceButtonViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7DF62CA1423200374239 /* ChoiceButtonViewModelTests.swift */; };
 		816E7DFD2CA146BC00374239 /* GameRouterProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816E7DFC2CA146BB00374239 /* GameRouterProtocolMock.swift */; };
@@ -56,6 +56,7 @@
 		8186BB1B2CA2F58600A82663 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 8186BB1A2CA2F58600A82663 /* SnapshotTesting */; };
 		8186BB1F2CA2F7AC00A82663 /* QuestionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186BB182CA2F22300A82663 /* QuestionViewTests.swift */; };
 		8186BB212CA2F8B100A82663 /* ChoiceButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186BB202CA2F89E00A82663 /* ChoiceButtonTests.swift */; };
+		8186BB232CA327E500A82663 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186BB222CA327D900A82663 /* ErrorView.swift */; };
 		818BC32B2C88B92E003F4D8A /* RootViewStyle+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818BC32A2C88B92E003F4D8A /* RootViewStyle+default.swift */; };
 		818E16EB2CA027B4004AFD0E /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818E16EA2CA027B0004AFD0E /* Question.swift */; };
 		818E16ED2CA0335F004AFD0E /* QuestionRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818E16EC2CA0335F004AFD0E /* QuestionRepositoryTests.swift */; };
@@ -85,7 +86,6 @@
 		81E44F3A2C6B5B6F00029516 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E44F392C6B5B6F00029516 /* QuestionViewModel.swift */; };
 		81E5DD082C9B123400CE10AB /* ReactiveStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 81E5DD072C9B123400CE10AB /* ReactiveStorage */; };
 		81E5DD0B2C9B1B1F00CE10AB /* EntryPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E5DD0A2C9B1B1F00CE10AB /* EntryPoint.swift */; };
-		81E5DD0D2C9BE50500CE10AB /* View+detectOrientationChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E5DD0C2C9BE50500CE10AB /* View+detectOrientationChanges.swift */; };
 		81E5DD292C9C3BAA00CE10AB /* GameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E5DD282C9C3BAA00CE10AB /* GameRouter.swift */; };
 		81EE1BE72C85D5D800D874D9 /* RemainingLivesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE1BE62C85D5D800D874D9 /* RemainingLivesViewModel.swift */; };
 		81EE1BE92C85D64D00D874D9 /* RemainingLivesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81EE1BE82C85D64D00D874D9 /* RemainingLivesRepository.swift */; };
@@ -106,7 +106,6 @@
 		8101D52B2C8489D90013CE5A /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		8107D6E32C8AD16300F0094D /* UserChoice+make.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserChoice+make.swift"; sourceTree = "<group>"; };
 		81097A572C6C7B2200554C1E /* RandomCountryCodeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomCountryCodeProvider.swift; sourceTree = "<group>"; };
-		81097A5D2C6CAF0A00554C1E /* ChoiceButtonViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonViewData.swift; sourceTree = "<group>"; };
 		81097A5F2C6CAFDE00554C1E /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
 		810F903E2CA1C8560016A04F /* QuestionRepositoryProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepositoryProtocolMock.swift; sourceTree = "<group>"; };
 		81135F0D2C86312600889507 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -115,13 +114,12 @@
 		81135F1B2C86E29E00889507 /* RemainingLivesViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingLivesViewModelFactory.swift; sourceTree = "<group>"; };
 		81135F1D2C86E37900889507 /* GameViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModelFactory.swift; sourceTree = "<group>"; };
 		81135F1F2C86F58C00889507 /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
-		81184FE12C75CF02005B49E3 /* DynamicStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicStack.swift; sourceTree = "<group>"; };
 		81184FE62C7639E4005B49E3 /* QuestionViewStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionViewStyle+default.swift"; sourceTree = "<group>"; };
 		811B38502C70786D003856C3 /* GameSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		811B38522C70EE6D003856C3 /* UserChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChoice.swift; sourceTree = "<group>"; };
 		811D3A622C82E1210057FE8E /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
-		811D3A642C82E1BB0057FE8E /* Publisher+imagePrefech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+imagePrefech.swift"; sourceTree = "<group>"; };
 		811D3A672C833D000057FE8E /* GameOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverView.swift; sourceTree = "<group>"; };
+		8122DB3F2CA59EDC008C68BE /* CoatOfArms.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoatOfArms.xctestplan; sourceTree = "<group>"; };
 		813247DF2C9EE8FA000D1C57 /* GetCountryName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryName.swift; sourceTree = "<group>"; };
 		813247E12C9EEE23000D1C57 /* ChoiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButton.swift; sourceTree = "<group>"; };
 		813247E32C9EF1DC000D1C57 /* ChoiceButtonViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonViewModelFactory.swift; sourceTree = "<group>"; };
@@ -133,6 +131,9 @@
 		8134F9422C68CEDE0052D0DF /* QuestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepository.swift; sourceTree = "<group>"; };
 		8134F9442C68CFED0052D0DF /* ServerCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCountry.swift; sourceTree = "<group>"; };
 		8134F9482C68D3900052D0DF /* ServerCountry+Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServerCountry+Decoder.swift"; sourceTree = "<group>"; };
+		816C79122CA3D7F200528FFE /* ErrorViewStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorViewStyle+default.swift"; sourceTree = "<group>"; };
+		816C79142CA41B9B00528FFE /* ErrorViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewTests.swift; sourceTree = "<group>"; };
+		816C79172CA4E57B00528FFE /* ServerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerResponse.swift; sourceTree = "<group>"; };
 		816E7DF32CA141D400374239 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		816E7DF62CA1423200374239 /* ChoiceButtonViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonViewModelTests.swift; sourceTree = "<group>"; };
 		816E7DFC2CA146BB00374239 /* GameRouterProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouterProtocolMock.swift; sourceTree = "<group>"; };
@@ -151,6 +152,7 @@
 		8186BB162CA2EFFF00A82663 /* PreviewQuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewQuestionViewModel.swift; sourceTree = "<group>"; };
 		8186BB182CA2F22300A82663 /* QuestionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewTests.swift; sourceTree = "<group>"; };
 		8186BB202CA2F89E00A82663 /* ChoiceButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceButtonTests.swift; sourceTree = "<group>"; };
+		8186BB222CA327D900A82663 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		818BC32A2C88B92E003F4D8A /* RootViewStyle+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootViewStyle+default.swift"; sourceTree = "<group>"; };
 		818E16EA2CA027B0004AFD0E /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		818E16EC2CA0335F004AFD0E /* QuestionRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepositoryTests.swift; sourceTree = "<group>"; };
@@ -178,8 +180,6 @@
 		81E36CEE2C7458BA00F71DB5 /* ServerCountry+make.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ServerCountry+make.swift"; sourceTree = "<group>"; };
 		81E44F392C6B5B6F00029516 /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
 		81E5DD0A2C9B1B1F00CE10AB /* EntryPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryPoint.swift; sourceTree = "<group>"; };
-		81E5DD0C2C9BE50500CE10AB /* View+detectOrientationChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+detectOrientationChanges.swift"; sourceTree = "<group>"; };
-		81E5DD252C9BF0CB00CE10AB /* CoatOfArms.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CoatOfArms.xctestplan; sourceTree = "<group>"; };
 		81E5DD282C9C3BAA00CE10AB /* GameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRouter.swift; sourceTree = "<group>"; };
 		81EE1BE62C85D5D800D874D9 /* RemainingLivesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingLivesViewModel.swift; sourceTree = "<group>"; };
 		81EE1BE82C85D64D00D874D9 /* RemainingLivesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemainingLivesRepository.swift; sourceTree = "<group>"; };
@@ -234,11 +234,12 @@
 		81184FE52C7639B1005B49E3 /* _styles */ = {
 			isa = PBXGroup;
 			children = (
+				816C79122CA3D7F200528FFE /* ErrorViewStyle+default.swift */,
 				81A3CFFA2C84AF8300D789E5 /* GameOverViewStyle+default.swift */,
 				81A3CFFC2C84AFCE00D789E5 /* GameViewStyle+default.swift */,
 				81184FE62C7639E4005B49E3 /* QuestionViewStyle+default.swift */,
-				818BC32A2C88B92E003F4D8A /* RootViewStyle+default.swift */,
 				81B59CA82C94474A00DB8CFA /* RemainingLivesViewStyle+default.swift */,
+				818BC32A2C88B92E003F4D8A /* RootViewStyle+default.swift */,
 			);
 			path = _styles;
 			sourceTree = "<group>";
@@ -257,7 +258,6 @@
 			isa = PBXGroup;
 			children = (
 				817A661F2C8E251E00B21E5A /* GameStatus.swift */,
-				81097A5D2C6CAF0A00554C1E /* ChoiceButtonViewData.swift */,
 				8190ADF32C8260D40031F1E3 /* QuestionViewData.swift */,
 			);
 			path = ViewData;
@@ -270,7 +270,7 @@
 				8134F91D2C68CB610052D0DF /* CoatOfArmsTests */,
 				8134F90B2C68CB600052D0DF /* Products */,
 				81E44F352C6B4CD500029516 /* Frameworks */,
-				81E5DD252C9BF0CB00CE10AB /* CoatOfArms.xctestplan */,
+				8122DB3F2CA59EDC008C68BE /* CoatOfArms.xctestplan */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,12 +289,12 @@
 				81184FE02C75CEF0005B49E3 /* _shared */,
 				81184FE52C7639B1005B49E3 /* _styles */,
 				8182871C2C906F930019C132 /* Game */,
-				8134F9132C68CB610052D0DF /* Preview Content */,
 				8134F90D2C68CB600052D0DF /* CoatOfArmsApp.swift */,
-				811B38502C70786D003856C3 /* GameSettings.swift */,
 				81E5DD0A2C9B1B1F00CE10AB /* EntryPoint.swift */,
-				8134F9112C68CB610052D0DF /* Assets.xcassets */,
+				811B38502C70786D003856C3 /* GameSettings.swift */,
 				8101D52B2C8489D90013CE5A /* Localizable.xcstrings */,
+				8134F9112C68CB610052D0DF /* Assets.xcassets */,
+				8134F9132C68CB610052D0DF /* Preview Content */,
 			);
 			path = CoatOfArms;
 			sourceTree = "<group>";
@@ -313,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				816E7DF32CA141D400374239 /* Tags.swift */,
-				81E36CE52C734C5D00F71DB5 /* _doubles */,
+				81E36CE52C734C5D00F71DB5 /* _domainEntities */,
 				8134F9502C69F1FC0052D0DF /* _mocks */,
 				818E17032CA085E4004AFD0E /* Game */,
 			);
@@ -324,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				81D4160A2C74927F0061A1B6 /* DomainEntities */,
+				816C79192CA4E5A200528FFE /* Network */,
 				8191DED32C9EE489001F98DB /* ChoiceButtonRepository.swift */,
 				8134F9422C68CEDE0052D0DF /* QuestionRepository.swift */,
 				81EE1BE82C85D64D00D874D9 /* RemainingLivesRepository.swift */,
@@ -348,6 +349,15 @@
 				818E16F92CA056E9004AFD0E /* StorageProtocolMock.swift */,
 			);
 			path = _mocks;
+			sourceTree = "<group>";
+		};
+		816C79192CA4E5A200528FFE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				8134F9482C68D3900052D0DF /* ServerCountry+Decoder.swift */,
+				816C79172CA4E57B00528FFE /* ServerResponse.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		816E7DF52CA1422A00374239 /* ViewModels */ = {
@@ -376,6 +386,7 @@
 		8186BB1C2CA2F5AA00A82663 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				816C79142CA41B9B00528FFE /* ErrorViewTests.swift */,
 				8186BB182CA2F22300A82663 /* QuestionViewTests.swift */,
 				8186BB202CA2F89E00A82663 /* ChoiceButtonTests.swift */,
 			);
@@ -397,6 +408,7 @@
 			children = (
 				811D3A662C82EC6F0057FE8E /* ViewData */,
 				813247E12C9EEE23000D1C57 /* ChoiceButton.swift */,
+				8186BB222CA327D900A82663 /* ErrorView.swift */,
 				811D3A672C833D000057FE8E /* GameOverView.swift */,
 				81135F0D2C86312600889507 /* GameView.swift */,
 				81D416032C74803B0061A1B6 /* QuestionView.swift */,
@@ -413,13 +425,12 @@
 				817AAB2E2C87B53000778E67 /* GameStamp.swift */,
 				818E16EA2CA027B0004AFD0E /* Question.swift */,
 				8134F9442C68CFED0052D0DF /* ServerCountry.swift */,
-				8134F9482C68D3900052D0DF /* ServerCountry+Decoder.swift */,
 				811B38522C70EE6D003856C3 /* UserChoice.swift */,
 			);
 			path = DomainEntities;
 			sourceTree = "<group>";
 		};
-		81E36CE52C734C5D00F71DB5 /* _doubles */ = {
+		81E36CE52C734C5D00F71DB5 /* _domainEntities */ = {
 			isa = PBXGroup;
 			children = (
 				818E16FB2CA05A23004AFD0E /* Question+make.swift */,
@@ -427,7 +438,7 @@
 				8107D6E32C8AD16300F0094D /* UserChoice+make.swift */,
 				817A66172C8D6E3600B21E5A /* GameSettings+make.swift */,
 			);
-			path = _doubles;
+			path = _domainEntities;
 			sourceTree = "<group>";
 		};
 		81E44F352C6B4CD500029516 /* Frameworks */ = {
@@ -463,8 +474,6 @@
 			isa = PBXGroup;
 			children = (
 				8190ADF12C825ADD0031F1E3 /* Publisher+asyncMap.swift */,
-				811D3A642C82E1BB0057FE8E /* Publisher+imagePrefech.swift */,
-				81E5DD0C2C9BE50500CE10AB /* View+detectOrientationChanges.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -472,7 +481,6 @@
 		81FCD9162C9C80BB00C6FFFD /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				81184FE12C75CF02005B49E3 /* DynamicStack.swift */,
 				811D3A622C82E1210057FE8E /* LoadingState.swift */,
 			);
 			path = UI;
@@ -543,7 +551,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					8134F9092C68CB600052D0DF = {
 						CreatedOnToolsVersion = 15.4;
@@ -607,6 +615,7 @@
 			files = (
 				81097A602C6CAFDE00554C1E /* CountryCode.swift in Sources */,
 				817A66222C8EF5F100B21E5A /* StorageProtocol.swift in Sources */,
+				816C79182CA4E58300528FFE /* ServerResponse.swift in Sources */,
 				8134F9452C68CFED0052D0DF /* ServerCountry.swift in Sources */,
 				818BC32B2C88B92E003F4D8A /* RootViewStyle+default.swift in Sources */,
 				8134F9492C68D3900052D0DF /* ServerCountry+Decoder.swift in Sources */,
@@ -624,20 +633,19 @@
 				81A3CFFB2C84AF8300D789E5 /* GameOverViewStyle+default.swift in Sources */,
 				8134F9432C68CEDE0052D0DF /* QuestionRepository.swift in Sources */,
 				81A3CFFD2C84AFCE00D789E5 /* GameViewStyle+default.swift in Sources */,
-				811D3A652C82E1BB0057FE8E /* Publisher+imagePrefech.swift in Sources */,
 				8191DECC2C9DD521001F98DB /* PlaySound.swift in Sources */,
 				811B38512C70786D003856C3 /* GameSettings.swift in Sources */,
 				811D3A682C833D000057FE8E /* GameOverView.swift in Sources */,
 				81184FE72C7639E4005B49E3 /* QuestionViewStyle+default.swift in Sources */,
 				81E5DD292C9C3BAA00CE10AB /* GameRouter.swift in Sources */,
 				8186BB152CA2D62400A82663 /* PreviewChoiceButtonViewModel.swift in Sources */,
+				8186BB232CA327E500A82663 /* ErrorView.swift in Sources */,
 				81135F202C86F58C00889507 /* RootViewModel.swift in Sources */,
 				81097A582C6C7B2200554C1E /* RandomCountryCodeProvider.swift in Sources */,
+				816C79132CA3D7FB00528FFE /* ErrorViewStyle+default.swift in Sources */,
 				811B38532C70EE6D003856C3 /* UserChoice.swift in Sources */,
 				8191DED22C9EE309001F98DB /* ChoiceButtonViewModel.swift in Sources */,
-				81184FE22C75CF02005B49E3 /* DynamicStack.swift in Sources */,
 				81E5DD0B2C9B1B1F00CE10AB /* EntryPoint.swift in Sources */,
-				81E5DD0D2C9BE50500CE10AB /* View+detectOrientationChanges.swift in Sources */,
 				818E16EB2CA027B4004AFD0E /* Question.swift in Sources */,
 				81D416042C74803B0061A1B6 /* QuestionView.swift in Sources */,
 				817AAB312C8833C400778E67 /* GameViewModel.swift in Sources */,
@@ -647,7 +655,6 @@
 				81B59CA92C94474A00DB8CFA /* RemainingLivesViewStyle+default.swift in Sources */,
 				81EE1BE92C85D64D00D874D9 /* RemainingLivesRepository.swift in Sources */,
 				8134F90E2C68CB600052D0DF /* CoatOfArmsApp.swift in Sources */,
-				81097A5E2C6CAF0A00554C1E /* ChoiceButtonViewData.swift in Sources */,
 				81135F1C2C86E29E00889507 /* RemainingLivesViewModelFactory.swift in Sources */,
 				813247E22C9EEE36000D1C57 /* ChoiceButton.swift in Sources */,
 				81135F1E2C86E37900889507 /* GameViewModelFactory.swift in Sources */,
@@ -679,6 +686,7 @@
 				818E16FA2CA056EA004AFD0E /* StorageProtocolMock.swift in Sources */,
 				81B8BC3E2CA2B88500B0B395 /* RemainingLivesViewModelTests.swift in Sources */,
 				817A66182C8D6E3600B21E5A /* GameSettings+make.swift in Sources */,
+				816C79152CA41BA000528FFE /* ErrorViewTests.swift in Sources */,
 				816E7E052CA1738D00374239 /* RemainingLivesViewModelProtocolMock.swift in Sources */,
 				818E17022CA07B70004AFD0E /* ChoiceButtonRepositoryTests.swift in Sources */,
 				818E16ED2CA0335F004AFD0E /* QuestionRepositoryTests.swift in Sources */,
@@ -706,6 +714,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -769,6 +778,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -834,7 +844,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -864,7 +875,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

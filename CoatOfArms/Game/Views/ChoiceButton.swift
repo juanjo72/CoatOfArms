@@ -11,8 +11,12 @@ struct ChoiceButton<
     ViewModel: ChoiceButtonViewModelProtocol
 >: View {
     
+    // MARK: Injected
+    
     @ObservedObject
     private var viewModel: ViewModel
+    
+    // MARK: View
     
     var body: some View {
         Button(
@@ -35,6 +39,8 @@ struct ChoiceButton<
             await self.viewModel.viewWillAppear()
         }
     }
+    
+    // MARK: Lifecycle
     
     init(
         viewModel: ViewModel

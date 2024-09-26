@@ -9,7 +9,7 @@ import Foundation
 import Network
 
 protocol NetworkProtocol {
-    func request<T>(url: URL, decoder: @escaping (Data) throws -> T) async throws -> T
+    func request<T: Decodable>(url: URL) async throws -> T
 }
 
 /// Adapter converting third party's RequestSenderProtocol to local NetworkProtocol
@@ -22,8 +22,11 @@ struct NetworkAdapter: NetworkProtocol {
         self.sender = sender
     }
     
-    func request<T>(url: URL, decoder: @escaping (Data) throws -> T) async throws -> T {
-        let resource = Network.RemoteResource(url: url, decoder: decoder)
+    func request<T: Decodable>(url: URL) async throws -> T {
+        let resource: RemoteResource<T> = Network.RemoteResource(
+            url: url,
+            requestTimeOut: 5
+        )
         return try await self.sender.request(resource: resource)
     }
 }

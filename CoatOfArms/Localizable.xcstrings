@@ -18,22 +18,6 @@
         }
       }
     },
-    "Correct" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yep"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pues sí"
-          }
-        }
-      }
-    },
     "Game Over" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -67,6 +51,22 @@
         }
       }
     },
+    "Try again" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intentar de nuevo"
+          }
+        }
+      }
+    },
     "Unknown Coat of Arms" : {
       "localizations" : {
         "en" : {
@@ -79,22 +79,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Escudo desconocido"
-          }
-        }
-      }
-    },
-    "Wrong" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nope"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Noooooo"
           }
         }
       }

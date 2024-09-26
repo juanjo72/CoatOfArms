@@ -66,4 +66,21 @@ final class GameRouterProtocolMock: GameRouterProtocol {
         stopCallsCount += 1
         stopClosure?()
     }
+    
+    // MARK: - show
+
+     var showMessageActionCallsCount = 0
+     var showMessageActionCalled: Bool {
+         showMessageActionCallsCount > 0
+     }
+     var showMessageActionReceivedArguments: (message: String, action: () async -> Void)?
+     var showMessageActionReceivedInvocations: [(message: String, action: () async -> Void)] = []
+     var showMessageActionClosure: ((String, @escaping () async -> Void) -> Void)?
+
+     func show(message: String, action: @escaping () async -> Void) {
+         showMessageActionCallsCount += 1
+         showMessageActionReceivedArguments = (message: message, action: action)
+         showMessageActionReceivedInvocations.append((message: message, action: action))
+         showMessageActionClosure?(message, action)
+     }
 }

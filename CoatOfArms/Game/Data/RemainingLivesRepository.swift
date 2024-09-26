@@ -38,7 +38,3 @@ struct RemainingLivesRepository: RemainingLivesRepositoryProtocol {
         self.store = store
     }
 }
-
-// MARK: - RemainingLivesRepositoryProtocolMock -
-
-

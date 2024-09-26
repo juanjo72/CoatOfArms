@@ -16,8 +16,6 @@ struct QuestionView<
     
     @ObservedObject private var viewModel: ViewModel
     private let style: QuestionViewStyle
-    
-    @Environment(\.deviceOrientation) private var deviceOrientation
 
     // MARK: View
     
@@ -31,33 +29,21 @@ struct QuestionView<
                 ProgressView()
                 
             case .loaded(let question):
-                DynamicStack(
+                VStack(
                     spacing: self.style.spacing
                 ) {
-                    if self.deviceOrientation.isPortrait
-                        || self.deviceOrientation == .unknown {
-                        Spacer()
-                    }
+                    Spacer()
                     
                     KFImage(question.imageURL)
                         .resizable()
-                        .frame(
-                            minWidth: self.deviceOrientation.isLandscape ? 200 : nil
-                        )
-                        .frame(
-                            minHeight: self.deviceOrientation.isPortrait ? 200 : nil
-                        )
                         .aspectRatio(contentMode: .fit)
-                        .padding(self.deviceOrientation.isPortrait ? .horizontal : .vertical)
+                        .padding()
                         .allowsHitTesting(false)
                         .accessibilityLabel(Text("Unknown Coat of Arms"))
                     
                     VStack {
                         ForEach(question.buttons, id: \.countryCode) { button in
                             ChoiceButton(viewModel: button)
-                                .task {
-                                    await button.viewWillAppear()
-                                }
                         }
                     }
                     .layoutPriority(1)
@@ -101,6 +87,7 @@ struct QuestionViewStyle {
             imageURL: URL(string: "https://mainfacts.com/media/images/coats_of_arms/es.png")!,
             button: [
                 PreviewChoiceButtonViewModel(countryCode: "FR", label: "France"),
+                PreviewChoiceButtonViewModel(countryCode: "AR", label: "Argentina"),
                 PreviewChoiceButtonViewModel(countryCode: "ES", label: "Spain"),
                 PreviewChoiceButtonViewModel(countryCode: "PT", label: "Portugal"),
             ]
