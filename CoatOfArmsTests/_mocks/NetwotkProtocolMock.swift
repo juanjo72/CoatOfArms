@@ -8,7 +8,7 @@
 @testable import CoatOfArms
 import Foundation
 
-final class NetworkProtocolMock<U: Decodable>: NetworkProtocol {
+final class NetworkProtocolMock: NetworkProtocol {
     
    // MARK: - request<T: Decodable>
 
@@ -19,8 +19,8 @@ final class NetworkProtocolMock<U: Decodable>: NetworkProtocol {
     }
     var requestUrlReceivedUrl: URL?
     var requestUrlReceivedInvocations: [URL] = []
-    var requestUrlReturnValue: U!
-    var requestUrlClosure: ((URL) throws -> U)?
+    var requestUrlReturnValue: Any!
+    var requestUrlClosure: ((URL) throws -> Any)?
 
     func request<T: Decodable>(url: URL) throws -> T {
         if let error = requestUrlThrowableError {

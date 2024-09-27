@@ -8,9 +8,7 @@
 @testable import CoatOfArms
 import Combine
 
-final class StorageProtocolMock<
-    E: Identifiable & Equatable
->: StorageProtocol {
+final class StorageProtocolMock: StorageProtocol {
     
    // MARK: - getAllElementsObservable<Entity: Identifiable>
 
@@ -18,19 +16,16 @@ final class StorageProtocolMock<
     var getAllElementsObservableOfCalled: Bool {
         getAllElementsObservableOfCallsCount > 0
     }
-    var getAllElementsObservableOfReceivedType: E.Type?
-    var getAllElementsObservableOfReceivedInvocations: [E.Type] = []
-    var getAllElementsObservableOfReturnValue: AnyPublisher<[E], Never>!
-    var getAllElementsObservableOfClosure: ((E.Type) -> AnyPublisher<[E], Never>)?
+    var getAllElementsObservableOfReceivedType: Any.Type?
+    var getAllElementsObservableOfReceivedInvocations: [Any.Type] = []
+    var getAllElementsObservableOfReturnValue: Any!
+    var getAllElementsObservableOfClosure: ((Any) -> Any)?
 
     func getAllElementsObservable<Entity: Identifiable>(of type: Entity.Type) -> AnyPublisher<[Entity], Never> {
         getAllElementsObservableOfCallsCount += 1
-        guard let type = type as? E.Type else {
-            return Just([]).eraseToAnyPublisher()
-        }
         getAllElementsObservableOfReceivedType = type
         getAllElementsObservableOfReceivedInvocations.append(type)
-        return getAllElementsObservableOfClosure.map({ $0(type) as! AnyPublisher<[Entity], Never> }) ?? getAllElementsObservableOfReturnValue as! AnyPublisher<[Entity], Never>
+        return getAllElementsObservableOfClosure.map({ $0(type) }) as? AnyPublisher<[Entity], Never> ?? getAllElementsObservableOfReturnValue as! AnyPublisher<[Entity], Never>
     }
     
    // MARK: - getSingleElementObservable<Entity: Identifiable>
@@ -39,16 +34,13 @@ final class StorageProtocolMock<
     var getSingleElementObservableOfIdCalled: Bool {
         getSingleElementObservableOfIdCallsCount > 0
     }
-    var getSingleElementObservableOfIdReceivedArguments: (type: E.Type, id: E.ID)?
-    var getSingleElementObservableOfIdReceivedInvocations: [(type: E.Type, id: E.ID)] = []
-    var getSingleElementObservableOfIdReturnValue: AnyPublisher<E?, Never>!
-    var getSingleElementObservableOfIdClosure: ((E.Type, E.ID) -> AnyPublisher<E?, Never>)?
+    var getSingleElementObservableOfIdReceivedArguments: (type: Any.Type, id: Any)?
+    var getSingleElementObservableOfIdReceivedInvocations: [(type: Any, id: Any)] = []
+    var getSingleElementObservableOfIdReturnValue: Any!
+    var getSingleElementObservableOfIdClosure: ((Any.Type, Any) -> Any)?
 
     func getSingleElementObservable<Entity: Identifiable>(of type: Entity.Type, id: Entity.ID) -> AnyPublisher<Entity?, Never> {
         getSingleElementObservableOfIdCallsCount += 1
-        guard let type = type as? E.Type, let id = id as? E.ID else {
-            return Just(nil).eraseToAnyPublisher()
-        }
         getSingleElementObservableOfIdReceivedArguments = (type: type, id: id)
         getSingleElementObservableOfIdReceivedInvocations.append((type: type, id: id))
         return getSingleElementObservableOfIdClosure.map({ $0(type, id) as! AnyPublisher<Entity?, Never> }) ?? getSingleElementObservableOfIdReturnValue as! AnyPublisher<Entity?, Never>
@@ -60,16 +52,13 @@ final class StorageProtocolMock<
     var getAllElementsOfCalled: Bool {
         getAllElementsOfCallsCount > 0
     }
-    var getAllElementsOfReceivedType: E.Type?
-    var getAllElementsOfReceivedInvocations: [E.Type] = []
-    var getAllElementsOfReturnValue: [E]!
-    var getAllElementsOfClosure: ((E.Type) -> [E])?
+    var getAllElementsOfReceivedType: Any.Type?
+    var getAllElementsOfReceivedInvocations: [Any.Type] = []
+    var getAllElementsOfReturnValue: Any!
+    var getAllElementsOfClosure: ((Any.Type) -> [Any])?
 
     func getAllElements<Entity: Identifiable>(of type: Entity.Type) async -> [Entity] {
         getAllElementsOfCallsCount += 1
-        guard let type = type as? E.Type else {
-            return []
-        }
         getAllElementsOfReceivedType = type
         getAllElementsOfReceivedInvocations.append(type)
         return getAllElementsOfClosure.map({ $0(type) as! [Entity] }) ?? getAllElementsOfReturnValue as! [Entity]
@@ -81,15 +70,12 @@ final class StorageProtocolMock<
     var addCalled: Bool {
         addCallsCount > 0
     }
-    var addReceivedElement: E?
-    var addReceivedInvocations: [E] = []
-    var addClosure: ((E) -> Void)?
+    var addReceivedElement: Any?
+    var addReceivedInvocations: [Any] = []
+    var addClosure: ((Any) -> Void)?
 
     func add<Entity: Identifiable>(_ element: Entity) async {
         addCallsCount += 1
-        guard let element = element as? E else {
-            return
-        }
         addReceivedElement = element
         addReceivedInvocations.append(element)
         addClosure?(element)

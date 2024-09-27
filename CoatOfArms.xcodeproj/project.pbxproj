@@ -313,7 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				816E7DF32CA141D400374239 /* Tags.swift */,
-				81E36CE52C734C5D00F71DB5 /* _domainEntities */,
+				81E36CE52C734C5D00F71DB5 /* _domainEntitiesMakers */,
 				8134F9502C69F1FC0052D0DF /* _mocks */,
 				818E17032CA085E4004AFD0E /* Game */,
 			);
@@ -335,17 +335,17 @@
 		8134F9502C69F1FC0052D0DF /* _mocks */ = {
 			isa = PBXGroup;
 			children = (
-				81B8BC452CA2BDDC00B0B395 /* GameViewModelProtocolMock.swift */,
 				816E7DFE2CA1472B00374239 /* ChoiceButtonRepositoryProtocolMock.swift */,
-				81B8BC432CA2BD9A00B0B395 /* RootViewModelProtocolMock.swift */,
 				816E7E002CA1721D00374239 /* ChoiceButtonViewModelProtocolMock.swift */,
 				816E7DFC2CA146BB00374239 /* GameRouterProtocolMock.swift */,
+				81B8BC452CA2BDDC00B0B395 /* GameViewModelProtocolMock.swift */,
 				818E16F52CA055DE004AFD0E /* NetwotkProtocolMock.swift */,
 				810F903E2CA1C8560016A04F /* QuestionRepositoryProtocolMock.swift */,
 				816E7E022CA1728E00374239 /* QuestionViewModelProtocolMock.swift */,
 				818E16F72CA05667004AFD0E /* RandomCountryCodeProviderProtocolMock.swift */,
 				81B8BC3F2CA2B97700B0B395 /* RemainingLivesRepositoryProtocolMock.swift */,
 				816E7E042CA1738A00374239 /* RemainingLivesViewModelProtocolMock.swift */,
+				81B8BC432CA2BD9A00B0B395 /* RootViewModelProtocolMock.swift */,
 				818E16F92CA056E9004AFD0E /* StorageProtocolMock.swift */,
 			);
 			path = _mocks;
@@ -430,7 +430,7 @@
 			path = DomainEntities;
 			sourceTree = "<group>";
 		};
-		81E36CE52C734C5D00F71DB5 /* _domainEntities */ = {
+		81E36CE52C734C5D00F71DB5 /* _domainEntitiesMakers */ = {
 			isa = PBXGroup;
 			children = (
 				818E16FB2CA05A23004AFD0E /* Question+make.swift */,
@@ -438,7 +438,7 @@
 				8107D6E32C8AD16300F0094D /* UserChoice+make.swift */,
 				817A66172C8D6E3600B21E5A /* GameSettings+make.swift */,
 			);
-			path = _domainEntities;
+			path = _domainEntitiesMakers;
 			sourceTree = "<group>";
 		};
 		81E44F352C6B4CD500029516 /* Frameworks */ = {

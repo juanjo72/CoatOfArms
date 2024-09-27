@@ -7,9 +7,12 @@
 
 @testable import CoatOfArms
 import SnapshotTesting
-import XCTest
+import Testing
 
-final class ErrorViewTests: XCTestCase {
+@Suite("ErrorViewTests", .tags(.viewLayer))
+@MainActor
+struct ErrorViewTests {
+    @Test
     func testErrorView() {
         let view = ErrorView(
             message: "The Internet conncection appears to be offline.",

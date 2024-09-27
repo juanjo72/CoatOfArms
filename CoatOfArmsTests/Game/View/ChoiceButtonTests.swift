@@ -7,9 +7,12 @@
 
 @testable import CoatOfArms
 import SnapshotTesting
-import XCTest
+import Testing
 
-final class ChoiceButtonTests: XCTestCase {
+@Suite("Choice Button", .tags(.viewLayer))
+@MainActor
+struct ChoiceButtonTests {
+    @Test
     func testUnselectedButton() {
         let view = ChoiceButton(
             viewModel: PreviewChoiceButtonViewModel(
@@ -21,6 +24,7 @@ final class ChoiceButtonTests: XCTestCase {
         assertSnapshot(of: view, as: .image(layout: .fixed(width: 300, height: 200)), record: false)
     }
     
+    @Test
     func testRightAnswerButton() {
         let view = ChoiceButton(
             viewModel: PreviewChoiceButtonViewModel(
@@ -32,6 +36,7 @@ final class ChoiceButtonTests: XCTestCase {
         assertSnapshot(of: view, as: .image(layout: .fixed(width: 300, height: 200)), record: false)
     }
     
+    @Test
     func testWrongAnswerButton() {
         let view = ChoiceButton(
             viewModel: PreviewChoiceButtonViewModel(

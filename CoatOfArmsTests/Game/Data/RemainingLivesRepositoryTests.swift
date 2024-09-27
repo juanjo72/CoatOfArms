@@ -17,7 +17,7 @@ struct RemainingLivesRepositoryTests {
     
     private func makeSUT(
         gameStamp: GameStamp = Date(timeIntervalSince1970: 0),
-        store: StorageProtocolMock<UserChoice> = .init()
+        store: StorageProtocolMock = .init()
     ) -> RemainingLivesRepository {
         RemainingLivesRepository(
             gameStamp: gameStamp,
@@ -30,7 +30,7 @@ struct RemainingLivesRepositoryTests {
     @Test("Observing: filters out other games")
     func testThat_WhenWrongAnswersAreObserved_ThenOnlyThisGameOnesAreObserved() async {
         // Given
-        let store = StorageProtocolMock<UserChoice>()
+        let store = StorageProtocolMock()
         store.getAllElementsObservableOfReturnValue = Just(
             [
                 UserChoice.make(game: Date(timeIntervalSince1970: 1)),
@@ -51,7 +51,7 @@ struct RemainingLivesRepositoryTests {
     @Test("Observing: filters out succesful ones")
     func testThat_WhenWrongAnswersAreObserved_ThenOnlyWrongOnesAreObserved() async {
         // Given
-        let store = StorageProtocolMock<UserChoice>()
+        let store = StorageProtocolMock()
         store.getAllElementsObservableOfReturnValue = Just(
             [
                 UserChoice.make(countryCode: "ES", pickedCountryCode: "ES"),

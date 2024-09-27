@@ -6,10 +6,14 @@
 //
 
 @testable import CoatOfArms
+import Foundation
 import SnapshotTesting
-import XCTest
+import Testing
 
-final class QuestionViewTests: XCTestCase {
+@Suite("QuestionView", .tags(.viewLayer))
+@MainActor
+struct QuestionViewTests {
+    @Test
     func testQuestionView() {
         let view = QuestionView(
             viewModel: PreviewQuestionViewModel(

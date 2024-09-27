@@ -18,9 +18,9 @@ struct QuestionRepositoryTests {
     private func makeSUT(
         questionId: Question.ID = .make(),
         gemeSettings: GameSettings = .default,
-        network: NetworkProtocolMock<ServerResponse> = .init(),
+        network: NetworkProtocolMock = .init(),
         randomCountryCodeProvider: RandomCountryCodeProviderProtocolMock = .init(),
-        store: StorageProtocolMock<Question> = .init()
+        store: StorageProtocolMock = .init()
     ) -> QuestionRepository {
         QuestionRepository(
             questionId: questionId,
@@ -36,7 +36,7 @@ struct QuestionRepositoryTests {
     @Test("Country network request succeeds")
     func testThat_WhenServerCountryIsFetched_ThenRequestIsSent() async throws {
         // Given
-        let network = NetworkProtocolMock<ServerResponse>()
+        let network = NetworkProtocolMock()
         network.requestUrlReturnValue = ServerResponse(country: ServerCountry.make())
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodesNExcludingReturnValue = ["AR", "US", "PR"]
@@ -56,7 +56,7 @@ struct QuestionRepositoryTests {
     @Test("Country network request fails")
     func testThat_WhenServerCountryIsFetched_AndRequestFails_ThenThrowsError() async throws {
         // Given
-        let network = NetworkProtocolMock<ServerResponse>()
+        let network = NetworkProtocolMock()
         network.requestUrlThrowableError = NSError()
         let sut = self.makeSUT(
             network: network
@@ -80,11 +80,11 @@ struct QuestionRepositoryTests {
         let questionId = Question.ID(gameStamp: Date(timeIntervalSince1970: 0), countryCode: "ES")
         let expectedStoredURL = URL(string: "https://mainfacts.com/media/images/coats_of_arms/es.png")!
         let gameSettings = GameSettings.make(numPossibleChoices: 4)
-        let network = NetworkProtocolMock<ServerResponse>()
+        let network = NetworkProtocolMock()
         network.requestUrlReturnValue = ServerResponse(country: ServerCountry.make(coatOfArmsURL: expectedStoredURL))
         let randomCountryCodeProvider = RandomCountryCodeProviderProtocolMock()
         randomCountryCodeProvider.generateCodesNExcludingReturnValue = ["AR", "US", "PR"]
-        let store = StorageProtocolMock<Question>()
+        let store = StorageProtocolMock()
         let sut = self.makeSUT(
             questionId: questionId,
             gemeSettings: gameSettings,
@@ -98,7 +98,7 @@ struct QuestionRepositoryTests {
         
         // Then
         #expect(store.addCallsCount == 1)
-        let storedQuestion = try #require(store.addReceivedElement)
+        let storedQuestion = try #require(store.addReceivedElement as? Question)
         #expect(storedQuestion.id == questionId)
         #expect(storedQuestion.coatOfArmsURL == expectedStoredURL)
         #expect(storedQuestion.otherChoices == ["AR", "US", "PR"])
@@ -111,8 +111,8 @@ struct QuestionRepositoryTests {
     func testThat_WhenQuestionIsSubscribed_ThenStoredIsObserved() async {
         // Given
         let expectedQuestion = Question.make()
-        let store = StorageProtocolMock<Question>()
-        store.getSingleElementObservableOfIdReturnValue = Just(expectedQuestion).eraseToAnyPublisher()
+        let store = StorageProtocolMock()
+        store.getSingleElementObservableOfIdReturnValue = Just<Question?>(expectedQuestion).eraseToAnyPublisher()
         let sut = self.makeSUT(
             store: store
         )
