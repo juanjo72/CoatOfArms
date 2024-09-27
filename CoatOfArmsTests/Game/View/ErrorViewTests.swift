@@ -24,7 +24,7 @@ struct ErrorViewTests {
             assertSnapshot(
                 of: view,
                 as: .image(
-                    layout: .device(config: .iPhone13Pro)
+                    layout: .fixed(width: 402, height: 874)
                 ),
                 record: false
             )
