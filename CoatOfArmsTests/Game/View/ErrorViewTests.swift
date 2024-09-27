@@ -20,6 +20,13 @@ struct ErrorViewTests {
             action: {}
         )
         
-        assertSnapshot(of: view, as: .image(layout: .device(config: .iPhone8)), record: false)
+        assertSnapshot(
+            of: view,
+            as: .image(
+                layout: .device(config: .iPhone8),
+                traits: .init(displayScale: 1)
+            ),
+            record: false
+        )
     }
 }
