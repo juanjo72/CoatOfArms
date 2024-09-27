@@ -26,8 +26,7 @@ struct ChoiceButtonTests {
                 assertSnapshot(
                     of: view,
                     as: .image(
-                        layout: .fixed(width: 300, height: 100),
-                        traits: .init(displayScale: 1)
+                        layout: .fixed(width: 300, height: 100)
                     ),
                     record: false
                 )
@@ -48,8 +47,7 @@ struct ChoiceButtonTests {
             assertSnapshot(
                 of: view,
                 as: .image(
-                    layout: .fixed(width: 300, height: 100),
-                    traits: .init(displayScale: 1)
+                    layout: .fixed(width: 300, height: 100)
                 ),
                 record: false
             )
@@ -69,8 +67,7 @@ struct ChoiceButtonTests {
             assertSnapshot(
                 of: view,
                 as: .image(
-                    layout: .fixed(width: 300, height: 100),
-                    traits: .init(displayScale: 1)
+                    layout: .fixed(width: 300, height: 100)
                 ),
                 record: false
             )

@@ -33,8 +33,7 @@ struct QuestionViewTests {
             assertSnapshot(
                 of: view,
                 as: .image(
-                    layout: .device(config: .iPhone8),
-                    traits: .init(displayScale: 1)
+                    layout: .device(config: .iPhone13Pro)
                 ),
                 record: false
             )
