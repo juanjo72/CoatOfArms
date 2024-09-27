@@ -21,14 +21,18 @@ struct ChoiceButtonTests {
         )
         .padding(.horizontal)
         
-        assertSnapshot(
-            of: view,
-            as: .image(
-                layout: .fixed(width: 300, height: 100),
-                traits: .init(displayScale: 1)
-            ),
-            record: false
-        )
+        withSnapshotTesting(diffTool: .ksdiff) {
+            withSnapshotTesting(diffTool: .ksdiff) {
+                assertSnapshot(
+                    of: view,
+                    as: .image(
+                        layout: .fixed(width: 300, height: 100),
+                        traits: .init(displayScale: 1)
+                    ),
+                    record: false
+                )
+            }
+        }
     }
     
     @Test
@@ -40,14 +44,16 @@ struct ChoiceButtonTests {
         )
         .padding(.horizontal)
         
-        assertSnapshot(
-            of: view,
-            as: .image(
-                layout: .fixed(width: 300, height: 100),
-                traits: .init(displayScale: 1)
-            ),
-            record: false
-        )
+        withSnapshotTesting(diffTool: .ksdiff) {
+            assertSnapshot(
+                of: view,
+                as: .image(
+                    layout: .fixed(width: 300, height: 100),
+                    traits: .init(displayScale: 1)
+                ),
+                record: false
+            )
+        }
     }
     
     @Test
@@ -57,15 +63,17 @@ struct ChoiceButtonTests {
                 tint: .red
             )
         )
-        .padding(.horizontal)
+            .padding(.horizontal)
         
-        assertSnapshot(
-            of: view,
-            as: .image(
-                layout: .fixed(width: 300, height: 100),
-                traits: .init(displayScale: 1)
-            ),
-            record: false
-        )
+        withSnapshotTesting(diffTool: .ksdiff) {
+            assertSnapshot(
+                of: view,
+                as: .image(
+                    layout: .fixed(width: 300, height: 100),
+                    traits: .init(displayScale: 1)
+                ),
+                record: false
+            )
+        }
     }
 }
