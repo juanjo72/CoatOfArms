@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class PreviewQuestionViewModel: QuestionViewModelProtocol {
     var countryCode: CountryCode
@@ -13,12 +14,12 @@ final class PreviewQuestionViewModel: QuestionViewModelProtocol {
     
     init(
         countryCode: CountryCode,
-        imageURL: URL,
+        image: Image,
         button: [PreviewChoiceButtonViewModel]
     ) {
         self.countryCode = countryCode
         let question = QuestionViewData(
-            imageURL: imageURL,
+            image: .image(image),
             buttons: button
         )
         self.loadingState = .loaded(question)

@@ -34,12 +34,21 @@ struct QuestionView<
                 ) {
                     Spacer()
                     
-                    KFImage(question.imageURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .padding()
-                        .allowsHitTesting(false)
-                        .accessibilityLabel(Text("Unknown Coat of Arms"))
+                    switch question.image {
+                    case .image(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
+                        
+                    case .url(let url):
+                        KFImage(url)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
+                            .allowsHitTesting(false)
+                            .accessibilityLabel(Text("Unknown Coat of Arms"))
+                    }
                     
                     VStack {
                         ForEach(question.buttons, id: \.countryCode) { button in
@@ -84,7 +93,7 @@ struct QuestionViewStyle {
     QuestionView(
         viewModel: PreviewQuestionViewModel(
             countryCode: "ES",
-            imageURL: URL(string: "https://mainfacts.com/media/images/coats_of_arms/es.png")!,
+            image: Image("Spain", bundle: nil),
             button: [
                 PreviewChoiceButtonViewModel(countryCode: "FR", label: "France"),
                 PreviewChoiceButtonViewModel(countryCode: "AR", label: "Argentina"),

@@ -89,7 +89,7 @@ struct QuestionViewModelTests {
         )
         
         // Then
-        #expect(sut.loadingState.element?.imageURL == expectedURL)
+        #expect(sut.loadingState.element?.image.url == expectedURL)
         #expect(codes == ["IT", "ES", "DE", "FR"])
     }
     

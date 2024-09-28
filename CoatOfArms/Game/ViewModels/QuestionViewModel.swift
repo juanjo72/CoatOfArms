@@ -41,7 +41,7 @@ final class QuestionViewModel<
             .map { [buttonProvider] question -> QuestionViewData<ButtonViewModel>? in
                 guard let question else { return nil }
                 return QuestionViewData(
-                    imageURL: question.coatOfArmsURL,
+                    image: .url(question.coatOfArmsURL),
                     buttons: question.allChoices.map(buttonProvider)
                 )
             }

@@ -9,6 +9,7 @@
 import Foundation
 import SnapshotTesting
 import Testing
+import SwiftUI
 
 @Suite("QuestionView", .tags(.viewLayer))
 @MainActor
@@ -18,7 +19,7 @@ struct QuestionViewTests {
         let view = QuestionView(
             viewModel: PreviewQuestionViewModel(
                 countryCode: "ES",
-                imageURL: URL(string: "https://mainfacts.com/media/images/coats_of_arms/es.png")!,
+                image: Image("Spain", bundle: nil),
                 button: [
                     PreviewChoiceButtonViewModel(countryCode: "FR", label: "France"),
                     PreviewChoiceButtonViewModel(countryCode: "AR", label: "Argentina"),
