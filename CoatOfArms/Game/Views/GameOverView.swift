@@ -59,7 +59,7 @@ struct GameOverViewStyle {
 #Preview {
     GameOverView(
         score: 100,
-        style: .init(spacing: 10),
+        style: .default,
         action: {}
     )
 }

@@ -51,4 +51,13 @@ extension GameStatus {
             false
         }
     }
+    
+    var error: (message: String, action: () async -> Void)? {
+        return switch self {
+        case .error(let message, let action):
+            (message, action)
+        default:
+            nil
+        }
+    }
 }
